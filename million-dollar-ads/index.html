@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Million Dollar VSL Ad Formula | Michael Goffredi</title>
+  <meta name="description" content="A simple, timeless ad framework for scalable direct-response VSL ads. Includes quick “guess which one won” games + a CTA to DM on LinkedIn." />
+  <link rel="canonical" href="https://mgoffredi.com/million-dollar-ads" />
+
+  <meta property="og:title" content="Million Dollar VSL Ad Formula" />
+  <meta property="og:description" content="Steal the building blocks that scale. Guess which one won, then DM me on LinkedIn for the answers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mgoffredi.com/million-dollar-ads" />
+  <meta property="og:image" content="https://mgoffredi.com/million-dollar-ads/img/hero-3seconds.png" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      padding: 3rem 1.25rem 5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.55;
+    }
+    a { color: #111; text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: #555; }
+    a:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+
+    .wrap { max-width: 880px; margin: 0 auto; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 0 0.75rem 0;
+      font-weight: 750;
+    }
+
+    .sub {
+      font-size: 1.08rem;
+      color: #222;
+      margin: 0 0 1rem 0;
+      max-width: 60ch;
+    }
+
+    .cred {
+      font-size: 0.95rem;
+      color: #333;
+      margin: 0 0 1.25rem 0;
+    }
+
+    .pillrow { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0; }
+    .pill {
+      border: 1px solid #ddd;
+      padding: 0.4rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: #fafafa;
+    }
+
+    .heroimg {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+    .heroimg img { display: block; width: 100%; height: auto; }
+
+    .ctaRow { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.05rem;
+      border-radius: 12px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: transform 0.06s ease, background 0.12s ease;
+    }
+    .btn:hover { background: #222; }
+    .btn:active { transform: translateY(1px); }
+
+    .btnSecondary {
+      background: #fff;
+      color: #111;
+    }
+    .btnSecondary:hover { background: #f5f5f5; }
+
+    .note { font-size: 0.92rem; color: #444; margin: 0; }
+
+    hr { border: 0; border-top: 1px solid #eee; margin: 2.5rem 0; }
+
+    h2 { font-size: 1.5rem; margin: 0 0 0.75rem 0; letter-spacing: -0.02em; }
+
+    .list {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .list li { margin: 0.4rem 0; }
+
+    .section { margin: 0 0 2.25rem; }
+
+    .game {
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 1.25rem;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+    }
+
+    .game h3 { margin: 0 0 0.5rem; font-size: 1.15rem; letter-spacing: -0.01em; }
+    .game p { margin: 0.35rem 0; }
+
+    .options {
+      margin: 0.75rem 0 1rem;
+      padding-left: 1.1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1rem 0 1.25rem;
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      border: 1px solid #eee;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    .card img { width: 100%; height: auto; display: block; }
+    .card .cap {
+      padding: 0.75rem 0.85rem;
+      font-size: 0.95rem;
+      color: #222;
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid #eee;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .keyword {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.92em;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <section class="hero">
+      <div>
+        <h1>Million Dollar VSL Ad Formula</h1>
+        <p class="sub">Timeless building blocks for scalable direct-response ads.
+          Little “guess which one won” games included, DM me and I’ll send the answers.</p>
+
+        <p class="cred">I’ve run somewhere between <strong>$20M and $60M</strong> on Meta + Google over the last ~5 years.
+          New stuff is great, but these blocks keep working.</p>
+
+        <div class="ctaRow">
+          <a class="btn" href="https://www.linkedin.com/in/mgoffredi/" target="_blank" rel="noopener">Message me on LinkedIn →</a>
+          <a class="btn btnSecondary" href="#games">Jump to the games ↓</a>
+        </div>
+        <p class="note">Tip: DM me the keyword <span class="keyword">MILLION</span> and I’ll reply with the winners + the ad that inspired this.</p>
+
+        <div class="pillrow">
+          <span class="pill">First 3 seconds</span>
+          <span class="pill">Fear hooks</span>
+          <span class="pill">Suspense visuals</span>
+          <span class="pill">Callout + instructions</span>
+          <span class="pill">Double CTA</span>
+        </div>
+      </div>
+
+      <div class="heroimg">
+        <img src="./img/hero-3seconds.png" alt="Illustration of a stopwatch showing three seconds and a scrolling phone" />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The core idea</h2>
+      <p><strong>Spoiler:</strong> everyone knows it now.
+        The first second and the first 3 seconds are the most important part of a scalable ad.</p>
+    </section>
+
+    <section class="section">
+      <h2>What your first 3 seconds need</h2>
+      <ul class="list">
+        <li><strong>Fear-based hook frameworks</strong> (reward framing usually loses).</li>
+        <li><strong>“Stop doing X”</strong> style interruption (forces a pause and a rethink).</li>
+        <li><strong>Clear visual suspense</strong> (weird food + action + “wait, what?”).</li>
+      </ul>
+      <p class="note">The third one is GOLD. Don’t skip the visuals section.</p>
+    </section>
+
+    <hr />
+
+    <section id="games" class="section">
+      <h2>Mini games (guess which one won)</h2>
+
+      <div class="game" style="margin-bottom: 1.25rem;">
+        <h3>1) Guess which food won</h3>
+        <p>I didn’t know what (food) does to (health condition) until I saw this.</p>
+        <p>Guess which one of these won:</p>
+        <ul class="options">
+          <li>Chicken</li>
+          <li>Greek yogurt and berries</li>
+          <li>Eggs</li>
+          <li>Oranges</li>
+        </ul>
+        <a class="btn" href="https://www.linkedin.com/in/mgoffredi/" target="_blank" rel="noopener">Send me a message on LinkedIn to get the answer →</a>
+      </div>
+
+      <div class="game" style="margin-bottom: 1.25rem;">
+        <h3>2) Guess which “death point” won</h3>
+        <p>Guess which one of these fear points won:</p>
+        <ul class="options">
+          <li>Inflammation</li>
+          <li>Body fat</li>
+          <li>Cholesterol</li>
+          <li>Blood sugar</li>
+        </ul>
+        <a class="btn" href="https://www.linkedin.com/in/mgoffredi/" target="_blank" rel="noopener">Send me a message on LinkedIn to get the answer →</a>
+      </div>
+
+      <div class="game">
+        <h3>3) Visuals: weird food + action + suspense</h3>
+        <p>Which one of these do you think won?</p>
+
+        <div class="grid">
+          <div class="card">
+            <img src="./img/visual-a-chicken.png" alt="Illustration: skin peeled off a raw chicken leg" />
+            <div class="cap"><strong>A.</strong> Skin being peeled off a raw chicken leg</div>
+          </div>
+          <div class="card">
+            <img src="./img/visual-b-avocado.jpg" alt="Illustration: squishing an avocado in a hand" />
+            <div class="cap"><strong>B.</strong> Squishing an avocado in your hand</div>
+          </div>
+          <div class="card">
+            <img src="./img/visual-c-croissant.png" alt="Illustration: chocolate goo coming out of a croissant" />
+            <div class="cap"><strong>C.</strong> Chocolate goo coming out of a croissant</div>
+          </div>
+          <div class="card">
+            <img src="./img/visual-d-egg.jpg" alt="Illustration: poached egg popped on avocado toast" />
+            <div class="cap"><strong>D.</strong> Poached egg being “popped” on avocado toast</div>
+          </div>
+        </div>
+
+        <a class="btn" href="https://www.linkedin.com/in/mgoffredi/" target="_blank" rel="noopener">Send me a message on LinkedIn to get the answer →</a>
+      </div>
+    </section>
+
+    <hr />
+
+    <section class="section">
+      <h2>More building blocks (easy wins)</h2>
+      <ul class="list">
+        <li><strong>Callout:</strong> broad (“if you’re a woman…”) or repelling/attracting for niche audiences (“if you want _”, “if you think _”).</li>
+        <li><strong>Instructions:</strong> “Stop scrolling…” buys you 1-2 seconds and gives direction.</li>
+        <li><strong>B-roll engagement:</strong> keep visual change happening, even while speaking.</li>
+        <li><strong>CTA:</strong> create curiosity, then give just enough detail to prove it’s not clickbait.</li>
+        <li><strong>Double CTA:</strong> ask them again to click/message.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Want the ad that inspired this?</h2>
+      <div class="ctaRow">
+        <a class="btn" href="https://www.linkedin.com/in/mgoffredi/" target="_blank" rel="noopener">Message me on LinkedIn →</a>
+        <a class="btn btnSecondary" href="https://mgoffredi.com" rel="noopener">Back to homepage</a>
+      </div>
+      <p class="note">Send <span class="keyword">MILLION</span> and I’ll send the winner list + the source ad.</p>
+    </section>
+
+    <footer class="footer">
+      <p style="margin:0;">© Michael Goffredi. Built to be simple, fast, and used.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
