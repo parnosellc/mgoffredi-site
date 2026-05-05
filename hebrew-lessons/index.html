@@ -20,7 +20,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -40,6 +40,47 @@
             color: #666;
             margin-bottom: 40px;
             font-size: 1.1em;
+        }
+        
+        .version-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .version-tab {
+            padding: 10px 20px;
+            background: #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .version-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .version-content {
+            display: none;
+        }
+        
+        .version-content.active {
+            display: block;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
         }
         
         .lesson-card {
@@ -133,6 +174,18 @@
             font-weight: bold;
         }
         
+        .info-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box strong {
+            color: #856404;
+        }
+        
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -161,6 +214,20 @@
         <h1>🇮🇱 Hebrew Vocabulary Lessons</h1>
         <p class="subtitle">Interactive Audio Lessons with Mnemonic Devices & Active Recall</p>
         
+        <div class="version-tabs">
+            <div class="version-tab active" onclick="showVersion('nikkud')">
+                With Nikkud <span class="badge">RECOMMENDED</span>
+            </div>
+            <div class="version-tab" onclick="showVersion('original')">
+                Without Nikkud
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <strong>📌 What's the difference?</strong><br>
+            <strong>Nikkud (ניקוד)</strong> = vowel points in Hebrew text. The versions <em>with nikkud</em> have more accurate pronunciation from the AI because the vowels are explicitly marked. <strong>Recommended for learners!</strong>
+        </div>
+        
         <div class="method">
             <h3>Teaching Method</h3>
             <ul>
@@ -171,37 +238,108 @@
             </ul>
         </div>
         
-        <div class="lesson-card">
-            <div class="lesson-title">Session 2: The Complete Set</div>
-            <div class="lesson-meta">
-                <strong>33 words</strong> | <strong>11 minutes 22 seconds</strong>
+        <!-- With Nikkud Version -->
+        <div id="nikkud-content" class="version-content active">
+            <div class="lesson-card">
+                <div class="lesson-title">Session 1: Foundation Words</div>
+                <div class="lesson-meta">
+                    <strong>10 words</strong> | <strong>4 minutes 20 seconds</strong>
+                </div>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Essential Hebrew vocabulary: movement verbs (to return, to go up, to go), communication 
+                    (to call, to search), basic nouns (pen, chicken, ticket), and location words (here, to home).
+                </p>
+                <audio controls>
+                    <source src="hebrew-vocab-session1-nikkud.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="hebrew-vocab-session1-nikkud.mp3" download class="download-btn">Download Session 1</a>
             </div>
-            <p style="margin-bottom: 20px; color: #555;">
-                Learn the remaining vocabulary from your list: numbers, verbs (to use, to manage, to help, to play), 
-                nouns (season, concert, wind, mistake, pool), adjectives (interesting, boring, strong, weak), 
-                location words, and more.
-            </p>
-            <audio controls>
-                <source src="hebrew-vocab-class-session2.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <a href="hebrew-vocab-class-session2.mp3" download class="download-btn">Download Session 2</a>
+            
+            <div class="lesson-card">
+                <div class="lesson-title">Session 2: The Complete Set</div>
+                <div class="lesson-meta">
+                    <strong>33 words</strong> | <strong>12 minutes 33 seconds</strong>
+                </div>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Learn the remaining vocabulary: numbers, verbs (to use, to manage, to help, to play), 
+                    nouns (season, concert, wind, mistake, pool), adjectives (interesting, boring, strong, weak), 
+                    location words, and more.
+                </p>
+                <audio controls>
+                    <source src="hebrew-vocab-session2-nikkud.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="hebrew-vocab-session2-nikkud.mp3" download class="download-btn">Download Session 2</a>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="lesson-title">Full Course: Complete Vocabulary</div>
+                <div class="lesson-meta">
+                    <strong>43 words total</strong> | <strong>16 minutes 53 seconds</strong>
+                </div>
+                <p style="margin-bottom: 20px; color: #555;">
+                    The complete course combining Session 1 (10 words) and Session 2 (33 words). 
+                    Perfect for a comprehensive review of all your vocabulary in one continuous lesson.
+                </p>
+                <audio controls>
+                    <source src="hebrew-vocab-full-nikkud.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="hebrew-vocab-full-nikkud.mp3" download class="download-btn">Download Full Course</a>
+            </div>
         </div>
         
-        <div class="lesson-card">
-            <div class="lesson-title">Full Course: Complete Vocabulary</div>
-            <div class="lesson-meta">
-                <strong>43 words total</strong> | <strong>15 minutes 25 seconds</strong>
+        <!-- Original Version (without nikkud) -->
+        <div id="original-content" class="version-content">
+            <div class="lesson-card">
+                <div class="lesson-title">Session 1: Foundation Words</div>
+                <div class="lesson-meta">
+                    <strong>10 words</strong> | <strong>4 minutes 2 seconds</strong>
+                </div>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Essential Hebrew vocabulary: movement verbs (to return, to go up, to go), communication 
+                    (to call, to search), basic nouns (pen, chicken, ticket), and location words (here, to home).
+                </p>
+                <audio controls>
+                    <source src="hebrew-vocab-class-session1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="hebrew-vocab-class-session1.mp3" download class="download-btn">Download Session 1</a>
             </div>
-            <p style="margin-bottom: 20px; color: #555;">
-                The complete course combining Session 1 (10 words) and Session 2 (33 words). 
-                Perfect for a comprehensive review of all your vocabulary in one continuous lesson.
-            </p>
-            <audio controls>
-                <source src="hebrew-vocab-class-FULL.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <a href="hebrew-vocab-class-FULL.mp3" download class="download-btn">Download Full Course</a>
+            
+            <div class="lesson-card">
+                <div class="lesson-title">Session 2: The Complete Set</div>
+                <div class="lesson-meta">
+                    <strong>33 words</strong> | <strong>11 minutes 22 seconds</strong>
+                </div>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Learn the remaining vocabulary: numbers, verbs (to use, to manage, to help, to play), 
+                    nouns (season, concert, wind, mistake, pool), adjectives (interesting, boring, strong, weak), 
+                    location words, and more.
+                </p>
+                <audio controls>
+                    <source src="hebrew-vocab-class-session2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="hebrew-vocab-class-session2.mp3" download class="download-btn">Download Session 2</a>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="lesson-title">Full Course: Complete Vocabulary</div>
+                <div class="lesson-meta">
+                    <strong>43 words total</strong> | <strong>15 minutes 25 seconds</strong>
+                </div>
+                <p style="margin-bottom: 20px; color: #555;">
+                    The complete course combining Session 1 (10 words) and Session 2 (33 words). 
+                    Perfect for a comprehensive review of all your vocabulary in one continuous lesson.
+                </p>
+                <audio controls>
+                    <source src="hebrew-vocab-class-FULL.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="hebrew-vocab-class-FULL.mp3" download class="download-btn">Download Full Course</a>
+            </div>
         </div>
         
         <div class="footer">
@@ -211,5 +349,17 @@
             </p>
         </div>
     </div>
+    
+    <script>
+        function showVersion(version) {
+            // Hide all content
+            document.querySelectorAll('.version-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.version-tab').forEach(el => el.classList.remove('active'));
+            
+            // Show selected
+            document.getElementById(version + '-content').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
