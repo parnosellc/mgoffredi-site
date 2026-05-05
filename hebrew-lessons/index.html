@@ -42,47 +42,6 @@
             font-size: 1.1em;
         }
         
-        .version-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .version-tab {
-            padding: 10px 20px;
-            background: #e0e0e0;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .version-tab.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .version-content {
-            display: none;
-        }
-        
-        .version-content.active {
-            display: block;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        
         .lesson-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border-radius: 15px;
@@ -174,18 +133,6 @@
             font-weight: bold;
         }
         
-        .info-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-        
-        .info-box strong {
-            color: #856404;
-        }
-        
         .vocab-gallery {
             margin: 40px 0;
         }
@@ -270,20 +217,6 @@
         <h1>🇮🇱 Hebrew Vocabulary Lessons</h1>
         <p class="subtitle">Interactive Audio Lessons with Mnemonic Devices & Active Recall</p>
         
-        <div class="version-tabs">
-            <div class="version-tab active" onclick="showVersion('nikkud')">
-                With Nikkud <span class="badge">RECOMMENDED</span>
-            </div>
-            <div class="version-tab" onclick="showVersion('original')">
-                Without Nikkud
-            </div>
-        </div>
-        
-        <div class="info-box">
-            <strong>📌 What's the difference?</strong><br>
-            <strong>Nikkud (נִיקּוּד)</strong> = vowel points in Hebrew text. The versions <em>with nikkud</em> have more accurate pronunciation from the AI because the vowels are explicitly marked. <strong>Recommended for learners!</strong>
-        </div>
-        
         <div class="method">
             <h3>Teaching Method</h3>
             <ul>
@@ -294,112 +227,57 @@
             </ul>
         </div>
         
-        <!-- With Nikkud Version -->
-        <div id="nikkud-content" class="version-content active">
-            <div class="lesson-card">
-                <div class="lesson-title">Session 1: Foundation Words</div>
-                <div class="lesson-meta">
-                    <strong>10 words</strong> | <strong>4 minutes 20 seconds</strong>
-                </div>
-                <p style="margin-bottom: 20px; color: #555;">
-                    Essential vocabulary: <span class="hebrew-word">לָחֲזוֹר</span> (to return), <span class="hebrew-word">לַעֲלוֹת</span> (to go up), 
-                    <span class="hebrew-word">לָלֶכֶת</span> (to go), <span class="hebrew-word">לְהִתְקַשֵּׁר</span> (to call), 
-                    <span class="hebrew-word">לְחַפֵּשׂ</span> (to search), <span class="hebrew-word">עֵט</span> (pen), 
-                    <span class="hebrew-word">עוֹף</span> (chicken), <span class="hebrew-word">כַּרְטִיס</span> (ticket), 
-                    <span class="hebrew-word">כָּאן</span> (here), <span class="hebrew-word">הַבַּיְתָה</span> (to home)
-                </p>
-                <audio controls>
-                    <source src="hebrew-vocab-session1-nikkud.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="hebrew-vocab-session1-nikkud.mp3" download class="download-btn">Download Session 1</a>
+        <div class="lesson-card">
+            <div class="lesson-title">Session 1: Foundation Words</div>
+            <div class="lesson-meta">
+                <strong>10 words</strong> | <strong>4 minutes 2 seconds</strong>
             </div>
-            
-            <div class="lesson-card">
-                <div class="lesson-title">Session 2: The Complete Set</div>
-                <div class="lesson-meta">
-                    <strong>33 words</strong> | <strong>12 minutes 33 seconds</strong>
-                </div>
-                <p style="margin-bottom: 20px; color: #555;">
-                    Numbers: <span class="hebrew-word">שְׁתַּיִם</span>, <span class="hebrew-word">שְׁנַיִם</span> (two) | 
-                    Verbs: <span class="hebrew-word">לְהִשְׁתַּמֵּשׁ</span> (to use), <span class="hebrew-word">לְהִסְתַּדֵּר</span> (to manage), 
-                    <span class="hebrew-word">לַעֲזוֹר</span> (to help), <span class="hebrew-word">לְהִתְרַגֵּשׁ</span> (to be excited) | 
-                    Adjectives: <span class="hebrew-word">מְעַנְיֵן</span> (interesting), <span class="hebrew-word">חָזָק</span> (strong) + more!
-                </p>
-                <audio controls>
-                    <source src="hebrew-vocab-session2-nikkud.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="hebrew-vocab-session2-nikkud.mp3" download class="download-btn">Download Session 2</a>
-            </div>
-            
-            <div class="lesson-card">
-                <div class="lesson-title">Full Course: Complete Vocabulary</div>
-                <div class="lesson-meta">
-                    <strong>43 words total</strong> | <strong>16 minutes 53 seconds</strong>
-                </div>
-                <p style="margin-bottom: 20px; color: #555;">
-                    The complete course combining Session 1 (10 words) and Session 2 (33 words). 
-                    Perfect for a comprehensive review of all your vocabulary in one continuous lesson.
-                </p>
-                <audio controls>
-                    <source src="hebrew-vocab-full-nikkud.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="hebrew-vocab-full-nikkud.mp3" download class="download-btn">Download Full Course</a>
-            </div>
+            <p style="margin-bottom: 20px; color: #555;">
+                Essential vocabulary: <span class="hebrew-word">לחזור</span> (to return), <span class="hebrew-word">לעלות</span> (to go up), 
+                <span class="hebrew-word">ללכת</span> (to go), <span class="hebrew-word">להתקשר</span> (to call), 
+                <span class="hebrew-word">לחפש</span> (to search), <span class="hebrew-word">עט</span> (pen), 
+                <span class="hebrew-word">עוף</span> (chicken), <span class="hebrew-word">כרטיס</span> (ticket), 
+                <span class="hebrew-word">כאן</span> (here), <span class="hebrew-word">הביתה</span> (to home)
+            </p>
+            <audio controls>
+                <source src="hebrew-vocab-session1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="hebrew-vocab-session1.mp3" download class="download-btn">Download Session 1</a>
         </div>
         
-        <!-- Original Version (without nikkud) -->
-        <div id="original-content" class="version-content">
-            <div class="lesson-card">
-                <div class="lesson-title">Session 1: Foundation Words</div>
-                <div class="lesson-meta">
-                    <strong>10 words</strong> | <strong>4 minutes 2 seconds</strong>
-                </div>
-                <p style="margin-bottom: 20px; color: #555;">
-                    Essential Hebrew vocabulary: movement verbs (to return, to go up, to go), communication 
-                    (to call, to search), basic nouns (pen, chicken, ticket), and location words (here, to home).
-                </p>
-                <audio controls>
-                    <source src="hebrew-vocab-class-session1.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="hebrew-vocab-class-session1.mp3" download class="download-btn">Download Session 1</a>
+        <div class="lesson-card">
+            <div class="lesson-title">Session 2: The Complete Set</div>
+            <div class="lesson-meta">
+                <strong>33 words</strong> | <strong>11 minutes 21 seconds</strong>
             </div>
-            
-            <div class="lesson-card">
-                <div class="lesson-title">Session 2: The Complete Set</div>
-                <div class="lesson-meta">
-                    <strong>33 words</strong> | <strong>11 minutes 22 seconds</strong>
-                </div>
-                <p style="margin-bottom: 20px; color: #555;">
-                    Learn the remaining vocabulary: numbers, verbs (to use, to manage, to help, to play), 
-                    nouns (season, concert, wind, mistake, pool), adjectives (interesting, boring, strong, weak), 
-                    location words, and more.
-                </p>
-                <audio controls>
-                    <source src="hebrew-vocab-class-session2.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="hebrew-vocab-class-session2.mp3" download class="download-btn">Download Session 2</a>
+            <p style="margin-bottom: 20px; color: #555;">
+                Numbers: <span class="hebrew-word">שתיים</span>, <span class="hebrew-word">שניים</span> (two) | 
+                Verbs: <span class="hebrew-word">להשתמש</span> (to use), <span class="hebrew-word">להסתדר</span> (to manage), 
+                <span class="hebrew-word">לעזור</span> (to help), <span class="hebrew-word">להתרגש</span> (to be excited) | 
+                Adjectives: <span class="hebrew-word">מעניין</span> (interesting), <span class="hebrew-word">חזק</span> (strong) + more!
+            </p>
+            <audio controls>
+                <source src="hebrew-vocab-session2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="hebrew-vocab-session2.mp3" download class="download-btn">Download Session 2</a>
+        </div>
+        
+        <div class="lesson-card">
+            <div class="lesson-title">Full Course: Complete Vocabulary</div>
+            <div class="lesson-meta">
+                <strong>43 words total</strong> | <strong>15 minutes 23 seconds</strong>
             </div>
-            
-            <div class="lesson-card">
-                <div class="lesson-title">Full Course: Complete Vocabulary</div>
-                <div class="lesson-meta">
-                    <strong>43 words total</strong> | <strong>15 minutes 25 seconds</strong>
-                </div>
-                <p style="margin-bottom: 20px; color: #555;">
-                    The complete course combining Session 1 (10 words) and Session 2 (33 words). 
-                    Perfect for a comprehensive review of all your vocabulary in one continuous lesson.
-                </p>
-                <audio controls>
-                    <source src="hebrew-vocab-class-FULL.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="hebrew-vocab-class-FULL.mp3" download class="download-btn">Download Full Course</a>
-            </div>
+            <p style="margin-bottom: 20px; color: #555;">
+                The complete course combining Session 1 (10 words) and Session 2 (33 words). 
+                Perfect for a comprehensive review of all your vocabulary in one continuous lesson.
+            </p>
+            <audio controls>
+                <source src="hebrew-vocab-full-course.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="hebrew-vocab-full-course.mp3" download class="download-btn">Download Full Course</a>
         </div>
         
         <!-- Mnemonic Image Gallery -->
@@ -412,240 +290,231 @@
             <div class="vocab-grid">
                 <!-- Session 1 Words -->
                 <div class="vocab-item">
-                    <img src="images/01-lachazor.png" alt="לָחֲזוֹר">
-                    <div class="hebrew-word">לָחֲזוֹר</div>
+                    <img src="images/01-lachazor.png" alt="לחזור">
+                    <div class="hebrew-word">לחזור</div>
                     <div class="english-word">to return</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/02-laalot.png" alt="לַעֲלוֹת">
-                    <div class="hebrew-word">לַעֲלוֹת</div>
+                    <img src="images/02-laalot.png" alt="לעלות">
+                    <div class="hebrew-word">לעלות</div>
                     <div class="english-word">to go up</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/03-lalechet.png" alt="לָלֶכֶת">
-                    <div class="hebrew-word">לָלֶכֶת</div>
+                    <img src="images/03-lalechet.png" alt="ללכת">
+                    <div class="hebrew-word">ללכת</div>
                     <div class="english-word">to go</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/04-lehitkasher.png" alt="לְהִתְקַשֵּׁר">
-                    <div class="hebrew-word">לְהִתְקַשֵּׁר</div>
+                    <img src="images/04-lehitkasher.png" alt="להתקשר">
+                    <div class="hebrew-word">להתקשר</div>
                     <div class="english-word">to call</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/05-lechapes.jpg" alt="לְחַפֵּשׂ">
-                    <div class="hebrew-word">לְחַפֵּשׂ</div>
+                    <img src="images/05-lechapes.jpg" alt="לחפש">
+                    <div class="hebrew-word">לחפש</div>
                     <div class="english-word">to search</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/06-et.png" alt="עֵט">
-                    <div class="hebrew-word">עֵט</div>
+                    <img src="images/06-et.png" alt="עט">
+                    <div class="hebrew-word">עט</div>
                     <div class="english-word">pen</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/07-of.png" alt="עוֹף">
-                    <div class="hebrew-word">עוֹף</div>
+                    <img src="images/07-of-chicken-fly-off---c80b2e90-c216-4780-a784-0bacf74c82a1.png" alt="עוף">
+                    <div class="hebrew-word">עוף</div>
                     <div class="english-word">chicken</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/08-kartis.jpg" alt="כַּרְטִיס">
-                    <div class="hebrew-word">כַּרְטִיס</div>
+                    <img src="images/08-kartis.jpg" alt="כרטיס">
+                    <div class="hebrew-word">כרטיס</div>
                     <div class="english-word">ticket</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/09-kahn.jpg" alt="כָּאן">
-                    <div class="hebrew-word">כָּאן</div>
+                    <img src="images/09-kahn.jpg" alt="כאן">
+                    <div class="hebrew-word">כאן</div>
                     <div class="english-word">here</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/10-habaitah.jpg" alt="הַבַּיְתָה">
-                    <div class="hebrew-word">הַבַּיְתָה</div>
+                    <img src="images/10-habaitah.jpg" alt="הביתה">
+                    <div class="hebrew-word">הביתה</div>
                     <div class="english-word">to home</div>
                 </div>
                 
                 <!-- Session 2 Words -->
                 <div class="vocab-item">
-                    <img src="images/11-shtayim.png" alt="שְׁתַּיִם">
-                    <div class="hebrew-word">שְׁתַּיִם</div>
+                    <img src="images/11-shtayim.png" alt="שתיים">
+                    <div class="hebrew-word">שתיים</div>
                     <div class="english-word">two (f)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/12-shnayim.jpg" alt="שְׁנַיִם">
-                    <div class="hebrew-word">שְׁנַיִם</div>
+                    <img src="images/12-shnayim.jpg" alt="שניים">
+                    <div class="hebrew-word">שניים</div>
                     <div class="english-word">two (m)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/13-lehishtamesh.jpg" alt="לְהִשְׁתַּמֵּשׁ">
-                    <div class="hebrew-word">לְהִשְׁתַּמֵּשׁ</div>
+                    <img src="images/13-lehishtamesh.jpg" alt="להשתמש">
+                    <div class="hebrew-word">להשתמש</div>
                     <div class="english-word">to use</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/14-lehistader.jpg" alt="לְהִסְתַּדֵּר">
-                    <div class="hebrew-word">לְהִסְתַּדֵּר</div>
+                    <img src="images/14-lehistader.jpg" alt="להסתדר">
+                    <div class="hebrew-word">להסתדר</div>
                     <div class="english-word">to manage</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/15-laazor.png" alt="לַעֲזוֹר">
-                    <div class="hebrew-word">לַעֲזוֹר</div>
+                    <img src="images/15-laazor.png" alt="לעזור">
+                    <div class="hebrew-word">לעזור</div>
                     <div class="english-word">to help</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/16-lehitragesh.png" alt="לְהִתְרַגֵּשׁ">
-                    <div class="hebrew-word">לְהִתְרַגֵּשׁ</div>
+                    <img src="images/16-lehitragesh.png" alt="להתרגש">
+                    <div class="hebrew-word">להתרגש</div>
                     <div class="english-word">to be excited</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/17-lesachek.png" alt="לְשַׂחֵק">
-                    <div class="hebrew-word">לְשַׂחֵק</div>
+                    <img src="images/17-lesachek.png" alt="לשחק">
+                    <div class="hebrew-word">לשחק</div>
                     <div class="english-word">to play (game)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/18-lenagen.png" alt="לְנַגֵּן">
-                    <div class="hebrew-word">לְנַגֵּן</div>
+                    <img src="images/18-lenagen.png" alt="לנגן">
+                    <div class="hebrew-word">לנגן</div>
                     <div class="english-word">to play (instrument)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/19-onah.png" alt="עוֹנָה">
-                    <div class="hebrew-word">עוֹנָה</div>
+                    <img src="images/19-onah.png" alt="עונה">
+                    <div class="hebrew-word">עונה</div>
                     <div class="english-word">season</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/20-hofaah.jpg" alt="הוֹפָעָה">
-                    <div class="hebrew-word">הוֹפָעָה</div>
+                    <img src="images/20-hofaah.jpg" alt="הופעה">
+                    <div class="hebrew-word">הופעה</div>
                     <div class="english-word">concert</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/21-ruach.png" alt="רוּחַ">
-                    <div class="hebrew-word">רוּחַ</div>
+                    <img src="images/21-ruach.png" alt="רוח">
+                    <div class="hebrew-word">רוח</div>
                     <div class="english-word">wind</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/22-taoot.png" alt="טָעוּת">
-                    <div class="hebrew-word">טָעוּת</div>
+                    <img src="images/22-taoot.png" alt="טעות">
+                    <div class="hebrew-word">טעות</div>
                     <div class="english-word">mistake</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/23-zug.png" alt="זוּג">
-                    <div class="hebrew-word">זוּג</div>
+                    <img src="images/23-zug.png" alt="זוג">
+                    <div class="hebrew-word">זוג</div>
                     <div class="english-word">a couple</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/24-breichah.png" alt="בְּרֵכָה">
-                    <div class="hebrew-word">בְּרֵכָה</div>
+                    <img src="images/24-breichah.png" alt="בריכה">
+                    <div class="hebrew-word">בריכה</div>
                     <div class="english-word">swimming pool</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/25-meanyen.png" alt="מְעַנְיֵן">
-                    <div class="hebrew-word">מְעַנְיֵן</div>
+                    <img src="images/25-meanyen.png" alt="מעניין">
+                    <div class="hebrew-word">מעניין</div>
                     <div class="english-word">interesting</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/26-meshamem.png" alt="מְשַׁעֲמֵם">
-                    <div class="hebrew-word">מְשַׁעֲמֵם</div>
+                    <img src="images/26-meshamem.png" alt="משעמם">
+                    <div class="hebrew-word">משעמם</div>
                     <div class="english-word">boring</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/27-chazak.png" alt="חָזָק">
-                    <div class="hebrew-word">חָזָק</div>
+                    <img src="images/27-chazak.png" alt="חזק">
+                    <div class="hebrew-word">חזק</div>
                     <div class="english-word">strong</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/28-chalash.jpg" alt="חָלָשׁ">
-                    <div class="hebrew-word">חָלָשׁ</div>
+                    <img src="images/28-chalash.jpg" alt="חלש">
+                    <div class="hebrew-word">חלש</div>
                     <div class="english-word">weak</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/29-ragil.png" alt="רָגִיל">
-                    <div class="hebrew-word">רָגִיל</div>
+                    <img src="images/29-ragil.png" alt="רגיל">
+                    <div class="hebrew-word">רגיל</div>
                     <div class="english-word">regular</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/30-shamayim.png" alt="שָׁמַיִם">
-                    <div class="hebrew-word">שָׁמַיִם</div>
+                    <img src="images/30-shamayim.png" alt="שמים">
+                    <div class="hebrew-word">שמים</div>
                     <div class="english-word">sky</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/31-beintayim.png" alt="בֵּינְתַיִם">
-                    <div class="hebrew-word">בֵּינְתַיִם</div>
+                    <img src="images/31-beintayim.png" alt="בינתיים">
+                    <div class="hebrew-word">בינתיים</div>
                     <div class="english-word">meanwhile</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/32-od-kahn.png" alt="עוֹד כָּאן">
-                    <div class="hebrew-word">עוֹד כָּאן</div>
+                    <img src="images/32-od-kahn.png" alt="עוד כאן">
+                    <div class="hebrew-word">עוד כאן</div>
                     <div class="english-word">still here</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/33-bishvil.png" alt="בִּשְׁבִיל">
-                    <div class="hebrew-word">בִּשְׁבִיל</div>
+                    <img src="images/33-bishvil.png" alt="בשביל">
+                    <div class="hebrew-word">בשביל</div>
                     <div class="english-word">for</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/34-shneinu.png" alt="שְׁנֵינוּ">
-                    <div class="hebrew-word">שְׁנֵינוּ</div>
+                    <img src="images/34-shneinu.png" alt="שנינו">
+                    <div class="hebrew-word">שנינו</div>
                     <div class="english-word">both of us (m)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/35-shteinu.png" alt="שְׁתֵּינוּ">
-                    <div class="hebrew-word">שְׁתֵּינוּ</div>
+                    <img src="images/35-shteinu.png" alt="שתינו">
+                    <div class="hebrew-word">שתינו</div>
                     <div class="english-word">both of us (f)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/36-mechadash.png" alt="מֵחָדָשׁ">
-                    <div class="hebrew-word">מֵחָדָשׁ</div>
+                    <img src="images/36-mechadash.png" alt="מחדש">
+                    <div class="hebrew-word">מחדש</div>
                     <div class="english-word">all over again</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/37-mishtarah.png" alt="מִשְׁטָרָה">
-                    <div class="hebrew-word">מִשְׁטָרָה</div>
+                    <img src="images/37-mishtarah.png" alt="משטרה">
+                    <div class="hebrew-word">משטרה</div>
                     <div class="english-word">police</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/38-oleh-chadash.png" alt="עוֹלֶה חָדָשׁ">
-                    <div class="hebrew-word">עוֹלֶה חָדָשׁ</div>
+                    <img src="images/38-oleh-chadash.png" alt="עולה חדש">
+                    <div class="hebrew-word">עולה חדש</div>
                     <div class="english-word">new immigrant</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/39-hazeh.jpg" alt="הַזֶּה">
-                    <div class="hebrew-word">הַזֶּה</div>
+                    <img src="images/39-hazeh.jpg" alt="הזה">
+                    <div class="hebrew-word">הזה</div>
                     <div class="english-word">this (m)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/40-hazot.png" alt="הַזֹּאת">
-                    <div class="hebrew-word">הַזֹּאת</div>
+                    <img src="images/40-hazot.png" alt="הזאת">
+                    <div class="hebrew-word">הזאת</div>
                     <div class="english-word">this (f)</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/41-haeleh.png" alt="הָאֵלֶּה">
-                    <div class="hebrew-word">הָאֵלֶּה</div>
+                    <img src="images/41-haeleh.png" alt="האלה">
+                    <div class="hebrew-word">האלה</div>
                     <div class="english-word">these</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/42-lachazor-al.png" alt="לָחֲזוֹר עַל">
-                    <div class="hebrew-word">לָחֲזוֹר עַל</div>
+                    <img src="images/42-lachazor-al.png" alt="לחזור על">
+                    <div class="hebrew-word">לחזור על</div>
                     <div class="english-word">to revise</div>
                 </div>
                 <div class="vocab-item">
-                    <img src="images/43-lachazor-le.png" alt="לָחֲזוֹר ל">
-                    <div class="hebrew-word">לָחֲזוֹר ל</div>
+                    <img src="images/43-lachazor-le.png" alt="לחזור ל">
+                    <div class="hebrew-word">לחזור ל</div>
                     <div class="english-word">to return to (place)</div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>Created with OpenAI TTS & Image Generation | Generated May 2026</p>
+            <p>Created with OpenAI TTS & Image Generation | May 2026</p>
             <p style="margin-top: 10px;">
                 <a href="/" style="color: #667eea; text-decoration: none;">← Back to mgoffredi.com</a>
             </p>
         </div>
     </div>
-    
-    <script>
-        function showVersion(version) {
-            document.querySelectorAll('.version-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.version-tab').forEach(el => el.classList.remove('active'));
-            document.getElementById(version + '-content').classList.add('active');
-            event.target.classList.add('active');
-        }
-    </script>
 </body>
 </html>
