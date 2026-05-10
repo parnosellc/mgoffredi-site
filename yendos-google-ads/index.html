@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yendos — Google Search Ads Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f5f1ea;
+    --paper-2: #ebe5d9;
+    --rule: #1a1a1a;
+    --accent: #d64545;
+    --accent-2: #1f4c8c;
+    --muted: #6b6256;
+    --serp-bg: #ffffff;
+    --serp-border: #dadce0;
+    --serp-link: #1a0dab;
+    --serp-url: #006621;
+    --serp-text: #4d5156;
+    --serp-sponsored: #202124;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+  /* ============ HEADER ============ */
+  header {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 100;
+  }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+  .brand span {
+    color: var(--accent);
+  }
+  .meta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 1px solid var(--rule);
+    background: var(--ink);
+    color: var(--paper);
+    transition: all 0.2s ease;
+  }
+  .meta-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--rule);
+  }
+  .meta-link::after {
+    content: '→';
+    font-size: 14px;
+  }
+  /* ============ HERO ============ */
+  .hero {
+    padding: 100px 0 60px;
+    position: relative;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+  .hero-stats {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat {
+    padding: 24px 20px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  /* ============ SECTION HEADING ============ */
+  .section-heading {
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .section-heading h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    max-width: 720px;
+  }
+  .section-heading h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  /* ============ CAMPAIGN BLOCK ============ */
+  .campaign {
+    padding: 64px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .campaign-header {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .campaign-num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+  }
+  .campaign-title h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .campaign-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+  .campaign-body {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 48px;
+  }
+  .campaign-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .meta-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .meta-block p, .meta-block li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .meta-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .meta-block ul li {
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .meta-block ul li::before {
+    content: '—';
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .keyword-pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    background: var(--paper-2);
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    margin: 3px 4px 3px 0;
+    color: var(--ink);
+  }
+  /* ============ SERP MOCKUP ============ */
+  .serp-wrapper {
+    background: var(--serp-bg);
+    border: 1px solid var(--rule);
+    box-shadow: 8px 8px 0 var(--rule);
+    padding: 0;
+    overflow: hidden;
+  }
+  .serp-bar {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--serp-border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+  }
+  .serp-bar-dots {
+    display: flex;
+    gap: 5px;
+  }
+  .serp-bar-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+  }
+  .serp-bar-dots span:nth-child(1) { background: #ff5f56; }
+  .serp-bar-dots span:nth-child(2) { background: #ffbd2e; }
+  .serp-bar-dots span:nth-child(3) { background: #27c93f; }
+  .serp-search {
+    flex: 1;
+    background: #fff;
+    border: 1px solid var(--serp-border);
+    border-radius: 18px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .serp-search-icon {
+    color: #9aa0a6;
+    font-weight: bold;
+  }
+  .serp-content {
+    padding: 22px 26px 26px;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+  }
+  .serp-ad {
+    max-width: 600px;
+  }
+  .serp-sponsored {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--serp-sponsored);
+    margin-bottom: 8px;
+    letter-spacing: 0;
+  }
+  .serp-favicon-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .serp-favicon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d64545, #1f4c8c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .serp-site-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .serp-site-name {
+    font-size: 14px;
+    color: #202124;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .serp-url {
+    font-size: 12px;
+    color: #5f6368;
+    line-height: 1.3;
+  }
+  .serp-headline {
+    font-size: 20px;
+    color: var(--serp-link);
+    line-height: 1.3;
+    font-weight: 400;
+    margin: 8px 0 6px;
+    cursor: pointer;
+  }
+  .serp-headline:hover {
+    text-decoration: underline;
+  }
+  .serp-headline-sep {
+    color: #5f6368;
+    margin: 0 4px;
+    font-weight: 300;
+  }
+  .serp-description {
+    font-size: 14px;
+    color: var(--serp-text);
+    line-height: 1.5;
+  }
+  .serp-extensions {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+    font-size: 13px;
+  }
+  .serp-extensions a {
+    color: var(--serp-link);
+    text-decoration: none;
+    padding: 2px 0;
+  }
+  .serp-extensions a:hover {
+    text-decoration: underline;
+  }
+  /* ============ AD COPY DETAILS ============ */
+  .ad-details {
+    margin-top: 24px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 20px 24px;
+  }
+  .ad-details h5 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .ad-line {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    gap: 12px;
+    align-items: baseline;
+    padding: 6px 0;
+    font-size: 13.5px;
+    border-bottom: 1px dashed rgba(26, 26, 26, 0.15);
+  }
+  .ad-line:last-child { border-bottom: none; }
+  .ad-line-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .ad-line-text {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+  }
+  .ad-line-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-2);
+    text-align: right;
+  }
+  .destination {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .destination strong {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  /* ============ FOOTER ============ */
+  footer {
+    margin-top: 80px;
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--rule);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  footer .brand {
+    color: var(--paper);
+  }
+  footer .brand span { color: var(--accent); }
+  .footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(245, 241, 234, 0.6);
+  }
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 880px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 60px 0 40px; }
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(1), .stat:nth-child(2) {
+      border-bottom: 1px solid var(--rule);
+    }
+    .campaign-header {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .campaign-num { font-size: 42px; }
+    .campaign-title h3 { font-size: 28px; }
+    .campaign-body {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .ad-line {
+      grid-template-columns: 80px 1fr 40px;
+      gap: 8px;
+      font-size: 12.5px;
+    }
+    .serp-headline { font-size: 17px; }
+    .serp-content { padding: 18px 18px 22px; }
+  }
+  /* Subtle entrance animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .campaign {
+    animation: fadeUp 0.6s ease-out backwards;
+  }
+  .campaign:nth-child(1) { animation-delay: 0.05s; }
+  .campaign:nth-child(2) { animation-delay: 0.1s; }
+  .campaign:nth-child(3) { animation-delay: 0.15s; }
+  .campaign:nth-child(4) { animation-delay: 0.2s; }
+  .campaign:nth-child(5) { animation-delay: 0.25s; }
+  .campaign:nth-child(6) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="brand">Yendos<span>.</span> Google Ads Plan</div>
+      <a href="https://spy.mgoffredi.com/yendos.com" class="meta-link" target="_blank" rel="noopener">
+        To see our Meta Ads plan click here
+      </a>
+    </div>
+  </div>
+</header>
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Strategic Brief — Search Campaigns</div>
+    <h1>Six campaigns,<br>one <em>conversion engine.</em></h1>
+    <p class="hero-sub">A focused Google Search ads plan for Yendos eSIM. Below: every campaign, exactly the way it would render on a real Google search results page — with verified character counts and the complete ad copy, keywords, targeting, and landing destination for each.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Campaigns</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">160+</div>
+        <div class="stat-label">Countries Targeted</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30/90</div>
+        <div class="stat-label">Char limits respected</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Geo Markets</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-heading">
+  <div class="container">
+    <h2>Each ad below is rendered exactly as it will <em>appear on Google</em>.</h2>
+  </div>
+</section>
+<!-- ============ C1: BRAND DEFENSE ============ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-header">
+      <div class="campaign-num">01</div>
+      <div class="campaign-title">
+        <h3>Brand Defense</h3>
+        <div class="campaign-subtitle">Cheapest CPA in the account · always-on</div>
+      </div>
+    </div>
+    <div class="campaign-body">
+      <div class="campaign-meta">
+        <div class="meta-block">
+          <h4>Targeting</h4>
+          <ul>
+            <li><strong>Geo:</strong> All Spanish-speaking markets</li>
+            <li><strong>Devices:</strong> All, mobile +10%</li>
+            <li><strong>Match:</strong> Exact + Phrase</li>
+            <li><strong>Bidding:</strong> Maximize Conversions</li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <h4>Keywords</h4>
+          <div>
+            <span class="keyword-pill">[yendos]</span>
+            <span class="keyword-pill">[yendos esim]</span>
+            <span class="keyword-pill">"yendos esim"</span>
+            <span class="keyword-pill">[yendos.com]</span>
+            <span class="keyword-pill">"yendos opiniones"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="serp-wrapper">
+          <div class="serp-bar">
+            <div class="serp-bar-dots"><span></span><span></span><span></span></div>
+            <div class="serp-search"><span class="serp-search-icon">🔍</span> yendos esim</div>
+          </div>
+          <div class="serp-content">
+            <div class="serp-ad">
+              <div class="serp-sponsored">Sponsored</div>
+              <div class="serp-favicon-row">
+                <div class="serp-favicon">Y</div>
+                <div class="serp-site-info">
+                  <div class="serp-site-name">Yendos</div>
+                  <div class="serp-url">https://www.yendos.com<span style="color:#80868b">/esim/oficial</span></div>
+                </div>
+              </div>
+              <div class="serp-headline">Yendos eSIM Oficial<span class="serp-headline-sep"> | </span>Activación en Minutos<span class="serp-headline-sep"> | </span>Soporte 24/7 en Español</div>
+              <div class="serp-description">Compra tu eSIM directamente en Yendos. Sin intermediarios, activación inmediata. Mejor cobertura, soporte humano en español y pago seguro. Empieza tu viaje conectado.</div>
+              <div class="serp-extensions">
+                <a href="#">Destinos populares</a>
+                <a href="#">Cómo funciona</a>
+                <a href="#">Preguntas frecuentes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-details">
+          <h5>Ad Copy — Character Counts</h5>
+          <div class="ad-line"><span class="ad-line-label">Headline 1</span><span class="ad-line-text">Yendos eSIM Oficial</span><span class="ad-line-count">19/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 2</span><span class="ad-line-text">Activación en Minutos</span><span class="ad-line-count">21/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 3</span><span class="ad-line-text">Soporte 24/7 en Español</span><span class="ad-line-count">23/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 4</span><span class="ad-line-text">160+ Países Cubiertos</span><span class="ad-line-count">21/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 5</span><span class="ad-line-text">Sin Roaming, Sin Sorpresas</span><span class="ad-line-count">26/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 1</span><span class="ad-line-text">Compra tu eSIM directamente en Yendos. Sin intermediarios, activación inmediata.</span><span class="ad-line-count">80/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 2</span><span class="ad-line-text">Mejor cobertura, soporte humano en español y pago seguro. Empieza tu viaje conectado.</span><span class="ad-line-count">85/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Path</span><span class="ad-line-text">/esim/oficial</span><span class="ad-line-count">4+7</span></div>
+        </div>
+        <div class="destination">
+          <strong>Landing destination</strong>
+          User lands on yendos.com homepage in Spanish — sees Yendos branding, the destinations grid, and the "eSIM de datos para tus viajes" hero.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ C2: GENERIC ============ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-header">
+      <div class="campaign-num">02</div>
+      <div class="campaign-title">
+        <h3>Generic eSIM</h3>
+        <div class="campaign-subtitle">Top-of-funnel · category demand capture</div>
+      </div>
+    </div>
+    <div class="campaign-body">
+      <div class="campaign-meta">
+        <div class="meta-block">
+          <h4>Targeting</h4>
+          <ul>
+            <li><strong>Geo:</strong> MX, AR, CL, CO, PE, UY, ES, US Hispanic</li>
+            <li><strong>Devices:</strong> Mobile +20%</li>
+            <li><strong>Dayparting:</strong> Evenings +15%</li>
+            <li><strong>Bidding:</strong> Manual CPC → tCPA</li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <h4>Keywords</h4>
+          <div>
+            <span class="keyword-pill">"esim internacional"</span>
+            <span class="keyword-pill">"esim para viajar"</span>
+            <span class="keyword-pill">"esim viaje"</span>
+            <span class="keyword-pill">"chip internacional"</span>
+            <span class="keyword-pill">"esim turista"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="serp-wrapper">
+          <div class="serp-bar">
+            <div class="serp-bar-dots"><span></span><span></span><span></span></div>
+            <div class="serp-search"><span class="serp-search-icon">🔍</span> esim para viajar</div>
+          </div>
+          <div class="serp-content">
+            <div class="serp-ad">
+              <div class="serp-sponsored">Sponsored</div>
+              <div class="serp-favicon-row">
+                <div class="serp-favicon">Y</div>
+                <div class="serp-site-info">
+                  <div class="serp-site-name">Yendos</div>
+                  <div class="serp-url">https://www.yendos.com<span style="color:#80868b">/esim/viaje</span></div>
+                </div>
+              </div>
+              <div class="serp-headline">eSIM para Viajar al Extranjero<span class="serp-headline-sep"> | </span>160+ Países en Minutos<span class="serp-headline-sep"> | </span>Soporte 24/7</div>
+              <div class="serp-description">Olvídate del roaming. Conéctate apenas aterrices con la eSIM de Yendos. Datos a alta velocidad, hotspot incluido y pago seguro. Compra y viaja conectado.</div>
+              <div class="serp-extensions">
+                <a href="#">Estados Unidos</a>
+                <a href="#">España</a>
+                <a href="#">Brasil</a>
+                <a href="#">¿Qué es una eSIM?</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-details">
+          <h5>Ad Copy — Character Counts</h5>
+          <div class="ad-line"><span class="ad-line-label">Headline 1</span><span class="ad-line-text">eSIM para Viajar</span><span class="ad-line-count">16/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 2</span><span class="ad-line-text">160+ Países en Minutos</span><span class="ad-line-count">22/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 3</span><span class="ad-line-text">Sin Roaming, Sin Chip Físico</span><span class="ad-line-count">28/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 4</span><span class="ad-line-text">Soporte 24/7 en Español</span><span class="ad-line-count">23/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 5</span><span class="ad-line-text">Activa Antes de tu Vuelo</span><span class="ad-line-count">24/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 1</span><span class="ad-line-text">Olvídate del roaming. Conéctate apenas aterrices con la eSIM de Yendos.</span><span class="ad-line-count">71/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 2</span><span class="ad-line-text">Datos a alta velocidad, hotspot incluido y pago seguro. Compra y viaja conectado.</span><span class="ad-line-count">81/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Path</span><span class="ad-line-text">/esim/viaje</span><span class="ad-line-count">4+5</span></div>
+        </div>
+        <div class="destination">
+          <strong>Landing destination</strong>
+          Homepage or "todos los destinos" page. User picks their destination from the country grid and proceeds to the country-specific plan.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ C3: SPAIN ============ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-header">
+      <div class="campaign-num">03</div>
+      <div class="campaign-title">
+        <h3>Tier 1 Destination — España</h3>
+        <div class="campaign-subtitle">Highest-volume destination · 50% of total budget across Tier 1</div>
+      </div>
+    </div>
+    <div class="campaign-body">
+      <div class="campaign-meta">
+        <div class="meta-block">
+          <h4>Targeting</h4>
+          <ul>
+            <li><strong>Geo:</strong> MX, AR, CL, CO, PE, UY, US Hispanic <em>(not Spain itself)</em></li>
+            <li><strong>Devices:</strong> Mobile +25%</li>
+            <li><strong>Audience:</strong> In-Market Travel +20%</li>
+            <li><strong>Bidding:</strong> tCPA after data</li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <h4>Keywords</h4>
+          <div>
+            <span class="keyword-pill">"esim españa"</span>
+            <span class="keyword-pill">"esim para españa"</span>
+            <span class="keyword-pill">"internet en españa"</span>
+            <span class="keyword-pill">"datos para españa"</span>
+            <span class="keyword-pill">"chip españa viaje"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="serp-wrapper">
+          <div class="serp-bar">
+            <div class="serp-bar-dots"><span></span><span></span><span></span></div>
+            <div class="serp-search"><span class="serp-search-icon">🔍</span> esim españa</div>
+          </div>
+          <div class="serp-content">
+            <div class="serp-ad">
+              <div class="serp-sponsored">Sponsored</div>
+              <div class="serp-favicon-row">
+                <div class="serp-favicon">Y</div>
+                <div class="serp-site-info">
+                  <div class="serp-site-name">Yendos</div>
+                  <div class="serp-url">https://www.yendos.com<span style="color:#80868b">/esim/espana</span></div>
+                </div>
+              </div>
+              <div class="serp-headline">eSIM para España<span class="serp-headline-sep"> | </span>Internet en Madrid y BCN<span class="serp-headline-sep"> | </span>Activa Antes de tu Vuelo</div>
+              <div class="serp-description">Viajas a España? Conéctate apenas aterrices. eSIM con datos rápidos y hotspot. Cobertura en toda España. Sin roaming. Instala el QR en 2 minutos. Pago seguro.</div>
+              <div class="serp-extensions">
+                <a href="#">Planes desde €X</a>
+                <a href="#">Cómo instalar</a>
+                <a href="#">Cobertura</a>
+                <a href="#">Soporte 24/7</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-details">
+          <h5>Ad Copy — Character Counts</h5>
+          <div class="ad-line"><span class="ad-line-label">Headline 1</span><span class="ad-line-text">eSIM para España</span><span class="ad-line-count">16/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 2</span><span class="ad-line-text">Internet en Madrid y BCN</span><span class="ad-line-count">24/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 3</span><span class="ad-line-text">Activa Antes de tu Vuelo</span><span class="ad-line-count">24/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 4</span><span class="ad-line-text">Soporte 24/7 en Español</span><span class="ad-line-count">23/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 5</span><span class="ad-line-text">Datos Ilimitados España</span><span class="ad-line-count">23/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 1</span><span class="ad-line-text">Viajas a España? Conéctate apenas aterrices. eSIM con datos rápidos y hotspot.</span><span class="ad-line-count">78/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 2</span><span class="ad-line-text">Cobertura en toda España. Sin roaming. Instala el QR en 2 minutos. Pago seguro.</span><span class="ad-line-count">79/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Path</span><span class="ad-line-text">/esim/espana</span><span class="ad-line-count">4+6</span></div>
+        </div>
+        <div class="destination">
+          <strong>Landing destination</strong>
+          /es/destinos/españa — Spain-specific landing page. Plans, prices, network coverage info, install steps, and one-click checkout. Never sent to homepage.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ C4: COLOMBIA ============ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-header">
+      <div class="campaign-num">04</div>
+      <div class="campaign-title">
+        <h3>Tier 2 Destination — Colombia</h3>
+        <div class="campaign-subtitle">High-intent emerging market · localized payment angle</div>
+      </div>
+    </div>
+    <div class="campaign-body">
+      <div class="campaign-meta">
+        <div class="meta-block">
+          <h4>Targeting</h4>
+          <ul>
+            <li><strong>Geo:</strong> MX, AR, CL, PE, US Hispanic, ES <em>(travelers going to Colombia)</em></li>
+            <li><strong>Devices:</strong> Mobile +25%</li>
+            <li><strong>Audience:</strong> Recent flight searchers +30%</li>
+            <li><strong>Bidding:</strong> Manual CPC → Maximize Conversions</li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <h4>Keywords</h4>
+          <div>
+            <span class="keyword-pill">"esim colombia"</span>
+            <span class="keyword-pill">"internet en colombia"</span>
+            <span class="keyword-pill">"datos para colombia"</span>
+            <span class="keyword-pill">"esim bogotá"</span>
+            <span class="keyword-pill">"esim cartagena"</span>
+            <span class="keyword-pill">"chip colombia viaje"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="serp-wrapper">
+          <div class="serp-bar">
+            <div class="serp-bar-dots"><span></span><span></span><span></span></div>
+            <div class="serp-search"><span class="serp-search-icon">🔍</span> esim colombia</div>
+          </div>
+          <div class="serp-content">
+            <div class="serp-ad">
+              <div class="serp-sponsored">Sponsored</div>
+              <div class="serp-favicon-row">
+                <div class="serp-favicon">Y</div>
+                <div class="serp-site-info">
+                  <div class="serp-site-name">Yendos</div>
+                  <div class="serp-url">https://www.yendos.com<span style="color:#80868b">/esim/colombia</span></div>
+                </div>
+              </div>
+              <div class="serp-headline">eSIM para Colombia<span class="serp-headline-sep"> | </span>Funciona en Bogotá y Medellín<span class="serp-headline-sep"> | </span>Lista en Minutos</div>
+              <div class="serp-description">Viajas a Colombia? Activa tu eSIM antes de salir y conéctate al aterrizar. Compatible con iPhone y Android. Pago con tarjeta o Mercado Pago. Sin roaming.</div>
+              <div class="serp-extensions">
+                <a href="#">Planes Colombia</a>
+                <a href="#">Cobertura</a>
+                <a href="#">Compatible iPhone</a>
+                <a href="#">Pagar con MP</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-details">
+          <h5>Ad Copy — Character Counts</h5>
+          <div class="ad-line"><span class="ad-line-label">Headline 1</span><span class="ad-line-text">eSIM para Colombia</span><span class="ad-line-count">18/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 2</span><span class="ad-line-text">Funciona en Bogotá y Medellín</span><span class="ad-line-count">29/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 3</span><span class="ad-line-text">Lista en Minutos</span><span class="ad-line-count">16/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 4</span><span class="ad-line-text">Soporte 24/7 en Español</span><span class="ad-line-count">23/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 5</span><span class="ad-line-text">Planes Desde 1 Día</span><span class="ad-line-count">18/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 1</span><span class="ad-line-text">Viajas a Colombia? Activa tu eSIM antes de salir y conéctate al aterrizar.</span><span class="ad-line-count">74/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 2</span><span class="ad-line-text">Compatible con iPhone y Android. Pago con tarjeta o Mercado Pago. Sin roaming.</span><span class="ad-line-count">78/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Path</span><span class="ad-line-text">/esim/colombia</span><span class="ad-line-count">4+8</span></div>
+        </div>
+        <div class="destination">
+          <strong>Landing destination</strong>
+          /es/destinos/colombia — Colombia plans, network info (Claro, Movistar, Tigo coverage), install steps, and checkout with local payment options surfaced.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ C5: COMPETITOR ============ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-header">
+      <div class="campaign-num">05</div>
+      <div class="campaign-title">
+        <h3>Competitor Conquest</h3>
+        <div class="campaign-subtitle">Catch defectors, not loyalists · NO competitor names in ad copy</div>
+      </div>
+    </div>
+    <div class="campaign-body">
+      <div class="campaign-meta">
+        <div class="meta-block">
+          <h4>Targeting</h4>
+          <ul>
+            <li><strong>Geo:</strong> All Spanish-speaking markets</li>
+            <li><strong>Devices:</strong> Mobile +20%</li>
+            <li><strong>Match:</strong> Phrase + Broad (research queries)</li>
+            <li><strong>Bidding:</strong> Manual CPC, monitored daily</li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <h4>Keywords</h4>
+          <div>
+            <span class="keyword-pill">"holafly opiniones"</span>
+            <span class="keyword-pill">"holafly no funciona"</span>
+            <span class="keyword-pill">"holafly devolución"</span>
+            <span class="keyword-pill">"airalo opiniones"</span>
+            <span class="keyword-pill">"airalo soporte español"</span>
+            <span class="keyword-pill">"alternativa holafly"</span>
+            <span class="keyword-pill">"mejor que airalo"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="serp-wrapper">
+          <div class="serp-bar">
+            <div class="serp-bar-dots"><span></span><span></span><span></span></div>
+            <div class="serp-search"><span class="serp-search-icon">🔍</span> alternativa holafly</div>
+          </div>
+          <div class="serp-content">
+            <div class="serp-ad">
+              <div class="serp-sponsored">Sponsored</div>
+              <div class="serp-favicon-row">
+                <div class="serp-favicon">Y</div>
+                <div class="serp-site-info">
+                  <div class="serp-site-name">Yendos</div>
+                  <div class="serp-url">https://www.yendos.com<span style="color:#80868b">/esim/comparar</span></div>
+                </div>
+              </div>
+              <div class="serp-headline">¿Buscas una eSIM Confiable?<span class="serp-headline-sep"> | </span>Datos Rápidos + Soporte Real<span class="serp-headline-sep"> | </span>Sin Sorpresas</div>
+              <div class="serp-description">La eSIM que sí responde cuando la necesitas. Soporte 24/7 e instalación simple. 160+ países. Activación en minutos. Devolución garantizada si no funciona.</div>
+              <div class="serp-extensions">
+                <a href="#">Comparar planes</a>
+                <a href="#">Garantía</a>
+                <a href="#">Soporte humano</a>
+                <a href="#">Cómo funciona</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-details">
+          <h5>Ad Copy — Character Counts</h5>
+          <div class="ad-line"><span class="ad-line-label">Headline 1</span><span class="ad-line-text">Buscas una eSIM Confiable?</span><span class="ad-line-count">26/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 2</span><span class="ad-line-text">Datos Rápidos + Soporte Real</span><span class="ad-line-count">28/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 3</span><span class="ad-line-text">Sin Throttling, Sin Sorpresas</span><span class="ad-line-count">29/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 4</span><span class="ad-line-text">Garantía de Devolución</span><span class="ad-line-count">22/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Headline 5</span><span class="ad-line-text">Soporte Humano en Español</span><span class="ad-line-count">25/30</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 1</span><span class="ad-line-text">La eSIM que sí responde cuando la necesitas. Soporte 24/7 e instalación simple.</span><span class="ad-line-count">79/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 2</span><span class="ad-line-text">160+ países. Activación en minutos. Devolución garantizada si no funciona.</span><span class="ad-line-count">74/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Path</span><span class="ad-line-text">/esim/comparar</span><span class="ad-line-count">4+8</span></div>
+        </div>
+        <div class="destination">
+          <strong>Landing destination</strong>
+          /es/comparar — Comparison page positioning Yendos against unnamed alternatives: real Spanish support, transparent pricing, refund guarantee, no throttling. No competitor logos or names (trademark-safe).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ C6: DSA ============ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-header">
+      <div class="campaign-num">06</div>
+      <div class="campaign-title">
+        <h3>Dynamic Search Ads (DSA)</h3>
+        <div class="campaign-subtitle">Discovery engine · finds what we missed</div>
+      </div>
+    </div>
+    <div class="campaign-body">
+      <div class="campaign-meta">
+        <div class="meta-block">
+          <h4>Targeting</h4>
+          <ul>
+            <li><strong>Geo:</strong> Same Spanish-speaking markets</li>
+            <li><strong>Devices:</strong> Mobile +20%</li>
+            <li><strong>Page Feed:</strong> All /destinos/* URLs only</li>
+            <li><strong>Bidding:</strong> tCPA, low budget</li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <h4>Keywords</h4>
+          <p style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">None — Google generates headlines automatically from your destination pages. Job: discover converting search terms you didn't think of, then promote winners to Exact in Tier 1/2 campaigns and add losers as negatives.</p>
+        </div>
+      </div>
+      <div>
+        <div class="serp-wrapper">
+          <div class="serp-bar">
+            <div class="serp-bar-dots"><span></span><span></span><span></span></div>
+            <div class="serp-search"><span class="serp-search-icon">🔍</span> internet en cancun para turistas</div>
+          </div>
+          <div class="serp-content">
+            <div class="serp-ad">
+              <div class="serp-sponsored">Sponsored</div>
+              <div class="serp-favicon-row">
+                <div class="serp-favicon">Y</div>
+                <div class="serp-site-info">
+                  <div class="serp-site-name">Yendos</div>
+                  <div class="serp-url">https://www.yendos.com<span style="color:#80868b">/esim/destinos</span></div>
+                </div>
+              </div>
+              <div class="serp-headline">eSIM para México — Internet en Cancún<span class="serp-headline-sep"> </span></div>
+              <div style="font-size: 12px; color: #80868b; margin: 4px 0 8px; font-style: italic;">↑ Headline auto-generated by Google from your destination page</div>
+              <div class="serp-description">Activa tu eSIM en minutos y olvídate del roaming. 160+ países, soporte en español. Sin contratos. Sin chip físico. Pago seguro. Empieza tu viaje conectado con Yendos.</div>
+              <div class="serp-extensions">
+                <a href="#">Ver planes</a>
+                <a href="#">Cómo funciona</a>
+                <a href="#">FAQ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-details">
+          <h5>Ad Copy — Character Counts</h5>
+          <div class="ad-line"><span class="ad-line-label">Headlines</span><span class="ad-line-text" style="color: var(--muted); font-style: italic;">Auto-generated by Google from destination page H1, title, and content</span><span class="ad-line-count">—</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 1</span><span class="ad-line-text">Activa tu eSIM en minutos y olvídate del roaming. 160+ países, soporte en español.</span><span class="ad-line-count">82/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Desc 2</span><span class="ad-line-text">Sin contratos. Sin chip físico. Pago seguro. Empieza tu viaje conectado con Yendos.</span><span class="ad-line-count">83/90</span></div>
+          <div class="ad-line"><span class="ad-line-label">Path</span><span class="ad-line-text">/esim/destinos</span><span class="ad-line-count">4+8</span></div>
+        </div>
+        <div class="destination">
+          <strong>Landing destination</strong>
+          Auto-matched by Google to whichever destination page best fits the user's search query (e.g. "internet cancún" → México page, "datos sevilla" → España page). Each page must have a clean H1, country name, and price visible above the fold for clean auto-headlines.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="brand">Yendos<span>.</span> Strategic plan</div>
+    <div class="footer-meta">All ad copy verified · Google RSA 2026 specs · 30/90/15</div>
+  </div>
+</footer>
+</body>
+</html>
