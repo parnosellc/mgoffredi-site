@@ -461,6 +461,93 @@
     color: var(--accent);
     font-weight: 500;
   }
+  /* ============ DOWNLOAD CTA ============ */
+  .download-cta {
+    padding: 96px 0;
+    border-top: 1px solid var(--rule);
+    background: var(--paper-2);
+    position: relative;
+    z-index: 2;
+  }
+  .download-inner {
+    display: grid;
+    grid-template-columns: 1.6fr auto;
+    gap: 56px;
+    align-items: center;
+  }
+  .download-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .download-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .download-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 44px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .download-cta h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .download-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 580px;
+  }
+  .download-meta {
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--paper);
+    text-decoration: none;
+    padding: 24px 34px;
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .download-btn::after {
+    content: '↓';
+    font-size: 16px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+  }
+  .download-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--rule);
+  }
   /* ============ FOOTER ============ */
   footer {
     margin-top: 80px;
@@ -520,6 +607,16 @@
     }
     .serp-headline { font-size: 17px; }
     .serp-content { padding: 18px 18px 22px; }
+    .download-cta { padding: 64px 0; }
+    .download-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .download-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 20px 24px;
+    }
   }
   /* Subtle entrance animation */
   @keyframes fadeUp {
@@ -1035,6 +1132,21 @@
           Auto-matched by Google to whichever destination page best fits the user's search query (e.g. "internet cancún" → México page, "datos sevilla" → España page). Each page must have a clean H1, country name, and price visible above the fold for clean auto-headlines.
         </div>
       </div>
+    </div>
+  </div>
+</section>
+<section class="download-cta">
+  <div class="container">
+    <div class="download-inner">
+      <div class="download-text">
+        <div class="download-tag">Implementation file</div>
+        <h2>Take this <em>straight to your media buyer.</em></h2>
+        <p class="download-sub">Every campaign, ad group, keyword, headline, description, and negative — formatted for Google Ads Editor import. Includes a budget calculator and a 90-day launch roadmap.</p>
+        <div class="download-meta">9 sheets · 104 keywords · 90 RSA assets · 42 negatives · Budget calc · 90-day plan</div>
+      </div>
+      <a href="yendos-google-ads-plan.xlsx" download class="download-btn">
+        Download the full plan
+      </a>
     </div>
   </div>
 </section>
