@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ledisa – Meta Ad Library Analysis</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f6f9;color:#1a1a2e;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:48px 40px 36px;border-bottom:4px solid #e94560}
+.header h1{font-size:2.2rem;font-weight:700;letter-spacing:-0.5px}
+.header .meta{margin-top:8px;opacity:.75;font-size:.95rem}
+.header .stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px 22px;text-align:center}
+.stat-box .num{font-size:1.8rem;font-weight:700;color:#e94560}
+.stat-box .label{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;opacity:.8;margin-top:2px}
+.container{max-width:1200px;margin:0 auto;padding:32px 24px}
+.exec-summary{background:#fff;border-radius:14px;padding:28px 32px;margin-bottom:36px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.exec-summary h2{font-size:1.2rem;font-weight:700;color:#1a1a2e;margin-bottom:12px}
+.exec-summary p{color:#444;margin-bottom:10px}
+.exec-summary ul{padding-left:20px;color:#444}
+.exec-summary ul li{margin-bottom:6px}
+.funnel-section{margin-bottom:48px}
+.funnel-header{background:linear-gradient(90deg,#0f3460,#16213e);color:#fff;border-radius:14px 14px 0 0;padding:20px 28px}
+.funnel-header h2{font-size:1.15rem;font-weight:700}
+.funnel-header .funnel-meta{font-size:.85rem;opacity:.75;margin-top:4px}
+.lp-card{background:#fff;border:1px solid #e2e8f0;border-top:none;padding:24px 28px}
+.lp-card .lp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:12px}
+.lp-item{background:#f8fafc;border-radius:8px;padding:12px 16px}
+.lp-item .lp-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#e94560;margin-bottom:4px}
+.lp-item .lp-value{font-size:.9rem;color:#1a1a2e}
+.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;background:#f4f6f9;padding:20px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 14px 14px}
+.ad-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #e2e8f0;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,border-color .15s ease;position:relative}
+.ad-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,52,96,.18);border-color:#e94560}
+.ad-card:hover .view-meta{color:#e94560}
+.view-meta{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;color:#9ca3af;font-weight:600;letter-spacing:.3px;text-transform:uppercase;transition:color .15s ease;margin-left:auto}
+.view-meta::after{content:"↗";font-size:.85rem}
+.ad-card .ad-header{background:#1a1a2e;color:#fff;padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.ad-card .ad-id{font-size:.72rem;font-family:monospace;opacity:.7}
+.ad-card .ad-date{font-size:.72rem;opacity:.7}
+.ad-card .ad-platforms{padding:8px 14px;background:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:.75rem;color:#666}
+.ad-card .ad-copy{padding:14px;font-size:.85rem;color:#333;line-height:1.6;white-space:pre-wrap;border-bottom:1px solid #e2e8f0}
+.ad-card .ad-footer{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.3px}
+.badge-video{background:#fff3cd;color:#856404}
+.badge-image{background:#d1ecf1;color:#0c5460}
+.badge-cta{background:#d4edda;color:#155724}
+.badge-tofu{background:#cfe2ff;color:#084298}
+.badge-bofu{background:#f8d7da;color:#842029}
+.badge-soon{background:#fff3cd;color:#856404}
+.copy-analysis{padding:10px 14px;background:#fafafa;border-top:1px solid #e2e8f0;font-size:.8rem;color:#555}
+.copy-analysis .ca-label{font-weight:700;color:#0f3460;margin-bottom:4px}
+.footer{text-align:center;padding:32px;color:#888;font-size:.85rem;border-top:2px solid #e2e8f0;margin-top:32px}
+@media(max-width:600px){.header{padding:28px 20px}.header h1{font-size:1.5rem}.container{padding:20px 12px}.ads-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div style="max-width:1200px;margin:0 auto">
+    <h1>🔬 Ledisa — Meta Ad Library Analysis</h1>
+    <div class="meta">Advertiser: Ledisa (tryledisa.com) &nbsp;|&nbsp; Page ID: 610945308759002 &nbsp;|&nbsp; Report generated: May 12, 2026</div>
+    <div class="stats">
+      <div class="stat-box"><div class="num">15</div><div class="label">Active Ads</div></div>
+      <div class="stat-box"><div class="num">2</div><div class="label">Funnels</div></div>
+      <div class="stat-box"><div class="num">~10</div><div class="label">Video Ads</div></div>
+      <div class="stat-box"><div class="num">~5</div><div class="label">Image Ads</div></div>
+      <div class="stat-box"><div class="num">May 2026</div><div class="label">Active Since</div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <h2>📋 Executive Summary</h2>
+    <p>Ledisa is a direct-to-consumer wellness patch brand running <strong>15 active ads</strong> across Facebook, Instagram, Messenger, and Threads as of May 2026. Their entire ad spend is concentrated on a single hero product — the <strong>GLP-1 Patch</strong> — positioned as a natural alternative to GLP-1 weight-loss drugs (Ozempic, Wegovy), targeting women struggling with food cravings and appetite control.</p>
+    <p>The brand is running <strong>two distinct funnels simultaneously</strong>:</p>
+    <ul>
+      <li><strong>Funnel 1 — tryledisa.com (MOFU/Product Page):</strong> 6 video ads driving to the main e-commerce homepage with a "Learn more" CTA. The landing page features a gamified scratch-card pop-up discount mechanic, social proof wall, full product range, and a patch-delivery education section.</li>
+      <li><strong>Funnel 2 — patchesquiz.com (TOFU/Quiz):</strong> 9 image ads driving to a dedicated quiz funnel domain with a "Shop now" CTA + "[Low Stock Alert]" urgency trigger. The quiz domain is currently in "Launching Soon" mode — Ledisa is warming up audiences before the quiz funnel goes live.</li>
+    </ul>
+    <p><strong>Key copy insight:</strong> All 15 ads share nearly identical primary copy — a benefit-stacked formula using checkmark emojis, a money-back guarantee anchor, and a discount hook. The only variation: MOFU ads (product-page funnel) open with "Ledisa GLP-1 Patches are powered by..." (brand-led) vs. TOFU ads (quiz funnel) opening with "GLP-1 Patches are powered by..." (product-led). Creative is the sole testing variable.</p>
+  </div>
+  <!-- FUNNEL 1 -->
+  <div class="funnel-section">
+    <div class="funnel-header">
+      <h2>🛒 Funnel 1 — tryledisa.com (Main E-Commerce Store)</h2>
+      <div class="funnel-meta">CTA: "Learn more" &nbsp;|&nbsp; Funnel position: MOFU (ad → product page) &nbsp;|&nbsp; 6 ads &nbsp;|&nbsp; All video format &nbsp;|&nbsp; Started: May 1, 2026</div>
+    </div>
+    <div class="lp-card">
+      <strong style="display:block;margin-bottom:10px;color:#0f3460">Landing Page Analysis</strong>
+      <div class="lp-grid">
+        <div class="lp-item"><div class="lp-label">Headline / Value Prop</div><div class="lp-value">"Supplements, Made Simple." — brand-level positioning around simplicity and the patch delivery format</div></div>
+        <div class="lp-item"><div class="lp-label">Offer Type</div><div class="lp-value">Direct product purchase + gamified scratch-card pop-up offering a mystery discount ("ghost the cravings... SCRATCH HERE")</div></div>
+        <div class="lp-item"><div class="lp-label">Social Proof</div><div class="lp-value">7+ named female customer testimonials with verified badges, "Thousands of Women Trust Ledisa" section, 90-day money-back guarantee</div></div>
+        <div class="lp-item"><div class="lp-label">CTA Strategy</div><div class="lp-value">"Shop All" + "Shop GLP-1 Patches" — dual CTAs. Low friction, no email gate on main flow.</div></div>
+        <div class="lp-item"><div class="lp-label">Friction Level</div><div class="lp-value">Low — direct to product shop. Pop-up is gamified to feel fun, not intrusive. Captures email via scratch card mechanic.</div></div>
+        <div class="lp-item"><div class="lp-label">Funnel Position</div><div class="lp-value"><span class="badge badge-tofu">MOFU</span> — ad → product page. User is considering, browsing, and educating themselves on the format before buying.</div></div>
+      </div>
+    </div>
+    <div class="ads-grid">
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 976331804790642</span><span class="ad-date">May 8, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Brand-named opener ("Ledisa GLP-1 Patches"). Multi-platform placement across all Meta surfaces. Note: "2 ads use this creative and text" — indicates A/B audience split testing with same asset.</div>
+        <div class="ad-footer"><span class="badge badge-video">🎥 Video (0:34)</span><span class="badge badge-cta">CTA: Learn more</span><span class="badge badge-tofu">MOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 26569355609383826</span><span class="ad-date">May 1, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook only</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Facebook-only placement. Shorter 20-second video. Testing FB solo vs. multi-platform performance with same copy.</div>
+        <div class="ad-footer"><span class="badge badge-video">🎥 Video (0:20)</span><span class="badge badge-cta">CTA: Learn more</span><span class="badge badge-tofu">MOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 2222013525223190</span><span class="ad-date">May 1, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook only</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Identical copy, different creative asset. Testing which video angle/format performs best against same audience segment.</div>
+        <div class="ad-footer"><span class="badge badge-video">🎥 Video (0:20)</span><span class="badge badge-cta">CTA: Learn more</span><span class="badge badge-tofu">MOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 958945446941114</span><span class="ad-date">May 1, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Longest video in Funnel 1 at 53 seconds — likely a deeper UGC testimonial or product walkthrough. Multi-platform deployment signals higher confidence in this creative.</div>
+        <div class="ad-footer"><span class="badge badge-video">🎥 Video (0:53)</span><span class="badge badge-cta">CTA: Learn more</span><span class="badge badge-tofu">MOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 778882605155804</span><span class="ad-date">May 1, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook only</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Facebook-only, 32-second video. Part of the May 1 creative launch batch — testing multiple video formats simultaneously before scaling winners.</div>
+        <div class="ad-footer"><span class="badge badge-video">🎥 Video (0:32)</span><span class="badge badge-cta">CTA: Learn more</span><span class="badge badge-tofu">MOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 25157233120641801</span><span class="ad-date">May 1, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook only</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Same 32-second duration as ID 778882605155804 — likely same video with different audience targeting or placement split to isolate variables cleanly.</div>
+        <div class="ad-footer"><span class="badge badge-video">🎥 Video (0:32)</span><span class="badge badge-cta">CTA: Learn more</span><span class="badge badge-tofu">MOFU</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- FUNNEL 2 -->
+  <div class="funnel-section">
+    <div class="funnel-header">
+      <h2>🎯 Funnel 2 — patchesquiz.com (Quiz / TOFU Lead-Gen Funnel)</h2>
+      <div class="funnel-meta">CTA: "Shop now" + [Low Stock Alert] &nbsp;|&nbsp; Funnel position: TOFU (curiosity / quiz lead capture) &nbsp;|&nbsp; 9 ads &nbsp;|&nbsp; Image format &nbsp;|&nbsp; Started: May 1–10, 2026</div>
+    </div>
+    <div class="lp-card">
+      <strong style="display:block;margin-bottom:10px;color:#0f3460">Landing Page Analysis</strong>
+      <div class="lp-grid">
+        <div class="lp-item"><div class="lp-label">Page Status</div><div class="lp-value"><span class="badge badge-soon">⚠ Launching Soon</span> — Domain is live but quiz is not yet launched. Ledisa is pre-warming audiences before the quiz funnel goes live.</div></div>
+        <div class="lp-item"><div class="lp-label">Intended Offer Type</div><div class="lp-value">Personalized quiz funnel — likely "find the right patch for you" style quiz that personalizes the product recommendation to increase CVR</div></div>
+        <div class="lp-item"><div class="lp-label">CTA Strategy</div><div class="lp-value">"Shop now" (higher intent than "Learn more") + "[Low Stock Alert]" urgency badge — classic scarcity + urgency stack</div></div>
+        <div class="lp-item"><div class="lp-label">Funnel Position</div><div class="lp-value"><span class="badge badge-bofu">TOFU</span> — quiz funnels are top-of-funnel: capture curiosity, qualify the lead, then nurture into a sale via email/retargeting</div></div>
+        <div class="lp-item"><div class="lp-label">Urgency Stack</div><div class="lp-value">3 simultaneous urgency signals: (1) "50% OFF for a Limited Time" (2) "[Low Stock Alert]" (3) "Mother's Day Sale / LAST CHANCE" creative text</div></div>
+        <div class="lp-item"><div class="lp-label">Creative Format</div><div class="lp-value">Image-based (vs. video for Funnel 1) — product shots and sale graphics. Simpler/faster creative for rapid BOFU testing.</div></div>
+      </div>
+    </div>
+    <div class="ads-grid">
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 1318591693808943</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Product-led opener — drops "Ledisa" brand name. Lets the benefit lead, not the brand. Suggests product-led framing tested better for BOFU audiences. Urgency via [Low Stock Alert].</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 1522922779440213</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Identical copy to sibling ads. Testing different image creatives against the same copy block — classic creative split test to find the best-performing visual.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 948196411339089</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Part of the 7-ad May 10 batch — all launched same day with identical copy. They'll pause losers and scale the winning image variation after a few days of data.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 1887538921919701</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Mother's Day sale creative angle prominent in this batch — seasonal urgency layered on top of perpetual scarcity for a double urgency effect.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 1524559105853708</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>"LAST CHANCE! Mother's Day Sale" image text + [Low Stock Alert] = 3 simultaneous urgency signals: seasonal event, stock scarcity, and limited-time price. Maximum FOMO stacking.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 1295737302000602</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Consistent multi-platform deployment across all 9 BOFU ads — maximizing reach to warm audiences across Meta's entire placement inventory simultaneously.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 27724666357134317</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>7 ads launched on the same day with identical copy = pure creative split test. The team will kill losers and pour budget into the image variation with the best CTR/CVR after 3–5 days.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 1290734323209408</span><span class="ad-date">May 10, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook, Instagram, Messenger, Threads</div>
+        <div class="ad-copy">GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>patchesquiz.com domain signals a quiz funnel strategy. This ad is warming up the pixel and building a retargetable audience pool before the quiz page launches — very deliberate sequencing.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-header"><span class="ad-id">ID: 807251622143710</span><span class="ad-date">May 1, 2026</span></div>
+        <div class="ad-platforms">📡 Facebook only</div>
+        <div class="ad-copy">Ledisa GLP-1 Patches are powered by Berberine, Prebiotics, and 12+ additional powerful ingredients proven to support GLP-1 production, balance cravings, and quiet food noise.
+✅ Bye-bye uncontrollable cravings!
+✅ Feel full longer, snack less
+✅ Support a healthy metabolism
+✅ Natural GLP-1 support
+🛡 90-day money-back guarantee
+Try now &amp; save up to 50% OFF! 🌟
+Headline: ✨ 50% OFF for a Limited Time ✨ [Low Stock Alert]</div>
+        <div class="copy-analysis"><div class="ca-label">Copy Analysis</div>Earlier BOFU test from May 1 using brand-named opener ("Ledisa GLP-1 Patches"). The May 10 batch dropped the brand name — suggesting they tested brand-led vs. product-led and likely found product-led outperformed for BOFU audiences.</div>
+        <div class="ad-footer"><span class="badge badge-image">🖼 Image</span><span class="badge badge-cta">CTA: Shop now</span><span class="badge badge-bofu">TOFU</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- KEY TAKEAWAYS -->
+  <div class="exec-summary">
+    <h2>🔑 Key Strategic Takeaways</h2>
+    <p><strong>1. GLP-1 trend surfing:</strong> Ledisa's entire strategy is built on the cultural awareness of GLP-1 drugs (Ozempic, Wegovy). Their product name and copy directly borrow the drug's language to capture intent-aware audiences without needing a prescription angle.</p>
+    <p><strong>2. Copy is locked, creative is the variable:</strong> Every single ad uses the same ~80-word copy block. The testing lever is purely creative (video angle, image design, video length). This is a mature DTC testing framework — validate copy first, then scale by finding winning visuals.</p>
+    <p><strong>3. Dual-funnel architecture with clear intent separation:</strong> MOFU (video → brand product page → explore) vs. TOFU (image → quiz domain → curiosity capture). The quiz funnel is pre-warming audiences before the actual quiz launches; once live, the quiz will qualify leads and nurture them into the sale.</p>
+    <p><strong>4. Triple urgency stacking in TOFU quiz ads:</strong> The quiz funnel ads layer three urgency signals: "50% OFF for a Limited Time," "[Low Stock Alert]," and "Mother's Day Sale / LAST CHANCE." Note: heavy urgency on a TOFU placement is unusual — typical TOFU is curiosity-led, not scarcity-led. Ledisa is breaking the pattern, possibly because the quiz isn't live yet so they're using urgency to drive shop-now traffic in the interim.</p>
+    <p><strong>5. Gamified pop-up on landing page:</strong> The tryledisa.com homepage opens with a scratch-card mechanic — a high-engagement format that captures email and delivers a discount before users even browse the products.</p>
+    <p><strong>6. Female-targeted social proof:</strong> All named testimonials are from women. "Thousands of Women Trust Ledisa" is explicit gender targeting — the brand has a clearly defined buyer persona.</p>
+    <p><strong>7. Patch delivery as the differentiator:</strong> The site devotes major real estate to educating users on why patches beat pills and gummies — key objection-handling for a novel format. The "Why Patches Work Better" section directly addresses category skepticism before it becomes a purchase barrier.</p>
+  </div>
+  <div class="footer">
+    <p>Report generated by Meta Ad Library Analysis Pipeline &nbsp;|&nbsp; Ledisa (tryledisa.com) &nbsp;|&nbsp; May 12, 2026</p>
+    <p style="margin-top:6px">Data source: Meta Ad Library (public) &nbsp;|&nbsp; 15 active ads analyzed &nbsp;|&nbsp; <em>Click any ad card to open its live preview in Meta Ads Library</em></p>
+  </div>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.ad-card').forEach(card => {
+    const idEl = card.querySelector('.ad-id');
+    if (!idEl) return;
+    const m = idEl.textContent.match(/(\d{6,})/);
+    if (!m) return;
+    const adId = m[1];
+    const url = 'https://www.facebook.com/ads/library/?id=' + adId;
+
+    // Add a "View in Ad Library ↗" indicator into the ad-footer
+    const footer = card.querySelector('.ad-footer');
+    if (footer && !footer.querySelector('.view-meta')) {
+      const span = document.createElement('span');
+      span.className = 'view-meta';
+      span.textContent = 'View in Ad Library';
+      footer.appendChild(span);
+    }
+
+    // Make the whole card clickable, but don't intercept clicks on real <a> elements
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('a')) return;
+      window.open(url, '_blank', 'noopener');
+    });
+  });
+})();
+</script>
+</body>
+</html>
