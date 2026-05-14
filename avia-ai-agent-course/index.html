@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviá meets Peter — A Quick Course in Working Together</title>
+<meta name="description" content="A short audio course for Aviá on how to work with her AI assistant Peter.">
+<style>
+:root {
+  --cream: #faf6ef;
+  --paper: #ffffff;
+  --ink: #1a1a2e;
+  --ink-soft: #4a4a5e;
+  --teal: #2c7873;
+  --teal-soft: #6fb3b8;
+  --orange: #d96d3a;
+  --rule: #e8e2d4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 0;
+}
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+.hero { text-align: center; padding: 2.5rem 1.25rem 1.5rem; }
+.hero img {
+  width: 100%; max-width: 900px; height: auto;
+  border-radius: 14px; display: block; margin: 0 auto 1.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+.hero h1 {
+  font-size: clamp(1.75rem, 4.5vw, 2.6rem);
+  font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 0.5rem; color: var(--ink);
+}
+.hero .subtitle {
+  font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 1rem;
+}
+.hero .made-by {
+  font-size: 0.9rem; color: var(--teal); font-style: italic;
+}
+.intro {
+  background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 12px; padding: 1.5rem 1.75rem;
+  margin: 1.5rem auto 2.5rem; max-width: 700px;
+}
+.intro p { color: var(--ink-soft); }
+.speed-bar {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--cream); border-bottom: 1px solid var(--rule);
+  padding: 0.75rem 1rem; text-align: center;
+  font-size: 0.9rem;
+}
+.speed-bar label { color: var(--ink-soft); margin-right: 0.5rem; }
+.speed-bar button {
+  background: var(--paper); border: 1px solid var(--rule); color: var(--ink-soft);
+  padding: 0.35rem 0.75rem; margin: 0 0.15rem; border-radius: 20px;
+  cursor: pointer; font-size: 0.85rem; transition: all 0.15s;
+}
+.speed-bar button:hover { border-color: var(--teal); color: var(--teal); }
+.speed-bar button.active { background: var(--teal); color: white; border-color: var(--teal); }
+.episodes { padding: 1rem 0 3rem; }
+.episode {
+  background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.episode-header {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.episode-num {
+  font-size: 0.8rem; color: var(--orange); font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.episode-runtime {
+  font-size: 0.8rem; color: var(--ink-soft); margin-left: auto;
+}
+.episode h2 {
+  font-size: 1.4rem; font-weight: 600; color: var(--ink);
+  margin-bottom: 1rem; letter-spacing: -0.01em;
+}
+.episode-img {
+  width: 100%; height: auto; border-radius: 10px;
+  margin-bottom: 1rem; display: block;
+  background: var(--cream);
+}
+.episode audio {
+  width: 100%; margin-bottom: 1rem;
+}
+.recap {
+  background: var(--cream); border-left: 3px solid var(--teal);
+  padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;
+  margin-bottom: 1rem;
+}
+.recap-title {
+  font-size: 0.8rem; color: var(--teal); font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.recap ul { list-style: none; padding: 0; }
+.recap li {
+  padding: 0.25rem 0 0.25rem 1.25rem; position: relative;
+  font-size: 0.95rem; color: var(--ink-soft);
+}
+.recap li::before {
+  content: "→"; position: absolute; left: 0;
+  color: var(--teal); font-weight: bold;
+}
+details {
+  border-top: 1px solid var(--rule); padding-top: 1rem;
+}
+details summary {
+  cursor: pointer; color: var(--teal); font-size: 0.9rem;
+  font-weight: 600; user-select: none;
+  list-style: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▸"; display: inline-block; margin-right: 0.5rem;
+  transition: transform 0.2s;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--orange); }
+.transcript {
+  margin-top: 1rem; padding-top: 0.5rem;
+  font-size: 0.92rem; color: var(--ink-soft); line-height: 1.7;
+}
+.transcript p { margin-bottom: 0.75rem; }
+.transcript em { color: var(--teal); font-style: italic; }
+.transcript blockquote {
+  margin: 0.75rem 0; padding-left: 1rem;
+  border-left: 2px solid var(--rule); color: var(--ink-soft);
+}
+footer {
+  text-align: center; padding: 2.5rem 1.25rem 3rem;
+  color: var(--ink-soft); font-size: 0.9rem;
+  border-top: 1px solid var(--rule); margin-top: 2rem;
+}
+footer a { color: var(--teal); }
+@media (max-width: 600px) {
+  .container { padding: 0 0.875rem; }
+  .hero { padding: 1.5rem 0.875rem 1rem; }
+  .episode { padding: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <img src="hero.png" alt="Aviá and Peter at a shared desk working together">
+    <h1>Aviá meets Peter</h1>
+    <p class="subtitle">A short audio course on how to work with your AI assistant.</p>
+    <p class="made-by">— made for Aviá, by Michael —</p>
+  </div>
+</header>
+
+<div class="speed-bar">
+  <label>Playback speed:</label>
+  <button data-speed="1" class="active">1×</button>
+  <button data-speed="1.25">1.25×</button>
+  <button data-speed="1.5">1.5×</button>
+  <button data-speed="2">2×</button>
+</div>
+
+<div class="container intro">
+  <p>Eleven short episodes, about 35 minutes total. Episode 0 is Peter introducing himself in German — the rest are in English. Listen on your phone, take a walk while it plays. Each episode ends with a few exact phrases you can say to Peter to install good habits. Push play and meet your new intern.</p>
+</div>
+
+<main class="container episodes">
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 0</span>
+    <span class="episode-runtime">~70 sec · German</span>
+  </div>
+  <h2>Hallo, Aviá</h2>
+  <img class="episode-img" src="ep0.png" alt="Peter waving hello, slightly formal">
+  <audio controls preload="metadata" src="ep00-hallo-avia-adam-german.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Peter introduces himself — your AI assistant from Düsseldorf</li>
+      <li>10 short episodes, 2–5 minutes each</li>
+      <li>You're the boss; Peter is the intern</li>
+      <li>English from episode 1 onward, but you can ask him to switch to German anytime</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Hallo Aviá! Ich bin Peter. Schön, dich endlich zu treffen. Ich komme ursprünglich aus Düsseldorf, aber jetzt arbeite ich für dich. Du bist die Chefin, und ich bin dein Assistent — vielleicht ein bisschen wie ein Praktikant, der wirklich helfen will.</p>
+      <p>Michael hat diesen kleinen Kurs für dich gemacht. Zehn kurze Folgen, jede nur ein paar Minuten lang. Wir lernen zusammen, wie wir am besten zusammenarbeiten: wie du mir Anweisungen gibst, wie ich mit deinen Kunden umgehe, und wie wir deine Arbeit als PR-Beraterin leichter machen.</p>
+      <p>Ab der nächsten Folge wechsle ich ins Englische — das macht es einfacher mit den Fachbegriffen. Aber wir können immer auf Deutsch zurück, wenn du möchtest. Lass uns anfangen. Du wirst sehen — das wird gut.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 1</span>
+    <span class="episode-runtime">~2 min</span>
+  </div>
+  <h2>Welcome</h2>
+  <img class="episode-img" src="ep1.png" alt="Aviá at her desk with Peter beside her with a notebook">
+  <audio controls preload="metadata" src="ep1-welcome-jessie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Peter is your assistant, not your replacement</li>
+      <li>The course is short — under 40 minutes total</li>
+      <li>You're learning how to delegate, not how AI works</li>
+      <li>Quick wins are the goal: time saved on real PR tasks</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Welcome, Aviá. You just met Peter in the German intro — that's your new AI assistant. Michael put this little course together to help you actually use him. Ten short episodes, two to five minutes each, and by the end you'll know how to direct Peter the way you'd direct an eager intern.</p>
+      <p>Here's what we're not going to do: we're not going to teach you about AI. You don't need to care about AI. You're a PR consultant. You care about pitches landing, journalists replying, clients staying happy.</p>
+      <p>What we are going to do: teach you how to delegate to Peter. That's a real skill — and one you can start using today. Think of Peter like the world's most over-eager intern. He's fast, he reads everything you give him, he works weekends. But he needs direction. Good direction in, good work out. Fuzzy direction in, fuzzy work out. Most of this course is about how to give him good direction.</p>
+      <p>A few things to know going in. Each episode ends with a few exact phrases you can say to Peter — use them, they install good habits. The course is yours alone, Michael made it for you. And if anything sounds too theoretical, push Peter to show you a real example.</p>
+      <p>Two minutes is up. Next episode: what makes Peter different from ChatGPT. See you in a minute, Aviá.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 2</span>
+    <span class="episode-runtime">~3 min</span>
+  </div>
+  <h2>Agents vs Chatbots</h2>
+  <img class="episode-img" src="ep2.png" alt="Split screen showing a phone chatbot vs a laptop where Peter handles files">
+  <audio controls preload="metadata" src="ep2-agents-vs-chatbots-charlie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>A chatbot answers questions; Peter does tasks</li>
+      <li>He has access to your workspace folder and your files</li>
+      <li>He can use connectors (like Outlook) on your behalf</li>
+      <li>He works across multiple steps, not just one reply at a time</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, today we're answering a question you might have: what's the difference between Peter and ChatGPT? They're both AI, right? Yes — but they're different setups.</p>
+      <p>Here's the short version. A chatbot is a knowledgeable stranger. You walk up, you ask a question, you get an answer, the conversation ends. Useful, but limited. You can't hand the stranger a folder. The stranger doesn't remember you tomorrow. The stranger can't open your inbox.</p>
+      <p>Peter is a different setup. He's what's called an agent. The simple way to say it: a chatbot answers questions, Peter does tasks.</p>
+      <p>Here's what that means in practice. When you start a session with Peter, he can read every file in your workspace folder — your context file, your journalist database, the materials from your client, your notes from last week. He's not starting from zero. He's starting from inside your work.</p>
+      <p>When you ask Peter to draft a pitch, he's not just generating text in a vacuum. He's reading the actual survey your client sent, cross-referencing your journalist list, picking the angle, drafting the email, and saving it to a file you can edit. That's a sequence of steps, not one reply.</p>
+      <p>And when you add connectors — like Outlook, which you'll have soon — Peter can search your inbox for journalist replies, help you draft responses, look at your calendar. Still doing tasks, just with more tools.</p>
+      <p>The trade-off is: Peter needs more from you upfront. A chatbot you can ping with anything. Peter works best when you set him up properly — give him context, name your client, point him at the right files. We'll cover all of that in the next few episodes.</p>
+      <p>So: chatbot equals stranger with answers. Peter is the intern at the next desk who already read everything in your folder.</p>
+      <p>Next episode: Peter's memory. How he remembers you between conversations, and what to do when he forgets. Talk soon.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 3</span>
+    <span class="episode-runtime">~3.5 min</span>
+  </div>
+  <h2>Peter's Memory</h2>
+  <img class="episode-img" src="ep3.png" alt="A filing cabinet with folders labeled context, clients, journalists">
+  <audio controls preload="metadata" src="ep3-peters-memory-adam-english.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Every new conversation, Peter starts from zero</li>
+      <li>Your workspace folder is his memory</li>
+      <li>AVIA-CONTEXT.md is his onboarding manual — he reads it first every time</li>
+      <li>Long chats get foggy; start fresh and he re-reads the folder</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, this one's about Peter's memory, which is probably the strangest thing about working with him. Stick with it — it's important, and once it clicks, it's easy.</p>
+      <p>Here's the strange part. Every time you open a new conversation with Peter, he starts completely fresh. He doesn't remember yesterday. He doesn't remember the journalist you mentioned last week. He doesn't remember which client you said is your favorite. None of it. Zero memory between conversations.</p>
+      <p>It sounds bad. But there's a fix, and it's elegant once you see it.</p>
+      <p>Your workspace folder is Peter's memory. Everything you want him to remember, you save in there as a file. Next time you open a conversation, he reads those files first, and just like that, he's caught up. The folder is his filing cabinet. AVIA-CONTEXT.md is Peter's onboarding manual. It has your name, your role, your clients, your tools, your preferences, and the confidentiality rule. Every time he starts, the first thing he does is read it.</p>
+      <p>The same logic applies to everything else. Your journalist database lives in JOURNALISTS.xlsx — Peter reads it when you work on outreach. Each client has a folder with their materials, pitches, and coverage. When you tell Peter which client you're on, he reads their folder.</p>
+      <p>So the rule is: anything you want Peter to remember, ask him to save it. If you draft a great pitch together and you don't save it, it's gone next session. The folder is the memory. The conversation is just where you and Peter talk.</p>
+      <p>Even inside a single conversation, Peter's memory has a budget. If you go very long, he starts to forget things from earlier. When that happens, start a fresh conversation. He'll re-read the folder, and you're back to full strength.</p>
+      <p>A few phrases to lock this in. <em>"Always read my AVIA-CONTEXT file before we start working."</em> <em>"If you forget something we discussed, look in the folder first."</em> <em>"When we finish this task, save the result as a file so we have it next time."</em></p>
+      <p>Quick recap: Peter forgets between conversations. The folder is his memory. Save what matters.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 4</span>
+    <span class="episode-runtime">~3 min</span>
+  </div>
+  <h2>Connectors: Reaching Into Outlook</h2>
+  <img class="episode-img" src="ep4.png" alt="A wire stretching from Peter to an Outlook envelope">
+  <audio controls preload="metadata" src="ep4-connectors-jessie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>A connector links Peter to an app you already use</li>
+      <li>Outlook starts read-only — Peter never sends on his own</li>
+      <li>Drafts go to your folder; you review and send manually</li>
+      <li>More connectors can be added later (Drive, Slack, etc.)</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, today's topic: connectors. This is how Peter reaches into the apps you already use.</p>
+      <p>A connector is just a wire between Peter and another tool — Outlook, Google Drive, Slack, whichever. Once it's plugged in, Peter can read from that tool on your behalf, and sometimes write to it. We'll start with Outlook because that's where most of your work actually lives.</p>
+      <p>When you set up your Outlook connector in Cowork settings, Peter gets read access to your inbox. He can search for messages from a specific journalist, find replies you haven't responded to yet, surface anything sitting too long. He does not have permission to send anything. That's intentional. To start, Peter drafts. You read. You send. Always.</p>
+      <p>Here's a real example. You're sending out five pitches this week. Three days later, you want to know who replied. You ask Peter: <em>"Check Outlook for replies from any journalist in JOURNALISTS in the last week."</em> He runs the search, finds two replies, summarizes them, and asks which one you want to draft a response to first. You pick one. Peter drafts a reply in your folder, saves it, shows it to you. You polish it and send.</p>
+      <p>That's the loop. Peter reads in Outlook. He drafts in your folder. You send manually. Clean and safe.</p>
+      <p>Phrases to use with Peter. <em>"Search my Outlook inbox for messages from this journalist in the last seven days."</em> <em>"Draft a reply and save it in my folder — don't send anything."</em> <em>"What journalist replies haven't I responded to yet?"</em></p>
+      <p>Down the road, you might add more connectors. Google Drive, Slack, whatever the agency moves to. For now: Outlook. Read-only. Drafts to folder. You send.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 5</span>
+    <span class="episode-runtime">~4.5 min</span>
+  </div>
+  <h2>Talking to Peter So He Actually Helps</h2>
+  <img class="episode-img" src="ep5.png" alt="Peter holding a speech bubble showing vague text rewritten as specific text">
+  <audio controls preload="metadata" src="ep5-talking-to-peter-so-he-actually-helps-jessie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Give Peter context BEFORE asking for output</li>
+      <li>Make him ask you questions first on big tasks</li>
+      <li>It's fine to say "redo it, shorter, less formal" — he's not insulted</li>
+      <li>Asking for "act as a [specific role]" sharpens his work</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, this is the longest episode and probably the most useful. Five minutes on how to talk to Peter so he actually does good work for you.</p>
+      <p>Here's the trap most people fall into. They open the chat, type something like <em>"write me a pitch about the new credit survey,"</em> and hit send. Peter does something. It's okay. It's not great. The fix isn't more AI knowledge. The fix is three small habits.</p>
+      <p>Habit one — give Peter context before you ask. Don't lead with the request. Lead with the situation. <em>"My client is a credit ratings company. They just released a survey on small business credit trends. I need to pitch this to fintech journalists in Hebrew media. The angle should feel newsworthy, not promotional. Now: draft me a pitch."</em> Same task, but Peter now knows enough to actually help. Context before request. Always.</p>
+      <p>Habit two — make Peter ask you questions first. Try: <em>"Before you draft anything, ask me three questions to make sure you understand."</em> By answering those, you're forcing Peter to anchor on what actually matters. The pitch he writes after the interview is twice as good as the pitch he'd write cold.</p>
+      <p>Habit three — push back when Peter is off. If his draft is too corporate, tell him. <em>"Shorter. Less formal. Punchier opening. Drop the second paragraph entirely."</em> He's not insulted. He'll just redo it. The more you correct Peter, the more he learns your voice.</p>
+      <p>A few other moves that consistently work. Ask for two options instead of one. <em>"Show me a punchy version and a more thoughtful version. I'll pick."</em> Tell Peter to act as a specific role. <em>"Act as a Hebrew-language editor and tighten this paragraph."</em> Tell Peter what good looks like. <em>"A good pitch is under 120 words, has a number in the subject line, and ends with one clear ask."</em></p>
+      <p>And when Peter writes something you like — tell him. <em>"That's the right tone. Remember this voice for future pitches."</em></p>
+      <p>If you only take one thing from this episode, take this: a sharp prompt beats a smart AI. The job is to set Peter up well.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 6</span>
+    <span class="episode-runtime">~4 min</span>
+  </div>
+  <h2>Keeping Clients Tidy</h2>
+  <img class="episode-img" src="ep6.png" alt="Two client folders behind a glass wall, Peter standing in one room only">
+  <audio controls preload="metadata" src="ep6-keeping-clients-tidy-charlie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>One folder per client; never mix them</li>
+      <li>Open each session: "I'm working on [Client] today"</li>
+      <li>Tell Peter to stop and ask if you forget to name a client</li>
+      <li>Switching clients mid-day? Tell him to forget the previous one</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, you're going to be working with more than one client at this agency, and your work with each of them needs to stay separate. This episode is the small system that handles that.</p>
+      <p>Your workspace folder has a section called clients, and inside that, one folder per client. Right now you have your main client. When you add the next client, they get their own folder. Each client's materials, pitches, and coverage live only inside their folder. Their stuff doesn't mix.</p>
+      <p>Peter can read every file in your workspace, which is mostly great but means you need to train him to look only where you tell him to look. That training is one short phrase, said at the start of every session: <em>"I'm working on this client today."</em> You name them. Peter scopes himself — he reads their folder, your context file, and the shared journalist database. Nothing else.</p>
+      <p>There's also a written rule in your AVIA-CONTEXT file that backs this up. If you give Peter a task and forget to name a client, he's supposed to stop and ask. So the system catches you if you slip.</p>
+      <p>You're working on your main client all morning. After lunch you need to switch. The way to switch: <em>"I'm switching to the new client now. Forget what you read about the previous one and start fresh from their folder."</em></p>
+      <p>Phrases to teach Peter. <em>"I'm working on this client today. Only read their folder and our shared files."</em> <em>"I'm switching clients. Forget the previous one's context."</em> <em>"If I give you a task without naming a client, stop and ask me first."</em> <em>"Don't compare anything across clients unless I tell you to."</em></p>
+      <p>The whole point of this system: you stop thinking about it after a week. The phrase becomes a habit. Five seconds, every time.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 7</span>
+    <span class="episode-runtime">~3 min</span>
+  </div>
+  <h2>Training Peter to Show His Work</h2>
+  <img class="episode-img" src="ep7.png" alt="Peter with a small not-100-percent-sure sign, finger raised politely">
+  <audio controls preload="metadata" src="ep7-showing-the-work-adam-english.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Peter is usually right, but occasionally wrong — he should tell you which is which</li>
+      <li>Ask him to cite sources for facts</li>
+      <li>Tell him to say "I don't know" instead of guessing</li>
+      <li>For journalist suggestions, ask for one recent article as proof</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, quick episode on something every PR person already kind of does — checking junior work before it goes out. The only difference is Peter is the junior here.</p>
+      <p>Peter is right most of the time. Not always. Sometimes he'll be confident about a fact that turns out to be slightly wrong — a journalist's beat, a statistic, an article history. It's not common, but it happens. And in PR, confident-but-wrong is worse than uncertain-but-honest.</p>
+      <p>The fix is small. You teach Peter to flag what he's not sure about, and you build a five-second habit of checking the things that matter.</p>
+      <p>Two categories to keep straight. Facts that you gave Peter — your own materials, your notes, your client's survey — he handles those fine. But facts that come from his own knowledge — a journalist's beat he happens to know, a stat he quotes — those are drafts until you eyeball them.</p>
+      <p>Phrases to teach Peter. <em>"For every fact in your answer, tell me where it came from — my files, my notes, or your general knowledge."</em> <em>"Flag anything you're not sure about. Don't smooth it over."</em> <em>"If you don't know something, say I don't know instead of guessing."</em> <em>"When you suggest a journalist, give me one recent article of theirs so I can confirm the fit."</em></p>
+      <p>That last one is gold. When Peter proposes pitching a journalist who covers fintech, he should be able to point to one recent fintech article they wrote. If he can't, the suggestion is weak.</p>
+      <p>You can always just ask Peter directly. <em>"Tell me what you're least sure about in this draft."</em> He'll point at the weak spots. Use it.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 8</span>
+    <span class="episode-runtime">~5.5 min</span>
+  </div>
+  <h2>A Pitch, Start to Finish</h2>
+  <img class="episode-img" src="ep8.png" alt="A three-panel comic strip of the pitch workflow">
+  <audio controls preload="metadata" src="ep8-a-pitch-start-to-finish-jessie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Drop client materials into their folder</li>
+      <li>Ask Peter to rank angles by news value</li>
+      <li>He drafts; you edit and send</li>
+      <li>The draft is saved in the pitches folder for next time</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, this is the fun one. Six minutes, one realistic scenario, end to end.</p>
+      <p>Your main client sent you a fresh survey this morning. About credit trends for small Israeli businesses. Forty pages. You're supposed to turn this into a pitch for fintech journalists by tomorrow.</p>
+      <p>Step one. You open Cowork. You drop the survey PDF into your client's materials folder. Then you type: <em>"I'm working on my main client today. Read AVIA-CONTEXT and the materials folder. Before you do anything, ask me three questions."</em></p>
+      <p>Peter reads everything. Then he asks. <em>"Got it. One — is the target Hebrew media, English, or both? Two — is this a wide blast or are we going for one exclusive? Three — is there a specific angle the client wants us to push?"</em> You answer.</p>
+      <p>Step two. <em>"Pull out the three strongest angles a fintech journalist would actually care about, ranked by news value."</em> Peter comes back with three. You pick one. <em>"Draft a Hebrew pitch around the default risk angle."</em></p>
+      <p>Step three. Peter drafts. Subject line with the headline number. Two-paragraph body. One clear ask. Saves the draft in the pitches folder. You read it. <em>"Cut the second paragraph in half."</em> Peter redoes it.</p>
+      <p>Step four. <em>"From the journalist database, pick the four best fits. Tell me why for each, and give me a recent article from each so I can confirm."</em> Peter pulls four names. You scan, approve three, reject one because they've moved beats.</p>
+      <p>Step five. You copy the pitch. You open Outlook. You send it to the three journalists. Peter never touches Outlook on send.</p>
+      <p>Step six. <em>"Log this pitch in the pitches folder. Date, angle, journalists, subject line."</em></p>
+      <p>Done. Maybe forty minutes total. A traditional version of this same task might've taken ninety. The pattern works for every pitch you'll do from here.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 9</span>
+    <span class="episode-runtime">~3 min</span>
+  </div>
+  <h2>What Peter Can't Do</h2>
+  <img class="episode-img" src="ep9.png" alt="Peter gesturing toward a limits sign">
+  <audio controls preload="metadata" src="ep9-what-peter-cant-do-charlie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>Peter can't call journalists or attend meetings</li>
+      <li>He can't predict what will resonate — that's your judgment</li>
+      <li>He doesn't know things from after his training cutoff</li>
+      <li>A good intern says "I can't do that" instead of faking it</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, three minutes on what Peter can't do. Honest about limits so you can plan around them.</p>
+      <p>Peter can't make a phone call. If a journalist needs to be called, that's still you. Voice is a human thing.</p>
+      <p>Peter can't read a journalist's mind. He can tell you what they've written about lately. He can guess at what might land based on patterns. He can't tell you what mood they're in today. That's relationship work, and the relationships are yours.</p>
+      <p>Peter can't replace your editorial judgment. He'll draft a pitch, he'll suggest an angle, he'll point at a journalist. But whether the angle is the right one for this moment, for this client, for this story — that's a call you make.</p>
+      <p>Peter can't tell you whether a pitch will land. He can make it sharper. He can match it to a journalist whose beat fits. But landing is unpredictable.</p>
+      <p>Peter doesn't know things that happened after his training cut-off. If there's been a recent merger, a regulatory change, a new launch — he might not know. For anything time-sensitive, you should check.</p>
+      <p>Phrases to teach Peter. <em>"If you can't actually do this task, tell me — don't fake it."</em> <em>"For anything recent, check before you answer."</em></p>
+      <p>A great intern makes you faster. The best interns also know when to step back. Peter is trying to be that kind of intern.</p>
+    </div>
+  </details>
+</section>
+
+<section class="episode">
+  <div class="episode-header">
+    <span class="episode-num">Episode 10</span>
+    <span class="episode-runtime">~2 min</span>
+  </div>
+  <h2>Building the Habit</h2>
+  <img class="episode-img" src="ep10.png" alt="Morning coffee, open laptop, and journal — daily ritual still life">
+  <audio controls preload="metadata" src="ep10-building-the-habit-jessie.mp3"></audio>
+  <div class="recap">
+    <div class="recap-title">Quick Recap</div>
+    <ul>
+      <li>5-min morning ritual: client, yesterday, today's three priorities</li>
+      <li>End-of-day: log what published, who replied, what's owed</li>
+      <li>Two weeks of this and Peter feels like a colleague</li>
+      <li>Peter is checking in with you every weekday at 9am — let him</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Show transcript</summary>
+    <div class="transcript">
+      <p>Aviá, last episode. Two minutes on how to make this stick.</p>
+      <p>The daily rhythm that works. Morning: you open Cowork. You name your client — <em>"I'm working on my main client today."</em> You ask Peter to walk you through yesterday's tracker. You update statuses on the pitches that moved. You set today's top three priorities. Five minutes.</p>
+      <p>End of day: you log what got published, who replied, what's owed tomorrow. Another two minutes.</p>
+      <p>That's the whole ritual. Five minutes morning, two minutes evening. The morning check-in Peter is already set up to start with you, every weekday at nine a.m. Don't skip it. The habit is the whole point.</p>
+      <p>You'll know it's working when two things happen. First, you'll stop having that <em>"wait, what was I doing again?"</em> moment in the middle of the day. The tracker holds it for you. Second, you'll start using Peter without thinking about it.</p>
+      <p>Most people who try AI tools quit in week two. Not because the tools are bad — because they never built the habit. Don't be that person. Two weeks of the morning ritual and Peter stops being a thing you use and becomes a colleague you work with.</p>
+      <p>You've got everything you need. Michael's onboarding doc is in your folder. Peter will see you tomorrow morning at nine.</p>
+      <p>Welcome to the team, Aviá.</p>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  Made with care for Aviá by Michael · 2026<br>
+  <a href="https://mgoffredi.com">mgoffredi.com</a>
+</footer>
+
+<script>
+// Playback speed control — applies to all audio elements
+const speedButtons = document.querySelectorAll('.speed-bar button');
+const audios = document.querySelectorAll('audio');
+speedButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const speed = parseFloat(btn.dataset.speed);
+    speedButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    audios.forEach(a => { a.playbackRate = speed; });
+  });
+});
+// Apply current speed to any audio that loads after page load
+audios.forEach(a => {
+  a.addEventListener('loadedmetadata', () => {
+    const active = document.querySelector('.speed-bar button.active');
+    if (active) a.playbackRate = parseFloat(active.dataset.speed);
+  });
+});
+</script>
+
+</body>
+</html>
