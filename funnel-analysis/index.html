@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Funnel Analysis — Index</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f4f6f9;color:#1a1a2e;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.65;font-size:15px}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:#1a1a2e;font-weight:700}
+a{color:#0f3460;text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:48px 0 56px;margin-bottom:32px}
+.hero h1{color:#fff;font-size:2.4rem;margin-bottom:8px;letter-spacing:-0.02em}
+.hero .meta{color:#c9d1e1;font-size:1rem;margin-bottom:0}
+.intro{background:#fff;border-radius:12px;padding:24px 28px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.intro p{color:#374151;margin-bottom:10px}
+.intro p:last-child{margin-bottom:0}
+.reports{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin:24px 0}
+@media(max-width:520px){.reports{grid-template-columns:1fr}}
+.report-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:22px 24px;text-decoration:none;color:inherit;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;display:flex;flex-direction:column;gap:8px}
+.report-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(233,69,96,0.18);border-color:#e94560;text-decoration:none}
+.report-card .emoji{font-size:1.8rem;line-height:1}
+.report-card .brand{font-size:1.2rem;font-weight:700;color:#1a1a2e}
+.report-card .v-pill{display:inline-block;padding:2px 8px;background:#10b981;color:#fff;border-radius:4px;font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-left:6px;vertical-align:middle}
+.report-card .v-pill.gray{background:#94a3b8}
+.report-card .v-pill.orange{background:#ea580c}
+.report-card .desc{color:#475569;font-size:0.92rem;line-height:1.5;flex-grow:1}
+.report-card .footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:10px;border-top:1px solid #f1f5f9;color:#64748b;font-size:0.78rem}
+.report-card .footer .view{color:#e94560;font-weight:700}
+.report-card .footer .path{font-family:'SF Mono',Menlo,monospace;font-size:0.72rem}
+.brand-group{margin:32px 0 12px;display:flex;align-items:baseline;gap:10px}
+.brand-group h2{font-size:1.2rem;color:#1a1a2e}
+.brand-group .note{color:#64748b;font-size:0.85rem;font-style:italic}
+footer{padding:32px 0;text-align:center;color:#64748b;font-size:0.85rem;margin-top:48px;border-top:1px solid #e5e7eb}
+</style>
+</head>
+<body>
+<header class="hero"><div class="container">
+  <h1>🔬 Funnel Analysis</h1>
+  <p class="meta">Competitive ad-strategy reports — Meta Ad Library reverse-search + landing page synthesis</p>
+</div></header>
+<main class="container">
+
+<div class="intro">
+  <p>Each report below covers one brand's active Meta ad operation: their funnel architecture, copy patterns, page-network strategy, and the takeaways worth borrowing. Built using a <strong>reverse-search-by-landing-domain</strong> methodology that surfaces shadow pages and creator partnerships the single-page view misses.</p>
+  <p style="margin-top:12px">Sorted by most recent first. Click any card to view the full report.</p>
+</div>
+
+<div class="brand-group">
+  <h2>Movesmethod</h2>
+  <span class="note">Mobility for aging adults · creator-page network</span>
+</div>
+<div class="reports">
+  <a class="report-card" href="movesmethod/">
+    <div class="emoji">🏃</div>
+    <div class="brand">Movesmethod</div>
+    <div class="desc">DTC mobility/movement program for 40+ adults. "Grunting when you get off the couch" opener; vanja.moves and Josh Fear creator partnerships running the same locked copy; 100% video on the primary page (verified).</div>
+    <div class="footer"><span class="view">View report →</span><span class="path">/movesmethod/</span></div>
+  </a>
+</div>
+
+<div class="brand-group">
+  <h2>Bettervits</h2>
+  <span class="note">UK multi-SKU supplement brand</span>
+</div>
+<div class="reports">
+  <a class="report-card" href="bettervits/">
+    <div class="emoji">💊</div>
+    <div class="brand">Bettervits</div>
+    <div class="desc">UK multi-SKU vitamin brand (Creatine flagship + Magnesium, Iron, Mushroom, Metabolic, NMN). Parallel funnels per SKU with advertorial pre-sell layer; creator-IG deep-link integrations (mother_pukka et al.); per-SKU discount codes.</div>
+    <div class="footer"><span class="view">View report →</span><span class="path">/bettervits/</span></div>
+  </a>
+</div>
+
+<div class="brand-group">
+  <h2>Pawfy</h2>
+  <span class="note">DTC dog supplement · 3 versions — v3-final is canonical</span>
+</div>
+<div class="reports">
+  <a class="report-card" href="pawfy-v3-final/">
+    <div class="emoji">🐶</div>
+    <div class="brand">Pawfy <span class="v-pill">v3 final</span></div>
+    <div class="desc">Canonical synthesis. 5-funnel architecture, pixel-seed retargeting strategy (13 no-CTA awareness ads), vet-debunking narrative, 9× scaled-winner hook. Includes complete landing-pages inventory + H&amp;J archival cards for ads removed from live library.</div>
+    <div class="footer"><span class="view">View report →</span><span class="path">/pawfy-v3-final/</span></div>
+  </a>
+  <a class="report-card" href="pawfy-v2/">
+    <div class="emoji">🐶</div>
+    <div class="brand">Pawfy <span class="v-pill orange">v2</span></div>
+    <div class="desc">Second pass — introduced the vet-debunking narrative as Pawfy's strategic differentiation ("Vets Use Bandaids" / "$100 bill on fire" / gut-as-root-cause). Cites spy.mgoffredi.com Foreplay corpus.</div>
+    <div class="footer"><span class="view">View report →</span><span class="path">/pawfy-v2/</span></div>
+  </a>
+  <a class="report-card" href="pawfy/">
+    <div class="emoji">🐶</div>
+    <div class="brand">Pawfy <span class="v-pill gray">v1</span></div>
+    <div class="desc">First pass — single-funnel framing. Superseded by v2 and v3. Kept for the methodology evolution history (this is where the "always cross-source" lesson came from).</div>
+    <div class="footer"><span class="view">View report →</span><span class="path">/pawfy/</span></div>
+  </a>
+</div>
+
+<div class="brand-group">
+  <h2>Ledisa</h2>
+  <span class="note">DTC GLP-1 patches · the brand the methodology came from</span>
+</div>
+<div class="reports">
+  <a class="report-card" href="tryledisa/">
+    <div class="emoji">💊</div>
+    <div class="brand">Ledisa</div>
+    <div class="desc">96 ads across 9 FB pages — the report that established the multi-page reverse-search methodology. Avatar Trinity framing (sister-brand pages + doctor avatars + house-mom personas). Two-funnel quiz/product-page architecture.</div>
+    <div class="footer"><span class="view">View report →</span><span class="path">/tryledisa/</span></div>
+  </a>
+</div>
+
+<footer>
+  Funnel analysis reports · <a href="https://www.mgoffredi.com/">mgoffredi.com</a>
+</footer>
+
+</main>
+</body>
+</html>
