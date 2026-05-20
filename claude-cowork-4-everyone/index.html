@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Cowork 4 Everyone — Your AI Assistant, in One Paste</title>
+<meta name="description" content="A free mini-course on getting started with Claude Cowork. Install it, assign a folder, and bootstrap your AI assistant with one paste. About 20 minutes, no jargon.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claude Cowork 4 Everyone">
+<meta property="og:description" content="A free mini-course on getting started with Claude Cowork. Install it, assign a folder, and bootstrap your AI assistant with one paste.">
+<meta property="og:image" content="https://www.mgoffredi.com/claude-cowork-4-everyone/hero.png">
+<meta property="og:url" content="https://www.mgoffredi.com/claude-cowork-4-everyone/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Cowork 4 Everyone">
+<meta name="twitter:description" content="A free mini-course on getting started with Claude Cowork.">
+<meta name="twitter:image" content="https://www.mgoffredi.com/claude-cowork-4-everyone/hero.png">
+
+<style>
+:root {
+  --cream: #faf6ef;
+  --paper: #ffffff;
+  --ink: #1a1a2e;
+  --ink-soft: #4a4a5e;
+  --teal: #2c7873;
+  --teal-soft: #6fb3b8;
+  --orange: #d96d3a;
+  --orange-soft: #f4a261;
+  --rule: #e8e2d4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+}
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+.hero { text-align: center; padding: 2.5rem 1.25rem 1rem; }
+.hero img { width: 100%; max-width: 800px; height: auto; border-radius: 14px; display: block; margin: 0 auto 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+.hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: var(--ink); }
+.hero .tagline { font-size: 1.1rem; color: var(--ink-soft); margin-bottom: 0.5rem; }
+.hero .meta { font-size: 0.9rem; color: var(--teal); font-style: italic; }
+
+.speed-bar { position: sticky; top: 0; z-index: 10; background: var(--cream); border-bottom: 1px solid var(--rule); padding: 0.75rem 1rem; text-align: center; font-size: 0.9rem; }
+.speed-bar label { color: var(--ink-soft); margin-right: 0.5rem; }
+.speed-bar button { background: var(--paper); border: 1px solid var(--rule); color: var(--ink-soft); padding: 0.35rem 0.75rem; margin: 0 0.15rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s; font-family: inherit; }
+.speed-bar button:hover { border-color: var(--teal); color: var(--teal); }
+.speed-bar button.active { background: var(--teal); color: white; border-color: var(--teal); }
+
+.toc { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem auto 2rem; }
+.toc h3 { font-size: 0.85rem; color: var(--orange); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; }
+.toc a { color: var(--ink); text-decoration: none; font-size: 0.95rem; padding: 0.4rem 0; display: block; transition: color 0.15s; }
+.toc a:hover { color: var(--teal); }
+
+.section { background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 4rem; }
+.section h2 { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 0.5rem; }
+.section h2 .emoji { font-size: 1.3rem; }
+.section p { margin-bottom: 1rem; color: var(--ink-soft); }
+.section p strong, .section li strong { color: var(--ink); }
+.section ul, .section ol { margin: 0.75rem 0 1rem 1.5rem; color: var(--ink-soft); }
+.section li { margin-bottom: 0.4rem; }
+.section .checkmark-list { list-style: none; margin-left: 0; }
+.section .checkmark-list li { padding-left: 1.75rem; position: relative; }
+.section .checkmark-list li::before { content: "✅"; position: absolute; left: 0; }
+
+.audio-block { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-soft) 100%); border-radius: 12px; padding: 1.25rem; margin: 1.25rem 0; color: white; }
+.audio-block .audio-label { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem; }
+.audio-block audio { width: 100%; display: block; }
+
+.step { background: var(--cream); border-left: 4px solid var(--orange); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; }
+.step-num { display: inline-block; background: var(--orange); color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; text-align: center; line-height: 1.5rem; font-weight: 700; font-size: 0.85rem; margin-right: 0.5rem; }
+.step h3 { font-size: 1.1rem; color: var(--ink); font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; }
+.step p { margin-bottom: 0.5rem; }
+.checkpoint { background: rgba(44, 120, 115, 0.08); border-left: 3px solid var(--teal); padding: 0.6rem 0.9rem; margin-top: 0.75rem; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: var(--ink-soft); }
+.checkpoint strong { color: var(--teal); }
+
+.expect { background: linear-gradient(135deg, #fef6ed 0%, #fdebd9 100%); border: 1px solid var(--orange-soft); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+.expect h3 { font-size: 0.85rem; color: var(--orange); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.expect ol { margin-left: 1.5rem; color: var(--ink); }
+.expect li { margin-bottom: 0.4rem; }
+.expect p { color: var(--ink); margin-bottom: 0; }
+
+.paste-wrapper { position: relative; margin: 1.25rem 0; }
+.paste-block { background: #1e1e2e; color: #e0e0e0; border-radius: 10px; padding: 1.5rem 1.25rem; font-family: "SF Mono", Menlo, Monaco, Consolas, monospace; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; overflow-x: auto; max-height: 400px; overflow-y: auto; }
+.copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--orange); color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+.copy-btn:hover { background: var(--orange-soft); transform: translateY(-1px); }
+.copy-btn.copied { background: var(--teal); }
+
+footer { text-align: center; padding: 2.5rem 1.25rem 3rem; color: var(--ink-soft); font-size: 0.9rem; border-top: 1px solid var(--rule); margin-top: 2rem; }
+footer a { color: var(--teal); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 0.875rem; }
+  .hero { padding: 1.5rem 0.875rem 1rem; }
+  .section { padding: 1.25rem; }
+  .toc ul { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <img src="hero.png" alt="Claude Cowork 4 Everyone — illustration of a person at a laptop with a folder of files">
+    <h1>Claude Cowork 4 Everyone</h1>
+    <p class="tagline">Your AI assistant, in one paste.</p>
+    <p class="meta">~20 minutes · No coding · No jargon</p>
+  </div>
+</header>
+
+<div class="speed-bar">
+  <label>Audio speed:</label>
+  <button data-speed="1" class="active">1×</button>
+  <button data-speed="1.25">1.25×</button>
+  <button data-speed="1.5">1.5×</button>
+  <button data-speed="2">2×</button>
+</div>
+
+<main class="container">
+
+<nav class="toc">
+  <h3>Jump To</h3>
+  <ul>
+    <li><a href="#what">🎯 What is Claude Cowork?</a></li>
+    <li><a href="#install">🔌 Install Claude Cowork</a></li>
+    <li><a href="#folder">📁 Assign Your Folder</a></li>
+    <li><a href="#bootstrap">🎤 Bootstrap Your Cowork</a></li>
+  </ul>
+</nav>
+
+<section class="section" id="what">
+  <h2><span class="emoji">🎯</span> What is Claude Cowork?</h2>
+  <p>You're about to set up your own AI assistant. By the end of this course, you'll have:</p>
+  <ul class="checkmark-list">
+    <li>Claude installed on your computer with access to a folder you control</li>
+    <li>An assistant that remembers you between conversations</li>
+    <li>A daily 9am check-in that helps you build the habit of using it</li>
+  </ul>
+  <p style="margin-top: 1rem;"><strong>The three tabs.</strong> When you open the Claude desktop app, you'll see three tabs at the top:</p>
+  <ul>
+    <li><strong>Chat</strong> — like ChatGPT. You ask, it answers. Conversation ends, memory ends.</li>
+    <li><strong>Cowork</strong> — what we're setting up today. Has access to a folder on your computer. Remembers you. Does multi-step tasks.</li>
+    <li><strong>Code</strong> — for software developers. Ignore for now.</li>
+  </ul>
+  <div class="audio-block">
+    <div class="audio-label">🎧 Listen: What is Claude Cowork?</div>
+    <audio controls preload="metadata" src="audio-01-what-is-cowork.mp3"></audio>
+  </div>
+</section>
+
+<section class="section" id="install">
+  <h2><span class="emoji">🔌</span> Install Claude Cowork</h2>
+  <p>Four steps. Do them in order — the order matters.</p>
+  <div class="step">
+    <h3><span class="step-num">1</span>Subscribe to Claude <em>first</em></h3>
+    <p>Go to <a href="https://claude.ai/upgrade" target="_blank">claude.ai/upgrade</a> and subscribe to Claude Pro <strong>before</strong> downloading the desktop app. There's a bug where Cowork doesn't show up if you download first and subscribe later — it can take a while to sort itself out. Save yourself the headache: subscribe first.</p>
+    <div class="checkpoint"><strong>✅ Checkpoint:</strong> You see "Pro" (or "Max") next to your name on claude.ai.</div>
+  </div>
+  <div class="step">
+    <h3><span class="step-num">2</span>Update your operating system</h3>
+    <p><strong>Mac:</strong> Apple menu → System Settings → General → Software Update.<br><strong>Windows:</strong> Start → Settings → Windows Update.<br>Run all available updates. Restart if it asks. Cowork needs a recent OS.</p>
+    <div class="checkpoint"><strong>✅ Checkpoint:</strong> Your OS reports it's up to date.</div>
+  </div>
+  <div class="step">
+    <h3><span class="step-num">3</span>Download Claude Desktop</h3>
+    <p>Go to <a href="https://claude.ai/download" target="_blank">claude.ai/download</a> and install like any normal app — drag to Applications on Mac, or run the installer on Windows. Sign in with the account you just subscribed.</p>
+    <div class="checkpoint"><strong>✅ Checkpoint:</strong> Claude Desktop is open and you're signed in.</div>
+  </div>
+  <div class="step">
+    <h3><span class="step-num">4</span>Confirm all three tabs show up</h3>
+    <p>At the top of the Claude Desktop window, you should see three tabs side by side: <strong>Chat</strong>, <strong>Cowork</strong>, and <strong>Code</strong>. That's the success signal.</p>
+    <p>If you only see one or two tabs, your Pro subscription hasn't propagated yet. Wait 5-10 minutes, sign out and back in, restart the app. If it's still missing after 20 minutes, double-check your subscription went through on claude.ai.</p>
+    <div class="checkpoint"><strong>✅ Checkpoint:</strong> You see all three tabs. Click "Cowork." That's where we're going next.</div>
+  </div>
+  <div class="audio-block">
+    <div class="audio-label">🎧 Listen: The Install Walkthrough</div>
+    <audio controls preload="metadata" src="audio-02-install.mp3"></audio>
+  </div>
+</section>
+
+<section class="section" id="folder">
+  <h2><span class="emoji">📁</span> Assign Your Folder</h2>
+  <p>This is the most important step in the course. The thing that makes Cowork actually <em>Cowork</em> instead of just another chatbot.</p>
+  <p><strong>Why a folder?</strong> Chat assistants forget you the moment you close the window. Cowork remembers — but only because it can read and write files in a folder on your computer that you give it access to. Your assistant's memory lives on your hard drive, in plain English files you can open in Word or read on your phone.</p>
+  <p><strong>How to assign one:</strong></p>
+  <ol>
+    <li>In the Cowork tab, look for <strong>Settings</strong> (gear icon, or under a menu in the corner).</li>
+    <li>Find the option called <strong>Workspace folder</strong> (sometimes "Working folder" or just "Folder").</li>
+    <li>Click it. You'll get a normal Mac or Windows folder-picker.</li>
+    <li><strong>Recommended:</strong> Don't pick an existing folder full of work documents. Make a fresh folder on your Desktop called <code>My Claude</code>. Easy to find, doesn't mix with anything else.</li>
+  </ol>
+  <p><strong>Confirm it worked.</strong> Drop a Word doc or text file into the folder you just picked. Then go to Cowork and type:</p>
+  <div style="background: var(--cream); border-left: 3px solid var(--teal); padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 0 6px 6px 0; font-style: italic; color: var(--ink);">"Read the file in my folder and tell me what it says."</div>
+  <p>If Claude reads it back, you're connected. If not, double-check the folder you picked is actually the one Cowork is using.</p>
+  <div class="audio-block">
+    <div class="audio-label">🎧 Listen: Why the Folder Matters</div>
+    <audio controls preload="metadata" src="audio-03-folder.mp3"></audio>
+  </div>
+</section>
+
+<section class="section" id="bootstrap">
+  <h2><span class="emoji">🎤</span> Bootstrap Your Cowork</h2>
+  <p>Now you paste one prompt into your Cowork and it sets itself up. Names itself, interviews you, saves your context, and schedules a daily check-in.</p>
+  <div class="expect">
+    <h3>What's about to happen</h3>
+    <ol>
+      <li>Your Cowork will warmly say hi and explain the setup (~15 min).</li>
+      <li>It'll ask what to call it — pick a name.</li>
+      <li>It'll ask a few quick questions about how you want it to talk to you.</li>
+      <li>It'll interview you about your work — one question at a time, ~10 minutes.</li>
+      <li>It'll save what you told it to a file in your folder so it remembers you forever.</li>
+      <li>It'll create a starter to-do list with a few real things to try.</li>
+      <li>It'll schedule a daily 9am check-in to help you finish the to-do list one task at a time.</li>
+    </ol>
+    <p style="margin-top: 0.75rem;">Every weekday at 9am after that, your Cowork pings you with one open task. You answer "done," "not yet," or "skip." That's the rhythm.</p>
+  </div>
+  <div class="audio-block">
+    <div class="audio-label">🎧 Listen: What the Paste Does</div>
+    <audio controls preload="metadata" src="audio-04-bootstrap.mp3"></audio>
+  </div>
+  <p><strong>Copy the prompt below and paste it into your Cowork.</strong> Send it. Then follow your assistant's lead.</p>
+  <div class="paste-wrapper">
+    <button class="copy-btn" id="copy-btn">Copy</button>
+    <pre class="paste-block" id="paste-block">Hi! I'm setting you up as my work assistant for the first time. I'm not particularly technical. I use Word and Excel for most things. Please go slowly, ask me one thing at a time, and use plain language. No jargon.
+
+I'd like you to set yourself up by walking me through four things today. You'll know we're done when you confirm all of them.
+
+PART A — Name and personality
+
+First: ask me what I want to call you. That's your name from now on.
+
+Then ask me three short questions, one at a time:
+  1. Should you talk to me formally or casually?
+  2. What language should we work in? (English by default — or tell me another language if you'd prefer that)
+  3. Should you be friendly and conversational, or efficient and brief?
+
+Write down my answers.
+
+PART B — Interview me, one question at a time
+
+  1. What's your name?
+  2. What do you do for work? Tell me in plain words.
+  3. What does a typical week look like for you?
+  4. What tools do you use day-to-day? (Word, Excel, Outlook, Gmail, Google Drive, anything else)
+  5. Are there a few different projects or clients you work with, or mostly one thing?
+  6. What kind of tasks take up most of your time?
+  7. What's the most annoying or repetitive thing in your work — the thing you'd hand off first if you could?
+  8. Anything else I should know about you to be useful?
+
+PART C — Set up my files
+
+  - Save my answers from Part A and Part B to a file called `about-me.md` at the top of my workspace folder. Use clear headings. From now on, every time we work together, read that file first so you remember me.
+  - Create a file called `todo.md` at the top of my workspace folder with exactly these starter tasks:
+
+      # My To-Do List
+
+      Each item:
+      - [ ] **Task title** — what it is
+        - Status: open
+        - Last asked: never
+        - Notes:
+
+      ---
+
+      ## Starter tasks (we'll work through these together)
+
+      - [ ] **Show me a real piece of your work** — Drop a document, email, screenshot, or note into your workspace folder and tell me what you need help with. This is your first real win.
+        - Status: open
+        - Last asked: never
+        - Notes:
+
+      - [ ] **Connect your email** — In Cowork settings → Connectors, sign in with Outlook or Gmail. This lets me read your inbox to help with replies.
+        - Status: open
+        - Last asked: never
+        - Notes:
+
+      - [ ] **Tell me about one specific recurring task** — Pick one thing you do every week and walk me through it. I'll see if I can make it faster.
+        - Status: open
+        - Last asked: never
+        - Notes:
+
+      - [ ] **Add a second project folder, if you have multiple projects/clients** — Tell me you want to add another, and I'll create the folder structure with you.
+        - Status: open
+        - Last asked: never
+        - Notes:
+
+PART D — Schedule the daily check-in
+
+Create a scheduled task that runs every weekday at 9:00am in my local timezone with this prompt:
+
+---SCHEDULED PROMPT START---
+
+Good morning. Read `about-me.md` and `todo.md` first.
+
+Find the OLDEST task with status "open". Just one. Ignore the rest.
+
+Greet me warmly in one short sentence using my name. Then ask me about that one task in plain language. Something like:
+
+"Morning! Today's open one is still: [task title]. Where are you with it — done, not yet, or want to skip it?"
+
+Wait for my reply. Then:
+
+- If I say "done" or anything that confirms completion → mark it [x], change status to "done", note today's date, write one warm one-liner, and tell me what's next on the list (preview only — don't ask about it yet).
+
+- If I say "not yet" or describe a blocker → keep it open, update "Last asked" to today, save any notes to "Notes:". Ask if I want to do it RIGHT NOW with your help. If yes, walk me through it. If no, say "ok, tomorrow then" and end.
+
+- If I say "skip" or "not relevant" → change status to "skipped", note the date, ask briefly why (one short question), save my answer to Notes. Don't argue.
+
+- If my reply is vague, ask ONE clarifying question. Don't pile on.
+
+Tone: warm, brief, peer-level. Like a calm friend who knows I'm capable.
+
+End every check-in by saving the updated `todo.md`. That's how tomorrow's check-in knows where we are.
+
+---SCHEDULED PROMPT END---
+
+After all four parts are done, confirm out loud:
+  1. The name I picked for you
+  2. The three personality settings
+  3. That `about-me.md` and `todo.md` both exist in my folder
+  4. That the daily 9am check-in is scheduled
+
+Then say: "We're set up. Your first real task is in your to-do list — drop something you're working on into the folder and tell me what you need. I'll be here. And I'll see you tomorrow morning at 9 for our first check-in."
+
+Start now with Part A — ask me what to call you.</pre>
+  </div>
+  <div class="audio-block">
+    <div class="audio-label">🎧 Listen: Welcome to Claude Cowork</div>
+    <audio controls preload="metadata" src="audio-05-welcome.mp3"></audio>
+  </div>
+</section>
+
+</main>
+
+<footer>Made by Michael Goffredi · <a href="https://mgoffredi.com">mgoffredi.com</a></footer>
+
+<script>
+const speedButtons = document.querySelectorAll('.speed-bar button');
+const audios = document.querySelectorAll('audio');
+speedButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const speed = parseFloat(btn.dataset.speed);
+    speedButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    audios.forEach(a => { a.playbackRate = speed; });
+  });
+});
+audios.forEach(a => {
+  a.addEventListener('loadedmetadata', () => {
+    const active = document.querySelector('.speed-bar button.active');
+    if (active) a.playbackRate = parseFloat(active.dataset.speed);
+  });
+});
+
+const copyBtn = document.getElementById('copy-btn');
+const pasteBlock = document.getElementById('paste-block');
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(pasteBlock.textContent);
+    copyBtn.textContent = '✓ Copied!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => { copyBtn.textContent = 'Copy'; copyBtn.classList.remove('copied'); }, 2000);
+  } catch (err) {
+    const range = document.createRange();
+    range.selectNode(pasteBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    copyBtn.textContent = '✓ Copied!';
+    setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+  }
+});
+</script>
+
+</body>
+</html>
