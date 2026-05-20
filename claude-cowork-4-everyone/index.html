@@ -170,17 +170,19 @@ footer .footer-mark { font-family:var(--serif); font-style:italic; font-size:1re
 <section class="section reveal" id="what">
   <h2><span class="emoji">🎯</span> What is Claude Cowork?</h2>
   <img class="section-img" src="section-1-what.png" alt="A chatbot in a speech bubble vs Cowork — a character at a desk with files and a laptop">
-  <p>You're about to set up your own AI assistant. By the end of the first half of this course, you'll have:</p>
-  <ul class="checkmark-list">
-    <li>Claude installed on your computer with access to a folder you control</li>
-    <li>An assistant that remembers you between conversations</li>
-    <li>A daily 9am check-in that helps you build the habit of using it</li>
-  </ul>
-  <p style="margin-top:1.25rem;"><strong>The three tabs.</strong> When you open the Claude desktop app, you'll see three tabs at the top:</p>
+  <p>You've probably used a chatbot before. ChatGPT, the regular Claude in your browser. You walk up, ask a question, get an answer, close the tab. Useful. But limited. It's like stopping a <strong>knowledgeable stranger on the street</strong> — smart, helpful, gone the moment you walk away.</p>
+  <p>Cowork is different. Cowork is an <strong>intern at the desk next to yours.</strong> You give that intern a folder; they read everything in it. You give them a task; they work on it across multiple steps. You come back tomorrow; they remember you. Same brain as chatbot Claude. Completely different setup.</p>
+  <p style="margin-top:1.25rem;"><strong>The three tabs.</strong> When you open the Claude desktop app, you'll see three at the top:</p>
   <ul>
-    <li><strong>Chat</strong> — like ChatGPT. You ask, it answers. Conversation ends, memory ends.</li>
-    <li><strong>Cowork</strong> — what we're setting up today. Has access to a folder on your computer. Remembers you. Does multi-step tasks.</li>
+    <li><strong>Chat</strong> — the knowledgeable stranger. Quick questions, no memory.</li>
+    <li><strong>Cowork</strong> — the intern with your folder. What we're setting up today.</li>
     <li><strong>Code</strong> — for software developers. Ignore for now.</li>
+  </ul>
+  <p style="margin-top:1.25rem;">By the end of the next four sections you'll have:</p>
+  <ul class="checkmark-list">
+    <li>Claude installed with access to a folder you control</li>
+    <li>An assistant that remembers you between conversations</li>
+    <li>A daily 9am check-in to build the habit</li>
   </ul>
   <div class="audio-block">
     <div class="audio-block-header">
@@ -212,8 +214,9 @@ footer .footer-mark { font-family:var(--serif); font-style:italic; font-size:1re
   </div>
   <div class="step">
     <h3><span class="step-num">4</span>Confirm all three tabs show up</h3>
-    <p>At the top of the Claude Desktop window, you should see three tabs side by side: <strong>Chat</strong>, <strong>Cowork</strong>, and <strong>Code</strong>. That's the success signal.</p>
-    <p><img src="cowork-tabs-success.png" alt="Three-tab toolbar showing Chat, selected Cowork, and Code" style="max-width:100%;height:auto;margin:1em 0;"></p>
+    <p>At the top of the Claude Desktop window, you should see three tabs side by side: <strong>Chat</strong>, <strong>Cowork</strong>, and <strong>Code</strong>. That's the success signal — it should look exactly like this:</p>
+
+![Three-tab toolbar showing Chat, selected Cowork, and Code](cowork-tabs-success.png)
     <p>If you only see one or two tabs, your Pro subscription hasn't propagated yet. Wait 5-10 minutes, sign out and back in, restart the app. If it's still missing after 20 minutes, double-check your subscription went through on claude.ai.</p>
     <div class="checkpoint"><span><strong>Checkpoint:</strong> You see all three tabs. Click "Cowork." That's where we're going next.</span></div>
   </div>
@@ -396,42 +399,37 @@ Start now with Part A — ask me what to call you.</pre>
 
 <section class="section reveal" id="memory">
   <h2><span class="emoji">🧠</span> How It Remembers</h2>
-  <p>The strangest thing about your new assistant: it doesn't actually remember anything between conversations. Each new chat starts completely fresh.</p>
-  <p>The trick that solves it: <strong>your workspace folder is its memory.</strong> Anything you want it to remember, you save as a file. Next time you open a conversation, it reads your files first and catches up.</p>
-  <p>You've already seen this. The <code>about-me.md</code> file you just created is its onboarding manual. It reads that first every session, so it remembers who you are. The <code>todo.md</code> file holds your to-do list across days.</p>
-  <p><strong>The rule:</strong> anything important, ask it to save. A draft you like? Save it. A useful note about a project? Save it. The folder is the memory; the conversation is just where you talk.</p>
+  <p>Here's the strangest thing about your new assistant: it has perfect memory inside a single conversation, and goldfish-level memory between them. Close the chat, open a new one — gone. Doesn't remember yesterday. Doesn't remember the article you mentioned last week.</p>
+  <p>I know. Sounds bad. There's a fix, and it's elegant.</p>
+  <p><strong>Your folder is your assistant's filing cabinet.</strong> Anything you want it to remember tomorrow, save it in there today.</p>
+  <p>You've already seen this in action. The <code>about-me.md</code> file you made during bootstrap is the intern's onboarding manual — the first thing they read every morning, so they know who you are. The <code>todo.md</code> file holds your tasks across days. The folder holds everything.</p>
+  <p>The rule: anything important, ask your assistant to save it. A draft you liked? Save it. A useful insight? Save it. The conversation is just where you talk; the folder is the memory.</p>
   <div class="phrases">
     <div class="phrases-label">Phrases to use</div>
     <ul>
-      <li>"Always read my about-me.md before we start working."</li>
+      <li>"Always read my about-me file before we start working."</li>
       <li>"Save this as a file so we have it next time."</li>
-      <li>"If you forget something we discussed, look in the folder first."</li>
+      <li>"If you forget something we discussed, check the folder first."</li>
     </ul>
   </div>
-  <p>There's a smaller version of this <em>within</em> a single chat: if a conversation gets very long, your assistant starts to forget things from earlier in the same chat. When that happens, start a new chat and let it re-read your folder. Fresh start, same notes.</p>
-
-    <div class="audio-block">
-      <div class="audio-block-header">
-        <span class="audio-block-icon">🎧</span>
-        <span class="audio-block-label">Listen: How It Remembers</span>
-      </div>
-      <audio controls preload="metadata" src="audio-06-memory.mp3"></audio>
-    </div>
+  <p>Smaller version of this <em>inside</em> a single conversation: if a chat goes really long — hundreds of messages — your assistant starts to forget things from earlier. Same fix. Start a new chat, let it re-read the folder, you're back to full strength.</p>
+  <p><strong>Mental shift:</strong> stop asking "what does my assistant remember?" Start asking "what's in the filing cabinet?" That's the answer.</p>
 </section>
 
 <section class="section reveal" id="talking">
   <h2><span class="emoji">🗣️</span> Talking to Your Assistant</h2>
-  <p>This is the highest-leverage chapter. Master these three habits and your assistant goes from "okay" to genuinely useful.</p>
-  <p>Most people open the chat, type something like <em>"write me an email about X,"</em> hit send, get a mediocre response, and blame the AI. The fix isn't more AI knowledge — it's three small habits.</p>
-  <p><strong>Habit 1 — Give context before you ask.</strong> Don't lead with the request. Lead with the situation. Bad: <em>"Write a pitch."</em> Good: <em>"I work at a credit ratings company. We released a survey on small business credit trends. I need to pitch this to fintech journalists. The tone should feel newsworthy, not promotional. Now draft me a pitch."</em> Same task, dramatically better output.</p>
-  <p><strong>Habit 2 — Make it ask you questions first.</strong> Try: <em>"Before you draft anything, ask me three questions to make sure you understand."</em> It'll ask. Answering forces both of you to anchor on what actually matters. The output after the interview is twice as good as the cold output.</p>
-  <p><strong>Habit 3 — Push back when it's off.</strong> If a draft is too corporate, tell it. <em>"Shorter. Less formal. Punchier opening. Drop the second paragraph."</em> It's not insulted. It just redoes it. The more you correct, the more it learns your voice.</p>
+  <p>This is the highest-leverage chapter in the course. Master these habits and your assistant goes from "okay" to genuinely useful.</p>
+  <p>Here's the pattern most people fall into. They open the chat and bark: <em>"write me an email about X."</em> Hit send. Get something mediocre. Blame the AI. It's like handing a new hire one sentence and expecting them to read your mind.</p>
+  <p>The fix isn't more AI knowledge. It's three small habits.</p>
+  <p><strong>Habit 1 — Brief before you ask.</strong> Don't lead with the request — lead with the situation. Imagine briefing a competent freelancer who's never met your business. Bad: <em>"write a pitch."</em> Good: <em>"I work at a credit ratings company. We just released a survey on small business credit trends. I need to pitch fintech journalists. Tone should feel newsworthy, not promotional. Now draft me a pitch."</em> Same task. Dramatically better output.</p>
+  <p><strong>Habit 2 — Make your assistant interview YOU first.</strong> Counterintuitive but it works beautifully. Just say: <em>"Before you draft anything, ask me three questions to make sure you understand."</em> Answering its questions forces both of you to anchor on what actually matters. What you get after the interview is twice as good as cold output.</p>
+  <p><strong>Habit 3 — Push back.</strong> If a draft feels too corporate, tell it: <em>"Shorter. Less formal. Punchier opening. Drop the second paragraph."</em> It's not insulted. It just redoes it. The more you correct, the more it learns your voice. Treat it like a junior who's eager to please, not a sacred oracle.</p>
   <p>A few other moves that consistently work:</p>
   <ul>
-    <li>Ask for <strong>two options</strong> instead of one — comparison makes choosing easier than judging a single draft.</li>
-    <li>Tell it to <strong>act as a specific role</strong>: <em>"Act as an editor and tighten this paragraph."</em></li>
-    <li>Tell it <strong>what good looks like</strong>: <em>"A good pitch is under 120 words, has a number in the subject line, and ends with one clear ask."</em> Now it has something to hit.</li>
-    <li>When it nails something — <strong>tell it</strong>: <em>"That's the right tone. Remember this voice for future work."</em></li>
+    <li><strong>Ask for two options instead of one.</strong> Comparing is easier than judging.</li>
+    <li><strong>Tell it to act as a specific role.</strong> <em>"Act as an editor and tighten this paragraph."</em></li>
+    <li><strong>Tell it what good looks like.</strong> <em>"A good pitch is under 120 words, has a number in the subject line, ends with one clear ask."</em> Now it has something to hit.</li>
+    <li><strong>When it nails something — tell it.</strong> <em>"That's the right tone. Remember this voice for future work."</em> Feedback compounds.</li>
   </ul>
   <div class="phrases">
     <div class="phrases-label">Phrases to memorize</div>
@@ -442,25 +440,18 @@ Start now with Part A — ask me what to call you.</pre>
       <li>"Act as a [specific role] and rewrite this."</li>
     </ul>
   </div>
-  <p>If you take one thing from this whole course, take this: <strong>a sharp prompt beats a smart AI.</strong> The job is to set it up well.</p>
-
-    <div class="audio-block">
-      <div class="audio-block-header">
-        <span class="audio-block-icon">🎧</span>
-        <span class="audio-block-label">Listen: Talking to Your Assistant</span>
-      </div>
-      <audio controls preload="metadata" src="audio-07-talking.mp3"></audio>
-    </div>
+  <p>If you take one line from this whole course: <strong>a sharp prompt beats a smart AI.</strong> Your job is to set it up well.</p>
 </section>
 
 <section class="section reveal" id="connectors">
   <h2><span class="emoji">🔗</span> Connectors</h2>
-  <p>A connector is a wire between your assistant and an app you already use. Outlook, Gmail, Google Drive, Slack, your calendar. Once it's connected, your assistant can read from that app on your behalf — and sometimes write to it.</p>
-  <p><strong>How to add one:</strong> in Cowork settings → Connectors. You'll see what's available. Click sign-in for each app you want to plug in. Microsoft for Outlook. Google for Gmail, Drive, Calendar.</p>
-  <p><strong>Important default:</strong> most connectors start in read-only mode. Your assistant can <em>see</em> your inbox but can't send anything on its own. Drafts get saved to your folder; you send manually. That's intentional. Once you're comfortable, you can expand permissions.</p>
-  <p>Here's a real example of what the email connector lets you do. You sent five emails this week. Three days later you want to know who replied. You ask:</p>
-  <div class="quote">"Check my inbox for replies in the last week. Summarize what each one says in one line."</div>
-  <p>Your assistant runs the search, lists the replies, asks which to respond to first. You pick one. It drafts a reply in your folder. You polish and send.</p>
+  <p>A connector is a <strong>wire</strong> between your assistant and an app you already use. Outlook, Gmail, Google Drive, Slack, your calendar. Plug it in once, and your assistant can reach into that app the way you'd reach into a file cabinet.</p>
+  <p><strong>To plug one in:</strong> Cowork settings → Connectors. You'll see what's available. Click sign-in for the app you want. Microsoft for Outlook. Google for Gmail, Drive, Calendar.</p>
+  <p><strong>Important default:</strong> most connectors start in <strong>read-only mode.</strong> Your assistant can <em>see</em> your inbox but can't send anything on its own. Drafts go to your folder. You send manually. Think of it as letting your intern read your email pile but not letting them mail anything out yet. Once you trust them, you can expand permissions.</p>
+  <p><strong>Real example.</strong> You sent five pitches this week. Three days later you want to know who replied. You ask:</p>
+  <div class="quote">"Check my inbox for replies in the last week. Summarize each in one line."</div>
+  <p>Your assistant runs the search, lists the replies, asks which one to draft a response to first. You pick. It drafts in your folder. You polish and send.</p>
+  <p>That's the loop. Read in the connected app. Draft in your folder. Send manually. Clean and safe.</p>
   <div class="phrases">
     <div class="phrases-label">Phrases to use (after Outlook/Gmail is connected)</div>
     <ul>
@@ -469,23 +460,15 @@ Start now with Part A — ask me what to call you.</pre>
       <li>"What emails haven't I responded to yet?"</li>
     </ul>
   </div>
-  <p>Don't add every connector on day one. Each one adds capability but also adds surface area for things to go sideways. One at a time, when you have a real reason.</p>
-
-    <div class="audio-block">
-      <div class="audio-block-header">
-        <span class="audio-block-icon">🎧</span>
-        <span class="audio-block-label">Listen: Connectors</span>
-      </div>
-      <audio controls preload="metadata" src="audio-08-connectors.mp3"></audio>
-    </div>
+  <p><strong>Don't plug everything in on day one.</strong> Each connector adds capability, but also adds surface area for things to go sideways. Add one at a time, when you have a real reason. Start with where you spend most of your time — for most people, that's email.</p>
 </section>
 
 <section class="section reveal" id="verify">
   <h2><span class="emoji">✅</span> Trust, but Verify</h2>
-  <p>Your assistant is right most of the time. Not always. Sometimes it'll be confidently wrong about a fact — a statistic, a date, a person's role, a contact detail. It's not common but it happens. The technical word for it is "hallucination." The practical word is "confident-but-wrong."</p>
-  <p>This isn't something to be afraid of. It's something to build a five-second habit around.</p>
-  <p><strong>The principle.</strong> Facts that came FROM you (your files, your notes, what you typed in this chat) — those are fine. Facts that came FROM your assistant's own knowledge (a stat it remembers, a fact about a person, a date it cites) — those are drafts until you've eyeballed them.</p>
-  <p>The trick is making it tell you which is which.</p>
+  <p>Your assistant is right most of the time. Not always. Sometimes it'll be confidently wrong about a fact — a statistic, a date, a person's title, a contact detail. It's not common. But it happens.</p>
+  <p>The technical word is "hallucination." The practical word: <strong>confident-but-wrong.</strong> Picture the eager intern who really wants to be useful, and occasionally invents a small detail rather than admit they don't know. Same energy. Same fix.</p>
+  <p><strong>Two categories to hold in your head.</strong> Facts that came FROM you — your files, your notes, what you typed into this chat — your assistant handles those fine. They're right in front of it. But facts that come from its own knowledge — a stat it remembers, a person it claims to know — those are <em>drafts</em> until you've eyeballed them.</p>
+  <p>The trick is making your assistant tell you which is which.</p>
   <div class="phrases">
     <div class="phrases-label">Phrases to teach your assistant</div>
     <ul>
@@ -495,29 +478,22 @@ Start now with Part A — ask me what to call you.</pre>
       <li>"Tell me what you're least sure about in this draft."</li>
     </ul>
   </div>
-  <p>The "I don't know" one is the most important. A good assistant says it. A weak one fakes it. You can train yours toward the former just by asking for it.</p>
-  <p>For any fact you'll act on — a contact detail, a quote, a citation, a date — verify it. Same habit you already use when checking junior work before it goes out.</p>
-
-    <div class="audio-block">
-      <div class="audio-block-header">
-        <span class="audio-block-icon">🎧</span>
-        <span class="audio-block-label">Listen: Trust, but Verify</span>
-      </div>
-      <audio controls preload="metadata" src="audio-09-verify.mp3"></audio>
-    </div>
+  <p>That last one is the most important. <strong>A good assistant says "I don't know." A weak one fakes it.</strong> You can train yours toward the former just by asking for it.</p>
+  <p>One more move worth knowing: <em>"Tell me what you're least sure about in this draft."</em> Your assistant will literally point at its own weak spots. Use it before sending anything important.</p>
+  <p>For any fact you'll act on — a contact email, a quote you'll attribute, a date in a doc — verify it. Same instinct you already use when reading a junior's draft before it goes out the door. New junior. Same instinct.</p>
 </section>
 
 <section class="section reveal" id="cant">
   <h2><span class="emoji">🚫</span> What It Can't Do</h2>
-  <p>A short, honest list of limits so you can plan around them.</p>
+  <p>A short, honest list, so you can plan around them.</p>
   <ul>
-    <li><strong>Can't make phone calls.</strong> Voice is still you.</li>
-    <li><strong>Can't predict the future.</strong> It can suggest, draft, analyze — but it can't tell you whether a pitch will land, a strategy will work, or a person will respond.</li>
-    <li><strong>Can't replace your judgment.</strong> It drafts; you decide. Same way a senior overrides a junior's work.</li>
-    <li><strong>Doesn't know recent events.</strong> Its knowledge has a cutoff date. For anything time-sensitive — recent news, a regulatory change — check, or paste the latest source in.</li>
-    <li><strong>Can be wrong about facts.</strong> See the previous chapter. Verify what matters.</li>
+    <li><strong>Can't make phone calls.</strong> Voice is still your job.</li>
+    <li><strong>Can't predict the future.</strong> It can draft, analyze, suggest — but it can't tell you whether a pitch will land, whether a strategy will work, whether a person will say yes. That's the unknowable part. Same as any junior — they can prep the deck, they can't make the client buy.</li>
+    <li><strong>Can't replace your judgment.</strong> It drafts; you decide. The same way a senior overrides a junior's work, you override your assistant's. That dynamic is normal, healthy, and the right way to work.</li>
+    <li><strong>Doesn't know recent events.</strong> Its knowledge has a cutoff date — it stopped reading the news at some point. For anything time-sensitive, check or paste the latest source in.</li>
+    <li><strong>Can be wrong about facts</strong> (see the previous chapter). Verify what matters.</li>
   </ul>
-  <p><strong>The frame to leave with:</strong> a great assistant makes you faster. The best assistants also know when to step back. Yours is trying to be the second kind. If it ever tries to make a call that's really yours to make — push back. Make it work on the inputs, not the verdicts.</p>
+  <p><strong>The frame to leave with:</strong> a great assistant makes you faster. The best ones also know when to step back. Yours is trying to be the second kind. So if it ever tries to make a call that's really yours — push back. Make it work on the inputs, not the verdicts. That's the divide between a useful intern and a presumptuous one.</p>
   <div class="phrases">
     <div class="phrases-label">Phrases to teach it</div>
     <ul>
@@ -526,42 +502,17 @@ Start now with Part A — ask me what to call you.</pre>
       <li>"This is my call to make. Just give me the inputs."</li>
     </ul>
   </div>
-
-    <div class="audio-block">
-      <div class="audio-block-header">
-        <span class="audio-block-icon">🎧</span>
-        <span class="audio-block-label">Listen: What It Can't Do</span>
-      </div>
-      <audio controls preload="metadata" src="audio-10-cant-do.mp3"></audio>
-    </div>
 </section>
 
 <section class="section reveal" id="habit">
   <h2><span class="emoji">☕</span> Building the Habit</h2>
-  <p>Most people who try AI tools quit in week two. Not because the tools are bad — because they never built the habit. The tools sit there. Don't be that person.</p>
+  <p>Most people who try AI tools quit in week two. Not because the tools are bad — because they never built the habit. The tools sit there gathering dust <strong>like a gym membership in February.</strong> Don't be that person.</p>
   <p>Here's the daily rhythm that works.</p>
-  <p><strong>Morning (5 minutes):</strong></p>
-  <ul>
-    <li>Open Cowork.</li>
-    <li>Name your project, if you have more than one: <em>"I'm working on [project] today."</em></li>
-    <li>Ask: <em>"Walk me through yesterday's tracker. What moved? What's left?"</em></li>
-    <li>Set today's top three priorities.</li>
-  </ul>
-  <p><strong>End of day (2 minutes):</strong></p>
-  <ul>
-    <li>Log what happened. Who replied. What got finished. What's owed tomorrow.</li>
-  </ul>
-  <p>That's the whole ritual. Five minutes morning, two minutes evening. The daily 9am check-in you set up earlier will start the morning ritual for you — don't skip it. Two weeks of this and your assistant stops being a thing you "use" and becomes a colleague you work with.</p>
-  <p>You'll know it's working when two things happen. First, you stop having that "wait, what was I doing again?" moment in the middle of the day — the tracker holds it for you. Second, you stop thinking about it as "AI" at all. You just ask your assistant for the thing and keep moving.</p>
-  <p style="font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--ink); margin-top:1.5rem;">Welcome to the new way of working.</p>
-
-    <div class="audio-block">
-      <div class="audio-block-header">
-        <span class="audio-block-icon">🎧</span>
-        <span class="audio-block-label">Listen: Building the Habit</span>
-      </div>
-      <audio controls preload="metadata" src="audio-11-habit.mp3"></audio>
-    </div>
+  <p><strong>Morning, five minutes.</strong> Open Cowork. Name your project, if you have more than one: <em>"I'm working on this project today."</em> Ask your assistant to walk you through yesterday's tracker — what moved, what's left. Set today's top three priorities.</p>
+  <p><strong>End of day, two minutes.</strong> Log what happened. Who replied. What got finished. What's owed tomorrow.</p>
+  <p>That's the whole ritual. Five minutes in, two minutes out. The daily 9am check-in you set up earlier will start the morning ritual for you. Don't skip it.</p>
+  <p>Two weeks of this and something shifts. Your assistant stops being a <em>tool you use</em> and becomes a <strong>colleague you work with.</strong> You'll know it's working when two things happen: first, you stop having that "wait, what was I doing again?" moment in the middle of the day — the tracker holds it for you. Second, you stop thinking about it as "AI" at all. You just ask your assistant for the thing and keep moving.</p>
+  <p style="font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--ink); margin-top:1.5rem;">That's the goal. The course ends here. Your work begins.</p>
 </section>
 
 </main>
