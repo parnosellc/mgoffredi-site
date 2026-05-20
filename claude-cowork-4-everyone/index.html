@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Cowork 4 Everyone — Your AI Assistant, in One Paste</title>
 <meta name="description" content="A free mini-course on getting started with Claude Cowork. Install it, assign a folder, and bootstrap your AI assistant with one paste. About 20 minutes, no jargon.">
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="Claude Cowork 4 Everyone">
 <meta property="og:description" content="A free mini-course on getting started with Claude Cowork. Install it, assign a folder, and bootstrap your AI assistant with one paste.">
@@ -15,75 +14,97 @@
 <meta name="twitter:title" content="Claude Cowork 4 Everyone">
 <meta name="twitter:description" content="A free mini-course on getting started with Claude Cowork.">
 <meta name="twitter:image" content="https://www.mgoffredi.com/claude-cowork-4-everyone/hero.png">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream: #faf6ef;
-  --paper: #ffffff;
-  --ink: #1a1a2e;
-  --ink-soft: #4a4a5e;
-  --teal: #2c7873;
-  --teal-soft: #6fb3b8;
-  --orange: #d96d3a;
-  --orange-soft: #f4a261;
-  --rule: #e8e2d4;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
-.container { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
-.hero { text-align: center; padding: 2.5rem 1.25rem 1rem; }
-.hero img { width: 100%; max-width: 800px; height: auto; border-radius: 14px; display: block; margin: 0 auto 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
-.hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: var(--ink); }
-.hero .tagline { font-size: 1.1rem; color: var(--ink-soft); margin-bottom: 0.5rem; }
-.hero .meta { font-size: 0.9rem; color: var(--teal); font-style: italic; }
-.speed-bar { position: sticky; top: 0; z-index: 10; background: var(--cream); border-bottom: 1px solid var(--rule); padding: 0.75rem 1rem; text-align: center; font-size: 0.9rem; }
-.speed-bar label { color: var(--ink-soft); margin-right: 0.5rem; }
-.speed-bar button { background: var(--paper); border: 1px solid var(--rule); color: var(--ink-soft); padding: 0.35rem 0.75rem; margin: 0 0.15rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s; font-family: inherit; }
-.speed-bar button:hover { border-color: var(--teal); color: var(--teal); }
-.speed-bar button.active { background: var(--teal); color: white; border-color: var(--teal); }
-.toc { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem auto 2rem; }
-.toc h3 { font-size: 0.85rem; color: var(--orange); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; }
-.toc a { color: var(--ink); text-decoration: none; font-size: 0.95rem; padding: 0.4rem 0; display: block; transition: color 0.15s; }
-.toc a:hover { color: var(--teal); }
-.section { background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 4rem; }
-.section h2 { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 0.5rem; }
-.section h2 .emoji { font-size: 1.3rem; }
-.section-img { width: 100%; max-width: 500px; height: auto; border-radius: 12px; display: block; margin: 0 auto 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
-.section p { margin-bottom: 1rem; color: var(--ink-soft); }
-.section p strong, .section li strong { color: var(--ink); }
-.section ul, .section ol { margin: 0.75rem 0 1rem 1.5rem; color: var(--ink-soft); }
-.section li { margin-bottom: 0.4rem; }
-.section .checkmark-list { list-style: none; margin-left: 0; }
-.section .checkmark-list li { padding-left: 1.75rem; position: relative; }
-.section .checkmark-list li::before { content: "✅"; position: absolute; left: 0; }
-.audio-block { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-soft) 100%); border-radius: 12px; padding: 1.25rem; margin: 1.25rem 0; color: white; }
-.audio-block .audio-label { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem; }
-.audio-block audio { width: 100%; display: block; }
-.step { background: var(--cream); border-left: 4px solid var(--orange); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; }
-.step-num { display: inline-block; background: var(--orange); color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; text-align: center; line-height: 1.5rem; font-weight: 700; font-size: 0.85rem; margin-right: 0.5rem; }
-.step h3 { font-size: 1.1rem; color: var(--ink); font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; }
-.step p { margin-bottom: 0.5rem; }
-.checkpoint { background: rgba(44, 120, 115, 0.08); border-left: 3px solid var(--teal); padding: 0.6rem 0.9rem; margin-top: 0.75rem; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: var(--ink-soft); }
-.checkpoint strong { color: var(--teal); }
-.expect { background: linear-gradient(135deg, #fef6ed 0%, #fdebd9 100%); border: 1px solid var(--orange-soft); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
-.expect h3 { font-size: 0.85rem; color: var(--orange); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.expect ol { margin-left: 1.5rem; color: var(--ink); }
-.expect li { margin-bottom: 0.4rem; }
-.expect p { color: var(--ink); margin-bottom: 0; }
-.paste-wrapper { position: relative; margin: 1.25rem 0; }
-.paste-block { background: #1e1e2e; color: #e0e0e0; border-radius: 10px; padding: 1.5rem 1.25rem; font-family: "SF Mono", Menlo, Monaco, Consolas, monospace; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; overflow-x: auto; max-height: 400px; overflow-y: auto; }
-.copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--orange); color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; font-family: inherit; }
-.copy-btn:hover { background: var(--orange-soft); transform: translateY(-1px); }
-.copy-btn.copied { background: var(--teal); }
-footer { text-align: center; padding: 2.5rem 1.25rem 3rem; color: var(--ink-soft); font-size: 0.9rem; border-top: 1px solid var(--rule); margin-top: 2rem; }
-footer a { color: var(--teal); }
-@media (max-width: 600px) {
-  .container { padding: 0 0.875rem; }
-  .hero { padding: 1.5rem 0.875rem 1rem; }
-  .section { padding: 1.25rem; }
-  .toc ul { grid-template-columns: 1fr; }
+:root { --cream:#faf5ec; --paper:#fff; --paper-warm:#fdf9f1; --ink:#1a1a2e; --ink-soft:#565669; --ink-mute:#8a8a99; --teal:#2c7873; --teal-deep:#1d5e5a; --teal-light:#e6f0ef; --orange:#d96d3a; --orange-warm:#e88a5d; --orange-light:#fbeee3; --rule:#e8e2d4; --rule-soft:#f0ebde; --shadow-sm:0 1px 2px rgba(26,26,46,.04),0 2px 6px rgba(26,26,46,.03); --shadow-md:0 4px 12px rgba(26,26,46,.06),0 12px 32px rgba(26,26,46,.05); --shadow-lg:0 8px 24px rgba(26,26,46,.08),0 24px 64px rgba(26,26,46,.08); --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--cream); background-image:radial-gradient(at 80% 0%,rgba(217,109,58,.06) 0,transparent 50%),radial-gradient(at 0% 50%,rgba(44,120,115,.05) 0,transparent 50%),radial-gradient(at 50% 100%,rgba(217,109,58,.04) 0,transparent 50%); color:var(--ink); line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+.container { max-width:760px; margin:0 auto; padding:0 1.5rem; }
+.hero { text-align:center; padding:3.5rem 1.5rem 1.5rem; position:relative; }
+.hero-img-wrap { position:relative; max-width:900px; margin:0 auto 2rem; }
+.hero img { width:100%; height:auto; border-radius:20px; display:block; box-shadow:var(--shadow-lg); }
+.hero h1 { font-family:var(--serif); font-size:clamp(2.2rem,6vw,3.6rem); font-weight:500; letter-spacing:-.025em; line-height:1.05; margin-bottom:.75rem; color:var(--ink); }
+.hero h1 em { font-style:italic; color:var(--orange); font-weight:400; }
+.hero .tagline { font-size:clamp(1.05rem,2vw,1.25rem); color:var(--ink-soft); font-weight:400; max-width:540px; margin:0 auto 1.5rem; }
+.hero-badges { display:inline-flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-top:.5rem; }
+.hero-badge { font-size:.8rem; font-weight:500; color:var(--teal-deep); background:var(--teal-light); padding:.4rem .9rem; border-radius:999px; letter-spacing:.01em; }
+.speed-bar { position:sticky; top:0; z-index:50; background:rgba(250,245,236,.92); backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--rule); padding:.75rem 1rem; display:flex; align-items:center; justify-content:center; gap:.75rem; font-size:.875rem; }
+.speed-bar .speed-label { color:var(--ink-soft); font-weight:500; display:inline-flex; align-items:center; gap:.4rem; }
+.speed-bar .speed-icon { font-size:1rem; }
+.speed-pills { display:inline-flex; background:var(--paper); border:1px solid var(--rule); border-radius:999px; padding:3px; box-shadow:var(--shadow-sm); }
+.speed-pills button { background:transparent; border:none; color:var(--ink-soft); padding:.35rem .85rem; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:all .2s; font-family:inherit; letter-spacing:.01em; }
+.speed-pills button:hover { color:var(--teal); }
+.speed-pills button.active { background:var(--teal); color:#fff; box-shadow:0 2px 6px rgba(44,120,115,.25); }
+.toc { background:var(--paper); border:1px solid var(--rule); border-radius:18px; padding:1.5rem 1.75rem; margin:2rem auto; box-shadow:var(--shadow-sm); }
+.toc-label { font-size:.75rem; color:var(--orange); font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+.toc-label::before { content:""; width:24px; height:1px; background:var(--orange); }
+.toc ul { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.5rem; }
+.toc a { color:var(--ink); text-decoration:none; font-size:.95rem; font-weight:500; padding:.5rem .75rem; border-radius:10px; display:flex; align-items:center; gap:.6rem; transition:all .2s; }
+.toc a:hover { background:var(--paper-warm); color:var(--teal); transform:translateX(2px); }
+.toc-emoji { font-size:1.1rem; }
+.section { background:var(--paper); border:1px solid var(--rule); border-radius:24px; padding:2.5rem 2rem; margin-bottom:2rem; scroll-margin-top:5rem; box-shadow:var(--shadow-md); position:relative; overflow:hidden; }
+.section::before { content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--orange),var(--teal)); opacity:.5; }
+.section h2 { font-family:var(--serif); font-size:clamp(1.6rem,3.5vw,2.1rem); font-weight:500; letter-spacing:-.015em; color:var(--ink); margin-bottom:1.5rem; display:flex; align-items:baseline; gap:.75rem; }
+.section h2 .emoji { font-size:1.6rem; display:inline-block; }
+.section-img { width:100%; max-width:520px; height:auto; border-radius:16px; display:block; margin:0 auto 1.75rem; box-shadow:var(--shadow-md); }
+.section p { margin-bottom:1rem; color:var(--ink-soft); font-size:1rem; }
+.section p strong, .section li strong { color:var(--ink); font-weight:600; }
+.section ul, .section ol { margin:.75rem 0 1rem 1.25rem; color:var(--ink-soft); }
+.section li { margin-bottom:.5rem; }
+.section a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(44,120,115,.3); transition:border-color .2s; }
+.section a:hover { border-bottom-color:var(--teal); }
+.checkmark-list { list-style:none !important; margin-left:0 !important; }
+.checkmark-list li { padding-left:1.75rem; position:relative; font-size:1.02rem; color:var(--ink); }
+.checkmark-list li::before { content:"✓"; position:absolute; left:0; top:1px; color:var(--teal); font-weight:700; width:1.25rem; height:1.25rem; background:var(--teal-light); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:.75rem; }
+.audio-block { background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 100%); border-radius:18px; padding:1.5rem 1.5rem 1.25rem; margin:1.75rem 0; color:#fff; box-shadow:0 8px 24px rgba(44,120,115,.18); position:relative; overflow:hidden; }
+.audio-block::before { content:""; position:absolute; top:-20px; right:-20px; width:140px; height:140px; background:rgba(255,255,255,.06); border-radius:50%; }
+.audio-block-header { display:flex; align-items:center; gap:.6rem; margin-bottom:.85rem; position:relative; }
+.audio-block-icon { width:32px; height:32px; background:rgba(255,255,255,.15); border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:1rem; }
+.audio-block-label { font-weight:600; font-size:.98rem; }
+.audio-block audio { width:100%; height:42px; display:block; border-radius:10px; position:relative; z-index:1; }
+audio::-webkit-media-controls-panel { background:rgba(255,255,255,.95); }
+.step { background:var(--paper-warm); border:1px solid var(--rule); border-left:4px solid var(--orange); padding:1.25rem 1.5rem; margin:1.25rem 0; border-radius:0 14px 14px 0; transition:transform .2s,box-shadow .2s; }
+.step:hover { transform:translateX(2px); box-shadow:var(--shadow-sm); }
+.step h3 { font-family:var(--sans); font-size:1.15rem; color:var(--ink); font-weight:600; margin-bottom:.6rem; display:flex; align-items:center; gap:.75rem; }
+.step-num { display:inline-flex; background:linear-gradient(135deg,var(--orange) 0%,var(--orange-warm) 100%); color:#fff; width:1.85rem; height:1.85rem; border-radius:50%; align-items:center; justify-content:center; font-weight:700; font-size:.9rem; flex-shrink:0; box-shadow:0 2px 6px rgba(217,109,58,.3); font-family:var(--serif); }
+.step p { margin-bottom:.5rem; font-size:.97rem; }
+.checkpoint { background:var(--teal-light); border-radius:10px; padding:.7rem 1rem; margin-top:.85rem; font-size:.92rem; color:var(--teal-deep); display:flex; align-items:flex-start; gap:.5rem; }
+.checkpoint::before { content:"✓"; background:var(--teal); color:#fff; width:1.1rem; height:1.1rem; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:.7rem; font-weight:700; flex-shrink:0; margin-top:1px; }
+.checkpoint strong { color:var(--teal-deep); }
+.expect { background:linear-gradient(135deg,var(--orange-light) 0%,#fbe6d3 100%); border:1px solid rgba(217,109,58,.25); border-radius:18px; padding:1.5rem 1.75rem; margin:1.5rem 0; }
+.expect-label { font-size:.75rem; color:var(--orange); font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+.expect-label::before { content:""; width:24px; height:1px; background:var(--orange); }
+.expect ol { margin-left:1.5rem; color:var(--ink); font-size:.97rem; }
+.expect li { margin-bottom:.5rem; }
+.expect p { color:var(--ink); margin-bottom:0; margin-top:1rem; font-size:.97rem; }
+.paste-section { margin:2rem 0 1.5rem; }
+.paste-cta { font-family:var(--serif); font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:.75rem; font-style:italic; }
+.paste-wrapper { position:relative; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(26,26,46,.15); }
+.paste-block { background:#1a1a2e; color:#d4d4e4; padding:1.75rem 1.5rem 1.5rem; font-family:"SF Mono",Menlo,Monaco,Consolas,monospace; font-size:.82rem; line-height:1.6; white-space:pre-wrap; overflow-x:auto; max-height:420px; overflow-y:auto; border-radius:16px; }
+.paste-block::-webkit-scrollbar { width:8px; height:8px; }
+.paste-block::-webkit-scrollbar-thumb { background:#3a3a4e; border-radius:4px; }
+.copy-btn { position:absolute; top:.85rem; right:.85rem; background:linear-gradient(135deg,var(--orange) 0%,var(--orange-warm) 100%); color:#fff; border:none; padding:.55rem 1.1rem; border-radius:999px; font-size:.82rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:inherit; letter-spacing:.02em; box-shadow:0 4px 12px rgba(217,109,58,.4); display:inline-flex; align-items:center; gap:.4rem; }
+.copy-btn:hover { transform:translateY(-1px); box-shadow:0 6px 16px rgba(217,109,58,.5); }
+.copy-btn.copied { background:linear-gradient(135deg,var(--teal) 0%,var(--teal-deep) 100%); box-shadow:0 4px 12px rgba(44,120,115,.4); }
+.quote { background:var(--paper-warm); border-left:3px solid var(--teal); padding:.85rem 1.15rem; margin:.85rem 0; border-radius:0 10px 10px 0; font-style:italic; font-family:var(--serif); color:var(--ink); font-size:1.02rem; }
+footer { text-align:center; padding:3rem 1.5rem 4rem; color:var(--ink-mute); font-size:.9rem; border-top:1px solid var(--rule); margin-top:3rem; }
+footer a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(44,120,115,.3); }
+footer .footer-mark { font-family:var(--serif); font-style:italic; font-size:1rem; color:var(--ink-soft); margin-bottom:.5rem; }
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity:1; transform:translateY(0); }
+@media (max-width:640px) {
+  .container { padding:0 1rem; }
+  .hero { padding:2rem 1rem 1rem; }
+  .section { padding:1.5rem 1.25rem; border-radius:18px; }
+  .toc { padding:1.25rem; }
+  .toc ul { grid-template-columns:1fr; }
+  .audio-block { padding:1.25rem 1.25rem 1rem; }
+  .step { padding:1rem 1.15rem; }
+  .paste-block { padding:1.25rem 1rem 1rem; font-size:.78rem; }
+  .copy-btn { padding:.45rem .9rem; font-size:.78rem; }
 }
 </style>
 </head>
@@ -91,34 +112,42 @@ footer a { color: var(--teal); }
 
 <header class="hero">
   <div class="container">
-    <img src="hero.png" alt="Claude Cowork 4 Everyone — illustration of a person at a laptop with a folder of files">
-    <h1>Claude Cowork 4 Everyone</h1>
-    <p class="tagline">Your AI assistant, in one paste.</p>
-    <p class="meta">~20 minutes · No coding · No jargon</p>
+    <div class="hero-img-wrap">
+      <img src="hero.png" alt="Claude Cowork 4 Everyone — illustration of a person at a laptop with a folder of files">
+    </div>
+    <h1>Claude Cowork <em>4 Everyone</em></h1>
+    <p class="tagline">Your AI assistant, in one paste. Get Claude reading your files, remembering you, and checking in every morning.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">~20 minutes</span>
+      <span class="hero-badge">No coding</span>
+      <span class="hero-badge">No jargon</span>
+    </div>
   </div>
 </header>
 
 <div class="speed-bar">
-  <label>Audio speed:</label>
-  <button data-speed="1" class="active">1×</button>
-  <button data-speed="1.25">1.25×</button>
-  <button data-speed="1.5">1.5×</button>
-  <button data-speed="2">2×</button>
+  <span class="speed-label"><span class="speed-icon">⚡</span> Audio speed</span>
+  <div class="speed-pills">
+    <button data-speed="1" class="active">1×</button>
+    <button data-speed="1.25">1.25×</button>
+    <button data-speed="1.5">1.5×</button>
+    <button data-speed="2">2×</button>
+  </div>
 </div>
 
 <main class="container">
 
-<nav class="toc">
-  <h3>Jump To</h3>
+<nav class="toc reveal">
+  <div class="toc-label">Jump To</div>
   <ul>
-    <li><a href="#what">🎯 What is Claude Cowork?</a></li>
-    <li><a href="#install">🔌 Install Claude Cowork</a></li>
-    <li><a href="#folder">📁 Assign Your Folder</a></li>
-    <li><a href="#bootstrap">🎤 Bootstrap Your Cowork</a></li>
+    <li><a href="#what"><span class="toc-emoji">🎯</span> What is Claude Cowork?</a></li>
+    <li><a href="#install"><span class="toc-emoji">🔌</span> Install Claude Cowork</a></li>
+    <li><a href="#folder"><span class="toc-emoji">📁</span> Assign Your Folder</a></li>
+    <li><a href="#bootstrap"><span class="toc-emoji">🎤</span> Bootstrap Your Cowork</a></li>
   </ul>
 </nav>
 
-<section class="section" id="what">
+<section class="section reveal" id="what">
   <h2><span class="emoji">🎯</span> What is Claude Cowork?</h2>
   <img class="section-img" src="section-1-what.png" alt="A chatbot in a speech bubble vs Cowork — a character at a desk with files and a laptop">
   <p>You're about to set up your own AI assistant. By the end of this course, you'll have:</p>
@@ -127,50 +156,56 @@ footer a { color: var(--teal); }
     <li>An assistant that remembers you between conversations</li>
     <li>A daily 9am check-in that helps you build the habit of using it</li>
   </ul>
-  <p style="margin-top: 1rem;"><strong>The three tabs.</strong> When you open the Claude desktop app, you'll see three tabs at the top:</p>
+  <p style="margin-top:1.25rem;"><strong>The three tabs.</strong> When you open the Claude desktop app, you'll see three tabs at the top:</p>
   <ul>
     <li><strong>Chat</strong> — like ChatGPT. You ask, it answers. Conversation ends, memory ends.</li>
     <li><strong>Cowork</strong> — what we're setting up today. Has access to a folder on your computer. Remembers you. Does multi-step tasks.</li>
     <li><strong>Code</strong> — for software developers. Ignore for now.</li>
   </ul>
   <div class="audio-block">
-    <div class="audio-label">🎧 Listen: What is Claude Cowork?</div>
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Listen: What is Claude Cowork?</span>
+    </div>
     <audio controls preload="metadata" src="audio-01-what-is-cowork.mp3"></audio>
   </div>
 </section>
 
-<section class="section" id="install">
+<section class="section reveal" id="install">
   <h2><span class="emoji">🔌</span> Install Claude Cowork</h2>
   <img class="section-img" src="section-2-install.png" alt="A laptop screen showing three tabs labeled Chat, Cowork, Code with the Cowork tab highlighted">
   <p>Four steps. Do them in order — the order matters.</p>
   <div class="step">
     <h3><span class="step-num">1</span>Subscribe to Claude <em>first</em></h3>
     <p>Go to <a href="https://claude.ai/upgrade" target="_blank">claude.ai/upgrade</a> and subscribe to Claude Pro <strong>before</strong> downloading the desktop app. There's a bug where Cowork doesn't show up if you download first and subscribe later — it can take a while to sort itself out. Save yourself the headache: subscribe first.</p>
-    <div class="checkpoint"><strong>✅ Checkpoint:</strong> You see "Pro" (or "Max") next to your name on claude.ai.</div>
+    <div class="checkpoint"><span><strong>Checkpoint:</strong> You see "Pro" (or "Max") next to your name on claude.ai.</span></div>
   </div>
   <div class="step">
     <h3><span class="step-num">2</span>Update your operating system</h3>
     <p><strong>Mac:</strong> Apple menu → System Settings → General → Software Update.<br><strong>Windows:</strong> Start → Settings → Windows Update.<br>Run all available updates. Restart if it asks. Cowork needs a recent OS.</p>
-    <div class="checkpoint"><strong>✅ Checkpoint:</strong> Your OS reports it's up to date.</div>
+    <div class="checkpoint"><span><strong>Checkpoint:</strong> Your OS reports it's up to date.</span></div>
   </div>
   <div class="step">
     <h3><span class="step-num">3</span>Download Claude Desktop</h3>
     <p>Go to <a href="https://claude.ai/download" target="_blank">claude.ai/download</a> and install like any normal app — drag to Applications on Mac, or run the installer on Windows. Sign in with the account you just subscribed.</p>
-    <div class="checkpoint"><strong>✅ Checkpoint:</strong> Claude Desktop is open and you're signed in.</div>
+    <div class="checkpoint"><span><strong>Checkpoint:</strong> Claude Desktop is open and you're signed in.</span></div>
   </div>
   <div class="step">
     <h3><span class="step-num">4</span>Confirm all three tabs show up</h3>
     <p>At the top of the Claude Desktop window, you should see three tabs side by side: <strong>Chat</strong>, <strong>Cowork</strong>, and <strong>Code</strong>. That's the success signal.</p>
     <p>If you only see one or two tabs, your Pro subscription hasn't propagated yet. Wait 5-10 minutes, sign out and back in, restart the app. If it's still missing after 20 minutes, double-check your subscription went through on claude.ai.</p>
-    <div class="checkpoint"><strong>✅ Checkpoint:</strong> You see all three tabs. Click "Cowork." That's where we're going next.</div>
+    <div class="checkpoint"><span><strong>Checkpoint:</strong> You see all three tabs. Click "Cowork." That's where we're going next.</span></div>
   </div>
   <div class="audio-block">
-    <div class="audio-label">🎧 Listen: The Install Walkthrough</div>
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Listen: The Install Walkthrough</span>
+    </div>
     <audio controls preload="metadata" src="audio-02-install.mp3"></audio>
   </div>
 </section>
 
-<section class="section" id="folder">
+<section class="section reveal" id="folder">
   <h2><span class="emoji">📁</span> Assign Your Folder</h2>
   <img class="section-img" src="section-3-folder.png" alt="A hand pointing at a folder labeled 'My Claude' on a desktop, files visible inside">
   <p>This is the most important step in the course. The thing that makes Cowork actually <em>Cowork</em> instead of just another chatbot.</p>
@@ -183,20 +218,23 @@ footer a { color: var(--teal); }
     <li><strong>Recommended:</strong> Don't pick an existing folder full of work documents. Make a fresh folder on your Desktop called <code>My Claude</code>. Easy to find, doesn't mix with anything else.</li>
   </ol>
   <p><strong>Confirm it worked.</strong> Drop a Word doc or text file into the folder you just picked. Then go to Cowork and type:</p>
-  <div style="background: var(--cream); border-left: 3px solid var(--teal); padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 0 6px 6px 0; font-style: italic; color: var(--ink);">"Read the file in my folder and tell me what it says."</div>
+  <div class="quote">"Read the file in my folder and tell me what it says."</div>
   <p>If Claude reads it back, you're connected. If not, double-check the folder you picked is actually the one Cowork is using.</p>
   <div class="audio-block">
-    <div class="audio-label">🎧 Listen: Why the Folder Matters</div>
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Listen: Why the Folder Matters</span>
+    </div>
     <audio controls preload="metadata" src="audio-03-folder.mp3"></audio>
   </div>
 </section>
 
-<section class="section" id="bootstrap">
+<section class="section reveal" id="bootstrap">
   <h2><span class="emoji">🎤</span> Bootstrap Your Cowork</h2>
   <img class="section-img" src="section-4-bootstrap.png" alt="A clipboard or paste icon dropping into a chat window, with an assistant emerging — cozy magical feel">
   <p>Now you paste one prompt into your Cowork and it sets itself up. Names itself, interviews you, saves your context, and schedules a daily check-in.</p>
   <div class="expect">
-    <h3>What's about to happen</h3>
+    <div class="expect-label">What's about to happen</div>
     <ol>
       <li>Your Cowork will warmly say hi and explain the setup (~15 min).</li>
       <li>It'll ask what to call it — pick a name.</li>
@@ -206,16 +244,20 @@ footer a { color: var(--teal); }
       <li>It'll create a starter to-do list with a few real things to try.</li>
       <li>It'll schedule a daily 9am check-in to help you finish the to-do list one task at a time.</li>
     </ol>
-    <p style="margin-top: 0.75rem;">Every weekday at 9am after that, your Cowork pings you with one open task. You answer "done," "not yet," or "skip." That's the rhythm.</p>
+    <p>Every weekday at 9am after that, your Cowork pings you with one open task. You answer "done," "not yet," or "skip." That's the rhythm.</p>
   </div>
   <div class="audio-block">
-    <div class="audio-label">🎧 Listen: What the Paste Does</div>
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Listen: What the Paste Does</span>
+    </div>
     <audio controls preload="metadata" src="audio-04-bootstrap.mp3"></audio>
   </div>
-  <p><strong>Copy the prompt below and paste it into your Cowork.</strong> Send it. Then follow your assistant's lead.</p>
-  <div class="paste-wrapper">
-    <button class="copy-btn" id="copy-btn">Copy</button>
-    <pre class="paste-block" id="paste-block">Hi! I'm setting you up as my work assistant for the first time. I'm not particularly technical. I use Word and Excel for most things. Please go slowly, ask me one thing at a time, and use plain language. No jargon.
+  <div class="paste-section">
+    <p class="paste-cta">Copy the prompt below and paste it into your Cowork. Send it. Then follow your assistant's lead.</p>
+    <div class="paste-wrapper">
+      <button class="copy-btn" id="copy-btn"><span>📋</span> Copy</button>
+      <pre class="paste-block" id="paste-block">Hi! I'm setting you up as my work assistant for the first time. I'm not particularly technical. I use Word and Excel for most things. Please go slowly, ask me one thing at a time, and use plain language. No jargon.
 
 I'd like you to set yourself up by walking me through four things today. You'll know we're done when you confirm all of them.
 
@@ -317,43 +359,56 @@ After all four parts are done, confirm out loud:
 Then say: "We're set up. Your first real task is in your to-do list — drop something you're working on into the folder and tell me what you need. I'll be here. And I'll see you tomorrow morning at 9 for our first check-in."
 
 Start now with Part A — ask me what to call you.</pre>
+    </div>
   </div>
   <div class="audio-block">
-    <div class="audio-label">🎧 Listen: Welcome to Claude Cowork</div>
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Listen: Welcome to Claude Cowork</span>
+    </div>
     <audio controls preload="metadata" src="audio-05-welcome.mp3"></audio>
   </div>
 </section>
 
 </main>
 
-<footer>Made by Michael Goffredi · <a href="https://mgoffredi.com">mgoffredi.com</a></footer>
+<footer>
+  <div class="footer-mark">— made for you, by Michael —</div>
+  <a href="https://mgoffredi.com">mgoffredi.com</a>
+</footer>
 
 <script>
-const speedButtons = document.querySelectorAll('.speed-bar button');
+const speedButtons = document.querySelectorAll('.speed-pills button');
 const audios = document.querySelectorAll('audio');
+function setSpeed(speed) { audios.forEach(a => { a.playbackRate = speed; }); }
 speedButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const speed = parseFloat(btn.dataset.speed);
     speedButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    audios.forEach(a => { a.playbackRate = speed; });
+    setSpeed(speed);
   });
 });
 audios.forEach(a => {
   a.addEventListener('loadedmetadata', () => {
-    const active = document.querySelector('.speed-bar button.active');
+    const active = document.querySelector('.speed-pills button.active');
     if (active) a.playbackRate = parseFloat(active.dataset.speed);
   });
 });
-
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 const copyBtn = document.getElementById('copy-btn');
 const pasteBlock = document.getElementById('paste-block');
 copyBtn.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(pasteBlock.textContent);
-    copyBtn.textContent = '✓ Copied!';
+    copyBtn.innerHTML = '<span>✓</span> Copied!';
     copyBtn.classList.add('copied');
-    setTimeout(() => { copyBtn.textContent = 'Copy'; copyBtn.classList.remove('copied'); }, 2000);
+    setTimeout(() => { copyBtn.innerHTML = '<span>📋</span> Copy'; copyBtn.classList.remove('copied'); }, 2000);
   } catch (err) {
     const range = document.createRange();
     range.selectNode(pasteBlock);
@@ -361,8 +416,9 @@ copyBtn.addEventListener('click', async () => {
     window.getSelection().addRange(range);
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
-    copyBtn.textContent = '✓ Copied!';
-    setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+    copyBtn.innerHTML = '<span>✓</span> Copied!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => { copyBtn.innerHTML = '<span>📋</span> Copy'; copyBtn.classList.remove('copied'); }, 2000);
   }
 });
 </script>
