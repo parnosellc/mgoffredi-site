@@ -99,6 +99,10 @@ footer .footer-mark { font-family:var(--serif); font-style:italic; font-size:1re
 .track-divider { text-align:center; margin:3.5rem 0 1.5rem; position:relative; }
 .track-divider::before { content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:60%; height:1px; background:linear-gradient(90deg,transparent,var(--rule),transparent); z-index:0; }
 .track-divider span { font-family:var(--serif); font-style:italic; font-size:1.2rem; color:var(--ink-soft); background:var(--cream); padding:0 1.5rem; position:relative; z-index:1; }
+.lang-switcher { position:absolute; top:1rem; right:1.5rem; z-index:100; display:inline-flex; background:var(--paper); border:1px solid var(--rule); border-radius:999px; padding:3px; box-shadow:var(--shadow-sm); }
+.lang-switcher a { display:inline-block; padding:.35rem .85rem; border-radius:999px; text-decoration:none; color:var(--ink-soft); font-size:.85rem; font-weight:600; transition:all .2s; letter-spacing:.01em; }
+.lang-switcher a:hover { color:var(--teal); }
+.lang-switcher a.active { background:var(--teal); color:#fff; box-shadow:0 2px 6px rgba(44,120,115,.25); }
 .track-intro { text-align:center; font-size:1rem; color:var(--ink-soft); max-width:520px; margin:0 auto 2rem; }
 .phrases { background:var(--paper-warm); border-radius:14px; padding:1.25rem 1.5rem; margin:1.25rem 0; border:1px solid var(--rule); }
 .phrases-label { font-size:.75rem; color:var(--orange); font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.75rem; display:flex; align-items:center; gap:.5rem; }
@@ -120,6 +124,11 @@ footer .footer-mark { font-family:var(--serif); font-style:italic; font-size:1re
 </style>
 </head>
 <body>
+
+<div class="lang-switcher">
+  <a href="/claude-cowork-4-everyone/" class="active">EN</a>
+  <a href="/claude-cowork-4-everyone/es/">ES</a>
+</div>
 
 <header class="hero">
   <div class="container">

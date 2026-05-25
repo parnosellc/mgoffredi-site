@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Cowork Para Todos — Tu Asistente de IA, en un Solo Pegado</title>
+<meta name="description" content="Un mini-curso gratuito para comenzar con Claude Cowork. Instala, asigna una carpeta, inicia tu asistente con un pegado, y aprende a usarlo bien.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claude Cowork Para Todos">
+<meta property="og:description" content="Un mini-curso gratuito para comenzar con Claude Cowork. Instálalo, asigna una carpeta, e inicia tu asistente de IA con un pegado.">
+<meta property="og:image" content="https://www.mgoffredi.com/claude-cowork-4-everyone/hero.png">
+<meta property="og:url" content="https://www.mgoffredi.com/claude-cowork-4-everyone/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Cowork Para Todos">
+<meta name="twitter:description" content="Un mini-curso gratuito para comenzar con Claude Cowork.">
+<meta name="twitter:image" content="https://www.mgoffredi.com/claude-cowork-4-everyone/hero.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --cream:#faf5ec; --paper:#fff; --paper-warm:#fdf9f1; --ink:#1a1a2e; --ink-soft:#565669; --ink-mute:#8a8a99; --teal:#2c7873; --teal-deep:#1d5e5a; --teal-light:#e6f0ef; --orange:#d96d3a; --orange-warm:#e88a5d; --orange-light:#fbeee3; --rule:#e8e2d4; --rule-soft:#f0ebde; --shadow-sm:0 1px 2px rgba(26,26,46,.04),0 2px 6px rgba(26,26,46,.03); --shadow-md:0 4px 12px rgba(26,26,46,.06),0 12px 32px rgba(26,26,46,.05); --shadow-lg:0 8px 24px rgba(26,26,46,.08),0 24px 64px rgba(26,26,46,.08); --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--cream); background-image:radial-gradient(at 80% 0%,rgba(217,109,58,.06) 0,transparent 50%),radial-gradient(at 0% 50%,rgba(44,120,115,.05) 0,transparent 50%),radial-gradient(at 50% 100%,rgba(217,109,58,.04) 0,transparent 50%); color:var(--ink); line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+.container { max-width:760px; margin:0 auto; padding:0 1.5rem; }
+.hero { text-align:center; padding:3.5rem 1.5rem 1.5rem; position:relative; }
+.hero-img-wrap { position:relative; max-width:900px; margin:0 auto 2rem; }
+.hero img { width:100%; height:auto; border-radius:20px; display:block; box-shadow:var(--shadow-lg); }
+.hero h1 { font-family:var(--serif); font-size:clamp(2.2rem,6vw,3.6rem); font-weight:500; letter-spacing:-.025em; line-height:1.05; margin-bottom:.75rem; color:var(--ink); }
+.hero h1 em { font-style:italic; color:var(--orange); font-weight:400; }
+.hero .tagline { font-size:clamp(1.05rem,2vw,1.25rem); color:var(--ink-soft); font-weight:400; max-width:540px; margin:0 auto 1.5rem; }
+.hero-badges { display:inline-flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-top:.5rem; }
+.hero-badge { font-size:.8rem; font-weight:500; color:var(--teal-deep); background:var(--teal-light); padding:.4rem .9rem; border-radius:999px; letter-spacing:.01em; }
+.speed-bar { position:sticky; top:0; z-index:50; background:rgba(250,245,236,.92); backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--rule); padding:.75rem 1rem; display:flex; align-items:center; justify-content:center; gap:.75rem; font-size:.875rem; }
+.speed-bar .speed-label { color:var(--ink-soft); font-weight:500; display:inline-flex; align-items:center; gap:.4rem; }
+.speed-bar .speed-icon { font-size:1rem; }
+.speed-pills { display:inline-flex; background:var(--paper); border:1px solid var(--rule); border-radius:999px; padding:3px; box-shadow:var(--shadow-sm); }
+.speed-pills button { background:transparent; border:none; color:var(--ink-soft); padding:.35rem .85rem; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:all .2s; font-family:inherit; letter-spacing:.01em; }
+.speed-pills button:hover { color:var(--teal); }
+.speed-pills button.active { background:var(--teal); color:#fff; box-shadow:0 2px 6px rgba(44,120,115,.25); }
+.toc { background:var(--paper); border:1px solid var(--rule); border-radius:18px; padding:1.5rem 1.75rem; margin:2rem auto; box-shadow:var(--shadow-sm); }
+.toc-label { font-size:.75rem; color:var(--orange); font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+.toc-label::before { content:""; width:24px; height:1px; background:var(--orange); }
+.toc ul { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.5rem; }
+.toc a { color:var(--ink); text-decoration:none; font-size:.95rem; font-weight:500; padding:.5rem .75rem; border-radius:10px; display:flex; align-items:center; gap:.6rem; transition:all .2s; }
+.toc a:hover { background:var(--paper-warm); color:var(--teal); transform:translateX(2px); }
+.toc-emoji { font-size:1.1rem; }
+.section { background:var(--paper); border:1px solid var(--rule); border-radius:24px; padding:2.5rem 2rem; margin-bottom:2rem; scroll-margin-top:5rem; box-shadow:var(--shadow-md); position:relative; overflow:hidden; }
+.section::before { content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--orange),var(--teal)); opacity:.5; }
+.section h2 { font-family:var(--serif); font-size:clamp(1.6rem,3.5vw,2.1rem); font-weight:500; letter-spacing:-.015em; color:var(--ink); margin-bottom:1.5rem; display:flex; align-items:baseline; gap:.75rem; }
+.section h2 .emoji { font-size:1.6rem; display:inline-block; }
+.section-img { width:100%; max-width:520px; height:auto; border-radius:16px; display:block; margin:0 auto 1.75rem; box-shadow:var(--shadow-md); }
+.section p { margin-bottom:1rem; color:var(--ink-soft); font-size:1rem; }
+.section p strong, .section li strong { color:var(--ink); font-weight:600; }
+.section ul, .section ol { margin:.75rem 0 1rem 1.25rem; color:var(--ink-soft); }
+.section li { margin-bottom:.5rem; }
+.section a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(44,120,115,.3); transition:border-color .2s; }
+.section a:hover { border-bottom-color:var(--teal); }
+.section code { background:var(--paper-warm); padding:.1rem .35rem; border-radius:4px; font-size:.92em; color:var(--teal-deep); }
+.checkmark-list { list-style:none !important; margin-left:0 !important; }
+.checkmark-list li { padding-left:1.75rem; position:relative; font-size:1.02rem; color:var(--ink); }
+.checkmark-list li::before { content:"✓"; position:absolute; left:0; top:1px; color:var(--teal); font-weight:700; width:1.25rem; height:1.25rem; background:var(--teal-light); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:.75rem; }
+.audio-block { background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 100%); border-radius:18px; padding:1.5rem 1.5rem 1.25rem; margin:1.75rem 0; color:#fff; box-shadow:0 8px 24px rgba(44,120,115,.18); position:relative; overflow:hidden; }
+.audio-block::before { content:""; position:absolute; top:-20px; right:-20px; width:140px; height:140px; background:rgba(255,255,255,.06); border-radius:50%; }
+.audio-block-header { display:flex; align-items:center; gap:.6rem; margin-bottom:.85rem; position:relative; }
+.audio-block-icon { width:32px; height:32px; background:rgba(255,255,255,.15); border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:1rem; }
+.audio-block-label { font-weight:600; font-size:.98rem; }
+.audio-block audio { width:100%; height:42px; display:block; border-radius:10px; position:relative; z-index:1; }
+audio::-webkit-media-controls-panel { background:rgba(255,255,255,.95); }
+.step { background:var(--paper-warm); border:1px solid var(--rule); border-left:4px solid var(--orange); padding:1.25rem 1.5rem; margin:1.25rem 0; border-radius:0 14px 14px 0; transition:transform .2s,box-shadow .2s; }
+.step:hover { transform:translateX(2px); box-shadow:var(--shadow-sm); }
+.step h3 { font-family:var(--sans); font-size:1.15rem; color:var(--ink); font-weight:600; margin-bottom:.6rem; display:flex; align-items:center; gap:.75rem; }
+.step-num { display:inline-flex; background:linear-gradient(135deg,var(--orange) 0%,var(--orange-warm) 100%); color:#fff; width:1.85rem; height:1.85rem; border-radius:50%; align-items:center; justify-content:center; font-weight:700; font-size:.9rem; flex-shrink:0; box-shadow:0 2px 6px rgba(217,109,58,.3); font-family:var(--serif); }
+.step p { margin-bottom:.5rem; font-size:.97rem; }
+.checkpoint { background:var(--teal-light); border-radius:10px; padding:.7rem 1rem; margin-top:.85rem; font-size:.92rem; color:var(--teal-deep); display:flex; align-items:flex-start; gap:.5rem; }
+.checkpoint::before { content:"✓"; background:var(--teal); color:#fff; width:1.1rem; height:1.1rem; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:.7rem; font-weight:700; flex-shrink:0; margin-top:1px; }
+.checkpoint strong { color:var(--teal-deep); }
+.expect { background:linear-gradient(135deg,var(--orange-light) 0%,#fbe6d3 100%); border:1px solid rgba(217,109,58,.25); border-radius:18px; padding:1.5rem 1.75rem; margin:1.5rem 0; }
+.expect-label { font-size:.75rem; color:var(--orange); font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+.expect-label::before { content:""; width:24px; height:1px; background:var(--orange); }
+.expect ol { margin-left:1.5rem; color:var(--ink); font-size:.97rem; }
+.expect li { margin-bottom:.5rem; }
+.expect p { color:var(--ink); margin-bottom:0; margin-top:1rem; font-size:.97rem; }
+.paste-section { margin:2rem 0 1.5rem; }
+.paste-cta { font-family:var(--serif); font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:.75rem; font-style:italic; }
+.paste-wrapper { position:relative; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(26,26,46,.15); }
+.paste-block { background:#1a1a2e; color:#d4d4e4; padding:1.75rem 1.5rem 1.5rem; font-family:"SF Mono",Menlo,Monaco,Consolas,monospace; font-size:.82rem; line-height:1.6; white-space:pre-wrap; overflow-x:auto; max-height:420px; overflow-y:auto; border-radius:16px; }
+.paste-block::-webkit-scrollbar { width:8px; height:8px; }
+.paste-block::-webkit-scrollbar-thumb { background:#3a3a4e; border-radius:4px; }
+.copy-btn { position:absolute; top:.85rem; right:.85rem; background:linear-gradient(135deg,var(--orange) 0%,var(--orange-warm) 100%); color:#fff; border:none; padding:.55rem 1.1rem; border-radius:999px; font-size:.82rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:inherit; letter-spacing:.02em; box-shadow:0 4px 12px rgba(217,109,58,.4); display:inline-flex; align-items:center; gap:.4rem; }
+.copy-btn:hover { transform:translateY(-1px); box-shadow:0 6px 16px rgba(217,109,58,.5); }
+.copy-btn.copied { background:linear-gradient(135deg,var(--teal) 0%,var(--teal-deep) 100%); box-shadow:0 4px 12px rgba(44,120,115,.4); }
+.quote { background:var(--paper-warm); border-left:3px solid var(--teal); padding:.85rem 1.15rem; margin:.85rem 0; border-radius:0 10px 10px 0; font-style:italic; font-family:var(--serif); color:var(--ink); font-size:1.02rem; }
+footer { text-align:center; padding:3rem 1.5rem 4rem; color:var(--ink-mute); font-size:.9rem; border-top:1px solid var(--rule); margin-top:3rem; }
+footer a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(44,120,115,.3); }
+footer .footer-mark { font-family:var(--serif); font-style:italic; font-size:1rem; color:var(--ink-soft); margin-bottom:.5rem; }
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity:1; transform:translateY(0); }
+.track-divider { text-align:center; margin:3.5rem 0 1.5rem; position:relative; }
+.track-divider::before { content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:60%; height:1px; background:linear-gradient(90deg,transparent,var(--rule),transparent); z-index:0; }
+.track-divider span { font-family:var(--serif); font-style:italic; font-size:1.2rem; color:var(--ink-soft); background:var(--cream); padding:0 1.5rem; position:relative; z-index:1; }
+.lang-switcher { position:absolute; top:1rem; right:1.5rem; z-index:100; display:inline-flex; background:var(--paper); border:1px solid var(--rule); border-radius:999px; padding:3px; box-shadow:var(--shadow-sm); }
+.lang-switcher a { display:inline-block; padding:.35rem .85rem; border-radius:999px; text-decoration:none; color:var(--ink-soft); font-size:.85rem; font-weight:600; transition:all .2s; letter-spacing:.01em; }
+.lang-switcher a:hover { color:var(--teal); }
+.lang-switcher a.active { background:var(--teal); color:#fff; box-shadow:0 2px 6px rgba(44,120,115,.25); }
+.track-intro { text-align:center; font-size:1rem; color:var(--ink-soft); max-width:520px; margin:0 auto 2rem; }
+.phrases { background:var(--paper-warm); border-radius:14px; padding:1.25rem 1.5rem; margin:1.25rem 0; border:1px solid var(--rule); }
+.phrases-label { font-size:.75rem; color:var(--orange); font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.75rem; display:flex; align-items:center; gap:.5rem; }
+.phrases-label::before { content:""; width:24px; height:1px; background:var(--orange); }
+.phrases ul { list-style:none !important; margin:0 !important; padding:0; }
+.phrases li { padding:.4rem 0; font-family:var(--serif); font-style:italic; color:var(--ink); font-size:1rem; padding-left:1.25rem; position:relative; margin-bottom:0; }
+.phrases li::before { content:"›"; position:absolute; left:0; color:var(--orange); font-weight:700; font-style:normal; }
+@media (max-width:640px) {
+  .container { padding:0 1rem; }
+  .hero { padding:2rem 1rem 1rem; }
+  .section { padding:1.5rem 1.25rem; border-radius:18px; }
+  .toc { padding:1.25rem; }
+  .toc ul { grid-template-columns:1fr; }
+  .audio-block { padding:1.25rem 1.25rem 1rem; }
+  .step { padding:1rem 1.15rem; }
+  .paste-block { padding:1.25rem 1rem 1rem; font-size:.78rem; }
+  .copy-btn { padding:.45rem .9rem; font-size:.78rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-switcher">
+  <a href="/claude-cowork-4-everyone/">EN</a>
+  <a href="/claude-cowork-4-everyone/es/" class="active">ES</a>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-img-wrap">
+      <img src="hero.png" alt="Claude Cowork Para Todos — ilustración de una persona en una laptop con una carpeta de archivos">
+    </div>
+    <h1>Claude Cowork <em>Para Todos</em></h1>
+    <p class="tagline">Tu asistente de IA, en un solo pegado. Instálalo, dale una carpeta, y aprende a usarlo bien.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">~20 minutos para configurar</span>
+      <span class="hero-badge">Sin programar</span>
+      <span class="hero-badge">Sin jerga técnica</span>
+    </div>
+  </div>
+</header>
+
+<div class="speed-bar">
+  <span class="speed-label"><span class="speed-icon">⚡</span> Velocidad del audio</span>
+  <div class="speed-pills">
+    <button data-speed="1" class="active">1×</button>
+    <button data-speed="1.25">1.25×</button>
+    <button data-speed="1.5">1.5×</button>
+    <button data-speed="2">2×</button>
+  </div>
+</div>
+
+<main class="container">
+
+<nav class="toc reveal">
+  <div class="toc-label">Comienza Aquí</div>
+  <ul>
+    <li><a href="#what"><span class="toc-emoji">🎯</span> ¿Qué es Claude Cowork?</a></li>
+    <li><a href="#install"><span class="toc-emoji">🔌</span> Instala Claude Cowork</a></li>
+    <li><a href="#folder"><span class="toc-emoji">📁</span> Asigna Tu Carpeta</a></li>
+    <li><a href="#bootstrap"><span class="toc-emoji">🎤</span> Inicia Tu Cowork</a></li>
+  </ul>
+  <div class="toc-label" style="margin-top: 1.25rem;">Aprende el Arte</div>
+  <ul>
+    <li><a href="#memory"><span class="toc-emoji">🧠</span> Cómo Recuerda</a></li>
+    <li><a href="#talking"><span class="toc-emoji">🗣️</span> Habla con Tu Asistente</a></li>
+    <li><a href="#connectors"><span class="toc-emoji">🔗</span> Conectores</a></li>
+    <li><a href="#verify"><span class="toc-emoji">✅</span> Confía pero Verifica</a></li>
+    <li><a href="#cant"><span class="toc-emoji">🚫</span> Lo que No Puede Hacer</a></li>
+    <li><a href="#habit"><span class="toc-emoji">☕</span> Creando el Hábito</a></li>
+  </ul>
+</nav>
+
+<section class="section reveal" id="what">
+  <h2><span class="emoji">🎯</span> ¿Qué es Claude Cowork?</h2>
+  <img class="section-img" src="section-1-what.png" alt="Un chatbot en una burbuja de diálogo vs Cowork — un personaje en un escritorio con archivos y una laptop">
+  <p>Probablemente ya usaste un chatbot antes. ChatGPT, el Claude normal en tu navegador. Te acercas, haces una pregunta, obtienes una respuesta, cierras la pestaña. Útil. Pero limitado. Es como detener a <strong>un extraño conocedor en la calle</strong> — inteligente, servicial, desaparecido en el momento en que te alejas.</p>
+  <p>Cowork es diferente. Cowork es un <strong>pasante en el escritorio junto al tuyo.</strong> Le das a ese pasante una carpeta; ellos leen todo lo que hay en ella. Les das una tarea; trabajan en ella en múltiples pasos. Vuelves mañana; te recuerdan. El mismo cerebro que el chatbot Claude. Configuración completamente diferente.</p>
+  <p style="margin-top:1.25rem;"><strong>Las tres pestañas.</strong> Cuando abras la aplicación de escritorio de Claude, verás tres en la parte superior:</p>
+  <ul>
+    <li><strong>Chat</strong> — el extraño conocedor. Preguntas rápidas, sin memoria.</li>
+    <li><strong>Cowork</strong> — el pasante con tu carpeta. Lo que vamos a configurar hoy.</li>
+    <li><strong>Code</strong> — para desarrolladores de software. Ignórala por ahora.</li>
+  </ul>
+  <p style="margin-top:1.25rem;">Al final de las próximas cuatro secciones tendrás:</p>
+  <ul class="checkmark-list">
+    <li>Claude instalado con acceso a una carpeta que tú controlas</li>
+    <li>Un asistente que te recuerda entre conversaciones</li>
+    <li>Un chequeo diario a las 9am para crear el hábito</li>
+  </ul>
+  <div class="audio-block">
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Escucha: ¿Qué es Claude Cowork?</span>
+    </div>
+    <audio controls preload="metadata" src="audio-01-es.mp3"></audio>
+  </div>
+</section>
+
+<section class="section reveal" id="install">
+  <h2><span class="emoji">🔌</span> Instala Claude Cowork</h2>
+  <img class="section-img" src="section-2-install.png" alt="Una pantalla de laptop mostrando tres pestañas etiquetadas Chat, Cowork, Code con la pestaña Cowork resaltada">
+  <p>Cuatro pasos. Hazlos en orden — el orden importa.</p>
+  <div class="step">
+    <h3><span class="step-num">1</span>Suscríbete a Claude <em>primero</em></h3>
+    <p>Ve a <a href="https://claude.ai/upgrade" target="_blank">claude.ai/upgrade</a> y suscríbete a Claude Pro <strong>antes</strong> de descargar la aplicación de escritorio. Hay un bug donde Cowork no aparece si descargas primero y te suscribes después — puede tomar un tiempo resolverlo. Ahórrate el dolor de cabeza: suscríbete primero.</p>
+    <div class="checkpoint"><span><strong>Punto de control:</strong> Ves "Pro" (o "Max") junto a tu nombre en claude.ai.</span></div>
+  </div>
+  <div class="step">
+    <h3><span class="step-num">2</span>Actualiza tu sistema operativo</h3>
+    <p><strong>Mac:</strong> Menú Apple → Configuración del Sistema → General → Actualización de Software.<br><strong>Windows:</strong> Inicio → Configuración → Windows Update.<br>Ejecuta todas las actualizaciones disponibles. Reinicia si te lo pide. Cowork necesita un sistema operativo reciente.</p>
+    <div class="checkpoint"><span><strong>Punto de control:</strong> Tu sistema operativo reporta que está actualizado.</span></div>
+  </div>
+  <div class="step">
+    <h3><span class="step-num">3</span>Descarga Claude Desktop</h3>
+    <p>Ve a <a href="https://claude.ai/download" target="_blank">claude.ai/download</a> e instala como cualquier aplicación normal — arrastra a Aplicaciones en Mac, o ejecuta el instalador en Windows. Inicia sesión con la cuenta que acabas de suscribir.</p>
+    <div class="checkpoint"><span><strong>Punto de control:</strong> Claude Desktop está abierto y has iniciado sesión.</span></div>
+  </div>
+  <div class="step">
+    <h3><span class="step-num">4</span>Confirma que las tres pestañas aparecen</h3>
+    <p>En la parte superior de la ventana de Claude Desktop, deberías ver tres pestañas una al lado de la otra: <strong>Chat</strong>, <strong>Cowork</strong> y <strong>Code</strong>. Esa es la señal de éxito — debería verse exactamente así:</p>
+
+![Barra de herramientas con tres pestañas mostrando Chat, Cowork seleccionado, y Code](cowork-tabs-success.png)
+    <p>Si solo ves una o dos pestañas, tu suscripción Pro aún no se ha propagado. Espera 5-10 minutos, cierra sesión y vuelve a entrar, reinicia la aplicación. Si todavía falta después de 20 minutos, verifica que tu suscripción se haya procesado en claude.ai.</p>
+    <div class="checkpoint"><span><strong>Punto de control:</strong> Ves las tres pestañas. Haz clic en "Cowork." Ahí es a donde vamos a continuación.</span></div>
+  </div>
+  <div class="audio-block">
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Escucha: El Recorrido de Instalación</span>
+    </div>
+    <audio controls preload="metadata" src="audio-02-es.mp3"></audio>
+  </div>
+</section>
+
+<section class="section reveal" id="folder">
+  <h2><span class="emoji">📁</span> Asigna Tu Carpeta</h2>
+  <img class="section-img" src="section-3-folder.png" alt="Una mano señalando una carpeta etiquetada 'Mi Claude' en un escritorio, archivos visibles adentro">
+  <p>Este es el paso más importante del curso. Lo que hace que Cowork sea realmente <em>Cowork</em> en lugar de solo otro chatbot.</p>
+  <p><strong>¿Por qué una carpeta?</strong> Los asistentes de chat te olvidan en el momento en que cierras la ventana. Cowork recuerda — pero solo porque puede leer y escribir archivos en una carpeta en tu computadora a la que le das acceso. La memoria de tu asistente vive en tu disco duro, en archivos de texto plano que puedes abrir en Word o leer en tu teléfono.</p>
+  <p><strong>Cómo asignar una:</strong></p>
+  <ol>
+    <li>En la pestaña Cowork, busca <strong>Settings</strong> (ícono de engranaje, o bajo un menú en la esquina).</li>
+    <li>Encuentra la opción llamada <strong>Workspace folder</strong> (a veces "Working folder" o simplemente "Folder").</li>
+    <li>Haz clic en ella. Obtendrás un selector de carpetas normal de Mac o Windows.</li>
+    <li><strong>Recomendado:</strong> No elijas una carpeta existente llena de documentos de trabajo. Crea una carpeta nueva en tu Escritorio llamada <code>Mi Claude</code>. Fácil de encontrar, no se mezcla con nada más.</li>
+  </ol>
+  <p><strong>Confirma que funcionó.</strong> Arrastra un documento de Word o archivo de texto a la carpeta que acabas de elegir. Luego ve a Cowork y escribe:</p>
+  <div class="quote">"Lee el archivo en mi carpeta y dime qué dice."</div>
+  <p>Si Claude te lo lee de vuelta, estás conectado. Si no, verifica que la carpeta que elegiste sea realmente la que Cowork está usando.</p>
+  <div class="audio-block">
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Escucha: Por Qué Importa la Carpeta</span>
+    </div>
+    <audio controls preload="metadata" src="audio-03-es.mp3"></audio>
+  </div>
+</section>
+
+<section class="section reveal" id="bootstrap">
+  <h2><span class="emoji">🎤</span> Inicia Tu Cowork</h2>
+  <img class="section-img" src="section-4-bootstrap.png" alt="Un portapapeles o ícono de pegar cayendo en una ventana de chat, con un asistente emergiendo — sensación mágica y acogedora">
+  <p>Ahora pegas un mensaje en tu Cowork y se configura solo. Se nombra a sí mismo, te entrevista, guarda tu contexto, y programa un chequeo diario.</p>
+  <div class="expect">
+    <div class="expect-label">Lo que está por suceder</div>
+    <ol>
+      <li>Tu Cowork te dirá hola calurosamente y explicará la configuración (~15 min).</li>
+      <li>Te preguntará cómo llamarlo — elige un nombre.</li>
+      <li>Te hará algunas preguntas rápidas sobre cómo quieres que te hable.</li>
+      <li>Te entrevistará sobre tu trabajo — una pregunta a la vez, ~10 minutos.</li>
+      <li>Guardará lo que le dijiste en un archivo en tu carpeta para que te recuerde para siempre.</li>
+      <li>Creará una lista de tareas inicial con algunas cosas reales para probar.</li>
+      <li>Programará un chequeo diario a las 9am para ayudarte a terminar la lista de tareas una tarea a la vez.</li>
+    </ol>
+    <p>Cada día de semana a las 9am después de eso, tu Cowork te pinga con una tarea abierta. Respondes "hecho," "todavía no," o "saltar." Ese es el ritmo.</p>
+  </div>
+  <div class="audio-block">
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Escucha: Qué Hace el Pegado</span>
+    </div>
+    <audio controls preload="metadata" src="audio-04-es.mp3"></audio>
+  </div>
+  <div class="paste-section">
+    <p class="paste-cta">Copia el mensaje de abajo y pégalo en tu Cowork. Envíalo. Luego sigue la guía de tu asistente.</p>
+    <div class="paste-wrapper">
+      <button class="copy-btn" id="copy-btn"><span>📋</span> Copiar</button>
+      <pre class="paste-block" id="paste-block">Hola! Te estoy configurando como mi asistente de trabajo por primera vez. No soy particularmente técnico. Uso Word y Excel para la mayoría de las cosas. Por favor ve despacio, pregúntame una cosa a la vez, y usa lenguaje sencillo. Sin jerga.
+
+Me gustaría que te configures guiándome a través de cuatro cosas hoy. Sabrás que terminamos cuando confirmes todas ellas.
+
+PARTE A — Nombre y personalidad
+
+Primero: pregúntame cómo quiero llamarte. Ese es tu nombre de ahora en adelante.
+
+Luego hazme tres preguntas cortas, una a la vez:
+  1. ¿Debo hablarte formalmente o casualmente?
+  2. ¿En qué idioma debemos trabajar? (Español por defecto — o dime otro idioma si prefieres ese)
+  3. ¿Debo ser amigable y conversacional, o eficiente y breve?
+
+Anota mis respuestas.
+
+PARTE B — Entrevístame, una pregunta a la vez
+
+  1. ¿Cuál es tu nombre?
+  2. ¿A qué te dedicas? Dime en palabras simples.
+  3. ¿Cómo se ve una semana típica para ti?
+  4. ¿Qué herramientas usas día a día? (Word, Excel, Outlook, Gmail, Google Drive, cualquier otra cosa)
+  5. ¿Hay varios proyectos o clientes diferentes con los que trabajas, o principalmente una cosa?
+  6. ¿Qué tipo de tareas ocupan la mayor parte de tu tiempo?
+  7. ¿Cuál es la cosa más molesta o repetitiva en tu trabajo — lo que delegarías primero si pudieras?
+  8. ¿Hay algo más que deba saber sobre ti para ser útil?
+
+PARTE C — Configura mis archivos
+
+  - Guarda mis respuestas de la Parte A y Parte B en un archivo llamado `about-me.md` en la parte superior de mi carpeta de trabajo. Usa encabezados claros. De ahora en adelante, cada vez que trabajemos juntos, lee ese archivo primero para que me recuerdes.
+  - Crea un archivo llamado `todo.md` en la parte superior de mi carpeta de trabajo con exactamente estas tareas iniciales:
+
+      # Mi Lista de Tareas
+
+      Cada ítem:
+      - [ ] **Título de la tarea** — qué es
+        - Estado: abierta
+        - Última vez preguntada: nunca
+        - Notas:
+
+      ---
+
+      ## Tareas iniciales (trabajaremos en estas juntos)
+
+      - [ ] **Muéstrame un pedazo real de tu trabajo** — Arrastra un documento, email, captura de pantalla, o nota a tu carpeta de trabajo y dime en qué necesitas ayuda. Esta es tu primera victoria real.
+        - Estado: abierta
+        - Última vez preguntada: nunca
+        - Notas:
+
+      - [ ] **Conecta tu email** — En configuración de Cowork → Connectors, inicia sesión con Outlook o Gmail. Esto me permite leer tu bandeja de entrada para ayudar con respuestas.
+        - Estado: abierta
+        - Última vez preguntada: nunca
+        - Notas:
+
+      - [ ] **Háblame de una tarea recurrente específica** — Elige una cosa que hagas cada semana y recórremela. Veré si puedo hacerla más rápida.
+        - Estado: abierta
+        - Última vez preguntada: nunca
+        - Notas:
+
+      - [ ] **Agrega una segunda carpeta de proyecto, si tienes múltiples proyectos/clientes** — Dime que quieres agregar otra, y crearé la estructura de carpetas contigo.
+        - Estado: abierta
+        - Última vez preguntada: nunca
+        - Notas:
+
+PARTE D — Programa el chequeo diario
+
+Crea una tarea programada que se ejecute cada día de semana a las 9:00am en mi zona horaria local con este mensaje:
+
+---INICIO DE MENSAJE PROGRAMADO---
+
+Buenos días. Lee primero `about-me.md` y `todo.md`.
+
+Encuentra la tarea MÁS ANTIGUA con estado "abierta". Solo una. Ignora el resto.
+
+Salúdame calurosamente en una oración corta usando mi nombre. Luego pregúntame sobre esa una tarea en lenguaje sencillo. Algo como:
+
+"¡Buenos días! La tarea abierta de hoy sigue siendo: [título de la tarea]. ¿Dónde estás con ella — hecha, todavía no, o quieres saltarla?"
+
+Espera mi respuesta. Luego:
+
+- Si digo "hecho" o algo que confirme la finalización → márcala [x], cambia el estado a "hecha", anota la fecha de hoy, escribe una frase cálida de una línea, y dime qué sigue en la lista (solo vista previa — no preguntes sobre ella todavía).
+
+- Si digo "todavía no" o describo un bloqueo → mantenla abierta, actualiza "Última vez preguntada" a hoy, guarda cualquier nota en "Notas:". Pregunta si quiero hacerla AHORA MISMO con tu ayuda. Si sí, guíame a través de ella. Si no, di "ok, entonces mañana" y termina.
+
+- Si digo "saltar" o "no es relevante" → cambia el estado a "saltada", anota la fecha, pregunta brevemente por qué (una pregunta corta), guarda mi respuesta en Notas. No discutas.
+
+- Si mi respuesta es vaga, haz UNA pregunta de aclaración. No acumules.
+
+Tono: cálido, breve, al mismo nivel. Como un amigo tranquilo que sabe que soy capaz.
+
+Termina cada chequeo guardando el `todo.md` actualizado. Así es como el chequeo de mañana sabe dónde estamos.
+
+---FIN DE MENSAJE PROGRAMADO---
+
+Después de que las cuatro partes estén hechas, confirma en voz alta:
+  1. El nombre que elegí para ti
+  2. Las tres configuraciones de personalidad
+  3. Que `about-me.md` y `todo.md` existen en mi carpeta
+  4. Que el chequeo diario de 9am está programado
+
+Luego di: "Estamos listos. Tu primera tarea real está en tu lista de tareas — arrastra algo en lo que estés trabajando a la carpeta y dime qué necesitas. Estaré aquí. Y te veré mañana a las 9 para nuestro primer chequeo."
+
+Comienza ahora con la Parte A — pregúntame cómo quieres que te llame.</pre>
+    </div>
+  </div>
+  <div class="audio-block">
+    <div class="audio-block-header">
+      <span class="audio-block-icon">🎧</span>
+      <span class="audio-block-label">Escucha: Bienvenido a Claude Cowork</span>
+    </div>
+    <audio controls preload="metadata" src="audio-05-es.mp3"></audio>
+  </div>
+</section>
+
+<div class="track-divider reveal"><span>Ahora volvamos buenos en esto</span></div>
+<p class="track-intro reveal">Ya estás configurado. Los próximos seis capítulos te enseñan cómo realmente <em>usar</em> tu asistente bien — cómo recuerda, cómo hablarle, qué puede hacer, qué no puede, y cómo hacer que se mantenga. Lee a tu propio ritmo.</p>
+
+<section class="section reveal" id="memory">
+  <h2><span class="emoji">🧠</span> Cómo Recuerda</h2>
+  <p>Aquí está la cosa más extraña sobre tu nuevo asistente: tiene memoria perfecta dentro de una sola conversación, y memoria de pez dorado entre ellas. Cierra el chat, abre uno nuevo — se fue. No recuerda el ayer. No recuerda el artículo que mencionaste la semana pasada.</p>
+  <p>Lo sé. Suena mal. Hay una solución, y es elegante.</p>
+  <p><strong>Tu carpeta es el archivador de tu asistente.</strong> Cualquier cosa que quieras que recuerde mañana, guárdala ahí hoy.</p>
+  <p>Ya viste esto en acción. El archivo <code>about-me.md</code> que hiciste durante la inicialización es el manual de incorporación del pasante — lo primero que leen cada mañana, para que sepan quién eres. El archivo <code>todo.md</code> mantiene tus tareas a través de los días. La carpeta lo contiene todo.</p>
+  <p>La regla: cualquier cosa importante, pídele a tu asistente que la guarde. ¿Un borrador que te gustó? Guárdalo. ¿Una idea útil? Guárdala. La conversación es solo donde hablas; la carpeta es la memoria.</p>
+  <div class="phrases">
+    <div class="phrases-label">Frases para usar</div>
+    <ul>
+      <li>"Siempre lee mi archivo about-me antes de que empecemos a trabajar."</li>
+      <li>"Guarda esto como un archivo para que lo tengamos la próxima vez."</li>
+      <li>"Si olvidas algo que discutimos, revisa la carpeta primero."</li>
+    </ul>
+  </div>
+  <p>Versión más pequeña de esto <em>dentro</em> de una sola conversación: si un chat se vuelve realmente largo — cientos de mensajes — tu asistente empieza a olvidar cosas de antes. Misma solución. Empieza un chat nuevo, déjalo releer la carpeta, vuelves a plena potencia.</p>
+  <p><strong>Cambio mental:</strong> deja de preguntar "¿qué recuerda mi asistente?" Empieza a preguntar "¿qué hay en el archivador?" Esa es la respuesta.</p>
+</section>
+
+<section class="section reveal" id="talking">
+  <h2><span class="emoji">🗣️</span> Habla con Tu Asistente</h2>
+  <p>Este es el capítulo de mayor impacto del curso. Domina estos hábitos y tu asistente pasa de "aceptable" a genuinamente útil.</p>
+  <p>Aquí está el patrón en el que cae la mayoría de la gente. Abren el chat y ladran: <em>"escríbeme un email sobre X."</em> Envían. Obtienen algo mediocre. Culpan a la IA. Es como darle a un nuevo empleado una oración y esperar que lea tu mente.</p>
+  <p>La solución no es más conocimiento de IA. Son tres pequeños hábitos.</p>
+  <p><strong>Hábito 1 — Informa antes de pedir.</strong> No empieces con la solicitud — empieza con la situación. Imagina informar a un freelancer competente que nunca conoció tu negocio. Malo: <em>"escribe un pitch."</em> Bueno: <em>"Trabajo en una empresa de calificación crediticia. Acabamos de lanzar una encuesta sobre tendencias de crédito de pequeñas empresas. Necesito pitchear a periodistas de fintech. El tono debe sentirse noticioso, no promocional. Ahora redáctame un pitch."</em> Misma tarea. Resultado dramáticamente mejor.</p>
+  <p><strong>Hábito 2 — Haz que tu asistente te entreviste A TI primero.</strong> Contraintuitivo pero funciona hermosamente. Solo di: <em>"Antes de que redactes algo, hazme tres preguntas para asegurarte de que entiendes."</em> Responder sus preguntas obliga a ambos a anclar en lo que realmente importa. Lo que obtienes después de la entrevista es el doble de bueno que el resultado en frío.</p>
+  <p><strong>Hábito 3 — Retrocede.</strong> Si un borrador se siente demasiado corporativo, dile: <em>"Más corto. Menos formal. Apertura más contundente. Elimina el segundo párrafo."</em> No se insulta. Solo lo rehace. Mientras más corrijas, más aprende tu voz. Trátalo como un junior que está ansioso por complacer, no como un oráculo sagrado.</p>
+  <p>Algunos otros movimientos que funcionan consistentemente:</p>
+  <ul>
+    <li><strong>Pide dos opciones en lugar de una.</strong> Comparar es más fácil que juzgar.</li>
+    <li><strong>Dile que actúe como un rol específico.</strong> <em>"Actúa como un editor y ajusta este párrafo."</em></li>
+    <li><strong>Dile cómo se ve lo bueno.</strong> <em>"Un buen pitch es de menos de 120 palabras, tiene un número en el asunto, termina con una solicitud clara."</em> Ahora tiene algo a lo que apuntar.</li>
+    <li><strong>Cuando clava algo — dile.</strong> <em>"Ese es el tono correcto. Recuerda esta voz para trabajo futuro."</em> La retroalimentación se acumula.</li>
+  </ul>
+  <div class="phrases">
+    <div class="phrases-label">Frases para memorizar</div>
+    <ul>
+      <li>"Antes de empezar, hazme tres preguntas para asegurarte de que entiendes."</li>
+      <li>"Eso es demasiado corporativo. Rehazlo más corto."</li>
+      <li>"Muéstrame dos opciones, no una."</li>
+      <li>"Actúa como un [rol específico] y reescribe esto."</li>
+    </ul>
+  </div>
+  <p>Si te llevas una línea de todo este curso: <strong>un mensaje afilado le gana a una IA inteligente.</strong> Tu trabajo es configurarlo bien.</p>
+</section>
+
+<section class="section reveal" id="connectors">
+  <h2><span class="emoji">🔗</span> Conectores</h2>
+  <p>Un conector es un <strong>cable</strong> entre tu asistente y una aplicación que ya usas. Outlook, Gmail, Google Drive, Slack, tu calendario. Conéctalo una vez, y tu asistente puede alcanzar esa aplicación de la forma en que tú alcanzarías un archivador.</p>
+  <p><strong>Para conectar uno:</strong> Configuración de Cowork → Connectors. Verás qué está disponible. Haz clic en iniciar sesión para la aplicación que quieras. Microsoft para Outlook. Google para Gmail, Drive, Calendar.</p>
+  <p><strong>Predeterminado importante:</strong> la mayoría de los conectores empiezan en <strong>modo de solo lectura.</strong> Tu asistente puede <em>ver</em> tu bandeja de entrada pero no puede enviar nada por su cuenta. Los borradores van a tu carpeta. Tú envías manualmente. Piénsalo como dejar que tu pasante lea tu pila de emails pero sin dejar que envíen nada todavía. Una vez que confíes en ellos, puedes expandir los permisos.</p>
+  <p><strong>Ejemplo real.</strong> Enviaste cinco pitches esta semana. Tres días después quieres saber quién respondió. Preguntas:</p>
+  <div class="quote">"Revisa mi bandeja de entrada para respuestas en la última semana. Resume cada una en una línea."</div>
+  <p>Tu asistente ejecuta la búsqueda, lista las respuestas, pregunta a cuál redactar una respuesta primero. Eliges. Redacta en tu carpeta. Pulis y envías.</p>
+  <p>Ese es el ciclo. Lee en la aplicación conectada. Redacta en tu carpeta. Envía manualmente. Limpio y seguro.</p>
+  <div class="phrases">
+    <div class="phrases-label">Frases para usar (después de que Outlook/Gmail esté conectado)</div>
+    <ul>
+      <li>"Busca en mi bandeja de entrada mensajes de [persona] en la última semana."</li>
+      <li>"Redacta una respuesta a esto — guárdala en mi carpeta, no envíes."</li>
+      <li>"¿A qué emails no he respondido todavía?"</li>
+    </ul>
+  </div>
+  <p><strong>No conectes todo el primer día.</strong> Cada conector agrega capacidad, pero también agrega superficie para que las cosas se desvíen. Agrega uno a la vez, cuando tengas una razón real. Empieza donde pasas la mayor parte de tu tiempo — para la mayoría de la gente, es el email.</p>
+</section>
+
+<section class="section reveal" id="verify">
+  <h2><span class="emoji">✅</span> Confía, pero Verifica</h2>
+  <p>Tu asistente tiene razón la mayor parte del tiempo. No siempre. A veces estará confiadamente equivocado sobre un hecho — una estadística, una fecha, el título de una persona, un detalle de contacto. No es común. Pero sucede.</p>
+  <p>La palabra técnica es "alucinación." La palabra práctica: <strong>confiado-pero-equivocado.</strong> Imagina el pasante ansioso que realmente quiere ser útil, y ocasionalmente inventa un pequeño detalle en lugar de admitir que no sabe. Misma energía. Misma solución.</p>
+  <p><strong>Dos categorías para mantener en tu cabeza.</strong> Hechos que vinieron DE ti — tus archivos, tus notas, lo que escribiste en este chat — tu asistente los maneja bien. Están justo frente a él. Pero hechos que vienen de su propio conocimiento — una estadística que recuerda, una persona que afirma conocer — esos son <em>borradores</em> hasta que los hayas revisado.</p>
+  <p>El truco es hacer que tu asistente te diga cuál es cuál.</p>
+  <div class="phrases">
+    <div class="phrases-label">Frases para enseñarle a tu asistente</div>
+    <ul>
+      <li>"Para cada hecho en tu respuesta, dime de dónde vino — mis archivos, mis notas, o tu conocimiento general."</li>
+      <li>"Marca cualquier cosa de la que no estés seguro. No lo suavices."</li>
+      <li>"Si no sabes algo, di no sé en lugar de adivinar."</li>
+      <li>"Dime de qué estás menos seguro en este borrador."</li>
+    </ul>
+  </div>
+  <p>Esa última es la más importante. <strong>Un buen asistente dice "no sé." Uno débil lo finge.</strong> Puedes entrenar al tuyo hacia el primero solo pidiéndolo.</p>
+  <p>Un movimiento más que vale la pena conocer: <em>"Dime de qué estás menos seguro en este borrador."</em> Tu asistente literalmente señalará sus propios puntos débiles. Úsalo antes de enviar cualquier cosa importante.</p>
+  <p>Para cualquier hecho sobre el que actúes — un email de contacto, una cita que atribuirás, una fecha en un documento — verifícalo. Mismo instinto que ya usas cuando lees el borrador de un junior antes de que salga por la puerta. Nuevo junior. Mismo instinto.</p>
+</section>
+
+<section class="section reveal" id="cant">
+  <h2><span class="emoji">🚫</span> Lo que No Puede Hacer</h2>
+  <p>Una lista corta y honesta, para que puedas planear alrededor de ellos.</p>
+  <ul>
+    <li><strong>No puede hacer llamadas telefónicas.</strong> La voz todavía es tu trabajo.</li>
+    <li><strong>No puede predecir el futuro.</strong> Puede redactar, analizar, sugerir — pero no puede decirte si un pitch funcionará, si una estrategia funcionará, si una persona dirá que sí. Esa es la parte incognoscible. Igual que cualquier junior — pueden preparar la presentación, no pueden hacer que el cliente compre.</li>
+    <li><strong>No puede reemplazar tu juicio.</strong> Él redacta; tú decides. De la misma forma en que un senior anula el trabajo de un junior, tú anulas el de tu asistente. Esa dinámica es normal, saludable, y la forma correcta de trabajar.</li>
+    <li><strong>No sabe eventos recientes.</strong> Su conocimiento tiene una fecha límite — dejó de leer las noticias en algún momento. Para cualquier cosa sensible al tiempo, verifica o pega la fuente más reciente.</li>
+    <li><strong>Puede estar equivocado sobre los hechos</strong> (ve el capítulo anterior). Verifica lo que importa.</li>
+  </ul>
+  <p><strong>El marco con el que partir:</strong> un gran asistente te hace más rápido. Los mejores también saben cuándo retroceder. El tuyo está tratando de ser del segundo tipo. Así que si alguna vez intenta hacer una llamada que realmente es tuya — retrocede. Haz que trabaje en las entradas, no en los veredictos. Esa es la división entre un pasante útil y uno presuntuoso.</p>
+  <div class="phrases">
+    <div class="phrases-label">Frases para enseñarle</div>
+    <ul>
+      <li>"Si realmente no puedes hacer esta tarea, dime — no la finjas."</li>
+      <li>"Para cualquier cosa reciente, verifica antes de responder."</li>
+      <li>"Esta es mi decisión. Solo dame las entradas."</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section reveal" id="habit">
+  <h2><span class="emoji">☕</span> Creando el Hábito</h2>
+  <p>La mayoría de las personas que prueban herramientas de IA renuncian en la segunda semana. No porque las herramientas sean malas — porque nunca crearon el hábito. Las herramientas se quedan ahí juntando polvo <strong>como una membresía de gimnasio en febrero.</strong> No seas esa persona.</p>
+  <p>Aquí está el ritmo diario que funciona.</p>
+  <p><strong>Mañana, cinco minutos.</strong> Abre Cowork. Nombra tu proyecto, si tienes más de uno: <em>"Estoy trabajando en este proyecto hoy."</em> Pídele a tu asistente que te guíe a través del rastreador de ayer — qué se movió, qué queda. Establece las tres prioridades principales de hoy.</p>
+  <p><strong>Fin del día, dos minutos.</strong> Registra qué pasó. Quién respondió. Qué se terminó. Qué se debe mañana.</p>
+  <p>Ese es todo el ritual. Cinco minutos entrando, dos minutos saliendo. El chequeo diario de 9am que configuraste antes iniciará el ritual matutino para ti. No te lo saltes.</p>
+  <p>Dos semanas de esto y algo cambia. Tu asistente deja de ser una <em>herramienta que usas</em> y se convierte en un <strong>colega con el que trabajas.</strong> Sabrás que está funcionando cuando sucedan dos cosas: primero, dejas de tener ese momento de "espera, ¿qué estaba haciendo otra vez?" en medio del día — el rastreador lo mantiene por ti. Segundo, dejas de pensar en ello como "IA" en absoluto. Solo le pides a tu asistente la cosa y sigues adelante.</p>
+  <p style="font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--ink); margin-top:1.5rem;">Ese es el objetivo. El curso termina aquí. Tu trabajo comienza.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-mark">— hecho para ti, por Michael —</div>
+  <a href="https://mgoffredi.com">mgoffredi.com</a>
+</footer>
+
+<script>
+const speedButtons = document.querySelectorAll('.speed-pills button');
+const audios = document.querySelectorAll('audio');
+function setSpeed(speed) { audios.forEach(a => { a.playbackRate = speed; }); }
+speedButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const speed = parseFloat(btn.dataset.speed);
+    speedButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    setSpeed(speed);
+  });
+});
+audios.forEach(a => {
+  a.addEventListener('loadedmetadata', () => {
+    const active = document.querySelector('.speed-pills button.active');
+    if (active) a.playbackRate = parseFloat(active.dataset.speed);
+  });
+});
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const copyBtn = document.getElementById('copy-btn');
+const pasteBlock = document.getElementById('paste-block');
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(pasteBlock.textContent);
+    copyBtn.innerHTML = '<span>✓</span> ¡Copiado!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => { copyBtn.innerHTML = '<span>📋</span> Copiar'; copyBtn.classList.remove('copied'); }, 2000);
+  } catch (err) {
+    const range = document.createRange();
+    range.selectNode(pasteBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    copyBtn.innerHTML = '<span>✓</span> ¡Copiado!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => { copyBtn.innerHTML = '<span>📋</span> Copiar'; copyBtn.classList.remove('copied'); }, 2000);
+  }
+});
+</script>
+
+</body>
+</html>
