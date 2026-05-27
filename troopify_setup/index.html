@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Troopify Setup — Vanja Moves BM</title>
+<title>Troopify Setup</title>
 <style>
   :root {
     --bg: #fbfaf7;
@@ -198,14 +198,14 @@
 <div class="wrap">
 
   <header class="page">
-    <p class="eyebrow">For Jimmy &middot; ~5 minutes</p>
-    <h1>Vanja Moves BM — System User setup for Troopify</h1>
+    <p class="eyebrow">~5 minutes</p>
+    <h1>System User setup for Troopify</h1>
     <p class="lede">Three actions inside Business Settings, one token handoff. No advanced Meta knowledge needed.</p>
   </header>
 
   <section>
     <h2>What this is</h2>
-    <p>Troopify (our ad-launching tool) needs a non-human API identity inside the Vanja Moves Business Manager to publish ads on our behalf. Meta calls this a <strong>System User</strong> — it's not a person (no inbox, no profile), and it can only do what you explicitly assign to it.</p>
+    <p>Troopify (the ad-launching tool we're integrating) needs a non-human API identity inside your Business Manager to publish ads on your behalf. Meta calls this a <strong>System User</strong> — it's not a person (no inbox, no profile), and it can only do what you explicitly assign to it.</p>
     <p>This is the standard way every third-party ad tool integrates with Meta. You stay in control: the System User can be revoked or its permissions changed at any time from Business Settings.</p>
   </section>
 
@@ -213,7 +213,7 @@
     <h2>What you'll do</h2>
     <ol>
       <li>Create a System User</li>
-      <li>Assign it to ad accounts and pages</li>
+      <li>Assign it to ad accounts, pages, and Instagram accounts</li>
       <li>Generate a token and hand it to Michael</li>
     </ol>
   </section>
@@ -227,7 +227,7 @@
         <h3>Create the System User</h3>
         <ol>
           <li>Go to <a href="https://business.facebook.com" target="_blank" rel="noopener">business.facebook.com</a></li>
-          <li>Top-left, make sure you're on the <strong>Vanja Moves</strong> business portfolio</li>
+          <li>Top-left, make sure you're on the correct business portfolio</li>
           <li>Open <strong>Business Settings</strong> (gear icon, or All Tools → Business Settings)</li>
           <li>Left sidebar: <strong>Users → System Users</strong></li>
           <li>Click <strong>Add</strong> &rarr; <strong>Create new system user</strong></li>
@@ -236,7 +236,7 @@
           <li>Click <strong>Create system user</strong></li>
         </ol>
         <div class="callout warn">
-          <p><strong>Why Employee, not Admin?</strong> Meta hard-caps Admin System Users at <strong>1 per Business Manager</strong>, regardless of access level — and Vanja Moves already has theirs. Admin System Users are meant only for <em>managing</em> other system users, not for asset access. The Employee System User does everything Troopify needs once we assign it to the right assets in the next step.</p>
+          <p><strong>Why Employee, not Admin?</strong> Meta hard-caps Admin System Users at <strong>1 per Business Manager</strong>, regardless of access level — and most BMs already have theirs. Admin System Users are meant only for <em>managing</em> other system users, not for asset access. The Employee System User does everything Troopify needs once we assign it to the right assets in the next step.</p>
         </div>
       </div>
     </div>
@@ -244,23 +244,12 @@
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-body">
-        <h3>Assign it to ad accounts and pages</h3>
+        <h3>Assign it to ad accounts, pages, and IG accounts</h3>
         <p>Still on the System User's page, click <strong>Add Assets</strong> (or <strong>Assign Assets</strong>).</p>
-        <p><strong>Ad accounts</strong> — select both, toggle <em>Manage campaigns</em> ON:</p>
-        <ul>
-          <li>Vanja Moves</li>
-          <li>Vanja Moves 2</li>
-        </ul>
-        <p><strong>Pages</strong> — select both, grant <em>Manage Page</em> (or in the new task-based UI: turn on <em>Ads</em> and <em>Content</em>):</p>
-        <ul>
-          <li>vanja.moves</li>
-          <li>Movesmethod</li>
-        </ul>
-        <p><strong>Instagram accounts</strong> — select both, grant <em>Manage Instagram</em> / <em>Create content</em>:</p>
-        <ul>
-          <li>vanja.moves</li>
-          <li>movesmethod</li>
-        </ul>
+        <p><strong>Ad accounts</strong> — select every ad account you'll launch into, and toggle <em>Manage campaigns</em> ON for each.</p>
+        <p><strong>Pages</strong> — select every Facebook Page you'll publish ads from. Grant <em>Manage Page</em> (or in the new task-based UI: turn on <em>Ads</em> and <em>Content</em>).</p>
+        <p><strong>Instagram accounts</strong> — select each IG account paired with the pages above, and grant <em>Manage Instagram</em> / <em>Create content</em>.</p>
+        <p><strong>Pixel</strong> — if your conversion pixel lives outside the ad account, assign it to the System User as well.</p>
         <p>Save.</p>
       </div>
     </div>
@@ -291,14 +280,7 @@
       <div class="step-num">4</div>
       <div class="step-body">
         <h3>Hand the token to Michael</h3>
-        <p>The token is a sensitive credential — anyone with it can publish ads from these accounts. <strong>Do not paste it into a public Slack channel or unencrypted email.</strong></p>
-        <p>Use one of these:</p>
-        <ul>
-          <li><strong>1Password / Bitwarden</strong> shared item or share link</li>
-          <li><strong>Signal</strong> DM or encrypted messenger</li>
-          <li><a href="https://onetimesecret.com" target="_blank" rel="noopener">onetimesecret.com</a> — paste the token, send the link, it self-destructs after first view</li>
-        </ul>
-        <p>Michael tests it works, then hands it off to Yury (Troopify) via Yury's secure channel. The token lives in Troopify's encrypted vault — it never sits in our Airtable or anywhere browsable.</p>
+        <p>Send the token to Michael directly in Slack. He'll pass it to Troopify, where it lives in their encrypted vault.</p>
       </div>
     </div>
   </section>
@@ -320,7 +302,7 @@
         <li>Add or remove people from the BM</li>
         <li>Touch any ad account or page not on its assignment list</li>
         <li>Read or post organic content, DMs, or anything non-ad on the pages</li>
-        <li>Access your personal Facebook account or anything outside Vanja Moves</li>
+        <li>Access your personal Facebook account or anything outside the assets you assigned</li>
       </ul>
       <p>If something looks off after the integration is live, the kill switch above is one click.</p>
     </div>
