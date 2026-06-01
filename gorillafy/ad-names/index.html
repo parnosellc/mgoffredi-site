@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Ad Naming for Creative — MovesMethod</title>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #1a1816;
+    --ink-muted: #555048;
+    --ink-faint: #8a847a;
+    --line: #e9e5dd;
+    --line-strong: #d4cdc0;
+    --accent: #b8451f;
+    --accent-soft: #fdf3ed;
+    --code-bg: #f4f1ea;
+    --warn-bg: #fbf5e6;
+    --warn-line: #e8d9a8;
+    --ok-bg: #f0f4ec;
+    --ok-line: #cadbb9;
+    --err-bg: #fdecea;
+    --err-line: #f3b8b1;
+    --err-ink: #a32519;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 28px 96px; }
+  header.page { padding-bottom: 32px; margin-bottom: 40px; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin: 0 0 12px;
+  }
+  h1 { font-size: 38px; line-height: 1.15; margin: 0 0 16px; font-weight: 500; letter-spacing: -0.01em; }
+  .lede { font-size: 19px; color: var(--ink-muted); margin: 0; }
+  h2 {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; margin: 56px 0 20px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 22px; margin: 40px 0 12px; font-weight: 500; letter-spacing: -0.005em;
+  }
+  h4 {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88em; background: var(--code-bg); padding: 2px 6px; border-radius: 4px;
+  }
+  pre {
+    background: var(--code-bg); padding: 16px 18px; border-radius: 6px; overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px; line-height: 1.55; border: 1px solid var(--line);
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+  ul, ol { padding-left: 24px; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 16px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; border-bottom: 1px solid var(--line-strong);
+  }
+  td code { font-size: 14px; }
+  footer.page {
+    margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: 14px; color: var(--ink-faint);
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+
+  /* Cross-link banner */
+  .crosslink {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 14px 18px; margin: 0 0 32px;
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 14px; color: var(--ink-muted);
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  }
+  .crosslink a {
+    font-weight: 600; color: var(--accent); text-decoration: none;
+    white-space: nowrap;
+  }
+  .crosslink a:hover { text-decoration: underline; }
+
+  /* TOC */
+  .toc {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 18px 24px; margin: 32px 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: 14px;
+  }
+  .toc strong {
+    display: block; text-transform: uppercase; letter-spacing: 0.1em;
+    font-size: 12px; color: var(--ink-faint); margin-bottom: 10px; font-weight: 600;
+  }
+  .toc ul { list-style: none; padding: 0; margin: 0; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--ink-muted); text-decoration: none; }
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* Gorillafy recommendation card */
+  .tool-card {
+    background: var(--accent-soft); border: 1px solid #f0d4c2; border-radius: 12px;
+    padding: 32px; margin: 24px 0 40px;
+  }
+  .tool-card .tool-eyebrow {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin: 0 0 10px;
+  }
+  .tool-card h3 { margin: 0 0 14px; font-size: 22px; color: var(--ink); }
+  .tool-card p { margin: 0 0 14px; font-size: 17px; color: var(--ink); }
+  .tool-card p:last-of-type { margin-bottom: 20px; }
+  .tool-card .join-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 15px; font-weight: 600; background: var(--accent); color: white;
+    padding: 12px 22px; border-radius: 6px; text-decoration: none;
+    transition: background 0.15s ease, transform 0.1s ease; letter-spacing: 0.01em;
+  }
+  .tool-card .join-btn:hover { background: #9c3a1a; text-decoration: none; }
+  .tool-card .join-btn:active { transform: translateY(1px); }
+  .tool-card .join-btn .arrow { font-size: 18px; line-height: 1; }
+
+  /* generator card */
+  .gen-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 28px; margin: 24px 0 32px; box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+  .gen-card h3 { margin: 0 0 6px; font-size: 20px; }
+  .gen-card .gen-sub {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 14px; color: var(--ink-faint); margin: 0 0 24px;
+  }
+  .field { margin-bottom: 18px; }
+  .field label {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-muted); font-weight: 600; display: block; margin-bottom: 6px;
+  }
+  .field input, .field select {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 15px; width: 100%; padding: 10px 12px;
+    border: 1px solid var(--line-strong); border-radius: 6px; background: white;
+    color: var(--ink); transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field input:focus, .field select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .field input.invalid { border-color: var(--err-ink); background: var(--err-bg); }
+  .field .hint {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 12px; color: var(--ink-faint); margin-top: 6px; line-height: 1.4;
+  }
+  .field-row { display: flex; gap: 12px; }
+  .field-row .field { flex: 1; min-width: 0; }
+
+  .segments-list { margin-bottom: 14px; }
+  .segment-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+  .segment-row .field { margin-bottom: 0; }
+  .segment-row select { width: 200px; flex-shrink: 0; }
+  .segment-row input { flex: 1; }
+  .seg-remove {
+    flex-shrink: 0; width: 38px; height: 38px;
+    border: 1px solid var(--line-strong); background: white; border-radius: 6px;
+    cursor: pointer; color: var(--ink-faint); font-size: 18px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s ease;
+  }
+  .seg-remove:hover { border-color: var(--err-ink); color: var(--err-ink); }
+  .seg-add {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 13px; background: transparent;
+    border: 1px dashed var(--line-strong); color: var(--ink-muted);
+    padding: 8px 14px; border-radius: 6px; cursor: pointer; transition: all 0.15s ease;
+  }
+  .seg-add:hover { border-color: var(--accent); color: var(--accent); border-style: solid; }
+
+  .output { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .output-label {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; margin-bottom: 10px;
+  }
+  .output-box { display: flex; gap: 10px; align-items: stretch; }
+  .output-text {
+    flex: 1; background: var(--code-bg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 14px 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 15px; color: var(--ink); word-break: break-all; line-height: 1.5; min-width: 0;
+  }
+  .output-text.empty { color: var(--ink-faint); font-style: italic; }
+  .copy-btn {
+    flex-shrink: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 13px; font-weight: 600; background: var(--accent); color: white;
+    border: none; border-radius: 6px; padding: 10px 18px; cursor: pointer;
+    transition: background 0.15s ease; letter-spacing: 0.02em;
+  }
+  .copy-btn:hover { background: #9c3a1a; }
+  .copy-btn.copied { background: #4a8a3f; }
+  .copy-btn:disabled { background: var(--ink-faint); cursor: not-allowed; }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 48px 20px 64px; }
+    h1 { font-size: 30px; }
+    .field-row { flex-direction: column; gap: 0; }
+    .segment-row { flex-wrap: wrap; }
+    .segment-row select { width: 100%; }
+    .output-box { flex-direction: column; }
+    .crosslink { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="page">
+  <p class="eyebrow">MovesMethod · For Creative Team</p>
+  <h1>Ad Naming for Creative</h1>
+  <p class="lede">This is the naming system we're moving toward for ad creative. Nothing is using it yet — we're documenting it now so we can roll it out cleanly. Every part of the name tells you something: what product it sells, who built it, what's inside it, what size it is.</p>
+</header>
+
+<div class="crosslink">
+  <span>Looking for landing page naming? Different doc, different conversation.</span>
+  <a href="/gorillafy/lander-names/">Landing Page Naming →</a>
+</div>
+
+<div class="toc">
+  <strong>On this page</strong>
+  <ul>
+    <li><a href="#pieces">What are the pieces?</a></li>
+    <li><a href="#what">What information is in the ad name?</a></li>
+    <li><a href="#selling">What are we selling?</a></li>
+    <li><a href="#who">Who made the ad?</a></li>
+    <li><a href="#not">What's NOT in the ad name</a></li>
+    <li><a href="#series">Series and version letters</a></li>
+    <li><a href="#together">Putting it all together</a></li>
+    <li><a href="#generator">Ad name generator</a></li>
+    <li><a href="#easy">Wanna make this easy?</a></li>
+  </ul>
+</div>
+
+<!-- ============ REFERENCE DOC ============ -->
+<h2 id="pieces">What are the pieces?</h2>
+
+<h4>In human terms</h4>
+<p>An ad is built from segments — chunks of video that each have a job. A hook to grab attention. A body to deliver the message. A CTA to push action. Sometimes B-roll, testimonials, or extra decorations on top. Each segment gets a code so a name like <code>SL2743</code> immediately tells anyone <em>"that's hook segment 2743 — same one we used in those four other ads."</em></p>
+
+<h4>Technical — segment codes</h4>
+<table>
+  <thead><tr><th style="width:80px;">Code</th><th style="width:140px;">Name</th><th>What it is</th></tr></thead>
+  <tbody>
+    <tr><td><code>SL</code></td><td>Segment Lead</td><td>The hook.</td></tr>
+    <tr><td><code>SM</code></td><td>Segment Main</td><td>The meat-n-potatoes. Often a talking head, sometimes two cut together, sometimes more complex — but always the main building block.</td></tr>
+    <tr><td><code>SC</code></td><td>Segment CTA</td><td>The call to action.</td></tr>
+    <tr><td><code>XA</code></td><td>Extra Attribute</td><td>Decorations, weird little things, anything that doesn't fit another category.</td></tr>
+    <tr><td><code>XS</code></td><td>Extra Snippet</td><td>B-roll, entertaining clips.</td></tr>
+    <tr><td><code>XU</code></td><td>UGC</td><td>UGC, testimonials, workout clips. Treated as one type for simplicity.</td></tr>
+  </tbody>
+</table>
+<p>Each segment ID is 4 digits.</p>
+
+<h2 id="what">What information is in the ad name?</h2>
+<ul>
+  <li>What we're selling</li>
+  <li>Who made the final ad</li>
+  <li>The pieces (segments) it's built from</li>
+</ul>
+
+<h2 id="selling">What are we selling?</h2>
+
+<h4>In human terms</h4>
+<p>Every ad sells a product. The product is whatever the buyer pays for at checkout — not the funnel, not the ad copy, not the lander. We sell one product right now: the Toolkit. So every ad name starts with <code>tk</code>.</p>
+
+<h4>Technical</h4>
+<p>Two-letter lowercase product code. Only one in use today: <code>tk</code>. A new code is added only when a genuinely different product appears at checkout.</p>
+
+<h2 id="who">Who made the ad?</h2>
+
+<h4>In human terms</h4>
+<p>The person who exported the final cut. Not the writer, not the videographer — whoever tied the pieces together.</p>
+
+<h4>Technical</h4>
+<p>3-letter code, uppercase. Each editor picks their own. Example: Michael = <code>MGO</code>.</p>
+
+<h2 id="not">What's NOT in the ad name</h2>
+
+<p>The funnel, the landing page, the campaign — none of this goes in the filename. It's tracked separately:</p>
+<ul>
+  <li>In Airtable, on the creative record's "Eligible Landing Pages" field.</li>
+  <li>In Frame.io, on the custom field per asset.</li>
+</ul>
+<p>The reason: the same ad can run to multiple landers. Keeping the lander out of the name means one file, many possible destinations. Putting it in the name would force us to duplicate files every time we wanted to test a new placement.</p>
+
+<h2 id="series">Series and version letters (the <code>174g</code> part)</h2>
+
+<h4>In human terms</h4>
+<p>You make ads in batches — variations off the same hook, sweeps of CTA tests. We call each batch a "series" and number them. Within a series, each individual ad gets a letter (a, b, c…).</p>
+
+<h4>Technical</h4>
+<p>3-digit series number + lowercase letter. Series numbering is per-editor — <code>MGO174</code> and <code>JOC174</code> are different series, owned by different people.</p>
+
+<h2 id="together">Putting it all together</h2>
+
+<h4>Simple ad</h4>
+<pre><code>tk_MGO174g_SL2743_SM2067_SC1542_XA1180_9x16</code></pre>
+<p>Decoded:</p>
+<ul>
+  <li><code>tk</code> — Toolkit</li>
+  <li><code>MGO174g</code> — Michael, series 174, ad version g</li>
+  <li><code>SL2743</code> — hook segment 2743</li>
+  <li><code>SM2067</code> — body segment 2067</li>
+  <li><code>SC1542</code> — CTA segment 1542</li>
+  <li><code>XA1180</code> — extra decoration 1180</li>
+  <li><code>9x16</code> — final aspect ratio</li>
+</ul>
+
+<h4>Multi-segment ad</h4>
+<pre><code>tk_MGO174g_SL2743_SL2772_SM2067_SM2057_SM2280_SC1542_XA1178_XA1180_XA1258_9x16</code></pre>
+<p>Same logic, more pieces stitched together. Two hooks tested, three main bodies layered, one CTA, three decorations.</p>
+
+<!-- ============ AD NAME GENERATOR (second to last) ============ -->
+<h2 id="generator">Ad name generator</h2>
+
+<div class="gen-card">
+  <h3>Build an ad name</h3>
+  <p class="gen-sub">Fill the fields below. Output updates live. Copy to clipboard when you're done.</p>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="ad-product">Product</label>
+      <select id="ad-product">
+        <option value="tk">tk — Toolkit</option>
+      </select>
+      <div class="hint">The product at checkout. Currently only the Toolkit.</div>
+    </div>
+
+    <div class="field">
+      <label for="ad-editor">Editor</label>
+      <select id="ad-editor">
+        <option value="MGO">MGO</option>
+        <option value="JOC">JOC</option>
+        <option value="SHA">SHA</option>
+        <option value="JER">JER</option>
+        <option value="__other__">Other…</option>
+      </select>
+      <div class="hint">The person who exported the final cut.</div>
+    </div>
+  </div>
+
+  <div class="field" id="ad-editor-custom-wrap" style="display:none;">
+    <label for="ad-editor-custom">Custom editor code</label>
+    <input type="text" id="ad-editor-custom" maxlength="3" placeholder="e.g. MJG">
+    <div class="hint">3 uppercase letters. Required if "Other…" is selected.</div>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="ad-series">Series #</label>
+      <input type="text" id="ad-series" maxlength="3" inputmode="numeric" placeholder="174">
+      <div class="hint">3-digit series number (001–999). Per editor.</div>
+    </div>
+
+    <div class="field">
+      <label for="ad-letter">Ad letter</label>
+      <input type="text" id="ad-letter" maxlength="2" placeholder="g">
+      <div class="hint">Lowercase letter for the version within the series. a–z, then aa, ab…</div>
+    </div>
+
+    <div class="field">
+      <label for="ad-format">Format</label>
+      <select id="ad-format">
+        <option value="9x16">9x16</option>
+        <option value="4x5">4x5</option>
+        <option value="image">image</option>
+      </select>
+      <div class="hint">Final delivery format.</div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Segments</label>
+    <div class="segments-list" id="segments-list"></div>
+    <button class="seg-add" type="button" id="seg-add-btn">+ Add segment</button>
+    <div class="hint" style="margin-top:8px;">Each segment is a piece of the ad: hook, body, CTA, decoration, B-roll, or UGC. 4-digit ID per piece. Repeat the same type if you stack multiple of one kind.</div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Generated ad name</div>
+    <div class="output-box">
+      <div class="output-text empty" id="ad-output">fill in the fields above</div>
+      <button class="copy-btn" id="ad-copy-btn" disabled>Copy</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GORILLAFY — LAST SECTION (DR voice) ============ -->
+<h2 id="easy">Wanna make this easy?</h2>
+
+<div class="tool-card">
+  <p class="tool-eyebrow">Skip the spec</p>
+  <h3>Use Gorillafy and let the tool do the work.</h3>
+  <p>Don't memorize any of the above. Gorillafy manages the segment library, handles the assembly, and outputs files already named in this format. Drag in your hook, body, and CTA — out comes <code>tk_MGO174g_SL2743_SM2067_SC1542_9x16</code>, automatically. No spec, no thinking.</p>
+  <p>Join the MovesMethod organization on Gorillafy to start producing under this account today.</p>
+  <a class="join-btn" href="https://gorillafy.io/join/0f81ebae-e66d-4c82-b2e4-0e150a626a20" target="_blank" rel="noopener">
+    Join MovesMethod on Gorillafy <span class="arrow">→</span>
+  </a>
+</div>
+
+<div class="crosslink" style="margin-top: 56px;">
+  <span>See also: the separate system for naming the URLs ads send traffic to.</span>
+  <a href="/gorillafy/lander-names/">Landing Page Naming →</a>
+</div>
+
+<footer class="page">
+  <p>MovesMethod · Ad Naming for Creative · Maintained by Michael Goffredi</p>
+</footer>
+
+</div>
+
+<script>
+(function() {
+  const SEGMENT_TYPES = [
+    { code: 'SL', label: 'SL — Lead (hook)' },
+    { code: 'SM', label: 'SM — Main (body)' },
+    { code: 'SC', label: 'SC — CTA' },
+    { code: 'XA', label: 'XA — Extra Attribute' },
+    { code: 'XS', label: 'XS — Extra Snippet (B-roll)' },
+    { code: 'XU', label: 'XU — UGC / Testimonial' },
+  ];
+
+  const segList = document.getElementById('segments-list');
+  const segAddBtn = document.getElementById('seg-add-btn');
+
+  function buildSegmentRow(defaultType) {
+    const row = document.createElement('div');
+    row.className = 'segment-row';
+
+    const select = document.createElement('select');
+    SEGMENT_TYPES.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.code;
+      opt.textContent = t.label;
+      if (defaultType && t.code === defaultType) opt.selected = true;
+      select.appendChild(opt);
+    });
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 4;
+    input.inputMode = 'numeric';
+    input.placeholder = '0000';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'seg-remove';
+    removeBtn.type = 'button';
+    removeBtn.innerHTML = '&times;';
+    removeBtn.title = 'Remove segment';
+    removeBtn.addEventListener('click', () => {
+      row.remove();
+      updateAdName();
+    });
+
+    select.addEventListener('change', updateAdName);
+    input.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '');
+      validateField(e.target, e.target.value.length === 4);
+      updateAdName();
+    });
+
+    row.appendChild(select);
+    row.appendChild(input);
+    row.appendChild(removeBtn);
+    segList.appendChild(row);
+    return row;
+  }
+
+  buildSegmentRow('SL');
+  buildSegmentRow('SM');
+  buildSegmentRow('SC');
+
+  segAddBtn.addEventListener('click', () => {
+    buildSegmentRow('SL');
+    updateAdName();
+  });
+
+  function validateField(el, isValid) {
+    if (!el.value) { el.classList.remove('invalid'); return; }
+    if (isValid) el.classList.remove('invalid');
+    else el.classList.add('invalid');
+  }
+
+  const editorSelect = document.getElementById('ad-editor');
+  const editorCustomWrap = document.getElementById('ad-editor-custom-wrap');
+  const editorCustom = document.getElementById('ad-editor-custom');
+
+  editorSelect.addEventListener('change', () => {
+    if (editorSelect.value === '__other__') {
+      editorCustomWrap.style.display = '';
+      editorCustom.focus();
+    } else {
+      editorCustomWrap.style.display = 'none';
+    }
+    updateAdName();
+  });
+
+  editorCustom.addEventListener('input', (e) => {
+    e.target.value = e.target.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
+    validateField(e.target, e.target.value.length === 3);
+    updateAdName();
+  });
+
+  const seriesInput = document.getElementById('ad-series');
+  seriesInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '');
+    validateField(e.target, e.target.value.length >= 1 && e.target.value.length <= 3);
+    updateAdName();
+  });
+  seriesInput.addEventListener('blur', (e) => {
+    if (e.target.value && e.target.value.length > 0 && e.target.value.length < 3) {
+      e.target.value = e.target.value.padStart(3, '0');
+      updateAdName();
+    }
+  });
+
+  const letterInput = document.getElementById('ad-letter');
+  letterInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 2);
+    validateField(e.target, e.target.value.length >= 1);
+    updateAdName();
+  });
+
+  document.getElementById('ad-format').addEventListener('change', updateAdName);
+  document.getElementById('ad-product').addEventListener('change', updateAdName);
+
+  function getEditorCode() {
+    if (editorSelect.value === '__other__') return editorCustom.value.toUpperCase();
+    return editorSelect.value;
+  }
+
+  function updateAdName() {
+    const product = document.getElementById('ad-product').value;
+    const editor = getEditorCode();
+    const series = seriesInput.value;
+    const letter = letterInput.value;
+    const format = document.getElementById('ad-format').value;
+
+    const segmentRows = segList.querySelectorAll('.segment-row');
+    const segments = [];
+    segmentRows.forEach(row => {
+      const type = row.querySelector('select').value;
+      const id = row.querySelector('input').value;
+      if (id && id.length === 4) segments.push(`${type}${id}`);
+    });
+
+    const out = document.getElementById('ad-output');
+    const btn = document.getElementById('ad-copy-btn');
+
+    if (!product || !editor || editor.length !== 3 || !series || series.length < 1 ||
+        !letter || segments.length === 0 || !format) {
+      out.textContent = 'fill in the fields above';
+      out.classList.add('empty');
+      btn.disabled = true;
+      return;
+    }
+
+    const seriesPadded = series.padStart(3, '0');
+    const editorBlock = `${editor}${seriesPadded}${letter}`;
+    const name = `${product}_${editorBlock}_${segments.join('_')}_${format}`;
+    out.textContent = name;
+    out.classList.remove('empty');
+    btn.disabled = false;
+  }
+
+  function setupCopyButton(btnId, getTextFn) {
+    const btn = document.getElementById(btnId);
+    btn.addEventListener('click', async () => {
+      const text = getTextFn();
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('copied');
+      btn.textContent = 'Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = 'Copy';
+      }, 1500);
+    });
+  }
+
+  setupCopyButton('ad-copy-btn', () => document.getElementById('ad-output').textContent);
+
+  updateAdName();
+})();
+</script>
+
+</body>
+</html>
