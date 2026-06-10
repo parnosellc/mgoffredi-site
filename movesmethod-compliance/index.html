@@ -109,7 +109,7 @@
     <li><b>⏳ The countdown timer + "discount expiring soon."</b><br><span class="why">It reset on every visit, so it wasn't a real deadline. Google treats that as fake pressure.</span></li>
     <li><b>🩺 "Avoided surgery entirely" + the cured-conditions list</b> (torn ACLs, herniated discs, sciatica…).<br><span class="why">These are medical promises. A fitness product can't claim to treat or cure medical conditions. This was the riskiest thing on the page.</span></li>
     <li><b>✨ Cure-style promises</b> — "eliminate pain forever," "feel 10 years younger."<br><span class="why">No product can guarantee an outcome like that.</span></li>
-    <li><b>⭐ The hand-built Trustpilot lookalike.</b><br><span class="why">It copied Trustpilot's logo and design. Replaced with an honest "4.8, 2,125 reviews" that links to our real Trustpilot profile.</span></li>
+    <li><b>⭐ The hand-built Trustpilot lookalike</b> (fake green stars, recreated logo, hardcoded review cards).<br><span class="why">It copied Trustpilot's branding, and the typed-in numbers can't update so they drift out of sync with the real profile — a trademark + misrepresentation problem. See "How to show Trustpilot reviews" below for what to use instead.</span></li>
     <li><b>🔢 Conflicting headcounts</b> (107,000 in one spot, 200,000 in another).<br><span class="why">We kept one number everywhere. Numbers that don't match make the whole page look made up.</span></li>
     <li><b>🚨 Emoji + ALL-CAPS hype</b> ("BREAKING NEWS" etc.).<br><span class="why">Google's quality rules specifically frown on that gimmicky style.</span></li>
   </ul></div>
@@ -148,6 +148,46 @@
     </ul>
     <p class="why" style="margin:6px 0 0">To be clear: the persuasion sections aren't banned. Standard agitation, a "who it's for" block, and a founder story are all allowed — the originals were just packed with the risky claims and inflated numbers. We <b>chose</b> a short, video-and-offer-first page for Step 1. The longer version can be rebuilt compliantly later.</p>
   </div>
+</div></section>
+
+<!-- TRUSTPILOT -->
+<section><div class="wrap">
+  <h2>⭐ How to show Trustpilot reviews</h2>
+  <p class="sub">For whoever builds the page. A real Trustpilot widget is 100% allowed — a hand-built copy is not. Pick the option that matches whatever Trustpilot plan we're on (the design/copy team will know which).</p>
+
+  <div class="card" style="border-color:#e7c3ad;background:var(--warnbg)">
+    <p class="pill" style="background:#f6dccd;color:var(--warn)">🚫 What was wrong with the old one</p>
+    <p style="margin:0;color:#5a3322">The old page <b>redrew Trustpilot by hand</b> — fake green stars, a recreated logo, hardcoded review cards. Two problems: it borrows Trustpilot's trademarked branding without using their actual widget, and the numbers are typed in by hand so they drift out of sync with the live profile. Google reads that as misrepresentation. <b>Never recreate Trustpilot's look manually.</b></p>
+  </div>
+
+  <div class="card">
+    <p class="pill">✅ Option 1 — Best (paid Trustpilot plan)</p>
+    <p style="margin:0">Use the <b>official Trustpilot TrustBox widget.</b> Trustpilot generates the embed code; paste it on the page. It pulls live reviews + score, carries the real logo legitimately, and updates itself so it can never drift. <span class="why">Note: the review-displaying TrustBox widgets need a paid Trustpilot plan (~$259–319/mo).</span></p>
+  </div>
+
+  <div class="card">
+    <p class="pill">✅ Option 2 — Free plan</p>
+    <p style="margin:0">Use Trustpilot's <b>official clickable logo badge</b> + plain text like <i>"Rated 4.8/5 on Trustpilot,"</i> linked to our live profile. Use their official badge asset — <b>not</b> self-drawn stars — and make sure the score matches the live profile.</p>
+  </div>
+
+  <div class="card" style="border-color:#e7c3ad;background:var(--warnbg)">
+    <p class="pill" style="background:#f6dccd;color:var(--warn)">❌ Never</p>
+    <p style="margin:0;color:#5a3322">A hand-built replica of Trustpilot's stars, logo, or review cards with typed-in numbers.</p>
+  </div>
+
+  <p class="why" style="margin-top:12px"><b>Separate housekeeping:</b> Trustpilot has flagged this account for <b>collecting reviews in a way they don't support.</b> That's about how reviews are requested, not how they're shown — worth cleaning up so the profile stays in good standing either way.</p>
+</div></section>
+
+<!-- FOR THE BUILD TEAM -->
+<section><div class="wrap">
+  <h2>🛠️ Also make sure (for the build team)</h2>
+  <p class="sub">Easy things to miss that will still get the page flagged.</p>
+  <div class="card"><ul class="clean">
+    <li><b>🖼️ Text inside images and videos counts too.</b><br><span class="why">Google reads text baked into images and judges the VSL itself. A clean page with claim cards like "PAIN GONE," or a video that says "eliminate pain forever," still gets flagged. Apply all these rules to image overlays and the video script — not just the body copy.</span></li>
+    <li><b>💲 The $247 strike-through must be a real price.</b><br><span class="why">It has to be a price the product is genuinely sold at. If not, drop it and just show $27.</span></li>
+    <li><b>📝 The disclaimers have to actually ship.</b><br><span class="why">"Results vary" near the testimonials and "not medical advice — consult a professional" in the footer aren't optional polish. They need to be on the live page.</span></li>
+    <li><b>🔢 One social-proof number across the whole funnel.</b><br><span class="why">Pick one (e.g. 107,000) and use it on every page, the ads, and the video. 107k / 200k / 141k still show up in different places.</span></li>
+  </ul></div>
 </div></section>
 
 <!-- POLICY QUOTES -->
