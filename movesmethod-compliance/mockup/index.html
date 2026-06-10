@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MovesMethod — Mobility Toolkit</title>
+<!--
+  CLEAN / COMPLIANT MOCKUP — "open high-intent" page (VSL up top, offer shown immediately).
+  Built for Google search + retargeting traffic. Copy scrubbed against the
+  Google Advertising Compliance checklist. See the accompanying NOTES .md for rationale.
+  Static mockup: video + images are grey placeholders, checkout is non-functional.
+-->
+<style>
+  :root{
+    --ink:#10231f; --muted:#5b6f69; --line:#e3ebe8;
+    --bg:#f6f9f8; --card:#ffffff;
+    --brand:#0f8a6b; --brand-dark:#0b6d54; --accent:#0fb888;
+    --star:#00b67a; --maxw:680px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+  h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+  h1{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
+  h2{font-size:1.35rem;font-weight:800;margin-top:0}
+  p{margin:0 0 1em}
+  .small{font-size:.8rem;color:var(--muted)}
+  .center{text-align:center}
+
+  /* IMAGE PLACEHOLDERS — grey box + overlay describing the final asset */
+  .imgph{background:repeating-linear-gradient(45deg,#dbe4e0,#dbe4e0 12px,#d3ddd8 12px,#d3ddd8 24px);
+    border:1px dashed #9fb3ab;border-radius:12px;color:#3f534d;display:flex;align-items:center;
+    justify-content:center;text-align:center;padding:18px;font-size:.8rem;font-weight:600;min-height:150px}
+  .imgph .tag{display:block;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#7a8d86;margin-bottom:4px}
+  .imgph.vid{min-height:230px;background:#0c1b16;border-color:#33514a;color:#9fc3b8}
+  .imgph.sm{min-height:84px;font-size:.72rem}
+  .imgph.thumb{min-height:0;width:74px;height:74px;flex:0 0 74px;padding:6px;font-size:.6rem;border-radius:10px}
+  .imgph.avatar{width:46px;height:46px;flex:0 0 46px;border-radius:50%;min-height:0;padding:2px;font-size:.5rem}
+  .imgph.badge{width:120px;height:120px;border-radius:50%;min-height:0;margin:0 auto 14px;font-size:.62rem}
+  .imgph.coach{width:110px;height:110px;flex:0 0 110px;border-radius:12px;min-height:0;font-size:.6rem}
+
+  .topbar{background:var(--ink);color:#dff1ea;font-size:.82rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 18px}
+  .topbar a{color:#fff;text-decoration:none;font-weight:600}
+
+  .hero{background:linear-gradient(180deg,#0d2a24,#0f3a30);color:#eaf6f1;padding:26px 0 30px}
+  .eyebrow{color:#7fe3c4;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+  .hero h1{color:#fff;margin-bottom:.45em}
+  .hero .sub{color:#bcd8cf;font-size:1rem;margin-bottom:18px}
+  .video{position:relative;border-radius:14px;overflow:hidden}
+  .video .play{position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);
+    display:flex;align-items:center;justify-content:center}
+  .video .play:after{content:"";border-left:20px solid var(--brand-dark);border-top:12px solid transparent;
+    border-bottom:12px solid transparent;margin-left:5px}
+
+  .cta{display:block;width:100%;background:var(--accent);color:#03241b;font-weight:800;
+    text-align:center;text-decoration:none;padding:16px 18px;border-radius:12px;font-size:1.08rem;
+    border:none;cursor:pointer;box-shadow:0 6px 18px rgba(15,184,136,.28);margin:6px 0}
+  .cta:hover{background:#0aa97c}
+  .cta-sub{font-size:.82rem;color:#bcd8cf;text-align:center;margin:6px 0 0}
+  section .cta-sub{color:var(--muted)}
+
+  .trust{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+  .trust .wrap{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+  .stars{color:var(--star);font-size:1.05rem;letter-spacing:1px}
+  .trust b{font-weight:800}
+  .trust a{color:var(--brand-dark);text-decoration:none;font-weight:600}
+
+  section{padding:34px 0;border-bottom:1px solid var(--line)}
+  .lead{font-size:1.02rem;color:var(--muted)}
+
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+  .step .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;
+    background:#e7f6f0;color:var(--brand-dark);font-weight:800;margin-bottom:10px}
+  .step h3{font-size:1.05rem;margin-bottom:.35em}
+  .step p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+
+  .item{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;margin-bottom:10px;align-items:center}
+  .item .v{position:absolute;background:#eef7f3;color:var(--brand-dark);font-weight:800;border-radius:8px;
+    padding:3px 7px;font-size:.7rem;margin:-30px 0 0 -8px}
+  .item .txt{flex:1}
+  .item h3{font-size:1rem;margin:0 0 .25em}
+  .item p{margin:0;color:var(--muted);font-size:.9rem}
+
+  .offer{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:24px 20px;text-align:center;
+    box-shadow:0 10px 30px rgba(15,138,107,.12)}
+  .price{font-size:2.4rem;font-weight:800;color:var(--ink);margin:6px 0 2px}
+  .price .was{font-size:1.1rem;color:var(--muted);text-decoration:line-through;font-weight:600;margin-right:8px}
+  .badge2{display:inline-block;background:#eef7f3;color:var(--brand-dark);font-weight:700;font-size:.8rem;
+    padding:4px 10px;border-radius:999px;margin-bottom:8px}
+  .pay{display:flex;gap:8px;justify-content:center;margin-top:14px}
+
+  .quote{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+  .qhead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .quote .stars{font-size:.95rem}
+  .quote p{font-style:italic;color:var(--ink);margin:0 0 8px;font-size:.95rem}
+  .quote .who{font-weight:700;font-size:.85rem;color:var(--muted)}
+
+  .coachrow{display:flex;gap:16px;align-items:flex-start}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+  summary{cursor:pointer;padding:14px 16px;font-weight:700;font-size:.95rem;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";float:right;color:var(--brand);font-weight:800}
+  details[open] summary:after{content:"–"}
+  details .a{padding:0 16px 14px;color:var(--muted);font-size:.92rem}
+
+  .guarantee{background:#0d2a24;color:#eaf6f1;border-radius:16px;padding:24px;text-align:center}
+  .guarantee h2{color:#fff}
+  .guarantee p{color:#bcd8cf;margin:0}
+
+  footer{background:#0a1714;color:#9fb8b0;padding:26px 0;font-size:.82rem}
+  footer a{color:#cfe6de;text-decoration:none;margin:0 6px}
+  .disclaimer{font-size:.74rem;color:#7f968e;margin-top:14px;line-height:1.5}
+
+  .cookie{position:fixed;bottom:0;left:0;right:0;background:#10231f;color:#cfe6de;font-size:.78rem;
+    padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .cookie button{background:var(--accent);color:#03241b;border:none;border-radius:8px;padding:7px 14px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span>MovesMethod</span>
+  <span>Need help? <a href="tel:+19292968177">(929) 296-8177</a></span>
+</div></div>
+
+<!-- HERO: VSL + offer shown immediately -->
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Training from movement coach Vanja Moves</div>
+  <h1>The joint problem behind stiffness that most mobility routines miss — and the 10-minute-a-day approach 107,000 people have used to move better</h1>
+  <p class="sub">Even if you're stiff, short on time, and have never thought of yourself as "flexible." 10–15 minutes a day, at home, for most ages and body types.</p>
+
+  <div class="video">
+    <div class="imgph vid"><span><span class="tag">Video</span>VSL / sales video embed<br>(autoplay muted, click to unmute)</span></div>
+    <div class="play" aria-label="Play video"></div>
+  </div>
+
+  <a href="#offer" class="cta">Get the Mobility Toolkit — $27</a>
+  <p class="cta-sub">One-time payment · Lifetime access · 30-day money-back guarantee</p>
+</div></header>
+
+<!-- TRUST: honest Trustpilot attribution, links to live profile -->
+<div class="trust"><div class="wrap">
+  <span class="stars">★★★★★</span>
+  <span><b>4.8</b> out of 5</span>
+  <span class="small">· 2,125 reviews on</span>
+  <a href="https://www.trustpilot.com/review/www.movesmethod.com" target="_blank" rel="noopener">Trustpilot ↗</a>
+</div></div>
+
+<!-- HOW IT WORKS (education framing) with demo image placeholders -->
+<section><div class="wrap">
+  <h2>A simpler way to work on mobility</h2>
+  <p class="lead">Most stretching, foam rolling and one-off routines can feel good for a day or two. The Toolkit takes a different approach — building strength through your full range of motion so the work tends to hold up better over time.</p>
+
+  <div class="step">
+    <span class="n">1</span>
+    <h3>Build strength through a full range of motion</h3>
+    <p>Flexibility without the strength to support it rarely lasts. Short daily sessions train control through the ranges you actually use.</p>
+    <div class="imgph sm"><span><span class="tag">Image</span>Coach demonstrating a loaded end-range movement</span></div>
+  </div>
+  <div class="step">
+    <span class="n">2</span>
+    <h3>Train movement, not isolated muscles</h3>
+    <p>Real life isn't single-muscle. The sessions train coordinated movement — balance, control and body awareness together.</p>
+    <div class="imgph sm"><span><span class="tag">Image</span>Person doing a multi-joint movement (twist / reach)</span></div>
+  </div>
+  <div class="step">
+    <span class="n">3</span>
+    <h3>Learn the "why" so you can keep going</h3>
+    <p>Understand the reasoning behind each movement so you can adapt it to your level and keep it up long after day 28.</p>
+    <div class="imgph sm"><span><span class="tag">Image</span>App lesson screen / explainer diagram</span></div>
+  </div>
+</div></section>
+
+<!-- WHAT'S INCLUDED with module thumbnails -->
+<section><div class="wrap">
+  <h2>What's included</h2>
+  <p class="lead">Everything lives in one app — phone, tablet or desktop.</p>
+
+  <div class="item"><span class="v">$100 value</span>
+    <div class="imgph thumb"><span>App: Mastery</span></div>
+    <div class="txt"><h3>Joint Mobility Mastery</h3>
+    <p>10–15 minute mini-sessions that take each major joint (hips, shoulders, lower back, knees, ankles) through new movement patterns.</p></div></div>
+
+  <div class="item"><span class="v">$100 value</span>
+    <div class="imgph thumb"><span>App: Snacks</span></div>
+    <div class="txt"><h3>Follow-along mobility "snacks"</h3>
+    <p>Short do-it-with-us sessions that slot into your existing training or day. Built to show week-over-week progress.</p></div></div>
+
+  <div class="item"><span class="v">$50 value</span>
+    <div class="imgph thumb"><span>App: Program</span></div>
+    <div class="txt"><h3>Programming Masterclass</h3>
+    <p>Learn to build and progress your own routine for your level and schedule — including how to scale movements up or down.</p></div></div>
+
+  <div class="item"><span class="v">$47 value</span>
+    <div class="imgph thumb"><span>App: Philosophy</span></div>
+    <div class="txt"><h3>Mobility &amp; injury-prevention philosophy</h3>
+    <p>The thinking behind the method, condensed into short modules, so you understand what you're doing and why.</p></div></div>
+
+  <div class="item"><span class="v">Free bonus</span>
+    <div class="imgph thumb"><span>App: Form</span></div>
+    <div class="txt"><h3>Form Feedback Masterclass</h3>
+    <p>Recordings of students getting live form correction, so you can spot common compensations in your own practice.</p></div></div>
+
+  <div class="item"><span class="v">Free bonus</span>
+    <div class="imgph thumb"><span>1-on-1 call</span></div>
+    <div class="txt"><h3>Mobility Evaluation Call</h3>
+    <p>A one-on-one call with our team to help you pick the best starting point for your goals and situation.</p></div></div>
+
+  <div class="imgph" style="margin-top:6px"><span><span class="tag">Image</span>Hero shot: Toolkit shown across phone + tablet + desktop</span></div>
+</div></section>
+
+<!-- OFFER -->
+<section id="offer"><div class="wrap">
+  <div class="offer">
+    <span class="badge2">Launch pricing</span>
+    <h2 style="margin-bottom:.2em">Get lifetime access to everything</h2>
+    <div class="price"><span class="was">$247</span>$27</div>
+    <p class="small" style="margin-bottom:14px">One-time payment · lifetime access · no subscription</p>
+    <a href="#" class="cta" onclick="return false">Get instant access — $27</a>
+    <p class="cta-sub">Secure checkout · Apple &amp; Android app + desktop</p>
+    <div class="pay">
+      <div class="imgph sm" style="min-height:34px;width:54px;padding:4px;font-size:.55rem">Visa</div>
+      <div class="imgph sm" style="min-height:34px;width:54px;padding:4px;font-size:.55rem">MC</div>
+      <div class="imgph sm" style="min-height:34px;width:54px;padding:4px;font-size:.55rem">Amex</div>
+      <div class="imgph sm" style="min-height:34px;width:54px;padding:4px;font-size:.55rem">SSL</div>
+    </div>
+    <p class="small" style="margin-top:14px">Backed by our 30-day, no-questions-asked money-back guarantee. Not satisfied? Email support and we'll refund you in full.</p>
+  </div>
+</div></section>
+
+<!-- TESTIMONIALS + results-vary disclaimer + avatar placeholders -->
+<section><div class="wrap">
+  <h2>What members say</h2>
+  <p class="small">Reviews from real members. Individual results vary — these aren't a promise of specific outcomes.</p>
+
+  <div class="quote">
+    <div class="qhead"><div class="imgph avatar"><span>Photo</span></div><div class="stars">★★★★★</div></div>
+    <p>"My lower back feels a lot better and I've eased back into lifting. Best money I've spent on my body in a while."</p>
+    <div class="who">— Brian</div></div>
+
+  <div class="quote">
+    <div class="qhead"><div class="imgph avatar"><span>Photo</span></div><div class="stars">★★★★★</div></div>
+    <p>"I played a full season of tournaments this year. I'd tried physio and massage before — this is the first thing that's helped me stay consistent."</p>
+    <div class="who">— Eric</div></div>
+
+  <div class="quote">
+    <div class="qhead"><div class="imgph avatar"><span>Photo</span></div><div class="stars">★★★★★</div></div>
+    <p>"A few weeks in and I'm moving noticeably more freely. Easy to fit into a busy day."</p>
+    <div class="who">— Olga</div></div>
+
+  <div class="imgph sm"><span><span class="tag">Optional</span>Embed live Trustpilot reviews widget here</span></div>
+</div></section>
+
+<!-- MEET YOUR COACH -->
+<section><div class="wrap">
+  <h2>Who's behind it</h2>
+  <div class="coachrow">
+    <div class="imgph coach"><span>Coach photo</span></div>
+    <p style="margin:0;color:var(--muted);font-size:.95rem">We're qualified coaches with backgrounds in sport and movement science. After years of working one-on-one with clients — from beginners to athletes — we built the Toolkit to make the same approach easy to follow at home.</p>
+  </div>
+</div></section>
+
+<!-- GUARANTEE -->
+<section><div class="wrap">
+  <div class="guarantee">
+    <div class="imgph badge"><span>Guarantee seal</span></div>
+    <h2>30-day money-back guarantee</h2>
+    <p>Try the Toolkit for 30 days. If it's not for you, email us and we'll refund every cent — no questions asked.</p>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section><div class="wrap">
+  <h2>Questions &amp; answers</h2>
+  <details><summary>Can't I find this for free online?</summary>
+    <div class="a">There are plenty of free stretching videos. What's different here is a sequenced program with the reasoning behind it, refined over years of one-on-one coaching, all in one place.</div></details>
+  <details><summary>I have an injury — is this suitable?</summary>
+    <div class="a">The sessions are designed to be scaled to your level. This isn't medical treatment, though — if you have an injury or medical condition, please check with your doctor or physical therapist before starting.</div></details>
+  <details><summary>Do I need equipment or a gym?</summary>
+    <div class="a">No. It's built for a small space at home. A few movements have optional gear, but nothing is required.</div></details>
+  <details><summary>I've never been flexible. Will it work for me?</summary>
+    <div class="a">It's designed for all starting points, including people who don't consider themselves flexible. You build control in the ranges you have and expand from there. Results vary from person to person.</div></details>
+  <details><summary>How do I get access?</summary>
+    <div class="a">Instant access in our app (Apple &amp; Android) or on desktop, right after checkout.</div></details>
+  <details><summary>How does the refund work?</summary>
+    <div class="a">Try it for 30 days. If you're not happy, email support and we'll refund your full purchase, no questions asked.</div></details>
+</div></section>
+
+<!-- FINAL CTA -->
+<section style="border-bottom:none"><div class="wrap center">
+  <h2>Start the Mobility Toolkit today</h2>
+  <a href="#offer" class="cta" style="max-width:420px;margin:14px auto 0">Get lifetime access — $27</a>
+  <p class="cta-sub">One-time payment · 30-day money-back guarantee</p>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div>© 2026 Bondi Moves Pty Ltd — All Rights Reserved.</div>
+  <div style="margin-top:8px">
+    <a href="#">Privacy Policy</a>·<a href="#">Terms &amp; Conditions</a>·<a href="#">Refund Policy</a>·<a href="#">Contact</a>
+  </div>
+  <p class="disclaimer">This program is for general fitness and mobility education. It is not medical advice and is not intended to diagnose, treat, cure or prevent any condition. Consult a qualified healthcare professional before beginning any exercise program, especially if you have an injury or medical condition. Individual results vary.</p>
+</div></footer>
+
+<!-- COOKIE CONSENT -->
+<div class="cookie" id="cookie">
+  <span>We use cookies to improve your experience. You can accept or reject non-essential cookies. <a href="#" style="color:#7fe3c4">Learn more</a></span>
+  <button onclick="document.getElementById('cookie').style.display='none'">Accept</button>
+  <button onclick="document.getElementById('cookie').style.display='none'" style="background:transparent;color:#cfe6de;border:1px solid #335">Reject</button>
+</div>
+
+</body>
+</html>

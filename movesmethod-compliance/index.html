@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MovesMethod — A Clean, Google-Ready Landing Page</title>
+<meta name="description" content="Why we built a stripped-down, Google-compliant version of the MovesMethod landing page — what we removed, what we reworded, and why.">
+<style>
+  :root{
+    --ink:#11211d; --muted:#5d716b; --line:#e6ede9; --bg:#f4f8f6; --card:#fff;
+    --brand:#0f8a6b; --brand-dark:#0b6d54; --accent:#0fb888; --soft:#eaf6f0;
+    --warn:#b4541f; --warnbg:#fdf1e9; --maxw:760px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.25}
+  a{color:var(--brand-dark)}
+  .hero{background:linear-gradient(160deg,#0d2a24,#114335);color:#eaf6f1;padding:54px 0 46px;text-align:center}
+  .hero .kicker{color:#7fe3c4;font-weight:700;text-transform:uppercase;letter-spacing:.09em;font-size:.78rem;margin-bottom:12px}
+  .hero h1{font-size:2rem;margin:0 0 14px;font-weight:800;letter-spacing:-.01em}
+  .hero p{color:#c4ded5;font-size:1.06rem;max-width:560px;margin:0 auto}
+  section{padding:38px 0}
+  section + section{border-top:1px solid var(--line)}
+  h2{font-size:1.5rem;font-weight:800;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 20px;font-size:1rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:12px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:12px 0;border-bottom:1px solid var(--line)}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean b{color:var(--ink)}
+  .why{color:var(--muted);font-size:.95rem}
+  .pill{display:inline-block;background:var(--soft);color:var(--brand-dark);font-weight:700;font-size:.78rem;
+    padding:3px 11px;border-radius:999px;margin-bottom:10px}
+  .goal{background:#0d2a24;color:#dcefe6;border-radius:16px;padding:26px;margin-top:10px}
+  .goal h2{color:#fff}
+  .goal p{color:#c4ded5;margin:.6em 0 0}
+  .goal .step{color:#7fe3c4;font-weight:800}
+  blockquote{margin:14px 0;padding:16px 18px;background:#fff;border-left:4px solid var(--brand);
+    border-radius:8px;color:#26443c;font-size:.97rem}
+  blockquote cite{display:block;margin-top:8px;font-style:normal;font-size:.82rem;color:var(--muted)}
+  .quote-grid{display:grid;gap:12px}
+  /* preview */
+  .preview{background:#0d2a24;border-radius:18px;padding:18px;text-align:center}
+  .browser{background:#fff;border-radius:12px;overflow:hidden;max-width:420px;margin:0 auto;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .bar{background:#e9efec;padding:9px 12px;display:flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .bar .url{flex:1;background:#fff;border-radius:6px;font-size:.7rem;color:#7a8d86;padding:4px 10px;margin-left:8px;text-align:left;overflow:hidden;white-space:nowrap}
+  .frame{position:relative;height:360px;overflow:hidden}
+  .frame iframe{width:200%;height:720px;border:0;transform:scale(.5);transform-origin:top left}
+  .frame .clickcatch{position:absolute;inset:0}
+  .cta{display:inline-block;background:var(--accent);color:#03241b;font-weight:800;text-decoration:none;
+    padding:16px 30px;border-radius:12px;font-size:1.08rem;margin-top:20px;box-shadow:0 8px 22px rgba(15,184,136,.3)}
+  .cta:hover{background:#0aa97c}
+  .preview .hint{color:#9fc3b8;font-size:.82rem;margin-top:12px}
+  .bottom{background:var(--soft);border:1px solid #cfe9df;border-radius:14px;padding:22px;text-align:center}
+  .bottom b{color:var(--brand-dark)}
+  footer{padding:28px 0 60px;text-align:center;color:var(--muted);font-size:.84rem}
+  .emoji{font-style:normal}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">MovesMethod · Google Ads Prep</div>
+  <h1>A clean, Google-ready version of our landing page</h1>
+  <p>Here's exactly what we changed to get approved on Google Ads — what we removed, what we reworded, and why. In plain English.</p>
+</div></header>
+
+<!-- GOAL -->
+<section><div class="wrap">
+  <div class="goal">
+    <h2>🎯 What this page is for</h2>
+    <p>The whole point of this version is to be <b>as clean as possible.</b></p>
+    <p><span class="step">Step 1 of our Google Ads plan</span> = get ads <b>approved</b> and start <b>spending safely.</b> We're building a healthy account and letting Google's system get comfortable with us.</p>
+    <p>We are <b>not</b> chasing conversions yet. A clean, low-risk page beats a high-converting page that gets the account suspended — because a suspended account converts nobody. 🚫</p>
+    <p><span class="step">Step 2</span> = once ads are approved and spending steadily, we layer the persuasion back in (carefully, still inside policy) and optimize for conversion. <b>Clean first, convert later.</b></p>
+  </div>
+</div></section>
+
+<!-- PREVIEW + CTA -->
+<section><div class="wrap" style="text-align:center">
+  <span class="pill">Live preview</span>
+  <h2>👀 Ready to see the mockup?</h2>
+  <p class="sub">This is the stripped-down page, live. Click it to open the full version.</p>
+  <div class="preview">
+    <div class="browser">
+      <div class="bar">
+        <span class="dot" style="background:#ff5f56"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#27c93f"></span>
+        <span class="url">www.mgoffredi.com/movesmethod-compliance/mockup/</span>
+      </div>
+      <div class="frame">
+        <iframe src="./mockup/" title="MovesMethod clean page preview" scrolling="no" loading="lazy"></iframe>
+        <a class="clickcatch" href="./mockup/" target="_blank" rel="noopener" aria-label="Open the full mockup"></a>
+      </div>
+    </div>
+    <a class="cta" href="./mockup/" target="_blank" rel="noopener">Open the full mockup →</a>
+    <div class="hint">Opens in a new tab</div>
+  </div>
+</div></section>
+
+<!-- REMOVED -->
+<section><div class="wrap">
+  <h2>🗑️ What we removed (and why)</h2>
+  <p class="sub">These were the things most likely to get the ad — or the whole account — shut down.</p>
+  <div class="card"><ul class="clean">
+    <li><b>⏳ The countdown timer + "discount expiring soon."</b><br><span class="why">It reset on every visit, so it wasn't a real deadline. Google treats that as fake pressure.</span></li>
+    <li><b>🩺 "Avoided surgery entirely" + the cured-conditions list</b> (torn ACLs, herniated discs, sciatica…).<br><span class="why">These are medical promises. A fitness product can't claim to treat or cure medical conditions. This was the riskiest thing on the page.</span></li>
+    <li><b>✨ Cure-style promises</b> — "eliminate pain forever," "feel 10 years younger."<br><span class="why">No product can guarantee an outcome like that.</span></li>
+    <li><b>⭐ The hand-built Trustpilot lookalike.</b><br><span class="why">It copied Trustpilot's logo and design. Replaced with an honest "4.8, 2,125 reviews" that links to our real Trustpilot profile.</span></li>
+    <li><b>🔢 Conflicting headcounts</b> (107,000 in one spot, 200,000 in another).<br><span class="why">We kept one number everywhere. Numbers that don't match make the whole page look made up.</span></li>
+    <li><b>🚨 Emoji + ALL-CAPS hype</b> ("BREAKING NEWS" etc.).<br><span class="why">Google's quality rules specifically frown on that gimmicky style.</span></li>
+  </ul></div>
+</div></section>
+
+<!-- REWORDED -->
+<section><div class="wrap">
+  <h2>✏️ What we reworded (and why)</h2>
+  <p class="sub">Same hook and value — just stated in a way Google allows.</p>
+  <div class="card"><ul class="clean">
+    <li><b>"The <i>Hidden</i> Joint Problem"</b> → "The joint problem most routines miss."<br><span class="why">"Hidden" reads like clickbait / "secret trick" language that Google's filters flag, even for a legit product.</span></li>
+    <li><b>"…have <i>Fixed it</i> in 10 minutes a day"</b> → "…have used to <i>move better</i>."<br><span class="why">Turned a guaranteed result into a realistic, qualified one.</span></li>
+    <li><b>"Prevent the pain from coming back" / "without even warming up"</b> → "tends to hold up better over time" / "move more freely."<br><span class="why">Same idea, stated as a likely benefit, not a promise.</span></li>
+    <li><b>Testimonials</b> — kept them, trimmed the strongest claims, added a small "results vary" line.<br><span class="why">Testimonials that imply "you'll get this too" need that caveat.</span></li>
+  </ul></div>
+</div></section>
+
+<!-- WHY SHORTER -->
+<section><div class="wrap">
+  <h2>📐 Why the new page is shorter</h2>
+  <p class="sub">The clean page is intentionally leaner. A few whole sections didn't make the cut — for two different reasons.</p>
+  <div class="card">
+    <p class="pill">Cut for compliance — stays gone</p>
+    <ul class="clean">
+      <li>The <b>"Spring Sale – Save $180"</b> bar and countdown timer — fake urgency.</li>
+      <li>The <b>"BREAKING NEWS"</b> section — the fake-news style and "quick band-aid / you're not just getting old" claims are exactly what Google flags.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <p class="pill">Cut to stay clean &amp; focused — not banned</p>
+    <ul class="clean">
+      <li>The long <b>problem/agitation</b> section (pain-point bullets, red-X / green-check images).</li>
+      <li>The <b>"This is for you if you're…"</b> block (40s / fitness enthusiast / athlete).</li>
+      <li>The long <b>founder story</b> ("$100k spent, 40,000 clients, 1M reached") — shortened to a brief, honest coach intro.</li>
+      <li>Repeated pitch and <b>duplicated "What's included"</b> blocks — the old page said both twice; we said them once.</li>
+    </ul>
+    <p class="why" style="margin:6px 0 0">To be clear: the persuasion sections aren't banned. Standard agitation, a "who it's for" block, and a founder story are all allowed — the originals were just packed with the risky claims and inflated numbers. We <b>chose</b> a short, video-and-offer-first page for Step 1. The longer version can be rebuilt compliantly later.</p>
+  </div>
+</div></section>
+
+<!-- POLICY QUOTES -->
+<section><div class="wrap">
+  <h2>📚 Straight from Google's policies</h2>
+  <p class="sub">These are the actual rules behind the edits above.</p>
+  <div class="quote-grid">
+    <blockquote>
+      "Ads or destinations that deceive users by excluding relevant product information or providing misleading information about products, services, and businesses can compromise user trust… <b>Examples of misrepresentation: making misleading or unrealistic claims regarding weight loss or financial gain.</b>"
+      <cite>— Google Ads, <a href="https://support.google.com/adspolicy/answer/6020955" target="_blank" rel="noopener">Misrepresentation policy</a></cite>
+    </blockquote>
+    <blockquote>
+      "Google Ads only allows ads, assets, and destinations that are clear… <b>Examples that don't meet these standards: gimmicky use of words, numbers, letters, punctuation, or symbols such as FREE, f-r-e-e, and F₹€€!!</b>"
+      <cite>— Google Ads, <a href="https://support.google.com/adspolicy/answer/6021546" target="_blank" rel="noopener">Editorial policy</a></cite>
+    </blockquote>
+    <blockquote>
+      "Ad destinations must offer unique value to users and be functional, useful, and easy to navigate… <b>Examples that don't meet destination requirements: sites that have disabled the browser's back button.</b>"
+      <cite>— Google Ads, <a href="https://support.google.com/adspolicy/answer/6368661" target="_blank" rel="noopener">Destination requirements</a></cite>
+    </blockquote>
+    <blockquote>
+      "Google Ads is dedicated to following advertising regulations for healthcare and medicine, so ads and destinations are expected to follow appropriate laws and industry standards."
+      <cite>— Google Ads, <a href="https://support.google.com/adspolicy/answer/176031" target="_blank" rel="noopener">Healthcare and medicines</a></cite>
+    </blockquote>
+  </div>
+  <p class="why" style="margin-top:14px">Full policy hub: <a href="https://support.google.com/adspolicy/answer/6008942" target="_blank" rel="noopener">Google Ads policies overview</a>.</p>
+</div></section>
+
+<!-- BOTTOM LINE -->
+<section><div class="wrap">
+  <div class="bottom">
+    <h2 style="margin-top:0">✅ The bottom line</h2>
+    <p style="margin:0">Nothing here weakens the offer — it keeps the same hook and value, stated in a way Google allows. <b>Honest + qualified + "how it works," kept short and focused = approvable.</b></p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Prepared for the MovesMethod team · Step 1: get approved &amp; spend safely.
+</div></footer>
+
+</body>
+</html>
