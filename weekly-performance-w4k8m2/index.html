@@ -5,6 +5,15 @@
  :root{--ink:#0f1419;--mut:#495057;--faint:#868e96;--line:#e9ecef;--lineS:#ced4da;
   --navy:#0a2540;--navyT:#f3f6fa;--teal:#0d9488;--tealT:#e9f5f3;--gold:#d4a72c;--goldT:#faf4dd;
   --slate:#64748b;--slateT:#f1f5f9;--coralT:#fdecec;--emerald:#16a34a;--emeraldT:#ecfdf3;--amber:#b45309}
+ .genrow{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+ .genbtn{background:linear-gradient(135deg,#0d9488,#0a2540);color:#fff;border:1px solid #1f6f66;border-radius:9px;padding:11px 18px;font-size:14px;font-weight:700;cursor:pointer}
+ .genbtn:disabled{opacity:.5;cursor:default} .genmsg{font-size:12.5px;color:#8fe3d6}
+ .recent{margin-top:18px} .recent .h{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7f97b8;font-weight:700;margin-bottom:6px}
+ .recent a{color:#5eead4;text-decoration:none;font-size:13px} .recent .r{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #1c2a3d}
+ .recent .d{color:#5f7186;font-size:11px;white-space:nowrap}
+ .snapb{background:#0d1a2b;color:#cfe0f2;padding:14px 24px;font-size:13px;border-bottom:1px solid #1c2a3d}
+ .snapb b{color:#fff} details#prev>summary{cursor:pointer;list-style:none;color:#9ab7d8;font-size:12px;padding:12px 24px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;background:#0d1a2b}
+ details#prev>summary::-webkit-details-marker{display:none}
  *{box-sizing:border-box} body{margin:0;background:#eef1f5;color:var(--ink);
   font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55}
  .sheet{max-width:840px;margin:26px auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 40px -18px rgba(15,23,42,.35)}
@@ -59,15 +68,17 @@
  .note{margin-top:14px;font-size:11px;color:var(--faint);font-style:italic}
  footer{padding:24px 44px 40px;margin-top:14px;border-top:6px solid;border-image:linear-gradient(90deg,var(--teal),var(--gold) 33%,var(--slate) 66%,#d64545) 1;font-size:11px;color:var(--faint);letter-spacing:.04em}
 </style></head><body><div class="sheet">
- <div class="controls">
+ <div class="controls" id="controls">
    <div class="aud">⚠️ <span>Enter <b>AUD</b> only. Spend is Meta AUD — your Source-of-Truth CPA <b>must also be AUD</b>, not USD.</span></div>
    <div class="inrow">
      <div class="fld"><label>🎯 Target CPA</label><div class="wrap"><span class="cur">$</span><input id="target" type="number" step="0.01" value="96"><span class="aud2">AUD</span></div></div>
      <div class="fld"><label>📊 Source-of-Truth CPA (this week)</label><div class="wrap"><span class="cur">$</span><input id="sot" type="number" step="0.01" value="96.20"><span class="aud2">AUD</span></div></div>
      <div class="fld"><label>↩︎ Source-of-Truth CPA (last week)</label><div class="wrap"><span class="cur">$</span><input id="sotLast" type="number" step="0.01" value="109.51"><span class="aud2">AUD</span></div></div>
    </div>
-   <div class="period" id="period"></div><div style="margin-top:8px;font-size:11px;color:#7f9cc0">◦ Showing sample figures — real numbers populate from Monday's automatic 2-ping pull.</div>
+   <div class="period" id="period"></div>
  </div>
+ <div class="snapb" id="snapb" style="display:none"></div>
+ <details id="prev"><summary>▸ Preview report</summary>
  <header class="cover">
    <p class="eyebrow">MovesMethod · Meta Ads · Weekly Performance</p>
    <h1 id="range">—</h1>
@@ -77,6 +88,7 @@
  </header>
  <div id="body"></div>
  <footer id="foot">MovesMethod · Internal · Prepared by Michael Goffredi</footer>
+ </details>
 </div>
 <script>
 // ---- cached weekly data (SAMPLE — the VPS Monday pull will fill this) ----
@@ -144,8 +156,41 @@ function compute(){
  document.getElementById("body").innerHTML=h;
  document.getElementById("foot").textContent="MovesMethod · Internal · Prepared by Michael Goffredi · Period "+DATA.period;
 }
+
+// ---- shareable snapshot (data encoded in the URL — frozen, no server) ----
+function b64e(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decodeURIComponent(escape(atob(s))));}
+let SNAPSHOT=false;
+(function(){var m=location.hash.match(/r=([^&]+)/);if(m){try{var p=b64d(m[1]);
+  DATA.period=p.period;DATA.seg=p.seg;
+  document.getElementById("target").value=p.target;document.getElementById("sot").value=p.sot;document.getElementById("sotLast").value=p.sotLast;
+  SNAPSHOT=true;}catch(e){}}})();
+function saveRecent(u,p,sot,ts){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
+  l.unshift({u:u,p:p,sot:sot,ts:ts});localStorage.setItem("mm_weekly",JSON.stringify(l.slice(0,20)));}
+function renderRecent(){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
+  var el=document.getElementById("recent");if(!el)return;
+  if(!l.length){el.innerHTML="";return;}
+  el.innerHTML='<div class="h">Your shared reports</div>'+l.map(function(r){
+    return '<div class="r"><a href="'+r.u+'" target="_blank">'+r.p+' · SoT $'+r.sot+'</a><span class="d">'+new Date(r.ts).toLocaleDateString()+'</span></div>';}).join("");}
+var lastGen=0;
+function generate(){var now=Date.now();if(now-lastGen<6000)return;lastGen=now;
+  var payload={period:DATA.period,seg:DATA.seg,target:document.getElementById("target").value,
+    sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,ts:new Date().toISOString()};
+  var url=location.origin+location.pathname+"#r="+b64e(payload);
+  if(navigator.clipboard)navigator.clipboard.writeText(url).catch(function(){});
+  saveRecent(url,payload.period,payload.sot,payload.ts);renderRecent();
+  var b=document.getElementById("genBtn");b.disabled=true;setTimeout(function(){b.disabled=false;},6000);
+  document.getElementById("genMsg").innerHTML='✓ Link copied — frozen snapshot. <a href="'+url+'" target="_blank" style="color:#5eead4">Open ▸</a>';}
 document.getElementById("target").addEventListener("input",compute);
 document.getElementById("sot").addEventListener("input",compute);
 document.getElementById("sotLast").addEventListener("input",compute);
+document.getElementById("genBtn").addEventListener("click",generate);
+renderRecent();
+if(SNAPSHOT){
+  document.getElementById("controls").style.display="none";
+  var pr=document.getElementById("prev"); pr.open=true; pr.querySelector("summary").style.display="none";
+  var sb=document.getElementById("snapb"); sb.style.display="";
+  sb.innerHTML="📎 <b>Shared weekly report</b> · "+DATA.period+" · figures frozen at generation. This is a read-only snapshot.";
+}
 compute();
 </script></body></html>
