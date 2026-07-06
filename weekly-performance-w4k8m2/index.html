@@ -99,7 +99,10 @@ const DATA={
  seg:{ USA:{TK:{spend:60120,fbp:498},FCVSL:{spend:33140,fbp:232}},
        HI: {TK:{spend:58900,fbp:470},FCVSL:{spend:43200,fbp:312}},
        ROW:{TK:{spend:6180,fbp:158}, FCVSL:{spend:4820,fbp:92}} },
- lastWeekSotCpa:109.51
+ lastWeekSotCpa:109.51,
+ lastSeg:{ USA:{TK:{spend:58200,fbp:430},FCVSL:{spend:31000,fbp:188}},
+           HI: {TK:{spend:60100,fbp:418},FCVSL:{spend:45200,fbp:268}},
+           ROW:{TK:{spend:6480,fbp:150}, FCVSL:{spend:5010,fbp:80}} }
 };
 const SEGNAME={USA:"United States",HI:"High-income non-US",ROW:"Everything else"};
 const SEGFLAG={USA:"🇺🇸",HI:"🌍",ROW:"🌐"};
@@ -117,6 +120,13 @@ function compute(){
  const totSales= sot? totSpend/sot : 0;               // real sales from SoT CPA
  const k= totFbp? totSales/totFbp : 0;                 // sales per FB purchase
  const salesOf=x=>x.fbp*k, cpaOf=x=>{const s=salesOf(x);return s? x.spend/s:null;};
+ function segWow(g,cpaThis){ const L=DATA.lastSeg; if(!L||!sotLast||cpaThis==null) return "";
+   let lts=0,ltf=0; for(const gg in L)for(const ff in L[gg]){lts+=L[gg][ff].spend;ltf+=L[gg][ff].fbp;}
+   const lsales= sotLast? lts/sotLast:0, lk= ltf? lsales/ltf:0;
+   const lsp=L[g].TK.spend+L[g].FCVSL.spend, lsl=(L[g].TK.fbp+L[g].FCVSL.fbp)*lk, lcpa= lsl? lsp/lsl:null;
+   if(lcpa==null) return "";
+   const d=(cpaThis/lcpa-1)*100, better=d<0;
+   return `<span class="lastw">${better?'<span style="color:var(--emerald);font-weight:700">▼':'<span style="color:var(--faint);font-weight:700">▲'} ${Math.abs(d).toFixed(0)}%</span> vs last week</span>`; }
  // section 1 mixes
  const geoSpend={}, funSpend={TK:0,FCVSL:0};
  for(const g in S){geoSpend[g]=S[g].TK.spend+S[g].FCVSL.spend; funSpend.TK+=S[g].TK.spend; funSpend.FCVSL+=S[g].FCVSL.spend;}
@@ -151,7 +161,7 @@ function compute(){
       <tr><td>TK</td><td class="num">${money(seg.TK.spend)}</td><td class="num">${Math.round(tkS).toLocaleString()}</td><td class="num">${cpaOf(seg.TK)==null?'—':money2(cpaOf(seg.TK))}</td></tr>
       <tr><td>FCVSL</td><td class="num">${money(seg.FCVSL.spend)}</td><td class="num">${Math.round(fS).toLocaleString()}</td><td class="num">${cpaOf(seg.FCVSL)==null?'—':money2(cpaOf(seg.FCVSL))}${tkCompare(g)}</td></tr>
       <tr class="total"><td><strong>${SEGNAME[g]} Total</strong></td><td class="num">${money(spend)}</td><td class="num">${Math.round(sales).toLocaleString()}</td>
-        <td class="num"><div class="cpaCell"><span><strong>${cpa==null?'—':money2(cpa)}</strong></span>${showDelta?deltaBadge(cpa):''}</div></td></tr>
+        <td class="num"><div class="cpaCell"><span><strong>${cpa==null?'—':money2(cpa)}</strong></span>${showDelta?deltaBadge(cpa):''}${segWow(g,cpa)}</div></td></tr>
      </tbody></table>
      <p class="note">*${g==="USA"?'USA':g==="HI"?'High-income':'Everything-else'} breakdown estimated from regional reporting and calibrated against this week's account totals.</p></section>`;
  }
