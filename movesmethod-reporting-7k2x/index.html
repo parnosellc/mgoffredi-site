@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>MovesMethod Reporting</title>
+<style>
+ :root{--bg:#0a0e14;--card:#141a23;--line:#232c3a;--ink:#e9eef5;--mut:#8b98a9;--teal:#2dd4bf;--gold:#d4a72c;--navy:#3b82f6}
+ *{box-sizing:border-box} body{margin:0;background:radial-gradient(1200px 600px at 50% -200px,#16233b 0%,var(--bg) 55%);color:var(--ink);
+  font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+ .wrap{max-width:1100px;margin:0 auto;padding:64px 24px 80px}
+ .brandline{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#7f97b8;font-weight:700;margin-bottom:22px}
+ .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--gold))}
+ h1{font-family:ui-serif,"New York",Georgia,serif;font-size:52px;line-height:1.02;margin:0 0 16px;font-weight:500;letter-spacing:-.02em}
+ h1 .grad{background:linear-gradient(120deg,#5eead4,#d4a72c);-webkit-background-clip:text;background-clip:text;color:transparent}
+ .intro{font-size:17px;line-height:1.65;color:#b9c4d2;max-width:720px;margin:0 0 14px}
+ .meta{font-size:13px;color:var(--mut);margin:0 0 44px;display:flex;gap:18px;flex-wrap:wrap}
+ .meta span{display:inline-flex;align-items:center;gap:7px}
+ .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+ @media(max-width:760px){.grid{grid-template-columns:1fr}h1{font-size:38px}}
+ a.card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;transition:transform .16s,border-color .16s,box-shadow .16s}
+ a.card:hover{transform:translateY(-4px);border-color:#33465f;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+ .frame{background:#0d1420;border-bottom:1px solid var(--line)}
+ .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:#0b111b}
+ .bar i{width:9px;height:9px;border-radius:50%;background:#2a3341;display:inline-block}
+ .bar .u{margin-left:10px;font-size:11px;color:#5f7186;font-family:ui-monospace,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .shot{position:relative;height:230px;overflow:hidden;background:#0d1117}
+ .shot iframe{width:250%;height:575px;border:0;transform:scale(.4);transform-origin:top left;pointer-events:none}
+ .shot .glass{position:absolute;inset:0}
+ .body{padding:18px 20px 20px}
+ .body .k{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+ .body .em{font-size:22px} .body h3{margin:0;font-size:18px;font-weight:650}
+ .body p{margin:0;font-size:13.5px;color:var(--mut);line-height:1.55}
+ .body .go{margin-top:12px;font-size:13px;color:var(--teal);font-weight:600}
+ footer{margin-top:50px;color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-top:20px}
+</style></head><body><div class="wrap">
+ <div class="brandline"><span class="dot"></span>MovesMethod · Meta Ads</div>
+ <h1>The <span class="grad">reporting suite</span><br>for the ad operation.</h1>
+ <p class="intro">One place for everything that matters in the MovesMethod Meta account — a living memory of every campaign, creative, and dollar spent, plus the weekly brief. It runs on a read-only feed that refreshes on its own, so the numbers are always current and nobody has to dig through Ads Manager.</p>
+ <p class="meta"><span>🔒 Private &amp; unlisted</span><span>🔄 Auto-refreshed daily</span><span>👁️ Read-only — never touches your campaigns</span></p>
+ <div class="grid" id="grid"></div>
+ <footer>MovesMethod Reporting · internal · read-only Meta feed · built by Michael Goffredi with Oliver</footer>
+</div>
+<script>
+ const F=[
+  {em:"🧠",title:"Campaign Memory",url:"https://www.mgoffredi.com/campaign-memory-r7w2x9/",
+   desc:"The front door: account pulse, every budget/status edit with timing, and each campaign's notes on tap."},
+  {em:"🎬",title:"Eric's Creative Report",url:"https://www.mgoffredi.com/creative-report-9q7x2k4f/",
+   desc:"Every ad creative, deduped to one row — CPA, hook %, retention, CTR — with Airtable-style filtering."},
+  {em:"📼",title:"Series Performance",url:"https://www.mgoffredi.com/series-report-8m4k2p7w/",
+   desc:"Creatives rolled into series (WES003, MGO002…) with thumbnails, CPA, hook, CTR and 7-day trend."},
+  {em:"📅",title:"Weekly Performance",url:"https://www.mgoffredi.com/weekly-performance-w4k8m2/",
+   desc:"The weekly brief — funnel × geo, USA / high-income / everything-else, with week-over-week."}
+ ];
+ document.getElementById("grid").innerHTML=F.map(f=>`
+  <a class="card" href="${f.url}" target="_blank" rel="noopener">
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="u">${f.url.replace('https://www.','')}</span></div>
+      <div class="shot"><iframe src="${f.url}" scrolling="no" loading="lazy" tabindex="-1"></iframe><span class="glass"></span></div></div>
+    <div class="body"><div class="k"><span class="em">${f.em}</span><h3>${f.title}</h3></div><p>${f.desc}</p><div class="go">Open →</div></div>
+  </a>`).join("");
+</script></body></html>
