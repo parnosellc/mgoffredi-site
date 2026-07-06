@@ -76,6 +76,8 @@
      <div class="fld"><label>↩︎ Source-of-Truth CPA (last week)</label><div class="wrap"><span class="cur">$</span><input id="sotLast" type="number" step="0.01" value="109.51"><span class="aud2">AUD</span></div></div>
    </div>
    <div class="period" id="period"></div>
+   <div class="genrow"><button class="genbtn" id="genBtn">🔗 Create shareable report</button><span class="genmsg" id="genMsg"></span></div>
+   <div class="recent" id="recent"></div>
  </div>
  <div class="snapb" id="snapb" style="display:none"></div>
  <details id="prev"><summary>▸ Preview report</summary>
@@ -184,7 +186,7 @@ function generate(){var now=Date.now();if(now-lastGen<6000)return;lastGen=now;
 document.getElementById("target").addEventListener("input",compute);
 document.getElementById("sot").addEventListener("input",compute);
 document.getElementById("sotLast").addEventListener("input",compute);
-document.getElementById("genBtn").addEventListener("click",generate);
+var _gb=document.getElementById("genBtn"); if(_gb)_gb.addEventListener("click",generate);
 renderRecent();
 if(SNAPSHOT){
   document.getElementById("controls").style.display="none";
