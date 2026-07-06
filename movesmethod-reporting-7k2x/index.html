@@ -25,6 +25,9 @@
  .shot{position:relative;height:230px;overflow:hidden;background:#0d1117}
  .shot iframe{width:250%;height:575px;border:0;transform:scale(.4);transform-origin:top left;pointer-events:none}
  .shot .glass{position:absolute;inset:0}
+ .shot.nostatic{display:flex;align-items:center;justify-content:center;background:radial-gradient(400px 200px at 50% 0,#16233b,#0d1117)}
+ .sp{text-align:center;color:var(--mut)} .sp .e{font-size:34px;margin-bottom:8px} .sp b{display:block;color:var(--ink);font-size:16px;margin-bottom:3px}
+ .sp span{display:block;font-size:11px;font-family:ui-monospace,Menlo,monospace;margin-bottom:8px} .sp em{font-size:11px;color:var(--teal);font-style:normal;font-weight:600}
  .body{padding:18px 20px 20px}
  .body .k{display:flex;align-items:center;gap:10px;margin-bottom:6px}
  .body .em{font-size:22px} .body h3{margin:0;font-size:18px;font-weight:650}
@@ -47,13 +50,17 @@
    desc:"Creatives rolled into series (WES003, MGO002…) with thumbnails, CPA, hook, CTR and 7-day trend."},
   {em:"🎬",title:"Eric's Creative Report",url:"https://www.mgoffredi.com/creative-report-9q7x2k4f/",
    desc:"Every ad creative, deduped to one row — CPA, hook %, retention, CTR — with Airtable-style filtering."},
+  {em:"🎥",title:"Creative Performance",url:"https://creative-report-production-7935.up.railway.app/mgo-creative-report-7f3k9q2x8w/",nolive:true,
+   desc:"Video ads split by funnel (FCVSL / Toolkit) × region (US / ROW) — top spenders & up-and-comers, with shareable snapshots."},
   {em:"🧠",title:"Campaign Memory",url:"https://www.mgoffredi.com/campaign-memory-r7w2x9/",
    desc:"The front door: account pulse, every budget/status edit with timing, and each campaign's notes on tap."}
  ];
- document.getElementById("grid").innerHTML=F.map(f=>`
-  <a class="card" href="${f.url}" target="_blank" rel="noopener">
-    <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="u">${f.url.replace('https://www.','')}</span></div>
-      <div class="shot"><iframe src="${f.url}" scrolling="no" loading="lazy" tabindex="-1"></iframe><span class="glass"></span></div></div>
+ document.getElementById("grid").innerHTML=F.map(f=>{
+  const shot = f.nolive
+    ? `<div class="shot nostatic"><div class="sp"><div class="e">${f.em}</div><b>${f.title}</b><span>FCVSL / Toolkit × US / ROW</span><em>Live report — opens on click ↗</em></div></div>`
+    : `<div class="shot"><iframe src="${f.url}" scrolling="no" loading="lazy" tabindex="-1"></iframe><span class="glass"></span></div>`;
+  return `<a class="card" href="${f.url}" target="_blank" rel="noopener">
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="u">${f.url.replace('https://www.','').replace('https://','')}</span></div>${shot}</div>
     <div class="body"><div class="k"><span class="em">${f.em}</span><h3>${f.title}</h3></div><p>${f.desc}</p><div class="go">Open →</div></div>
-  </a>`).join("");
+  </a>`;}).join("");
 </script></body></html>
