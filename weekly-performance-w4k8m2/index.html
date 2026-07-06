@@ -120,6 +120,8 @@ function compute(){
  const totSales= sot? totSpend/sot : 0;               // real sales from SoT CPA
  const k= totFbp? totSales/totFbp : 0;                 // sales per FB purchase
  const salesOf=x=>x.fbp*k, cpaOf=x=>{const s=salesOf(x);return s? x.spend/s:null;};
+ let lastTotSpend=0; if(DATA.lastSeg){for(const g in DATA.lastSeg)for(const ff in DATA.lastSeg[g])lastTotSpend+=DATA.lastSeg[g][ff].spend;}
+ const spendWow = lastTotSpend ? `<span class="lastw">${totSpend>=lastTotSpend?'▲':'▼'} ${Math.abs((totSpend/lastTotSpend-1)*100).toFixed(0)}% vs last week</span>` : '';
  function segWow(g,cpaThis){ const L=DATA.lastSeg; if(!L||!sotLast||cpaThis==null) return "";
    let lts=0,ltf=0; for(const gg in L)for(const ff in L[gg]){lts+=L[gg][ff].spend;ltf+=L[gg][ff].fbp;}
    const lsales= sotLast? lts/sotLast:0, lk= ltf? lsales/ltf:0;
@@ -141,7 +143,7 @@ function compute(){
  // section 1
  let h=`<section><h2><span class="fl">📊</span>This week at a glance</h2>
    <div class="stats">
-    <div class="stat"><p class="l">Total Spend</p><p class="n">${money(totSpend)}</p></div>
+    <div class="stat"><p class="l">Total Spend</p><p class="n">${money(totSpend)}</p>${spendWow}</div>
     <div class="stat s2"><p class="l">Unique sales / day (est.)</p><p class="n">${Math.round(totSales/7).toLocaleString()}</p></div>
     <div class="stat s3"><p class="l">CPA (source of truth)</p><p class="n">${money2(sot)}</p>${deltaBadge(sot)}
       ${sotLast?`<span class="lastw">Last week: ${money2(sotLast)}${(sot&&sotLast)?` · <span style="font-style:normal;font-weight:700;color:${sot<sotLast?'var(--emerald)':'var(--faint)'}">${sot<sotLast?'▼':'▲'} ${Math.abs((sot/sotLast-1)*100).toFixed(0)}% WoW</span>`:''}</span>`:''}</p></div>
