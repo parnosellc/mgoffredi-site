@@ -1,0 +1,426 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Campaign Memory</title><style>
+ :root{--bg:#0d1117;--card:#161b22;--line:#232a34;--ink:#e6edf3;--mut:#8b949e;--teal:#2dd4bf;--good:#3fb950;--gold:#d4a72c;--down:#f85149}
+ *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+ .wrap{max-width:1000px;margin:0 auto;padding:34px 20px 70px}
+ h1{font-size:26px;margin:0 0 6px} .intro{color:var(--mut);font-size:14px;line-height:1.6;max-width:760px;margin:0 0 8px} .intro b{color:var(--ink)}
+ .links{margin:8px 0 20px;font-size:13px} .links a{color:var(--teal);text-decoration:none;margin-right:16px;font-weight:600} .links a:hover{text-decoration:underline}
+ .pulse{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+ .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+ .tile label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+ .tile b{display:block;font-size:24px;margin:3px 0 1px} .tile span{font-size:11.5px;color:var(--mut)}
+ h2{font-size:15px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;margin:26px 0 12px;font-weight:600}
+ .clog{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 14px}
+ .ev{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--line)} .ev:last-child{border-bottom:0}
+ .et{flex:0 0 128px;color:var(--mut);font-size:12.5px;padding-top:1px}
+ .ec{font-size:13.5px} .tag{background:#0d1117;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:11px;color:var(--teal);margin-right:6px}
+ .eo{color:var(--mut);font-size:11.5px;margin-top:2px;font-family:ui-monospace,Menlo,monospace}
+ .cc{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+ .cc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:74px 1fr auto auto auto 140px;gap:12px;align-items:center;padding:11px 14px}
+ .cc summary::-webkit-details-marker{display:none}
+ .pill{font-size:10px;text-align:center;padding:2px 0;border-radius:8px;background:#2a2f3a;color:var(--mut)} .pill.ACTIVE{background:rgba(63,185,138,.15);color:var(--good)}
+ .cn{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .tags i{font-style:normal;font-size:10px;background:#0d1117;border:1px solid var(--line);border-radius:5px;padding:1px 5px;margin-right:4px;color:var(--mut)} .tags i.acc{color:var(--gold)}
+ .spend,.cpa{text-align:right;font-size:14px;font-weight:600;white-space:nowrap} .spend em,.cpa em{display:block;font-size:9.5px;color:var(--mut);font-weight:400;font-style:normal}
+ .spkwrap{color:var(--teal)} .spk{width:132px;height:30px;display:block}
+ .cbody{border-top:1px solid var(--line);padding:12px 14px}
+ .note{white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink);margin:0;line-height:1.5}
+ .muted{color:var(--mut);font-size:13px}
+ footer{color:var(--mut);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+ @media(max-width:720px){.pulse{grid-template-columns:repeat(2,1fr)}.cc summary{grid-template-columns:60px 1fr auto;grid-auto-rows:auto}.spkwrap,.tags{display:none}}
+</style></head><body><div class="wrap">
+ <h1>Campaign Memory</h1>
+ <p class="intro">The front door to your Meta ad memory: what's live, what it's spending, <b>every budget/status edit you've made and when</b>,
+ and the reasoning behind each campaign. Numbers auto-refresh daily; the notes are the "why" that numbers can't hold.</p>
+ <div class="links">↳ <a href="https://www.mgoffredi.com/creative-report-9q7x2k4f/" target="_blank">Eric's creative report</a> <a href="https://www.mgoffredi.com/series-report-8m4k2p7w/" target="_blank">Series performance</a></div>
+ <div class="pulse">
+      <div class="tile"><label>Spend · last 7d</label><b>$227,604</b><span>$512,822 since 2026-06-21</span></div>
+      <div class="tile"><label>Blended CPA · 7d</label><b>$60</b><span>3,774.0 sales</span></div>
+      <div class="tile"><label>Active campaigns</label><b>24</b><span>of 32 with data</span></div>
+      <div class="tile"><label>Last updated</label><b>Jul 6, 8:00am</b><span>auto, daily</span></div></div>
+ <h2>Recent changes — budget &amp; status edits</h2>
+ <div class="clog"><div class="ev"><div class="et">Jul 5, 4:55pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 4:54pm</div><div class="ec"><span class="tag">budget</span> $799 → <b>$499</b>/day<div class="eo">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 4:54pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 9:19am</div><div class="ec"><span class="tag">ad-set status</span> Pending Process → <b>Active</b><div class="eo">vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3-Physica · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 9:19am</div><div class="ec"><span class="tag">ad-set status</span> Active → <b>Pending Process</b><div class="eo">vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3-Physica · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 9:12am</div><div class="ec"><span class="tag">bid strategy</span> COST_CAP<div class="eo">AF1001 | JR | Ascension Funnel V1 | AS 4 | Physical fitness (fitness) · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 9:12am</div><div class="ec"><span class="tag">ad-set status</span> Active → <b>Inactive</b><div class="eo">AF1001 | JR | Ascension Funnel V1 | AS 6 | Weight training (weightlift · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 9:04am</div><div class="ec"><span class="tag">ad-set status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-070526-migo-t-us-18-65-video-broad-us-toolkit-7479-TK_sha004 · Gorillafy</div></div></div><div class="ev"><div class="et">Jul 5, 9:03am</div><div class="ec"><span class="tag">new ad set</span> <div class="eo">vanjamov1-070526-migo-t-us-18-65-video-broad-us-toolkit-7479-TK_sha004 · Gorillafy</div></div></div><div class="ev"><div class="et">Jul 5, 9:03am</div><div class="ec"><span class="tag">bid strategy</span> HIGHEST_VALUE<div class="eo">vanjamov1-070526-migo-t-us-18-65-video-broad-us-toolkit-7479-TK_sha004 · Gorillafy</div></div></div><div class="ev"><div class="et">Jul 5, 9:03am</div><div class="ec"><span class="tag">optimization</span> Value<div class="eo">vanjamov1-070526-migo-t-us-18-65-video-broad-us-toolkit-7479-TK_sha004 · Gorillafy</div></div></div><div class="ev"><div class="et">Jul 5, 7:30am</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov2-07022026-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 7:30am</div><div class="ec"><span class="tag">budget</span> $1,900 → <b>$1,200</b>/day<div class="eo">vanjamov2-07022026-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 5, 7:30am</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov2-07022026-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:20pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:20pm</div><div class="ec"><span class="tag">budget</span> $599 → <b>$799</b>/day<div class="eo">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:20pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:08pm</div><div class="ec"><span class="tag">ad-set status</span> Pending Process → <b>Active</b><div class="eo">vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3-Physica · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:08pm</div><div class="ec"><span class="tag">ad-set status</span> Active → <b>Pending Process</b><div class="eo">vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3-Physica · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:07pm</div><div class="ec"><span class="tag">ad-set status</span> Pending Process → <b>Active</b><div class="eo">vanjamov2-06242026-migo-s-uscan-18-65-video-interests-abo-fcvsl_3-chea · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:06pm</div><div class="ec"><span class="tag">new ad set</span> {'type': 'payment_amount', 'currency': 'AUD', 'new_value': 1<div class="eo">vanjamov2-06242026-migo-s-uscan-18-65-video-interests-abo-fcvsl_3-chea · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:06pm</div><div class="ec"><span class="tag">bid strategy</span> LOWEST_COST_BID_STRATEGY<div class="eo">vanjamov2-06242026-migo-s-uscan-18-65-video-interests-abo-fcvsl_3-chea · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:06pm</div><div class="ec"><span class="tag">optimization</span> Conversions<div class="eo">vanjamov2-06242026-migo-s-uscan-18-65-video-interests-abo-fcvsl_3-chea · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:06pm</div><div class="ec"><span class="tag">budget schedule</span> True<div class="eo">vanjamov2-06242026-migo-s-uscan-18-65-video-interests-abo-fcvsl_3-chea · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:02pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-06222026-migo-rt-ww-18-65-video-retargeting-toolkit · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:02pm</div><div class="ec"><span class="tag">budget</span> $550 → <b>$850</b>/day<div class="eo">vanjamov1-06222026-migo-rt-ww-18-65-video-retargeting-toolkit · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:02pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov1-06222026-migo-rt-ww-18-65-video-retargeting-toolkit · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:01pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov2-0605-migo-t-us-18-65-video-broad-row-fcvslww-1 · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:01pm</div><div class="ec"><span class="tag">budget</span> $1,450 → <b>$1,850</b>/day<div class="eo">vanjamov2-0605-migo-t-us-18-65-video-broad-row-fcvslww-1 · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 8:01pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov2-0605-migo-t-us-18-65-video-broad-row-fcvslww-1 · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 7:55pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Inactive</b><div class="eo">vanjamov1-06252026-migo-t-us-18-65-video-broad-us-fcvsl_mvmt · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 7:55pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Inactive</b><div class="eo">vanjamov1-06232026-migo-t-us-18-65-video-broad-us-fcvsl_bali · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 4, 7:55pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Inactive</b><div class="eo">vanjamov1-07022026-migo-t-us-18-65-video-broad-us-fcvsl_deskworker - C · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:37pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-Migo-06252026-us-broad_wifi-fcvsl_1 · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:36pm</div><div class="ec"><span class="tag">budget</span> $3,050 → <b>$2,050</b>/day<div class="eo">vanjamov1-Migo-06252026-us-broad_wifi-fcvsl_1 · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:36pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov1-Migo-06252026-us-broad_wifi-fcvsl_1 · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:30pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-06232026-migo-t-us-18-65-video-broad-us-fcvsl_bali · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:29pm</div><div class="ec"><span class="tag">budget</span> $400 → <b>$650</b>/day<div class="eo">vanjamov1-06232026-migo-t-us-18-65-video-broad-us-fcvsl_bali · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:29pm</div><div class="ec"><span class="tag">campaign status</span> Active → <b>Pending Process</b><div class="eo">vanjamov1-06232026-migo-t-us-18-65-video-broad-us-fcvsl_bali · Michael Goffredi</div></div></div><div class="ev"><div class="et">Jul 3, 12:23pm</div><div class="ec"><span class="tag">campaign status</span> Pending Process → <b>Active</b><div class="eo">vanjamov1-07022026-migo-t-us-18-65-video-broad-us-fcvsl_deskworker - C · Michael Goffredi</div></div></div></div>
+ <h2>Campaigns <span style="text-transform:none;font-weight:400">(click for notes)</span></h2>
+ <details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="AF1001 | JR | Ascension Funnel V1">AF1001 | JR | Ascension Funnel V1</span>
+          <span class="tags"><i class="acc">VM1</i></span>
+          <span class="spend">$28,884<em>7d</em></span>
+          <span class="cpa">$57<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,6.2 10.2,6.5 20.3,6.6 30.5,7.6 40.6,11.9 50.8,2.0 60.9,3.8 71.1,5.1 81.2,6.0 91.4,7.1 101.5,8.1 111.7,12.2 121.8,3.9 132.0,12.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="12.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3">vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM2</i></span>
+          <span class="spend">$27,594<em>7d</em></span>
+          <span class="cpa">$51<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,24.8 10.2,22.6 20.3,20.9 30.5,22.2 40.6,21.5 50.8,18.5 60.9,18.6 71.1,19.6 81.2,19.2 91.4,18.7 101.5,14.2 111.7,8.5 121.8,2.0 132.0,10.4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="10.4" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov2-06192026-migo-s-us-18-65-video-interests-abo-fcvsl_3
+
+
+**Funnel:** fcvsl
+**Destination URL:** https://movesmethod.com/watch
+**Audience:** US 18-65, interests, ABO
+**Phase:** s
+**Launched:** 2026-06-19
+
+## Log
+
+- **2026-06-22 (Michael)** — Note: this campaign **breaks Yury&#x27;s recommendation** — it uses **interest targeting (+ABO)** instead of the broad composite model (broad audience + dump creatives + Kongtrol toggling). Deliberate deviation from the playbook.
+- **2026-06-22 (briefing import)** — Scale phase on FCVSL via interest targeting + ABO. Status: Scheduled Jun 19; not yet live at briefing.</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="vanjamov2-052826-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl">vanjamov2-052826-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl</span>
+          <span class="tags"><i>BIG6</i><i>FCVSL</i><i class="acc">VM2</i></span>
+          <span class="spend">$25,161<em>7d</em></span>
+          <span class="cpa">$137<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,12.8 10.2,13.2 20.3,12.2 30.5,9.5 40.6,3.5 50.8,2.8 60.9,2.0 71.1,8.5 81.2,10.6 91.4,6.9 101.5,22.2 111.7,28.0 121.8,28.0 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov2-052826-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl
+
+
+**Funnel:** fcvsl
+**Destination URL:** https://movesmethod.com/watch
+**Audience:** Big-6 (US/UK/CA/AU/IE/NZ) 18-65 broad
+**Phase:** t
+**Launched:** 2026-05-28
+
+## Log
+
+- **2026-06-22 (briefing import)** — Big-6 FCVSL test. Status: Active; ~$113 CPA (Jun 1-8).</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-06302026-migo-s-country_list-18-65-mixed_media-interests-tk_7479">vanjamov1-06302026-migo-s-country_list-18-65-mixed_media-interests-tk_7479</span>
+          <span class="tags"><i>Country-list</i><i class="acc">VM1</i></span>
+          <span class="spend">$24,914<em>7d</em></span>
+          <span class="cpa">$60<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,28.0 50.8,28.0 60.9,28.0 71.1,28.0 81.2,4.4 91.4,2.7 101.5,3.1 111.7,8.7 121.8,2.0 132.0,3.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="3.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-Migo-06252026-us-broad_wifi-fcvsl_1">vanjamov1-Migo-06252026-us-broad_wifi-fcvsl_1</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$18,038<em>7d</em></span>
+          <span class="cpa">$87<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,20.4 50.8,2.0 60.9,6.4 71.1,6.9 81.2,6.8 91.4,4.7 101.5,10.3 111.7,15.1 121.8,11.3 132.0,19.4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="19.4" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-Migo-06262026-us-broad_wifi-fcvsl_1">vanjamov1-Migo-06262026-us-broad_wifi-fcvsl_1</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$12,669<em>7d</em></span>
+          <span class="cpa">$95<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,26.4 50.8,22.4 60.9,22.1 71.1,23.0 81.2,20.4 91.4,20.4 101.5,6.4 111.7,11.4 121.8,2.0 132.0,15.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="15.5" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov2-06022026-migo-t-country_list-move">vanjamov2-06022026-migo-t-country_list-move</span>
+          <span class="tags"><i>Country-list</i><i>/move</i><i class="acc">VM2</i></span>
+          <span class="spend">$12,474<em>7d</em></span>
+          <span class="cpa">$58<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,12.1 10.2,16.7 20.3,12.5 30.5,6.1 40.6,11.0 50.8,7.5 60.9,6.0 71.1,9.9 81.2,4.8 91.4,8.6 101.5,3.5 111.7,3.6 121.8,2.0 132.0,10.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="10.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov2-06022026-migo-t-country_list-move
+
+
+**Funnel:** toolkit_open
+**Destination URL:** https://movesmethod.com/move
+**Audience:** Custom country list (contents unconfirmed)
+**Phase:** t
+**Launched:** 2026-06-02
+
+## Log
+
+- **2026-06-22 (briefing import)** — Target a specific country list on the /move open page. Status: $193 CPA (Jun 1-8) - over target; current status unconfirmed.</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov2-06182026-migo-t-us-18-65-video-interests-abo-tooklit_move-1">vanjamov2-06182026-migo-t-us-18-65-video-interests-abo-tooklit_move-1</span>
+          <span class="tags"><i>US</i><i>Toolkit</i><i class="acc">VM2</i></span>
+          <span class="spend">$11,186<em>7d</em></span>
+          <span class="cpa">$67<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,14.2 10.2,15.1 20.3,6.0 30.5,6.3 40.6,9.1 50.8,3.2 60.9,5.2 71.1,8.0 81.2,7.4 91.4,7.8 101.5,5.6 111.7,7.8 121.8,2.0 132.0,12.1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="12.1" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov2-06182026-migo-t-us-18-65-video-interests-abo-tooklit_move-1
+
+
+**Funnel:** toolkit_open
+**Destination URL:** https://movesmethod.com/toolkit-7479 and/or /move (A/B unconfirmed)
+**Audience:** US 18-65, interest-targeted, ABO
+**Phase:** t
+**Launched:** 2026-06-18
+
+## Log
+
+- **2026-06-22 (Michael)** — Note: this campaign **breaks Yury&#x27;s recommendation** — it uses **interest targeting (+ABO)** instead of the broad composite model (broad audience + dump creatives + Kongtrol toggling). Deliberate deviation from the playbook.
+- **2026-06-22 (briefing import)** — First interest-targeted ABO test on the open page. Status: Launched Jun 18.</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov2-0605-migo-t-us-18-65-video-broad-row-fcvslww-1">vanjamov2-0605-migo-t-us-18-65-video-broad-row-fcvslww-1</span>
+          <span class="tags"><i>ROW</i><i>FCVSL-WW</i><i class="acc">VM2</i></span>
+          <span class="spend">$9,462<em>7d</em></span>
+          <span class="cpa">$38<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,16.7 10.2,15.4 20.3,16.0 30.5,15.9 40.6,4.9 50.8,4.2 60.9,14.0 71.1,14.3 81.2,14.3 91.4,11.9 101.5,8.8 111.7,10.1 121.8,2.0 132.0,12.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="12.5" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov2-0605-migo-t-us-18-65-video-broad-row-fcww-1
+
+
+**Funnel:** fcvsl
+**Destination URL:** https://movesmethod.com/watch
+**Audience:** ROW 18-65 broad
+**Phase:** t
+**Launched:** 2026-06-05
+
+## Log
+
+- **2026-06-22 (briefing import)** — WW FCVSL build - top ask delivered. Status: Active; ~$67.82 CPA on first ~$1.2K spend. Standing $45 CPA target for WW campaigns.</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov2-05282026-migo-t-ww-now943876">vanjamov2-05282026-migo-t-ww-now943876</span>
+          <span class="tags"><i>WW</i><i>/now</i><i class="acc">VM2</i></span>
+          <span class="spend">$7,611<em>7d</em></span>
+          <span class="cpa">$26<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,13.2 10.2,11.1 20.3,7.1 30.5,7.2 40.6,7.5 50.8,2.0 60.9,6.3 71.1,8.5 81.2,6.0 91.4,7.6 101.5,9.1 111.7,10.8 121.8,5.2 132.0,14.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="14.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov2-05282026-migo-t-ww-now943876
+
+
+**Funnel:** toolkit_open
+**Destination URL:** https://movesmethod.com/now943876
+**Audience:** WW broad
+**Phase:** t
+**Launched:** 2026-05-28
+
+## Log
+
+- **2026-06-22 (briefing import)** — WW open-page push; lowest-CPA migo campaign. Status: Active per most recent data.</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-06022026-migo-t-us-18-65-mixed_media-broad-us-move">vanjamov1-06022026-migo-t-us-18-65-mixed_media-broad-us-move</span>
+          <span class="tags"><i>US</i><i>/move</i><i class="acc">VM1</i></span>
+          <span class="spend">$6,310<em>7d</em></span>
+          <span class="cpa">$81<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,8.9 10.2,9.1 20.3,7.5 30.5,7.8 40.6,13.6 50.8,2.0 60.9,7.1 71.1,9.5 81.2,10.7 91.4,8.4 101.5,9.3 111.7,12.3 121.8,6.0 132.0,16.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="16.5" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov1-06022026-migo-t-us-18-65-mixed_media-broad-us-move
+
+
+**Funnel:** toolkit_open
+**Destination URL:** https://movesmethod.com/move
+**Audience:** US 18-65 broad
+**Phase:** t
+**Launched:** 2026-06-02
+
+## Log
+
+- **2026-06-22 (briefing import)** — US broad test on /move with mixed-media creatives. Status: ~$166.92 CPA (Jun 1-8) - over target.</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov2-07022026-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl">vanjamov2-07022026-migo-t-us-18-65-video-broad-big6-watch-1-fcvsl</span>
+          <span class="tags"><i>BIG6</i><i>FCVSL</i><i class="acc">VM2</i></span>
+          <span class="spend">$6,167<em>7d</em></span>
+          <span class="cpa">$99<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,28.0 50.8,28.0 60.9,28.0 71.1,28.0 81.2,28.0 91.4,28.0 101.5,5.7 111.7,5.7 121.8,2.0 132.0,17.1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="17.1" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - PROS - MovesMethod [HP] - ABO [BIG4] [SS #10] [2.0]">[MB] - PROS - MovesMethod [HP] - ABO [BIG4] [SS #10] [2.0]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$5,476<em>7d</em></span>
+          <span class="cpa">$54<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,2.0 10.2,2.2 20.3,12.8 30.5,12.4 40.6,12.7 50.8,11.0 60.9,12.3 71.1,14.0 81.2,13.2 91.4,13.0 101.5,13.5 111.7,14.2 121.8,12.5 132.0,16.1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="16.1" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-06222026-migo-rt-ww-18-65-video-retargeting-toolkit">vanjamov1-06222026-migo-rt-ww-18-65-video-retargeting-toolkit</span>
+          <span class="tags"><i>WW</i><i>Toolkit</i><i class="acc">VM1</i></span>
+          <span class="spend">$4,365<em>7d</em></span>
+          <span class="cpa">$52<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,20.3 20.3,16.1 30.5,7.2 40.6,16.4 50.8,11.0 60.9,16.3 71.1,14.5 81.2,11.7 91.4,9.8 101.5,9.0 111.7,11.2 121.8,2.0 132.0,10.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="10.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - PROS - MovesMethod [HP] - ABO [BIG4 + WW] [NAF - SS #9 - CPRG] [3.0]">[MB] - PROS - MovesMethod [HP] - ABO [BIG4 + WW] [NAF - SS #9 - CPRG] [3.0]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$3,863<em>7d</em></span>
+          <span class="cpa">$46<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,7.3 10.2,6.7 20.3,5.9 30.5,6.7 40.6,7.9 50.8,2.0 60.9,5.0 71.1,7.2 81.2,7.7 91.4,6.7 101.5,7.3 111.7,9.0 121.8,3.1 132.0,15.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="15.8" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl">vanjamov1-06282026-migo-rt-ww-18-65-video-retargeting-watch-fcvsl</span>
+          <span class="tags"><i>WW</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$3,410<em>7d</em></span>
+          <span class="cpa">$68<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,28.0 50.8,28.0 60.9,25.3 71.1,24.5 81.2,19.3 91.4,16.2 101.5,10.4 111.7,11.9 121.8,2.0 132.0,15.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="15.8" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - MovesMethod [HP] - PROS - ABO [BIG4] [ICS]">[MB] - MovesMethod [HP] - PROS - ABO [BIG4] [ICS]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$3,341<em>7d</em></span>
+          <span class="cpa">$62<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,12.4 10.2,7.3 20.3,8.1 30.5,8.3 40.6,16.5 50.8,2.0 60.9,6.1 71.1,9.3 81.2,7.6 91.4,8.2 101.5,10.0 111.7,15.8 121.8,5.3 132.0,12.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="12.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - MovesMethod [HP] - PROS - ABO [Structure Testing]">[MB] - MovesMethod [HP] - PROS - ABO [Structure Testing]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$3,017<em>7d</em></span>
+          <span class="cpa">$43<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,6.2 10.2,5.2 20.3,6.7 30.5,4.9 40.6,7.4 50.8,2.0 60.9,8.9 71.1,7.5 81.2,6.3 91.4,4.5 101.5,6.0 111.7,9.9 121.8,5.2 132.0,11.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="11.8" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-06252026-migo-t-us-18-65-video-broad-us-fcvsl_og">vanjamov1-06252026-migo-t-us-18-65-video-broad-us-fcvsl_og</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$2,661<em>7d</em></span>
+          <span class="cpa">$78<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,24.6 40.6,19.4 50.8,13.8 60.9,2.0 71.1,16.8 81.2,8.5 91.4,5.3 101.5,9.4 111.7,12.2 121.8,3.2 132.0,16.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="16.8" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="vanjamov1-06232026-migo-t-us-18-65-video-broad-us-fcvsl_bali">vanjamov1-06232026-migo-t-us-18-65-video-broad-us-fcvsl_bali</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$2,620<em>7d</em></span>
+          <span class="cpa">$131<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,23.0 20.3,17.5 30.5,17.7 40.6,20.0 50.8,16.1 60.9,15.2 71.1,10.4 81.2,8.1 91.4,10.4 101.5,7.2 111.7,2.0 121.8,18.0 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="vanjamov1-06252026-migo-rt-ww-18-65-video-retargeting-now943876">vanjamov1-06252026-migo-rt-ww-18-65-video-retargeting-now943876</span>
+          <span class="tags"><i>WW</i><i>/now</i><i class="acc">VM1</i></span>
+          <span class="spend">$2,293<em>7d</em></span>
+          <span class="cpa">$18<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,18.0 40.6,17.3 50.8,16.6 60.9,16.6 71.1,10.8 81.2,9.6 91.4,10.2 101.5,10.8 111.7,4.6 121.8,2.0 132.0,12.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="12.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="RT1001 | JR | BOF | Mobility Toollkit">RT1001 | JR | BOF | Mobility Toollkit</span>
+          <span class="tags"><i class="acc">VM1</i></span>
+          <span class="spend">$2,080<em>7d</em></span>
+          <span class="cpa">$39<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,3.9 10.2,2.0 20.3,9.0 30.5,15.3 40.6,16.3 50.8,11.3 60.9,19.0 71.1,21.5 81.2,21.8 91.4,22.6 101.5,22.5 111.7,24.1 121.8,23.5 132.0,25.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="25.2" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - MovesMethod [HP] - PROS - ABO [BIG4] [ICT]">[MB] - MovesMethod [HP] - PROS - ABO [BIG4] [ICT]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$1,962<em>7d</em></span>
+          <span class="cpa">$43<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,2.9 10.2,2.5 20.3,2.0 30.5,13.2 40.6,9.4 50.8,6.0 60.9,9.5 71.1,10.8 81.2,9.8 91.4,9.6 101.5,10.5 111.7,12.4 121.8,9.2 132.0,14.3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="14.3" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="FST | Content Cycle Bins">FST | Content Cycle Bins</span>
+          <span class="tags"><i class="acc">VM1</i></span>
+          <span class="spend">$753<em>7d</em></span>
+          <span class="cpa">$376<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,7.2 10.2,7.7 20.3,6.9 30.5,5.8 40.6,6.2 50.8,2.0 60.9,4.1 71.1,5.6 81.2,5.6 91.4,4.9 101.5,6.6 111.7,6.9 121.8,3.9 132.0,11.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="11.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="vanjamov1-07022026-migo-t-us-18-65-video-broad-us-fcvsl_deskworker - Copy">vanjamov1-07022026-migo-t-us-18-65-video-broad-us-fcvsl_deskworker - Copy</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$679<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,28.0 50.8,28.0 60.9,28.0 71.1,28.0 81.2,28.0 91.4,28.0 101.5,2.0 111.7,16.9 121.8,22.2 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="vanjamov1-06252026-migo-t-us-18-65-video-broad-us-fcvsl_mvmt">vanjamov1-06252026-migo-t-us-18-65-video-broad-us-fcvsl_mvmt</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$553<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,28.0 10.2,28.0 20.3,28.0 30.5,28.0 40.6,28.0 50.8,28.0 60.9,28.0 71.1,28.0 81.2,28.0 91.4,28.0 101.5,16.7 111.7,2.0 121.8,19.7 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="CREATIVE TESTING | Sandbox 2">CREATIVE TESTING | Sandbox 2</span>
+          <span class="tags"><i class="acc">VM1</i></span>
+          <span class="spend">$62<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,13.0 10.2,18.7 20.3,2.0 30.5,22.4 40.6,19.3 50.8,25.3 60.9,25.8 71.1,27.5 81.2,28.0 91.4,28.0 101.5,28.0 111.7,28.0 121.8,28.0 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="210 | JR | Top 20 Ads | Nov 6 - Expanded Countries">210 | JR | Top 20 Ads | Nov 6 - Expanded Countries</span>
+          <span class="tags"><i class="acc">VM1</i></span>
+          <span class="spend">$0<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,2.0 10.2,14.9 20.3,17.9 30.5,24.2 40.6,28.0 50.8,28.0 60.9,28.0 71.1,28.0 81.2,28.0 91.4,28.0 101.5,28.0 111.7,28.0 121.8,28.0 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="vanjamov1-Migo-05272026-us-broad-fcvsl_1">vanjamov1-Migo-05272026-us-broad-fcvsl_1</span>
+          <span class="tags"><i>US</i><i>FCVSL</i><i class="acc">VM1</i></span>
+          <span class="spend">$0<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30"></svg></span>
+        </summary>
+        <div class="cbody"><pre class="note"># CAMPAIGN — vanjamov1-Migo-05272026-us-broad-fcvsl_1
+
+
+**Funnel:** fcvsl
+**Destination URL:** https://movesmethod.com/watch
+**Audience:** US broad
+**Phase:** unconfirmed (early naming, no t/s)
+**Launched:** 2026-05-27
+
+## Log
+
+- **2026-06-22 (briefing import)** — First migo campaign ever launched. Status: Active; ~$141.15 CPA (Jun 1-8).</pre></div>
+        </details><details class="cc"><summary>
+          <span class="pill PAUSED">PAUSED</span>
+          <span class="cn" title="[MB] - PROS - MovesMethod [HP] - ABO [BIG4 + WW] [NAF - SS #9 - CPRG] [3.0 - ROAS]">[MB] - PROS - MovesMethod [HP] - ABO [BIG4 + WW] [NAF - SS #9 - CPRG] [3.0 - ROAS]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$0<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30"></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - MovesMethod [HP] - PROS - ABO [BIG4] [Flexible]">[MB] - MovesMethod [HP] - PROS - ABO [BIG4] [Flexible]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$0<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30" preserveAspectRatio="none"><polyline points="0.0,3.7 10.2,3.4 20.3,2.0 30.5,27.9 40.6,28.0 50.8,28.0 60.9,28.0 71.1,28.0 81.2,28.0 91.4,28.0 101.5,28.0 111.7,28.0 121.8,28.0 132.0,28.0" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="132.0" cy="28.0" r="2" fill="currentColor"/></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details><details class="cc"><summary>
+          <span class="pill ACTIVE">ACTIVE</span>
+          <span class="cn" title="[MB] - PROS - MovesMethod [HP] - ABO [BIG4 + WW] [NAF - SS #9 - CPRG] [4.0 - ROAS]">[MB] - PROS - MovesMethod [HP] - ABO [BIG4 + WW] [NAF - SS #9 - CPRG] [4.0 - ROAS]</span>
+          <span class="tags"><i class="acc">VM2</i></span>
+          <span class="spend">$0<em>7d</em></span>
+          <span class="cpa">—<em>CPA</em></span>
+          <span class="spkwrap"><svg class="spk" viewBox="0 0 132 30"></svg></span>
+        </summary>
+        <div class="cbody"><div class="muted">No notes yet — tell Oliver and it gets logged here.</div></div>
+        </details>
+ <footer>Read-only · auto-updated daily · data 2026-06-21 → 2026-07-06 · generated 2026-07-06T07:51</footer>
+</div></body></html>
+<!-- deploy 20260706T075210Z -->
