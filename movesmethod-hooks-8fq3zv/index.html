@@ -128,6 +128,21 @@ summary .cnt{margin-left:auto;background:#f0eade;color:var(--ink2);font-size:12p
 .t2 .p .n{font-size:22px;font-weight:850;color:#ffd166}
 .t2 .p .l{font-size:12px;opacity:.9;margin-top:2px}
 
+/* mgo proof block (inside task 2) */
+.mgo{display:flex;gap:18px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);
+  border-radius:16px;padding:18px;margin-top:18px;flex-wrap:wrap;align-items:center}
+.mgo-l{flex:1;min-width:250px}
+.mgo-tag{font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:#ffd166;margin-bottom:6px}
+.mgo-h{font-size:19px;font-weight:850;line-height:1.3;margin-bottom:8px}
+.mgo-h code{background:rgba(255,255,255,.18);color:#fff}
+.mgo-p{font-size:14px;line-height:1.55;color:#dff0ec}
+.mgo-p code{background:rgba(255,255,255,.18);color:#fff}
+.mgo-r{display:flex;flex-direction:column;gap:9px;min-width:140px}
+.mgo-stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;padding:9px 13px;text-align:center}
+.mgo-stat .n{display:block;font-size:21px;font-weight:850;color:#ffd166;line-height:1.15}
+.mgo-stat .l{display:block;font-size:11.5px;opacity:.9;margin-top:1px}
+
 /* receipts */
 .proofbox{background:linear-gradient(150deg,#141d33,#2b2447);border-radius:22px;padding:24px;box-shadow:var(--sh2);margin:16px 0;color:#fff}
 .pb-why{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.07);
@@ -333,6 +348,22 @@ summary .cnt{margin-left:auto;background:#f0eade;color:var(--ink2);font-size:12p
   <div class="t2">
     <h3>Hey Erick — here's a slam-dunk way to get new winners FAST.</h3>
     <p style="margin:0">Take every ad in this doc, chop them into segments, and <b>spin them together into new mashups</b> in <a href="https://gorillafy.io/" target="_blank" rel="noopener" style="color:#ffd166;font-weight:800">Gorillafy</a> (or whatever you're fastest in). You're not creating from scratch — you're recombining parts that already print money.</p>
+
+    <div class="mgo">
+      <div class="mgo-l">
+        <div class="mgo-tag">I already did this</div>
+        <div class="mgo-h">The <code>mgo_</code> ads? I jumbled them in Gorillafy — <b>in one evening.</b></div>
+        <div class="mgo-p">They've since spent <b>$135,351</b> across <b>874 purchases</b> (~$155 CPA).<br>
+        This is the <i>exact</i> technique. Same tool, same method, one session. And it's not hypothetical —
+        <code>fc_mgo_002f</code> and <code>fc_mgo_003g</code> are <b>base ads #6 and #7 in this very brief.</b>
+        The batch I threw together in an evening is now part of the proven set we're building on.</div>
+      </div>
+      <div class="mgo-r">
+        <div class="mgo-stat"><span class="n">$135,351</span><span class="l">spent</span></div>
+        <div class="mgo-stat"><span class="n">874</span><span class="l">purchases</span></div>
+        <div class="mgo-stat"><span class="n">1 evening</span><span class="l">of work</span></div>
+      </div>
+    </div>
     <h4 style="margin-top:18px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;opacity:.85">The recipe</h4>
     <ul>
       <li><b>Pull the best segments</b> from the winners above — hooks, demos, mechanism explainers, testimonials, b-roll.</li>
@@ -555,6 +586,7 @@ function dl(){
   });
   md+=`\n---\n\n# TASK 2 — The Mashup Play\n\n### Hey Erick — here's a slam-dunk way to get new winners FAST.\n\n`;
   md+=`Take every ad in this doc, chop them into segments, and spin them together into new mashups in Gorillafy (https://gorillafy.io/). You're not creating from scratch — you're recombining parts that already print money.\n\n`;
+  md+=`### I ALREADY DID THIS.\nThe mgo_ ads? I jumbled them in Gorillafy — IN ONE EVENING.\n- $135,351 spent\n- 874 purchases (~$155 CPA)\n- 1 evening of work\n\nThis is the exact technique. Same tool, same method, one session. And it's not hypothetical — fc_mgo_002f and fc_mgo_003g are base ads #6 and #7 in this very brief. The batch I threw together in an evening is now part of the proven set we're building on.\n\n`;
   md+=`**The recipe:**\n- Pull the best segments from the winners above (hooks, demos, mechanism explainers, testimonials, b-roll)\n- Stack a Task 1 pre-roll hook on the front\n- Speed some clips up — the fc_mgo winners literally have "speed1.25" in their filenames\n- Use the FCVSL "watch the free training" CTA\n- DOUBLE CTA — ask for the click twice (mid-roll + end)\n- The IG VIRAL manifesto makes a great tail-CTA\n\n`;
   md+=`**Why it's a slam dunk, not a guess** — mashups are already among the biggest winners:\n- WK31_JOC_MASHUP — US $13.8k\n- WK38_JOC_MASHUP — US $9.2k\n- "old winners 1-4" (a literal bundle of past winners) — $12.7k, 159 sales\n\nThe parts are already validated. Volume is the point.\n\n`;
   md+=`---\n\n## BENCH — not this round\n- KZ_Crochet Ad_H1 — cute, but basically a retargeting ad. Doesn't generate hooks.\n- KZ_Ad 6047 — $37.83 CPA but only $189 spend / 5 sales. Too thin.\n\n`;
