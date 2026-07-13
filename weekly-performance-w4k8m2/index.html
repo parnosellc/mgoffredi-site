@@ -64,12 +64,16 @@
  section.usa tr.total td{background:var(--tealT)} section.hi tr.total td{background:var(--goldT)} section.row tr.total td{background:var(--slateT)}
  .tkc{display:block;margin-top:4px;font-size:10px;font-weight:600;color:var(--mut);font-style:italic}
  .tkc.better{color:var(--emerald)}
+ .bilink{display:flex;align-items:center;gap:8px;margin:0 0 14px;padding:11px 14px;border-radius:9px;background:rgba(13,148,136,.08);border:1px solid rgba(13,148,136,.35);color:#0f766e;text-decoration:none;font-size:13px;transition:.12s}
+ .bilink:hover{background:rgba(13,148,136,.15);border-color:#0d9488}
+ .bilink .arr{margin-left:auto;opacity:.7}
  .cpaCell{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
  .note{margin-top:14px;font-size:11px;color:var(--faint);font-style:italic}
  footer{padding:24px 44px 40px;margin-top:14px;border-top:6px solid;border-image:linear-gradient(90deg,var(--teal),var(--gold) 33%,var(--slate) 66%,#d64545) 1;font-size:11px;color:var(--faint);letter-spacing:.04em}
 </style></head><body><div class="sheet">
  <div class="controls" id="controls">
    <div class="aud">⚠️ <span>Enter <b>AUD</b> only. Spend is Meta AUD — your Source-of-Truth CPA <b>must also be AUD</b>, not USD.</span></div>
+   <a class="bilink" href="https://movesmethod-bi-itqhavrt4q-uc.a.run.app/" target="_blank" rel="noopener">📈 <b>MovesMethod BI</b> — source-of-truth CPA lives here <span class="arr">↗</span></a>
    <div class="inrow">
      <div class="fld"><label>🎯 Target CPA</label><div class="wrap"><span class="cur">$</span><input id="target" type="number" step="0.01" value="96"><span class="aud2">AUD</span></div></div>
      <div class="fld"><label>📊 Source-of-Truth CPA (this week)</label><div class="wrap"><span class="cur">$</span><input id="sot" type="number" step="0.01" value="96.20"><span class="aud2">AUD</span></div></div>
