@@ -166,6 +166,20 @@ summary .cnt{margin-left:auto;background:#f0eade;color:var(--ink2);font-size:12p
 .plink{font-size:12.5px;font-weight:800;color:#ffd166;margin-top:10px}
 .pnote{margin-top:16px;font-size:13.5px;color:#b9c2da;line-height:1.55}
 
+/* compliance rules */
+.rules{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.rule{display:flex;gap:15px;background:var(--card);border:1px solid var(--line);
+  border-left:5px solid var(--coral);border-radius:16px;padding:17px 19px;box-shadow:var(--sh)}
+.rnum{flex:0 0 34px;height:34px;border-radius:10px;background:var(--coral);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:850;font-size:16px}
+.rt{font-size:17.5px;font-weight:850;margin-bottom:5px}
+.rd{font-size:14.5px;color:var(--ink2);line-height:1.55}
+.swap{display:flex;flex-direction:column;gap:6px;margin-top:11px}
+.swap span{font-size:14px;padding:8px 12px;border-radius:9px;font-weight:600}
+.swap .no{background:#fdeaec;color:#a3202c;border:1px solid #f3c8cd}
+.swap .yes{background:#eaf7ee;color:#1c6b38;border:1px solid #c6e5cf}
+.swap i{font-weight:400;opacity:.8}
+
 .bench{background:#f3ede2;border:1px dashed #cbbfa8;border-radius:18px;padding:18px 22px;margin:14px 0}
 .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);text-align:center}
 .foot a{color:var(--teal)}
@@ -414,8 +428,49 @@ summary .cnt{margin-left:auto;background:#f0eade;color:var(--ink2);font-size:12p
       <li><b>Match the cut.</b> End on "…until I saw this" and hard-cut into the ad's first frame. The seam should feel like a reveal.</li>
       <li><b>Pre-intro visual:</b> talking head, or a visceral frame — X-ray pain-glow, a failed floor-rise, sugar poured on a joint, an adult child lifting a parent out of a chair. <b>Weird beats pretty.</b></li>
       <li><b>One variable per test.</b> Same base ad, different pre-intro. Clean read on the hook alone.</li>
-      <li><b>Compliance:</b> show the fear, imply the medical claim. Debunk the walk, the oatmeal, the fruit, the diet soda — <b>never</b> tell anyone to stop taking medication.</li>
     </ul>
+  </div>
+
+  <div class="sec">Compliance</div>
+  <h2 class="big">The 4 rules. Don't break these.</h2>
+  <p class="lead">If a line breaks one of these, the ad gets rejected and the account takes a hit. When in doubt, ask Michael.</p>
+
+  <div class="rules">
+    <div class="rule">
+      <div class="rnum">1</div>
+      <div>
+        <div class="rt">Show the scary thing. Never promise to fix it.</div>
+        <div class="rd">You can <b>show</b> someone struggling to get off the floor. You <b>cannot say</b> the program stops that from happening.</div>
+        <div class="swap"><span class="no">✗ "This prevents falls."</span><span class="yes">✓ "1 in 4 adults over 65 falls every year." <i>[show the failed floor-rise]</i></span></div>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="rnum">2</div>
+      <div>
+        <div class="rt">Never touch medication.</div>
+        <div class="rd">Debunk <b>habits</b> — the after-dinner walk, the oatmeal, the fruit, the diet soda. Those are fair game. <b>Never</b> mention pills, doses, or stopping a prescription. This is the fastest way to get an ad pulled.</div>
+        <div class="swap"><span class="no">✗ "Skip the metformin — do this instead."</span><span class="yes">✓ "You cut the sugar. You take the walk. It still climbs."</span></div>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="rnum">3</div>
+      <div>
+        <div class="rt">Talk about people, not about "you."</div>
+        <div class="rd">Never tell the viewer they <i>have</i> a condition — that's diagnosing them. State the fact about the population instead and let them do the math.</div>
+        <div class="swap"><span class="no">✗ "You have prediabetes and don't know it."</span><span class="yes">✓ "Half of people over 65 have prediabetes. Most don't know."</span></div>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="rnum">4</div>
+      <div>
+        <div class="rt">Soften every outcome. No cures, no guarantees.</div>
+        <div class="rd">Use <b>"may," "can," "tends to," "people report."</b> Never "cures," "fixes," "eliminates," "guarantees." And use the stats exactly as written in the Ammunition section — <b>don't invent numbers or add them together.</b></div>
+        <div class="swap"><span class="no">✗ "Eliminates joint pain in 30 days."</span><span class="yes">✓ "People tend to move with less discomfort."</span></div>
+      </div>
+    </div>
   </div>
 
   <div class="foot">
@@ -488,7 +543,7 @@ const D=[
     "52% of people over 65 have prediabetes. Most have no idea. I didn't either — until I saw this.",
     "1 in 4 people with diabetes don't know they have it. I was one of them."],
  vis:"<b>The visual is half the formula.</b> In the proven Sculpt Nation ads, the food isn't just <i>named</i> — something <b>weird is done to it on camera</b>. Eggs get blowtorched. Yogurt gets poured. It's an everyday food + a strange action + \"wait, what?\"<br><br>So don't shoot a stock bowl of oatmeal. <b>Torch it. Squish it. Pour sugar over it. Drop it in slow motion.</b> The food must be recognizable and the action must be wrong.",
- cau:"Debunk the walk, the oatmeal, the fruit, the diet soda. <b>Leave medication alone</b> — never imply someone should stop their pills. That's where a health ad gets pulled."},
+ cau:"<b>Debunk habits, not medicine.</b> The after-dinner walk, the oatmeal, the fruit, the diet soda — all fair game. <b>Never mention pills, doses, or stopping a prescription.</b> See the 4 Compliance Rules at the bottom of this page."},
 
 {n:"fc_mgo_002f — \"MOVEMENT AMNESIA\"",sp:"US $9.8k · CPA $124",id:"1n-eE6y05td9vZsHRBuiajqtUxU4r9SzN",
  idea:"<b>Idea:</b> \"Movement amnesia\" is a great curiosity hook for a VSL — a named condition the viewer has never heard of and now needs explained. <i>Find out what it is → click → watch the free presentation.</i>",
@@ -607,7 +662,12 @@ function dl(){
   md+=`**The recipe:**\n- Pull the best segments from the winners above (hooks, demos, mechanism explainers, testimonials, b-roll)\n- Stack a Task 1 pre-intro hook on the front\n- Speed some clips up — the fc_mgo winners literally have "speed1.25" in their filenames\n- Use the FCVSL "watch the free training" CTA\n- DOUBLE CTA — ask for the click twice (mid-roll + end)\n- The IG VIRAL manifesto makes a great tail-CTA\n\n`;
   md+=`**Why it's a slam dunk, not a guess** — mashups are already among the biggest winners:\n- WK31_JOC_MASHUP — US $13.8k\n- WK38_JOC_MASHUP — US $9.2k\n- "old winners 1-4" (a literal bundle of past winners) — $12.7k, 159 sales\n\nThe parts are already validated. Volume is the point.\n\n`;
   md+=`---\n\n## BENCH — not this round\n- KZ_Crochet Ad_H1 — cute, but basically a retargeting ad. Doesn't generate hooks.\n- KZ_Ad 6047 — $37.83 CPA but only $189 spend / 5 sales. Too thin.\n\n`;
-  md+=`## PRODUCTION NOTES\n- Pre-intro length: 2-5 seconds. Keep it tight.\n- End on "...until I saw this" and hard-cut into the ad's first frame.\n- Pre-intro visual: talking head, or a visceral frame (X-ray pain-glow, failed floor-rise, sugar on a joint, adult child lifting a parent from a chair). Weird beats pretty.\n- One variable per test.\n- Compliance: show the fear, imply the medical claim. Never tell anyone to stop taking medication.\n\n`;
+  md+=`## PRODUCTION NOTES\n- Pre-intro length: 2-5 seconds. Keep it tight.\n- End on "...until I saw this" and hard-cut into the ad's first frame.\n- Pre-intro visual: talking head, or a visceral frame (X-ray pain-glow, failed floor-rise, sugar on a joint, adult child lifting a parent from a chair). Weird beats pretty.\n- One variable per test.\n\n`;
+  md+=`## COMPLIANCE — THE 4 RULES. DON'T BREAK THESE.\nIf a line breaks one of these, the ad gets rejected and the account takes a hit. When in doubt, ask Michael.\n\n`;
+  md+=`### 1. Show the scary thing. Never promise to fix it.\nYou can SHOW someone struggling to get off the floor. You CANNOT say the program stops that from happening.\n- ✗ "This prevents falls."\n- ✓ "1 in 4 adults over 65 falls every year." [show the failed floor-rise]\n\n`;
+  md+=`### 2. Never touch medication.\nDebunk HABITS — the after-dinner walk, the oatmeal, the fruit, the diet soda. Those are fair game. NEVER mention pills, doses, or stopping a prescription. Fastest way to get an ad pulled.\n- ✗ "Skip the metformin — do this instead."\n- ✓ "You cut the sugar. You take the walk. It still climbs."\n\n`;
+  md+=`### 3. Talk about people, not about "you."\nNever tell the viewer they HAVE a condition — that's diagnosing them. State the fact about the population and let them do the math.\n- ✗ "You have prediabetes and don't know it."\n- ✓ "Half of people over 65 have prediabetes. Most don't know."\n\n`;
+  md+=`### 4. Soften every outcome. No cures, no guarantees.\nUse "may," "can," "tends to," "people report." Never "cures," "fixes," "eliminates," "guarantees." Use the stats exactly as written in the Ammunition section — don't invent numbers or add them together.\n- ✗ "Eliminates joint pain in 30 days."\n- ✓ "People tend to move with less discomfort."\n\n`;
   md+=`---\nBuilt from 26 Gemini-analyzed winner transcripts, the 06-11 to 07-11 US performance snapshot, CDC mortality/falls/diabetes data, the European Journal of Preventive Cardiology sitting-rising study, and Michael's creative notes.\n`;
   const b=new Blob([md],{type:'text/markdown'});
   const a=document.createElement('a');
