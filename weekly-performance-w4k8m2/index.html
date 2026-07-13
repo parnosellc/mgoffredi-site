@@ -101,16 +101,7 @@
 </div>
 <script>
 // ---- cached weekly data (SAMPLE — the VPS Monday pull will fill this) ----
-const DATA={
- period:"Jun 29 – Jul 5, 2026",
- seg:{ USA:{TK:{spend:60120,fbp:498},FCVSL:{spend:33140,fbp:232}},
-       HI: {TK:{spend:58900,fbp:470},FCVSL:{spend:43200,fbp:312}},
-       ROW:{TK:{spend:6180,fbp:158}, FCVSL:{spend:4820,fbp:92}} },
- lastWeekSotCpa:109.51,
- lastSeg:{ USA:{TK:{spend:52000,fbp:392},FCVSL:{spend:27500,fbp:150}},
-           HI: {TK:{spend:53000,fbp:372},FCVSL:{spend:40000,fbp:232}},
-           ROW:{TK:{spend:5600,fbp:140}, FCVSL:{spend:4400,fbp:74}} }
-};
+let DATA={period:"loading…",seg:null,lastSeg:null,lastPeriod:""};
 const SEGNAME={USA:"United States",HI:"High-income non-US",ROW:"Everything else"};
 const SEGFLAG={USA:"🇺🇸",HI:"🌍",ROW:"🌐"};
 const SEGCLASS={USA:"usa",HI:"hi",ROW:"row"};
@@ -119,6 +110,7 @@ const SEGMETA={HI:"🇬🇧 🇨🇦 🇦🇺 🇳🇿 🇮🇪 · 🇩🇪 🇫
 const money=v=>"$"+Math.round(v).toLocaleString();
 const money2=v=>"$"+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
 function compute(){
+ if(!DATA.seg){return;}
  const target=parseFloat(document.getElementById("target").value)||0;
  const sot=parseFloat(document.getElementById("sot").value)||0;
  const sotLast=parseFloat(document.getElementById("sotLast").value)||0;
@@ -183,7 +175,7 @@ function b64e(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).re
 function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decodeURIComponent(escape(atob(s))));}
 let SNAPSHOT=false;
 (function(){var m=location.hash.match(/r=([^&]+)/);if(m){try{var p=b64d(m[1]);
-  DATA.period=p.period;DATA.seg=p.seg;
+  DATA.period=p.period;DATA.seg=p.seg;if(p.lastSeg)DATA.lastSeg=p.lastSeg;if(p.lastPeriod)DATA.lastPeriod=p.lastPeriod;
   document.getElementById("target").value=p.target;document.getElementById("sot").value=p.sot;document.getElementById("sotLast").value=p.sotLast;
   SNAPSHOT=true;}catch(e){}}})();
 function saveRecent(u,p,sot,ts){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
@@ -195,7 +187,7 @@ function renderRecent(){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekl
     return '<div class="r"><a href="'+r.u+'" target="_blank">'+r.p+' · SoT $'+r.sot+'</a><span class="d">'+new Date(r.ts).toLocaleDateString()+'</span></div>';}).join("");}
 var lastGen=0;
 function generate(){var now=Date.now();if(now-lastGen<6000)return;lastGen=now;
-  var payload={period:DATA.period,seg:DATA.seg,target:document.getElementById("target").value,
+  var payload={period:DATA.period,seg:DATA.seg,lastSeg:DATA.lastSeg,lastPeriod:DATA.lastPeriod,target:document.getElementById("target").value,
     sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,ts:new Date().toISOString()};
   var url=location.origin+location.pathname+"#r="+b64e(payload);
   if(navigator.clipboard)navigator.clipboard.writeText(url).catch(function(){});
@@ -232,4 +224,19 @@ if(SNAPSHOT){
   sb.innerHTML="📎 <b>Shared weekly report</b> · "+DATA.period+" · figures frozen at generation. This is a read-only snapshot.";
 }
 compute();
+// ---- live data: pulled from Meta every Monday, published as weekly-perf.json ----
+if(!SNAPSHOT){
+  fetch("./weekly-perf.json?t="+Date.now()).then(function(r){
+    if(!r.ok) throw new Error("HTTP "+r.status); return r.json();
+  }).then(function(j){
+    DATA.period=j.period; DATA.seg=j.seg; DATA.lastSeg=j.lastSeg; DATA.lastPeriod=j.lastPeriod;
+    var pe=document.getElementById("period");
+    if(pe) pe.innerHTML='Reporting period (auto): <b>'+j.period+'</b> · Melbourne time · vs <b>'+j.lastPeriod+'</b>'
+      + ' <span style="color:#5f7186">· data pulled '+new Date(j.generated_at).toLocaleString()+'</span>';
+    seedPlaceholders(); compute();
+  }).catch(function(e){
+    var pe=document.getElementById("period");
+    if(pe) pe.innerHTML='<span style="color:#d4a72c">⚠️ Could not load this week\'s data ('+e.message+'). Do not report these figures — ping Oliver.</span>';
+  });
+}
 </script></body></html>
