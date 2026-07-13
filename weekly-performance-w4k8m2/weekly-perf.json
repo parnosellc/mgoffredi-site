@@ -1,0 +1,73 @@
+{
+  "period": "Jul 6 \u2013 Jul 12, 2026",
+  "since": "2026-07-06",
+  "until": "2026-07-12",
+  "seg": {
+    "USA": {
+      "TK": {
+        "spend": 82096.72,
+        "fbp": 768
+      },
+      "FCVSL": {
+        "spend": 60320.12,
+        "fbp": 444
+      }
+    },
+    "HI": {
+      "TK": {
+        "spend": 70655.9,
+        "fbp": 796
+      },
+      "FCVSL": {
+        "spend": 51670.68,
+        "fbp": 443
+      }
+    },
+    "ROW": {
+      "TK": {
+        "spend": 6509.17,
+        "fbp": 140
+      },
+      "FCVSL": {
+        "spend": 4417.95,
+        "fbp": 45
+      }
+    }
+  },
+  "lastPeriod": "Jun 29 \u2013 Jul 5, 2026",
+  "lastSince": "2026-06-29",
+  "lastUntil": "2026-07-05",
+  "lastSeg": {
+    "USA": {
+      "TK": {
+        "spend": 50407.24,
+        "fbp": 439
+      },
+      "FCVSL": {
+        "spend": 62118.42,
+        "fbp": 323
+      }
+    },
+    "HI": {
+      "TK": {
+        "spend": 62218.79,
+        "fbp": 537
+      },
+      "FCVSL": {
+        "spend": 49402.56,
+        "fbp": 355
+      }
+    },
+    "ROW": {
+      "TK": {
+        "spend": 6348.84,
+        "fbp": 155
+      },
+      "FCVSL": {
+        "spend": 5978.42,
+        "fbp": 95
+      }
+    }
+  },
+  "generated_at": "2026-07-13T14:52:18"
+}
