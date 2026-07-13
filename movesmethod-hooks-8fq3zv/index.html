@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MovesMethod — Pre-Roll Hook Brief</title>
+<style>
+:root{
+  --ink:#141d33;--ink2:#465170;--paper:#fdf8f0;--card:#fff;
+  --coral:#e8404a;--amber:#f0a63b;--teal:#2a9d8f;--violet:#6d5a86;--sky:#4a7fd4;
+  --line:#e8dcc9;--sh:0 8px 28px rgba(20,29,51,.09);--sh2:0 16px 44px rgba(20,29,51,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);line-height:1.6;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 100px}
+h1,h2,h3,h4{line-height:1.15;letter-spacing:-.015em;margin:0}
+code{background:#f0eade;padding:1px 5px;border-radius:5px;font-size:.9em}
+
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;color:#fff;padding:54px 24px 46px;
+  background:radial-gradient(1200px 500px at 15% -10%,#3b3560 0%,transparent 60%),
+             linear-gradient(135deg,#141d33 0%,#222b4a 50%,#332b4f 100%);
+  background-color:#141d33;border-radius:0 0 32px 32px;margin-bottom:26px}
+.hero-in{max-width:820px;margin:0 auto;position:relative;z-index:2}
+.kick{display:inline-block;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16);
+  font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border-radius:30px;margin-bottom:16px}
+.hero h1{font-size:46px;font-weight:850}
+.hero h1 .pop{color:#ffd166}
+.hero p{font-size:18px;max-width:620px;color:#cfd6ec;margin:12px 0 0}
+.hero-art{position:absolute;right:-30px;bottom:-30px;width:300px;opacity:.5;z-index:1}
+@media(max-width:700px){.hero h1{font-size:32px}.hero-art{display:none}}
+
+/* ── DOWNLOAD BAR ── */
+.dl{position:sticky;top:0;z-index:50;background:rgba(253,248,240,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);padding:10px 20px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;border:none;
+  font-weight:800;font-size:14px;padding:10px 18px;border-radius:24px;cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 14px rgba(232,64,74,.3);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(232,64,74,.4)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.dlnote{font-size:12.5px;color:var(--ink2)}
+
+/* ── BLOCKS ── */
+.sec{font-size:12.5px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin:44px 0 6px}
+h2.big{font-size:31px;margin:0 0 8px;font-weight:850}
+.lead{font-size:17px;color:var(--ink2);margin:0 0 4px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 24px;box-shadow:var(--sh);margin:18px 0}
+.panel h3{font-size:20px;margin-bottom:8px}
+.panel ul{margin:8px 0 0;padding-left:20px}.panel li{margin:7px 0}
+
+/* mechanic */
+.mech{display:flex;align-items:stretch;margin:16px 0 4px;flex-wrap:wrap;gap:8px}
+.mbox{flex:1;min-width:200px;border-radius:14px;padding:15px 17px;font-size:14px}
+.m-new{background:var(--coral);color:#fff;font-weight:800}
+.m-old{background:var(--ink);color:#fff}
+.m-old b{color:#ffd166}
+.m-arrow{display:flex;align-items:center;padding:0 6px;font-size:26px;color:var(--violet);font-weight:800}
+@media(max-width:640px){.m-arrow{transform:rotate(90deg);justify-content:center;width:100%;padding:2px 0}}
+
+/* ammo */
+.ammo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:6px}
+.acard{border-radius:18px;padding:18px;color:#fff;box-shadow:var(--sh);position:relative;overflow:hidden}
+.acard svg{position:absolute;right:-12px;bottom:-12px;width:88px;opacity:.16}
+.a1{background:linear-gradient(140deg,#c0392b,#e8404a)}
+.a2{background:linear-gradient(140deg,#1d3f6e,#4a7fd4)}
+.a3{background:linear-gradient(140deg,#7a4b13,#f0a63b)}
+.a4{background:linear-gradient(140deg,#17635a,#2a9d8f)}
+.acard .n{font-size:30px;font-weight:850;line-height:1.05}
+.acard .t{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:5px}
+.acard .l{font-size:13.5px;margin-top:6px;opacity:.95;line-height:1.45}
+.acard ul{margin:8px 0 0;padding-left:16px;font-size:13.5px}
+.acard li{margin:4px 0}
+.cau{font-size:13.5px;color:#8f1c28;background:#fde8ea;border:1px solid #f6cfd3;border-radius:12px;padding:11px 14px;margin-top:14px}
+
+/* ad cards */
+.ad{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);margin:20px 0;overflow:hidden}
+.ad.hot{border:2px solid var(--coral);box-shadow:var(--sh2)}
+.ad-head{padding:18px 22px 12px;display:flex;gap:14px;align-items:flex-start}
+.num{flex:0 0 38px;height:38px;border-radius:11px;background:var(--ink);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-weight:850;font-size:16px}
+.ad.hot .num{background:var(--coral)}
+.ad-head h3{font-size:19px;font-weight:850;word-break:break-word}
+.meta{margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.spend{background:var(--ink);color:#fff;font-weight:800;font-size:12px;padding:3px 10px;border-radius:20px}
+.flag{background:#fde0e2;color:#b0202c;font-weight:850;font-size:11px;letter-spacing:.07em;
+  text-transform:uppercase;padding:3px 9px;border-radius:20px}
+.ad-body{padding:0 22px 20px}
+.watchrow{display:flex;gap:12px;align-items:center;margin:6px 0 12px;flex-wrap:wrap}
+.thumb{width:104px;border-radius:11px;border:1px solid var(--line);box-shadow:var(--sh);background:#f2ece1}
+.watch{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;font-weight:800;
+  font-size:13px;padding:8px 14px;border-radius:22px;text-decoration:none}
+.watch:hover{background:#000}
+.instr{background:#fff5e6;border-left:5px solid var(--amber);border-radius:11px;padding:11px 14px;margin:9px 0;font-size:14.5px}
+.idea{background:#eaf5f3;border-left:5px solid var(--teal);border-radius:11px;padding:11px 14px;margin:9px 0;font-size:14.5px}
+.hands{display:flex;gap:9px;align-items:center;background:var(--ink);color:#fff;border-radius:12px;
+  padding:11px 14px;margin:12px 0;font-size:14px;flex-wrap:wrap}
+.hands .tag{background:#ffd166;color:var(--ink);font-weight:850;padding:2px 9px;border-radius:8px;white-space:nowrap;font-size:12.5px}
+.hands .ln{color:#c6cee6;font-style:italic}
+
+/* collapsibles */
+details{border:1px solid var(--line);border-radius:13px;margin:10px 0;background:#fdfaf5;overflow:hidden}
+details[open]{background:#fff}
+summary{cursor:pointer;list-style:none;padding:12px 15px;font-weight:800;font-size:14px;
+  display:flex;align-items:center;gap:9px;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary .chev{transition:transform .18s;color:var(--coral);font-size:12px}
+details[open] summary .chev{transform:rotate(90deg)}
+summary .cnt{margin-left:auto;background:#f0eade;color:var(--ink2);font-size:12px;font-weight:800;padding:2px 9px;border-radius:20px}
+.by{font-size:12px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.by.human{background:#fde7d6;color:#a2521a}
+.by.ai{background:#e6e2f2;color:#5b4a7d}
+.aiwarn{margin:0 15px 4px;background:#f4f1fa;border:1px dashed #c3b8db;border-radius:10px;
+  padding:9px 12px;font-size:12.5px;color:#5b4a7d;line-height:1.45}
+.hooks{list-style:none;margin:0;padding:0 15px 13px}
+.hooks li{padding:9px 0;border-top:1px dashed var(--line);font-size:15.5px}
+.hooks li:first-child{border-top:none}
+.hooks li:before{content:"▸ ";color:var(--coral);font-weight:800}
+.hooks.mine li:before{color:var(--violet)}
+
+/* task2 */
+.t2{background:linear-gradient(140deg,#12403a,#2a9d8f);color:#fff;border-radius:22px;padding:26px;box-shadow:var(--sh2);margin:18px 0}
+.t2 h3{font-size:25px;margin-bottom:10px}
+.t2 ul{padding-left:20px;margin:10px 0 0}.t2 li{margin:8px 0}
+.t2 .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:16px}
+.t2 .p{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:13px;padding:12px}
+.t2 .p .n{font-size:22px;font-weight:850;color:#ffd166}
+.t2 .p .l{font-size:12px;opacity:.9;margin-top:2px}
+
+.bench{background:#f3ede2;border:1px dashed #cbbfa8;border-radius:18px;padding:18px 22px;margin:14px 0}
+.foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);text-align:center}
+.foot a{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <svg class="hero-art" viewBox="0 0 300 220" fill="none">
+    <g stroke="#fff" stroke-opacity=".6" stroke-width="3">
+      <rect x="20" y="50" width="170" height="90" rx="9"/>
+      <line x1="20" y1="67" x2="190" y2="67"/><line x1="20" y1="123" x2="190" y2="123"/>
+      <g fill="#fff" fill-opacity=".5" stroke="none">
+        <rect x="27" y="55" width="10" height="8" rx="2"/><rect x="47" y="55" width="10" height="8" rx="2"/><rect x="67" y="55" width="10" height="8" rx="2"/>
+        <rect x="27" y="127" width="10" height="8" rx="2"/><rect x="47" y="127" width="10" height="8" rx="2"/><rect x="67" y="127" width="10" height="8" rx="2"/></g>
+    </g>
+    <rect x="96" y="58" width="86" height="74" rx="5" fill="#ffd166" fill-opacity=".28"/>
+    <text x="112" y="102" font-size="15" font-weight="800" fill="#ffd166" font-family="system-ui">HOOK</text>
+    <g transform="translate(210 70)" stroke="#ffd166" stroke-width="5" fill="none" stroke-linecap="round">
+      <circle cx="7" cy="0" r="10"/><circle cx="7" cy="46" r="10"/>
+      <line x1="16" y1="7" x2="62" y2="26"/><line x1="16" y1="39" x2="62" y2="20"/></g>
+  </svg>
+  <div class="hero-in">
+    <span class="kick">MovesMethod · Creative Request · v3</span>
+    <h1>Pre-Roll Hooks for <span class="pop">Winning Ads</span></h1>
+    <p>Two tasks. <b>1)</b> Bolt new 2–5 second hooks onto the FRONT of our winners — the proven ad plays untouched. <b>2)</b> Spin the winners' segments into fresh mashups. Both are low-risk, high-volume ways to mint new winners fast.</p>
+  </div>
+</div>
+
+<div class="dl">
+  <button class="btn" onclick="dl()">⬇ Download full brief (.md)</button>
+  <span class="dlnote">Everything on this page, as markdown.</span>
+</div>
+
+<div class="wrap">
+
+  <!-- MECHANIC -->
+  <div class="panel" style="border-left:5px solid var(--coral)">
+    <h3>The mechanic — pre-roll, do NOT replace</h3>
+    <div class="mech">
+      <div class="mbox m-new">NEW HOOK · 2–5 sec<br><span style="font-weight:400;font-size:13px">"…until I saw this."</span></div>
+      <div class="m-arrow">→</div>
+      <div class="mbox m-old">THE WINNING AD — <b>100% UNTOUCHED</b><br><span style="font-size:13px;color:#c6cee6">original intro → body → CTA, all as-is</span></div>
+    </div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--violet);font-weight:700">▸ Do not cut the first clip. Do not touch the body. You're adding a doorway, not remodeling the house.</p>
+    <p style="margin:10px 0 0"><b>Why it works so well:</b> the hook ends by pointing at the ad. <i>"I didn't know X <b>until I saw this</b>"</i> — and then "this" immediately plays. The hook doesn't just stop the scroll, it <b>introduces the winner</b>. No splice, no seam, no risk to what's converting.</p>
+  </div>
+
+  <!-- AMMUNITION -->
+  <div class="sec">Ammunition</div>
+  <h2 class="big">Verified stats to build hooks on</h2>
+  <p class="lead">Every number below is sourced. Six different lanes — don't lean on just one.</p>
+
+  <div class="ammo">
+    <div class="acard a1">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+        <line x1="6" y1="54" x2="58" y2="54"/><circle cx="24" cy="18" r="6"/>
+        <path d="M24 24l-3 16 7 14"/><path d="M21 40l14 10"/><path d="M24 28l14-4"/></svg>
+      <div class="t">Falls · the one we own</div>
+      <div class="n">1 in 4</div>
+      <div class="l">adults 65+ fall every year — 14M+ people.</div>
+      <ul>
+        <li><b>41,400</b> died from falls in 2023 (65+)</li>
+        <li>Fall death rate <b>up 21%</b> since 2018</li>
+        <li><b>1 in 4</b> who fracture a hip die within 6 months</li>
+        <li>~319,000 hip-fracture hospitalizations/yr</li>
+      </ul>
+    </div>
+
+    <div class="acard a2">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+        <line x1="6" y1="52" x2="58" y2="52"/><circle cx="26" cy="20" r="6"/>
+        <path d="M26 26v12l-8 14"/><path d="M26 38l10 14"/><path d="M18 38h18"/></svg>
+      <div class="t">The sitting-rising test</div>
+      <div class="n">6×</div>
+      <div class="l">higher cardiovascular death risk for the worst scorers vs the best. It's real, published science.</div>
+      <ul>
+        <li><b>3.8×</b> higher natural-death risk</li>
+        <li>Death rate <b>3.7% → 42.1%</b> across score groups</li>
+        <li>4,282 adults · 12.3-yr follow-up</li>
+      </ul>
+      <div class="l" style="font-weight:800">▸ "This test predicts your lifespan" is TRUE — and citable.</div>
+    </div>
+
+    <div class="acard a3">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+        <path d="M32 52s-18-11-18-24a10 10 0 0118-6 10 10 0 0118 6c0 13-18 24-18 24z"/></svg>
+      <div class="t">Causes of death (US)</div>
+      <div class="n">#3</div>
+      <div class="l">Unintentional injury is the 3rd leading cause of death (~196k) — and falls lead it in the 65+ group.</div>
+      <ul>
+        <li>1. Heart disease — ~683k</li>
+        <li>2. Cancer — ~620k</li>
+        <li>3. <b>Unintentional injury — ~196k</b></li>
+      </ul>
+    </div>
+
+    <div class="acard a4">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+        <rect x="20" y="14" width="12" height="12" rx="2"/><rect x="34" y="24" width="10" height="10" rx="2"/>
+        <rect x="16" y="30" width="9" height="9" rx="2"/><ellipse cx="32" cy="50" rx="20" ry="8"/></svg>
+      <div class="t">Blood sugar</div>
+      <div class="n">52%</div>
+      <div class="l">of Americans 65+ have prediabetes — 31.3 million people.</div>
+      <ul>
+        <li><b>1 in 4</b> with diabetes don't know they have it (~11M)</li>
+        <li>115.2M US adults have prediabetes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel" style="border-left:5px solid var(--violet)">
+    <h3>The layman's wrong-fix list (a frame, not a stat)</h3>
+    <p style="margin:6px 0 0">What grandma actually tries: cut the sugar · switch to diet soda · swap to oatmeal &amp; wheat bread · eat fruit instead · <b>walk after dinner</b> · lose 20 pounds · cinnamon &amp; apple cider vinegar · take the pill and consider it handled.</p>
+    <p style="margin:10px 0 0"><b>Not one item on that list involves muscle.</b> Her whole model is input-side — blood sugar is a thing you <i>eat</i>. Nobody tells her the muscles are the organ that clears the glucose, and hers have been shrinking for twenty years. That's the blind spot, and it's real, not manufactured.</p>
+    <p style="margin:10px 0 0">▸ And the gift: <code>tk_JOR001d</code> already beats the after-dinner walk <b>with a study</b> — so the myth-bust lands on her most doctor-endorsed habit, and the ad pays it off in its own words.</p>
+  </div>
+
+  <div class="panel" style="border-left:5px solid var(--teal)">
+    <h3>Our own proof numbers (straight from the winning ads)</h3>
+    <p style="margin:6px 0 0"><b>180,000 people helped</b> (FCVSL) · <b>107,000–200,000</b> across the Toolkit ads · <b>50+ countries</b> · <b>89% off</b> · <b>30-day money-back guarantee</b> · ages <b>25–70</b> · <b>10–15 minutes a day</b>.</p>
+    <p style="margin:8px 0 0;font-size:14px;color:var(--ink2)">Pick ONE social-proof number and keep it consistent across a campaign. Mixing 107k / 125k / 180k / 200k in the same funnel reads as sloppy.</p>
+  </div>
+
+  <div class="cau">⚠️ <b>Don't</b> add the two 65+ diabetes figures into an "81% of seniors" stat on screen — that's derived, not CDC-published. Cite them separately or a fact-checker will bite.</div>
+
+  <!-- TASK 1 -->
+  <div class="sec">Task 1</div>
+  <h2 class="big">Pre-roll hooks, ad by ad</h2>
+  <p class="lead">Each base gives you the instruction, the line your hook must hand into, and the hooks to produce. Click any section to expand.</p>
+  <div id="ads"></div>
+
+  <!-- TASK 2 -->
+  <div class="sec">Task 2</div>
+  <h2 class="big">The Mashup Play</h2>
+  <div class="t2">
+    <h3>Hey Erick — here's a slam-dunk way to get new winners FAST.</h3>
+    <p style="margin:0">Take every ad in this doc, chop them into segments, and <b>spin them together into new mashups</b> in <a href="https://gorillafy.io/" target="_blank" rel="noopener" style="color:#ffd166;font-weight:800">Gorillafy</a> (or whatever you're fastest in). You're not creating from scratch — you're recombining parts that already print money.</p>
+    <h4 style="margin-top:18px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;opacity:.85">The recipe</h4>
+    <ul>
+      <li><b>Pull the best segments</b> from the winners above — hooks, demos, mechanism explainers, testimonials, b-roll.</li>
+      <li><b>Stack a Task 1 pre-roll hook on the front.</b> Any of the "…until I saw this" lines.</li>
+      <li><b>Speed some clips up.</b> The <code style="background:rgba(255,255,255,.2);color:#fff">fc_mgo</code> winners literally have <code style="background:rgba(255,255,255,.2);color:#fff">speed1.25</code> in their filenames — already a proven setting here.</li>
+      <li><b>Use the FCVSL "watch the free training" CTA</b> — that's the close working on the biggest spenders.</li>
+      <li><b>DOUBLE CTA — ask for the click twice.</b> Once mid-roll, once at the end. Don't save the ask for the end.</li>
+      <li><b>The IG VIRAL manifesto makes a great tail-CTA</b> — bolt it on as the second close.</li>
+    </ul>
+    <h4 style="margin-top:18px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;opacity:.85">Why this is a slam dunk, not a guess</h4>
+    <p style="margin:6px 0 0">Mashups are already some of the biggest winners in the account:</p>
+    <div class="proof">
+      <div class="p"><div class="n">$13.8k</div><div class="l">WK31_JOC_MASHUP (US)</div></div>
+      <div class="p"><div class="n">$9.2k</div><div class="l">WK38_JOC_MASHUP (US)</div></div>
+      <div class="p"><div class="n">$12.7k</div><div class="l">"old winners 1-4" — a literal bundle · 159 sales</div></div>
+    </div>
+    <p style="margin:14px 0 0">The parts are already validated — we're just rolling the dice again with better odds. <b>Volume is the point:</b> make a lot, launch them, let the algorithm sort it out.</p>
+  </div>
+
+  <!-- BENCH -->
+  <div class="sec">Not this round</div>
+  <h2 class="big">Bench</h2>
+  <div class="bench">
+    <p style="margin:0 0 8px"><b>KZ_Crochet Ad_H1</b> — cute, but basically a retargeting ad. Doesn't generate hooks. <i>(Michael's call.)</i></p>
+    <p style="margin:0"><b>KZ_Ad 6047</b> — $37.83 CPA looks great, but on $189 spend / 5 sales. Too thin to build on. Revisit if it scales.</p>
+  </div>
+
+  <!-- PRODUCTION -->
+  <div class="sec">Production</div>
+  <h2 class="big">Notes for editors</h2>
+  <div class="panel">
+    <ul>
+      <li><b>Pre-roll length: 2–5 seconds.</b> It's a doorway, not a scene. Run long and you bury the winner's own hook.</li>
+      <li><b>Match the cut.</b> End on "…until I saw this" and hard-cut into the original ad's first frame. The seam should feel like a reveal.</li>
+      <li><b>Pre-roll visual:</b> talking head, or a visceral frame — X-ray pain-glow, a failed floor-rise, sugar poured on a joint, an adult child lifting a parent out of a chair. <b>Weird beats pretty.</b></li>
+      <li><b>One variable per test.</b> Same base ad, different pre-roll. Clean read on the hook alone.</li>
+      <li><b>Compliance:</b> show the fear, imply the medical claim. Debunk the walk, the oatmeal, the fruit, the diet soda — <b>never</b> tell anyone to stop taking medication.</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    Built from 26 Gemini-analyzed winner transcripts · 06-11→07-11 US performance snapshot · CDC mortality, falls &amp; diabetes data · European Journal of Preventive Cardiology (sitting-rising test) · Michael's creative notes.
+  </div>
+</div>
+
+<script>
+const D=[
+{n:"WD_H4B3CTA1_052026_9X16",sp:"US $48.2k · 422 sales",id:"1627UvHEVUr9DHGuHlnsnjWoO5Qa7O0r0",
+ instr:"Add an intro <b>before</b> the intro. <b>Do not cut the first clip.</b>",
+ hands:"My student Marc is 67 years old, yet his hips and knees are more mobile than most 30-year-olds…",
+ m:["I was one accident away from a wheelchair until I saw this",
+    "Top 3 causes of death in America — heart disease, cancer, unintentional injury. One of them is preventable. Check this out.",
+    "I thought stiffness after 50 was normal until I saw this",
+    "I thought I'd never recover from my fall until I saw this"],
+ a:["1 in 4 people over 65 falls every year. I didn't know that until I saw this.",
+    "I thought I had twenty good years left until I saw this",
+    "My doctor told me to lose weight — until he saw this"]},
+
+{n:"WD_H6B3CTA3_052026_9X16",sp:"US $55.4k · 305 sales",id:"1KnXqdWUSDfKJ9wi4EvA4pV140it_p-1B",
+ instr:"Add an intro <b>before</b> the intro. <b>Do not cut the current intro clip.</b>",
+ hands:"If you can't get off the floor without using your hands, this is for you…",
+ m:["I stopped stretching after I saw this",
+    "I didn't know how much stretching could hurt you until I saw this",
+    "I didn't know my workout was making things worse until I saw this",
+    "I didn't know the danger of a stiff knee until I saw this",
+    "I was addicted to the chiropractor until I saw this",
+    "I spent $23,700 on chiropractors and physios before I saw this",
+    "If putting on your socks is hard, you might have a bigger problem. Check this out.",
+    "If you can't get yourself off the floor, stop scrolling and listen up.",
+    "I didn't know the danger of getting stuck on the floor until I saw this",
+    "I didn't know being stuck on the floor was so dangerous until I saw this",
+    "I didn't know how many women over 50 have this problem until I saw this"],
+ a:["I didn't know getting off the floor predicted my lifespan until I saw this",
+    "I fired my chiropractor, my physio, and my massage guy in the same week. Here's why."]},
+
+{n:"WD_IG VIRAL CTA V4_050826_9x16",sp:"US $10.1k · CPA $116",id:"1M6ux6z5eoML-WRlneXK_JJEAD62MLbzz",
+ idea:"<b>Idea:</b> traditional strength &amp; cardio training are the enemy.<br><b>Double use:</b> also works as a <b>second CTA — tack it onto the END of another ad.</b>",
+ hands:"[on-screen text] You train your biceps. I train my spine. — no VO, this ad is text-driven",
+ m:["I didn't know how lifting was killing my spine until I saw this",
+    "I didn't know how lifting was killing my neck until I saw this",
+    "I didn't know my workout was causing inflammation until I saw this",
+    "I quit the gym when I saw my bone density going down",
+    "I thought the gym was good for bone density until I saw this",
+    "I didn't know what popping joints meant until I saw this",
+    "If your knees are shaky, you need to see this"],
+ a:["I thought being strong meant being durable until I saw this",
+    "I didn't know my deadlift was costing me my spine until I saw this"]},
+
+{n:"tk_JOR001d — THE BLOOD SUGAR ANGLE",sp:"Prior winner",id:"1NJcIi-yNKgUGKVe3cmAnyU12YQEh4Vbp",hot:1,flag:"Priority",
+ instr:"Keep the original intro. Put an additional scene <b>before</b> it.",
+ idea:"<b>Blood sugar is a proven mega-winner from Michael's previous accounts — pursue aggressively.</b><br>This ad's body ALREADY runs on it: <i>\"your quads and glutes act like a sponge, pulling sugar out of your bloodstream.\"</i> The hook doesn't bolt on — the ad pays it off in its own words.",
+ hands:"This is a squat… and it can do more for your body than a 30 minute power walk can.",
+ m:["I thought walking would help my blood sugar until I saw this",
+    "I thought oatmeal would lower my blood sugar until I saw this",
+    "I thought Greek yogurt and berries would lower my blood sugar until I saw this",
+    "I thought fresh fruit would lower my blood sugar until I saw this",
+    "I thought eggs would lower my blood sugar until I saw this",
+    "Here's what you got wrong about blood sugar and glucose",
+    "My blood sugar was sky high until I saw this",
+    "I didn't know what squats do to blood sugar until I saw this",
+    "I thought my high blood sugar was normal until I saw this",
+    "I did 10 squats a day for a week. Here's what happened…"],
+ a:["I thought diet soda was the safe choice until I saw this",
+    "I cut the sugar. I switched to diet soda. I walked after dinner. My blood sugar still climbed — until I saw this.",
+    "I didn't know my muscles were the organ that clears blood sugar until I saw this",
+    "52% of people over 65 have prediabetes. Most have no idea. I didn't either — until I saw this.",
+    "1 in 4 people with diabetes don't know they have it. I was one of them."],
+ cau:"Debunk the walk, the oatmeal, the fruit, the diet soda. <b>Leave medication alone</b> — never imply someone should stop their pills. That's where a health ad gets pulled."},
+
+{n:"fc_mgo_002f — \"MOVEMENT AMNESIA\"",sp:"US $9.8k · CPA $124",id:"1n-eE6y05td9vZsHRBuiajqtUxU4r9SzN",
+ idea:"<b>Idea:</b> \"Movement amnesia\" is a great curiosity hook for a VSL — a named condition the viewer has never heard of and now needs explained. <i>Find out what it is → click → watch the free presentation.</i>",
+ hands:"Do you struggle to sit cross-legged like this?…",
+ m:["I didn't know what movement amnesia was until I saw this",
+    "I didn't know how many stiff joints are really movement amnesia until I saw this",
+    "I didn't know my back pain was actually movement amnesia until I saw this",
+    "I thought I was getting old until I found out I had movement amnesia. Watch this.",
+    "I didn't know I was suffering from \"movement amnesia\" until I saw this",
+    "I didn't know my wrong workout was causing \"movement amnesia\" until I saw this",
+    "I thought my knees were just old until I saw this",
+    "I thought my hips were just old until I saw this",
+    "I thought my neck was just old until I saw this"],
+ a:["I thought my shoulders were just old until I saw this",
+    "My doctor called it arthritis. Turned out it was movement amnesia. Watch this."]},
+
+{n:"fc_mgo_003g",sp:"ROW $5.4k · CPA $96",id:"1I8tUsprD3YVcrXDbnB3nLZ461RRGVCFB",
+ idea:"Same \"movement amnesia\" script as above, ROW-proven. <b>Reuse the same pre-rolls — this is your ROW test bed.</b>",
+ hands:"Do you struggle to sit cross-legged like this?…",m:[],a:[]},
+
+{n:"WK31_JOC_MASHUP_2466_9X16_H17",sp:"US $13.8k",id:"17Y99zpESLS62VQDjAHqglPdKiygKvvpi",
+ idea:"WK38_H4 is the same base — style variant only. Treat as one.",
+ hands:"You fix the dysfunction first and then you build the body…",m:[],
+ a:["I didn't know I was building strength on a broken foundation until I saw this",
+    "I thought lifting heavy meant I was healthy until I saw this",
+    "I could bench 300 pounds and still couldn't tie my shoes. Until I saw this.",
+    "I didn't know what dysfunction was doing to my joints until I saw this"]},
+
+{n:"Jerome_Ad6342_01292025_h5",sp:"US $3.9k · CPA $90",id:"1663kai5mRH8wm5C4x5nFgITTAtih64gy",
+ idea:"Has the X-ray / red pain-glow anatomy visual — the closest existing thing to a MEAT frame. Lean into it.",
+ hands:"If your back takes over during squats, it's because your hips and ankles can't…",m:[],
+ a:["I didn't know my back pain was actually coming from my ankles until I saw this",
+    "I thought my back was the problem until I saw this",
+    "I didn't know what my squat was doing to my spine until I saw this",
+    "I thought grinding knees were normal until I saw this"]},
+
+{n:"WD_H10B3CTA1_052026_9X16",sp:"US $4.7k · CPA $124",id:"1HZgkbZNnkwE4A_S6wIuL_l0Tm0-wLRjY",
+ idea:"Shortest intro in the set (3 sec) — the cheapest, fastest pre-roll test of all. <b>Good place to start.</b>",
+ hands:"Your body is capable of way more than you think. Here's what I meant.",m:[],
+ a:["I didn't know how much my body had already lost until I saw this",
+    "I thought this was as good as it gets at my age until I saw this",
+    "I didn't know what I could still do at 60 until I saw this"]},
+
+{n:"JOC_Ad PARENT AD #2 — The Sitting Test",sp:"US $1.3k · CPA $74",id:null,hot:1,flag:"Death-hook template",
+ idea:"The <b>only</b> ad in the account that states mortality outright (\"THIS TEST PREDICTS YOUR LIFESPAN\") — and the science backs it: worst scorers on the sitting-rising test had <b>6× the cardiovascular death risk</b>. Its body sustains the argument all the way to the caretaker scene — <i>\"and you don't want that. Neither do they.\"</i><br>⚠️ No Drive link — Frame.io only. Worth adding to the Drive folder.",
+ hands:"There's a test that shows whether you'll be independent at 70 — or dependent on your kids…",m:[],
+ a:["I didn't know a floor test could predict when I'd die until I saw this",
+    "I thought I'd always be able to get up until I saw this",
+    "I didn't know I was going to become my kids' problem until I saw this",
+    "I thought I was planning for retirement. My body was planning for a nursing home."]},
+];
+
+document.getElementById('ads').innerHTML=D.map((d,i)=>`
+<div class="ad${d.hot?' hot':''}">
+  <div class="ad-head">
+    <div class="num">${i+1}</div>
+    <div style="flex:1">
+      <h3>${d.n}</h3>
+      <div class="meta"><span class="spend">${d.sp}</span>${d.flag?`<span class="flag">${d.flag}</span>`:''}</div>
+    </div>
+  </div>
+  <div class="ad-body">
+    <div class="watchrow">
+      ${d.id?`<img class="thumb" src="https://drive.google.com/thumbnail?id=${d.id}&sz=w400" onerror="this.style.display='none'" alt="">
+        <a class="watch" href="https://drive.google.com/file/d/${d.id}/view" target="_blank" rel="noopener">▶ Watch on Drive</a>`
+      :`<a class="watch" href="https://f.io/7U2Ijfvk" target="_blank" rel="noopener">▶ Watch on Frame.io</a>`}
+    </div>
+    ${d.instr?`<div class="instr">✂️ <b>INSTRUCTION:</b> ${d.instr}</div>`:''}
+    ${d.idea?`<div class="idea">💡 ${d.idea}</div>`:''}
+    <div class="hands"><span class="tag">Hands into →</span><span class="ln">"${d.hands}"</span></div>
+    ${d.m.length?`<details open><summary><span class="chev">▶</span><span class="by human">✍️ Written by Michael</span><span class="cnt">${d.m.length}</span></summary>
+      <ul class="hooks">${d.m.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}
+    ${d.a.length?`<details><summary><span class="chev">▶</span><span class="by ai">🤖 AI-generated — unvetted</span><span class="cnt">${d.a.length}</span></summary>
+      <div class="aiwarn">Machine-written, <b>not reviewed or approved by Michael</b>. Treat as raw starting material — bin anything cheesy, wrong, or non-compliant.</div>
+      <ul class="hooks mine">${d.a.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}
+    ${d.cau?`<div class="cau">⚠️ ${d.cau}</div>`:''}
+  </div>
+</div>`).join('');
+
+/* ── markdown download ── */
+function strip(s){return String(s).replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ');}
+function dl(){
+  let md=`# Pre-Roll Hooks for Winning Ads — MovesMethod v3\n\n`;
+  md+=`Two tasks. 1) Bolt new 2-5 second hooks onto the FRONT of our winners — the proven ad plays untouched. 2) Spin the winners' segments into fresh mashups.\n\n`;
+  md+=`## THE MECHANIC — pre-roll, do NOT replace\n\n[ NEW HOOK 2-5 sec: "...until I saw this." ]  ->  [ THE WINNING AD, 100% UNTOUCHED ]\n\n`;
+  md+=`Do not cut the first clip. Do not touch the body. You're adding a doorway, not remodeling the house.\n\n`;
+  md+=`Why it works: the hook ends by pointing at the ad. "I didn't know X until I saw this" — and then "this" plays. The hook introduces the winner. No splice, no seam, no risk.\n\n`;
+  md+=`---\n\n## AMMUNITION — verified stats\n\n`;
+  md+=`### Falls — the death point mobility owns\n- 1 in 4 adults 65+ fall every year (14M+)\n- 41,400 died from falls in 2023 (65+)\n- Fall death rate up 21% since 2018\n- ~319,000 hip-fracture hospitalizations/yr\n- 1 in 4 who fracture a hip die within 6 months\n\n`;
+  md+=`### The sitting-rising test — real published science\n- Worst scorers: 6x higher cardiovascular death risk, 3.8x higher natural-death risk vs best scorers\n- Death rate 3.7% -> 42.1% across score groups\n- 4,282 adults, 12.3-year follow-up (Eur J Prev Cardiol)\n- => "This test predicts your lifespan" is TRUE and citable\n\n`;
+  md+=`### Causes of death (US)\n- 1. Heart disease ~683k\n- 2. Cancer ~620k\n- 3. Unintentional injury ~196k  <- falls lead this in 65+\n\n`;
+  md+=`### Blood sugar\n- 52.1% of Americans 65+ have prediabetes (31.3M)\n- 1 in 4 with diabetes don't know they have it (~11M)\n- 115.2M US adults have prediabetes\n- WARNING: don't combine the two 65+ figures into an "81%" stat — that's derived, not CDC-published.\n\n`;
+  md+=`### The layman's wrong-fix list (a frame, not a stat)\nWhat grandma actually tries: cut the sugar, diet soda, oatmeal & wheat bread, fruit instead, WALK AFTER DINNER, lose 20 lbs, cinnamon & apple cider vinegar, take the pill.\nNot one item involves MUSCLE. Her model is entirely input-side. That's the blind spot.\ntk_JOR001d already beats the after-dinner walk WITH A STUDY.\n\n`;
+  md+=`### Our own proof numbers (from the ads)\n180,000 people helped (FCVSL) · 107,000-200,000 across Toolkit · 50+ countries · 89% off · 30-day guarantee · ages 25-70 · 10-15 min/day\nPick ONE social-proof number per campaign and keep it consistent.\n\n`;
+  md+=`---\n\n# TASK 1 — Pre-roll hooks, ad by ad\n\n`;
+  D.forEach((d,i)=>{
+    md+=`\n## ${i+1}. ${strip(d.n)}\n**${strip(d.sp)}**${d.flag?` — ${d.flag}`:''}\n`;
+    md+=d.id?`Watch: https://drive.google.com/file/d/${d.id}/view\n`:`Watch: https://f.io/7U2Ijfvk\n`;
+    if(d.instr)md+=`\nINSTRUCTION: ${strip(d.instr)}\n`;
+    if(d.idea)md+=`\nIDEA: ${strip(d.idea)}\n`;
+    md+=`\nHANDS INTO: "${strip(d.hands)}"\n`;
+    if(d.m.length){md+=`\n**✍️ WRITTEN BY MICHAEL:**\n`;d.m.forEach(x=>md+=`- ${strip(x)}\n`);}
+    if(d.a.length){md+=`\n**🤖 AI-GENERATED — UNVETTED** (machine-written, NOT reviewed or approved by Michael. Raw starting material — bin anything cheesy, wrong, or non-compliant.)\n`;d.a.forEach(x=>md+=`- ${strip(x)}\n`);}
+    if(d.cau)md+=`\n⚠️ ${strip(d.cau)}\n`;
+  });
+  md+=`\n---\n\n# TASK 2 — The Mashup Play\n\n### Hey Erick — here's a slam-dunk way to get new winners FAST.\n\n`;
+  md+=`Take every ad in this doc, chop them into segments, and spin them together into new mashups in Gorillafy (https://gorillafy.io/). You're not creating from scratch — you're recombining parts that already print money.\n\n`;
+  md+=`**The recipe:**\n- Pull the best segments from the winners above (hooks, demos, mechanism explainers, testimonials, b-roll)\n- Stack a Task 1 pre-roll hook on the front\n- Speed some clips up — the fc_mgo winners literally have "speed1.25" in their filenames\n- Use the FCVSL "watch the free training" CTA\n- DOUBLE CTA — ask for the click twice (mid-roll + end)\n- The IG VIRAL manifesto makes a great tail-CTA\n\n`;
+  md+=`**Why it's a slam dunk, not a guess** — mashups are already among the biggest winners:\n- WK31_JOC_MASHUP — US $13.8k\n- WK38_JOC_MASHUP — US $9.2k\n- "old winners 1-4" (a literal bundle of past winners) — $12.7k, 159 sales\n\nThe parts are already validated. Volume is the point.\n\n`;
+  md+=`---\n\n## BENCH — not this round\n- KZ_Crochet Ad_H1 — cute, but basically a retargeting ad. Doesn't generate hooks.\n- KZ_Ad 6047 — $37.83 CPA but only $189 spend / 5 sales. Too thin.\n\n`;
+  md+=`## PRODUCTION NOTES\n- Pre-roll length: 2-5 seconds. It's a doorway, not a scene.\n- End on "...until I saw this" and hard-cut into the original ad's first frame.\n- Pre-roll visual: talking head, or a visceral frame (X-ray pain-glow, failed floor-rise, sugar on a joint, adult child lifting a parent from a chair). Weird beats pretty.\n- One variable per test.\n- Compliance: show the fear, imply the medical claim. Never tell anyone to stop taking medication.\n\n`;
+  md+=`---\nBuilt from 26 Gemini-analyzed winner transcripts, the 06-11 to 07-11 US performance snapshot, CDC mortality/falls/diabetes data, the European Journal of Preventive Cardiology sitting-rising study, and Michael's creative notes.\n`;
+  const b=new Blob([md],{type:'text/markdown'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download='MovesMethod_PreRoll_Hook_Brief.md';
+  a.click();URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
