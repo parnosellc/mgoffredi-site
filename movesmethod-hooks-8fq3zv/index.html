@@ -94,6 +94,7 @@ h2.big{font-size:31px;margin:0 0 8px;font-weight:850}
 .watch:hover{background:#000}
 .instr{background:#fff5e6;border-left:5px solid var(--amber);border-radius:11px;padding:11px 14px;margin:9px 0;font-size:14.5px}
 .idea{background:#eaf5f3;border-left:5px solid var(--teal);border-radius:11px;padding:11px 14px;margin:9px 0;font-size:14.5px}
+.vis{background:#f3eefa;border-left:5px solid var(--violet);border-radius:11px;padding:11px 14px;margin:9px 0;font-size:14.5px}
 .hands{display:flex;gap:9px;align-items:center;background:var(--ink);color:#fff;border-radius:12px;
   padding:11px 14px;margin:12px 0;font-size:14px;flex-wrap:wrap}
 .hands .tag{background:#ffd166;color:var(--ink);font-weight:850;padding:2px 9px;border-radius:8px;white-space:nowrap;font-size:12.5px}
@@ -451,7 +452,7 @@ const D=[
     "I didn't know my deadlift was costing me my spine until I saw this"]},
 
 {n:"tk_JOR001d — THE BLOOD SUGAR ANGLE",sp:"Prior winner",id:"1NJcIi-yNKgUGKVe3cmAnyU12YQEh4Vbp",hot:1,flag:"Priority",
- idea:"<b>Blood sugar is a proven mega-winner from Michael's previous accounts — pursue aggressively.</b><br>This ad's body already runs on it: <i>\"your quads and glutes act like a sponge, pulling sugar out of your bloodstream.\"</i> The hook doesn't bolt on — the ad pays it off in its own words.",
+ idea:"<b>Blood sugar is a proven mega-winner — and Michael has ALREADY run it.</b> His Sculpt Nation ad <i>\"I didn't know what CHICKEN does to BLOOD SUGAR LEVELS\"</i> is <b>still running today</b> (see Receipts). This is not a new bet.<br><br>This ad's body already runs on the mechanism too: <i>\"your quads and glutes act like a sponge, pulling sugar out of your bloodstream.\"</i> The hook doesn't bolt on — the ad pays it off in its own words.<br><br><b>Use the proven construction:</b> \"I didn't know what <u>[everyday food]</u> does to <u>[scary marker]</u>.\" Both slots are things the viewer <i>trusts</i>. Don't reveal the direction of the answer — name the food, name the marker, let the gap do the work.",
  hands:"This is a squat… and it can do more for your body than a 30 minute power walk can.",
  m:["I thought walking would help my blood sugar until I saw this",
     "I thought oatmeal would lower my blood sugar until I saw this",
@@ -463,11 +464,17 @@ const D=[
     "I didn't know what squats do to blood sugar until I saw this",
     "I thought my high blood sugar was normal until I saw this",
     "I did 10 squats a day for a week. Here's what happened…"],
- a:["I thought diet soda was the safe choice until I saw this",
+ a:["<b>[Proven construction]</b> I didn't know what oatmeal does to blood sugar",
+    "<b>[Proven construction]</b> I didn't know what Greek yogurt does to blood sugar",
+    "<b>[Proven construction]</b> I didn't know what chicken does to blood sugar",
+    "<b>[Proven construction]</b> I didn't know what fruit does to blood sugar",
+    "<b>[Proven construction]</b> I didn't know what sitting does to blood sugar",
+    "I thought diet soda was the safe choice until I saw this",
     "I cut the sugar. I switched to diet soda. I walked after dinner. My blood sugar still climbed — until I saw this.",
     "I didn't know my muscles were the organ that clears blood sugar until I saw this",
     "52% of people over 65 have prediabetes. Most have no idea. I didn't either — until I saw this.",
     "1 in 4 people with diabetes don't know they have it. I was one of them."],
+ vis:"<b>The visual is half the formula.</b> In the proven Sculpt Nation ads, the food isn't just <i>named</i> — something <b>weird is done to it on camera</b>. Eggs get blowtorched. Yogurt gets poured. It's an everyday food + a strange action + \"wait, what?\"<br><br>So don't shoot a stock bowl of oatmeal. <b>Torch it. Squish it. Pour sugar over it. Drop it in slow motion.</b> The food must be recognizable and the action must be wrong.",
  cau:"Debunk the walk, the oatmeal, the fruit, the diet soda. <b>Leave medication alone</b> — never imply someone should stop their pills. That's where a health ad gets pulled."},
 
 {n:"fc_mgo_002f — \"MOVEMENT AMNESIA\"",sp:"US $9.8k · CPA $124",id:"1n-eE6y05td9vZsHRBuiajqtUxU4r9SzN",
@@ -538,6 +545,7 @@ document.getElementById('ads').innerHTML=D.map((d,i)=>`
     </div>
     ${d.instr?`<div class="instr">✂️ <b>INSTRUCTION:</b> ${d.instr}</div>`:''}
     ${d.idea?`<div class="idea">💡 ${d.idea}</div>`:''}
+    ${d.vis?`<div class="vis">🎬 ${d.vis}</div>`:''}
     <div class="hands"><span class="tag">Hands into →</span><span class="ln">"${d.hands}"</span></div>
     ${d.m.length?`<details open><summary><span class="chev">▶</span><span class="by human">✍️ Written by Michael</span><span class="cnt">${d.m.length}</span></summary>
       <ul class="hooks">${d.m.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}
