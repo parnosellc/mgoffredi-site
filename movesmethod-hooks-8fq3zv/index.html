@@ -674,10 +674,10 @@ function dl(){
   md+=`Why it works: the hook ends by pointing at the ad. "I didn't know X until I saw this" — and then "this" plays. The pre-intro stops the scroll AND introduces the ad.\n\n`;
   md+=`---\n\n## RECEIPTS — this isn't a theory, it's already printing money\n\nEvery ad below was written by Michael at Sculpt Nation — and they're ALL STILL RUNNING TODAY.\n\n`;
   md+=`Why "still running" is the whole argument: in direct response, longevity IS the proof. A losing ad gets killed in days. An ad still live months later is still profitable — the algorithm has voted, over and over, with real money. These aren't case studies. They're survivors.\n\n`;
-  md+=`- **"I didn't know what ___ did to ___"** (THE TASK 1 TEMPLATE) — the exact format Task 1 is built on. https://www.facebook.com/ads/library/?id=904220319174452\n`;
-  md+=`- **Blueberries** (food-as-villain) — take an everyday food the viewer trusts and attach a threat to it. Same machine we're now pointing at blood sugar. https://www.facebook.com/ads/library/?id=1777878676519135\n`;
-  md+=`- **Sculpt Nation winner** — still live. Same playbook: fear in the first second, myth-bust, weird visual. https://www.facebook.com/ads/library/?id=891970263712859\n`;
-  md+=`- **Same ad, new imagery** (THE TASK 2 PROOF) — a proven winner given fresh visuals, and it kept running. https://www.facebook.com/ads/library/?id=684209318019551\n\n`;
+  md+=`### "I didn't know what CHICKEN does to BLOOD SUGAR LEVELS"  (THE TASK 1 TEMPLATE + the blood sugar angle, already proven)\nThe exact format Task 1 is built on — and look at the marker: BLOOD SUGAR. Michael already ran this angle at Sculpt Nation and it's STILL RUNNING. We're not inventing a technique or gambling on a new angle.\nThe construction: "I didn't know what [everyday food] does to [scary marker]." Both slots are things the viewer trusts. It never reveals the direction of the answer — it just opens the loop.\nhttps://www.facebook.com/ads/library/?id=904220319174452\n\n`;
+  md+=`### Greek Yogurt & Berries  (food-as-villain)\nTake an everyday food the viewer TRUSTS — the healthiest thing in their fridge — and attach a threat to it. Same machine we're now pointing at blood sugar: the oatmeal, the fruit, the yogurt.\nhttps://www.facebook.com/ads/library/?id=1777878676519135\n\n`;
+  md+=`### "...what EGGS do to CORTISOL"  (same template, different marker)\nProof the format isn't a one-off — swap the food, swap the marker, and it keeps working. Eggs -> cortisol. Chicken -> blood sugar. THE TEMPLATE IS THE ASSET.\nhttps://www.facebook.com/ads/library/?id=891970263712859\n\n`;
+  md+=`### Same ad, new imagery  (THE VISUAL HALF OF THE FORMULA)\nLook at the shot: the eggs are being BLOWTORCHED. The food isn't just named — something weird is DONE TO IT ON CAMERA. Everyday food + wrong action + "wait, what?"\nDon't shoot a stock bowl of oatmeal. Torch it. Squish it. Pour sugar over it.\nhttps://www.facebook.com/ads/library/?id=684209318019551\n\n`;
   md+=`Note: different vertical (supplements vs mobility), so the CLAIMS don't transfer — but the MECHANICS do: fear in the first second, everyday object as villain, debunk-the-myth, and a visual that makes you go "wait, what?"\n\n`;
   md+=`---\n\n## AMMUNITION — verified stats\n\n`;
   md+=`### Falls — the death point mobility owns\n- 1 in 4 adults 65+ fall every year (14M+)\n- 41,400 died from falls in 2023 (65+)\n- Fall death rate up 21% since 2018\n- ~319,000 hip-fracture hospitalizations/yr\n- 1 in 4 who fracture a hip die within 6 months\n\n`;
@@ -692,6 +692,7 @@ function dl(){
     md+=d.id?`Watch: https://drive.google.com/file/d/${d.id}/view\n`:`Watch: https://f.io/7U2Ijfvk\n`;
     if(d.instr)md+=`\nINSTRUCTION: ${strip(d.instr)}\n`;
     if(d.idea)md+=`\nIDEA: ${strip(d.idea)}\n`;
+    if(d.vis)md+=`\n🎬 VISUAL: ${strip(d.vis)}\n`;
     md+=`\nHANDS INTO: "${strip(d.hands)}"\n`;
     if(d.m.length){md+=`\n**✍️ WRITTEN BY MICHAEL:**\n`;d.m.forEach(x=>md+=`- ${strip(x)}\n`);}
     if(d.a.length){md+=`\n**🤖 AI-GENERATED — UNVETTED** (machine-written, NOT reviewed or approved by Michael. Raw starting material — bin anything cheesy, wrong, or non-compliant.)\n`;d.a.forEach(x=>md+=`- ${strip(x)}\n`);}
