@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FB ads changed in 2026 — Michael Goffredi</title>
+<style>
+  :root {
+    --navy:#0a2540; --navy-2:#173d6a; --navy-tint:#f3f6fa;
+    --teal:#0d9488; --teal-tint:#e9f5f3;
+    --gold:#d4a72c; --gold-tint:#faf4dd;
+    --coral:#d64545; --coral-tint:#fdecec;
+    --emerald:#16a34a; --emerald-tint:#ecfdf3;
+    --ink:#0f1419; --ink-2:#1f2937;
+    --muted:#64748b; --faint:#94a3b8;
+    --line:#e5e7eb; --line-2:#f1f5f9;
+    --bg:#fafbfd;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  body {
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  header.hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: 80px 0 64px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  header.hero::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 50%, var(--coral) 100%);
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #9ab7d8; margin: 0 0 18px;
+  }
+  h1 {
+    font-family: ui-serif, "New York", Georgia, serif;
+    font-size: 64px; line-height: 1.02; letter-spacing: -0.028em;
+    font-weight: 500; margin: 0 0 20px; color: #fff;
+  }
+  .subtitle {
+    font-size: 20px; color: #b7cce5; margin: 0;
+    font-family: ui-serif, Georgia, serif; font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* BODY */
+  h2 {
+    font-family: ui-serif, "New York", Georgia, serif;
+    font-size: 32px; font-weight: 500;
+    color: var(--navy); letter-spacing: -0.015em;
+    margin: 56px 0 20px; line-height: 1.2;
+  }
+  h3 {
+    font-family: ui-serif, "New York", Georgia, serif;
+    font-size: 22px; font-weight: 500;
+    color: var(--navy); letter-spacing: -0.005em;
+    margin: 36px 0 12px; line-height: 1.25;
+  }
+  p { margin: 0 0 20px; color: var(--ink-2); }
+  p.lede {
+    font-size: 22px; line-height: 1.5; color: var(--ink);
+    font-family: ui-serif, Georgia, serif;
+    margin: 0 0 24px;
+  }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--ink); }
+
+  ul { margin: 0 0 24px; padding-left: 22px; }
+  ul li { margin: 8px 0; color: var(--ink-2); }
+
+  /* HERO ILLUSTRATION */
+  figure.hero-illo {
+    margin: -40px 0 40px;
+    padding: 0;
+    position: relative;
+  }
+  figure.hero-illo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px -24px rgba(15, 23, 42, 0.35);
+  }
+  /* INLINE ILLUSTRATIONS */
+  figure.illo {
+    margin: 24px 0 32px;
+    padding: 0;
+  }
+  figure.illo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+  figure.illo.small {
+    max-width: 360px;
+    margin: 24px auto 32px;
+  }
+
+  /* AI-hype bullet list */
+  ul.ai-hype {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+  ul.ai-hype li {
+    padding: 12px 0 12px 42px;
+    position: relative;
+    margin: 0 0 4px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  ul.ai-hype li .mark {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  ul.ai-hype li strong { color: var(--ink); }
+
+  /* CALLOUT — the payoff block */
+  .payoff {
+    background: linear-gradient(135deg, var(--teal-tint) 0%, var(--gold-tint) 100%);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 10px 10px 0;
+    padding: 28px 32px;
+    margin: 32px 0 40px;
+  }
+  .payoff h3 {
+    font-size: 20px; color: var(--navy); margin: 0 0 12px;
+  }
+  .payoff ul {
+    margin: 0; padding-left: 20px;
+  }
+  .payoff ul li {
+    margin: 8px 0; color: var(--ink);
+  }
+  .payoff .kicker-line {
+    margin: 16px 0 0; font-weight: 600; color: var(--navy);
+    font-size: 18px;
+  }
+
+  /* ERIC QUOTE BUBBLE */
+  .quote {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    margin: 28px 0 32px;
+    position: relative;
+  }
+  .quote .qkicker {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .quote .qkicker::before {
+    content: "";
+    display: inline-block;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold-tint);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4a72c'><path d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/></svg>");
+    background-repeat: no-repeat; background-position: center; background-size: 14px;
+  }
+  .quote blockquote {
+    margin: 0 0 12px; padding: 0;
+    font-family: ui-serif, Georgia, serif;
+    font-size: 19px; font-style: italic;
+    line-height: 1.5; color: var(--ink);
+  }
+  .quote .attrib {
+    font-size: 13px; color: var(--muted);
+    font-style: normal;
+  }
+  .quote .attrib strong { color: var(--ink); }
+
+  /* KITCHN ATTACK — smaller aside */
+  .aside {
+    background: var(--coral-tint);
+    border-left: 3px solid var(--coral);
+    padding: 18px 22px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0 28px;
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .aside strong { color: #b91c1c; }
+
+  /* CHART BLOCK */
+  figure.chart {
+    margin: 40px 0 12px;
+    padding: 28px 24px 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  figure.chart svg { display: block; width: 100%; height: auto; }
+  figure.chart figcaption {
+    margin: 12px 0 0;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* REPORT SCREENSHOTS */
+  figure.report-shot {
+    margin: 24px 0 32px;
+    padding: 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  figure.report-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figure.report-shot figcaption {
+    padding: 12px 22px 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    border-top: 1px solid var(--line-2);
+    background: var(--bg);
+  }
+  /* Graceful fallback while images don't exist yet */
+  figure.report-shot img[alt]:after {
+    content: attr(alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    background: var(--navy-tint);
+    color: var(--muted);
+    font-family: ui-monospace, "SF Mono", monospace;
+    font-size: 12.5px;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.6;
+    min-height: 260px;
+    border-radius: 12px;
+  }
+
+  /* THE CREDENTIAL */
+  .cred-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 28px 0 12px;
+  }
+  .cred-stat {
+    background: var(--navy-tint);
+    border-radius: 10px;
+    padding: 20px 18px 18px;
+    text-align: center;
+  }
+  .cred-stat .n {
+    display: block;
+    font-family: ui-serif, "New York", Georgia, serif;
+    font-size: 30px; font-weight: 500;
+    color: var(--navy); line-height: 1;
+    margin-bottom: 6px; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .cred-stat .l {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* CTAs */
+  .cta-block {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 44px 40px 40px;
+    margin: 40px 0 24px;
+  }
+  .cta-block h3 {
+    font-family: ui-serif, "New York", Georgia, serif;
+    font-size: 26px; font-weight: 500; color: #fff;
+    margin: 0 0 14px; letter-spacing: -0.01em; line-height: 1.25;
+  }
+  .cta-block p {
+    color: #b7cce5; font-size: 16.5px;
+    margin: 0 0 24px; line-height: 1.55;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 15.5px;
+    padding: 14px 24px; border-radius: 8px;
+    text-decoration: none; white-space: nowrap;
+    transition: filter .15s, transform .15s;
+  }
+  .cta-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .cta-btn.secondary {
+    background: rgba(255,255,255,0.10); color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .cta-btn.secondary:hover { background: rgba(255,255,255,0.18); }
+  .cta-hook {
+    background: var(--gold-tint);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 28px 0;
+  }
+  .cta-hook h4 {
+    font-family: ui-serif, Georgia, serif;
+    font-size: 20px; font-weight: 500; color: var(--navy);
+    margin: 0 0 6px; letter-spacing: -0.005em;
+  }
+  .cta-hook p {
+    margin: 0 0 14px; color: var(--ink-2); font-size: 15px;
+  }
+  .cta-hook a {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--navy); font-weight: 700; font-size: 14px;
+    text-decoration: none;
+    background: var(--gold); padding: 9px 16px; border-radius: 6px;
+  }
+  .cta-hook a:hover { filter: brightness(1.06); }
+
+  /* SIGN-OFF */
+  .signoff {
+    text-align: center;
+    padding: 32px 0 20px;
+    color: var(--muted);
+    font-size: 14.5px;
+  }
+  .signoff strong { color: var(--navy); font-family: ui-serif, Georgia, serif; }
+
+  /* FOOTER */
+  footer.brief-footer {
+    padding: 24px 0 48px;
+    border-top: 6px solid;
+    border-image: linear-gradient(90deg, var(--teal) 0%, var(--gold) 50%, var(--coral) 100%) 1;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    header.hero { padding: 56px 0 44px; }
+    h1 { font-size: 44px; }
+    .subtitle { font-size: 17px; }
+    h2 { font-size: 26px; }
+    p.lede { font-size: 19px; }
+    .payoff, .quote, .cta-block, .cta-hook, figure.chart { padding-left: 20px; padding-right: 20px; }
+    .cred-numbers { grid-template-columns: 1fr; }
+    .cta-block { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Direct-response media buying · 2026</p>
+    <h1>FB ads changed in 2026.<br>Not the way you think.</h1>
+    <p class="subtitle">Everyone's chasing AI ad-generators. The real edge is somewhere else entirely.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<figure class="hero-illo">
+  <img src="case-study-assets/hero-illustration.png" alt="[ Hero illustration — placeholder · save your image here to render ]">
+</figure>
+
+<!--
+================================================================
+ORIGINAL PROSE INTRO — kept in case we revert from bullets.
+================================================================
+
+<p class="lede">Everyone in growth is being sold two flavors of AI hype right now. Neither one works for direct response.</p>
+
+<p><strong>Flavor one:</strong> hook your Meta ad account up to Claude or ChatGPT via an MCP and let the AI "manage" your ads — turn things on and off, "optimize" your budgets. Nobody selling this mentions that it's a great way to get your ad account banned. The AI hallucinates. It goes off the rails. It over-complicates a task — turning ads on and off — that reliable, purpose-built tools have handled for years. If your growth stack is one bad Claude action away from a Meta suspension, you don't have a growth stack. You have a wager.</p>
+
+<p><strong>Flavor two:</strong> "just dump your ad data into an AI and ask what it thinks." I've had countless AI-slop reports thrown at me. My own CEO does this — pastes exports into Claude and asks "what do you see?" The output sounds smart. It's context-free. For an ecommerce store selling one product to one audience, that might land close enough. For direct response — where the funnel, the audience, the offer, and the naming convention all encode meaning — it simply does not work.</p>
+
+<p>Meanwhile, the actual work — launching creative, throttling what's fatiguing, spotting which concepts are winning, iterating — still has to get done. Neither flavor of AI hype touches that.</p>
+
+<p>Here's what actually works in 2026: AI as a builder's tool, not as the operator itself. I use Claude Code to build the reports that tell me what I really need to know — reports that encode real direct-response experience and the human context the AI-dump approach can't produce. For the mechanical work of turning ads on and off, I use safer, purpose-built tools that don't hallucinate and don't get accounts banned.</p>
+
+<p>The difference between the operators who scale in 2026 and the ones who don't isn't whether they use AI. It's how.</p>
+
+================================================================
+END ORIGINAL. Current bullet version below.
+================================================================
+-->
+
+<p class="lede">Everyone in growth is being sold two flavors of AI hype right now. Neither one works for direct response.</p>
+
+<ul class="ai-hype">
+  <li><span class="mark">❌</span> <strong>Hooking your Meta ad account up to Claude or ChatGPT via an MCP</strong> and letting it "manage" your ads. Great way to get your account <em>banned</em> 💀. The AI hallucinates, goes off the rails, and over-complicates a task — turning ads on and off — that reliable, purpose-built tools have handled for years. If your growth stack is one bad Claude action away from a Meta suspension 🚫, you don't have a growth stack. You have a wager.</li>
+  <li><span class="mark">❌</span> <strong>"Just dump your ad data into an AI and ask what it thinks."</strong> 🙄 I've had countless AI-slop reports 🗑️ thrown at me — my own CEO does this. Sounds smart. Context-free. Might land for an ecommerce store selling one product to one audience. For direct response — where funnel, audience, offer, and naming convention all encode meaning — it simply does not work.</li>
+</ul>
+
+<figure class="illo">
+  <img src="case-study-assets/ai-robots-hell.png" alt="[ AI robots gone wild — placeholder · save your image here to render ]">
+</figure>
+
+<p>Meanwhile, the actual work — launching creative, throttling what's fatiguing, spotting which concepts are winning, iterating — still has to get done. Neither flavor of AI hype touches that.</p>
+
+<ul class="ai-hype">
+  <li><span class="mark">✅</span> <strong>AI as a builder's tool, not as the operator.</strong> I use Claude Code to build the reports that tell me what I really need to know — reports that encode real direct-response experience and the human context an AI dump can't produce.</li>
+  <li><span class="mark">✅</span> <strong>Safer, purpose-built tools for the mechanical work.</strong> Turning ads on and off is handled by an FB-approved app that doesn't hallucinate and doesn't get accounts banned.</li>
+</ul>
+
+<p><strong>The difference between the operators who scale in 2026 and the ones who don't isn't <em>whether</em> they use AI. It's <em>how</em>.</strong></p>
+
+<h2>The problem, plainly.</h2>
+
+<p>You need to launch a lot of creative. Call it 40 new ads a week just to have a shot.</p>
+
+<p>You can't:</p>
+<ul>
+  <li><strong>Throw spaghetti 🍝</strong> and let Advantage+ figure it out. That burns budget 💸 while your CPA drifts, and you never learn what worked, or why. 🤷</li>
+  <li><strong>Analyze every ad by hand</strong> in Ads Manager. That burns your eyeballs 👀🔥, misses fatigue as it happens, and loses history the moment you pause something.</li>
+</ul>
+
+<p>You need something in the middle. Something that watches everything, groups it the way <em>you actually think about it</em>, and hands you the three ads to double down on and the three to kill. This morning. Not next week.</p>
+
+<p><strong>That's a system.</strong> Not a dashboard. Not a creative analytics platform. A <strong>system</strong>.</p>
+
+<div class="payoff">
+  <h3>What you actually get</h3>
+  <ul>
+    <li>🚀 <strong>Unlimited creatives. Unlimited funnels.</strong> The volume ceiling disappears — you're not throttled by how many campaigns your operator can hold in their head.</li>
+    <li>🎯 <strong>Actionable insights, systematically.</strong> Not vibes-based, not spaghetti-based, not eyeball-based.</li>
+    <li>😌 <strong>You're not stressing 24/7.</strong> The ad-level on/off automation reliably throttles individual creatives against their limits — so you're not sitting in Ads Manager toggling ads at 11pm on a Sunday 🛌. When something needs a human, it surfaces.</li>
+    <li>🧠 <strong>Your time goes to strategy, creative, and calls.</strong> Everything mechanical is running.</li>
+  </ul>
+  <figure class="illo small">
+    <img src="case-study-assets/hero-automation.png" alt="[ Automation running while you sleep — placeholder ]">
+  </figure>
+  <p class="kicker-line">No more pulling your hair out. 🙌</p>
+</div>
+
+<h2>The 2026 cheatsheet — what a real system does.</h2>
+
+<p>Everything below runs against ~$1M/month in Meta spend on a health &amp; wellness info-product brand I took over in May. <strong>CPA is down ~40% in eight weeks.</strong> The system is the reason.</p>
+
+<h3>The scaffolding</h3>
+
+<ul>
+  <li><strong>Ad-level on/off automation via an FB-approved app most media buyers don't have access to.</strong> Watches every ad in the account every 30 minutes ⏱️. Kills fatigued losers. Scales stat-sig winners. Refills the testing hopper from paused candidates. No rules to write. No 3 a.m. panic refreshes 😴. Plug in a CPA target and walk away. Battle-tested on <strong>$60M+ of spend</strong> before I got my hands on it; I've personally run another <strong>$2M</strong> through it. Kills require both a lifetime-spend floor <em>and</em> a verdict from the trajectory model — no false positives. Testing and scaling live in the same structure per funnel × geography, so creative decisions compound instead of fragmenting across dozens of campaigns. This is what "unlimited creatives, unlimited funnels" actually looks like in production — and it's the opposite of plugging Claude into your ad account via MCP and praying. <strong>Access to this tool is part of the edge.</strong> You don't find it in a Google search.</li>
+  <li><strong>Naming convention with segment codes</strong> for hook, body, and CTA. Sounds pedantic. Isn't. It's the key that unlocks everything downstream — without it you can't group creatives sensibly, can't run trend analysis, can't join to your creative library. If your current setup can't tell you which hooks are working across concepts, this is why.</li>
+  <li><strong>Direct pull from the Meta Marketing API</strong> into a private data store. Not "we scrape your dashboard." Real API pulls, deduplicated properly.</li>
+  <li><strong>A memory layer</strong> that logs every budget and status change with timestamp and actor. When you sit down Monday and can't remember what you touched Thursday, this is what saves you.</li>
+</ul>
+
+<figure class="illo small">
+  <img src="case-study-assets/velvet-rope-door.png" alt="[ Velvet-rope door · access is the edge — placeholder ]">
+</figure>
+
+<div class="cta-hook">
+  <h4>Curious which app I use?</h4>
+  <p>Fewer than a dozen media buyers on the planet are using it. It's not on the front page of a Google search, it's not something you can just sign up for, and the operators who do have it don't advertise that they do. Connect with me on LinkedIn and I'll tell you what it is, how I got in, and how I have it configured.</p>
+  <a href="https://www.linkedin.com/in/mgoffredi" target="_blank">Connect on LinkedIn →</a>
+</div>
+
+<h3>The reports that come out</h3>
+
+<p><strong>1. Series performance.</strong> Every creative rolled into a series by creator + batch. Thumbnails. Spend, CPM, CTR, CPC, CPA. <strong>7-day-vs-lifetime trend indicators on every metric.</strong> A badge on each series benchmarking it against its funnel's own 30-day average.</p>
+
+<p>This is where you catch a series fatiguing before it drags the account down — the piece <em>no tool I've tried does reliably</em>. Trend confidence is the whole game, and it's not something you can fake with an AI wrapper on top of standard Marketing API endpoints.</p>
+
+<figure class="report-shot">
+  <img src="case-study-assets/report-series-performance.png" alt="[ Series Performance report screenshot — placeholder, data blurred version coming ]">
+  <figcaption>Series Performance — creatives grouped by batch, trend indicators on every metric, benchmarked against each funnel's own 30-day average.</figcaption>
+</figure>
+
+<p><strong>2. Creative report.</strong> Ad-level view for the creative director. Every ad they've launched — even ones sitting at $0 that haven't been turned on yet. Deduped so one video = one line, not fifteen fragments. Full filenames preserved so they can search their own work.</p>
+
+<figure class="report-shot">
+  <img src="case-study-assets/report-creative.png" alt="[ Creative Report screenshot — placeholder, data blurred version coming ]">
+  <figcaption>Creative Report — ad-level view for the creative director. Every ad deduped to one honest row, full filenames preserved, FB Ad IDs in the last column.</figcaption>
+</figure>
+
+<figure class="illo">
+  <img src="case-study-assets/creative-director-transformation.png" alt="[ Creative director confused → confident — placeholder · save your image here to render ]">
+</figure>
+
+<div class="quote">
+  <p class="qkicker">Why creative directors love it</p>
+  <blockquote>"For the first time, I actually know what happened with each batch — which elements are working, without the noise. I know exactly what to tell my editors on Monday. Dream come true. ✨"</blockquote>
+  <p class="attrib">— <strong>Gina</strong>, Creative Director</p>
+</div>
+
+<p><strong>3. Weekly performance.</strong> Funnel × geography, week-over-week, in a palette calibrated for showing upward. Auto-pulls every Monday for the prior Sun-to-Sun. Frozen-URL snapshots for internal sharing. The exec sees one honest number in a format that doesn't create friction.</p>
+
+<p><strong>4. Campaign memory.</strong> Change log + account pulse + strategy notes on every campaign. The thing you wish you had every time somebody asks "why did we pause that one?"</p>
+
+<figure class="report-shot">
+  <img src="case-study-assets/report-campaign-memory.png" alt="[ Campaign Memory report screenshot — placeholder, data blurred version coming ]">
+  <figcaption>Campaign Memory — every budget and status change with timestamp and actor, filterable by campaign / ad set / ad / budget. Account pulse in the header.</figcaption>
+</figure>
+
+<p>The whole system is queryable ad-hoc — because it's real data in real storage, "top ten Toolkit ads with CPA under $140 and their download links" is one prompt away. The Airtable connection means query results come back with the actual video files. <strong>From "here's the top ad" to "here's the file to remix" in one step.</strong></p>
+
+<h2>📈 The credential.</h2>
+
+<ul class="ai-hype">
+  <li><span class="mark">💰</span> <strong>$1M/month managed</strong> on Meta.</li>
+  <li><span class="mark">📉</span> <strong>~40% CPA reduction in eight weeks.</strong></li>
+  <li><span class="mark">🎯</span> <strong>Hit a target the previous team called unreachable</strong> at the account's current maturity.</li>
+</ul>
+
+<p>Trajectory below is real — shape, dates, and magnitude are as they happened. Y-axis values are hidden for public sharing. 👇</p>
+
+<figure class="chart">
+  <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#e2e8f0" stroke-width="1.5"/>
+      </pattern>
+    </defs>
+    <rect x="60" y="20" width="80" height="260" fill="url(#hatch)" opacity="0.6"/>
+    <line x1="60" y1="20" x2="60" y2="280" stroke="#cbd5e1" stroke-width="1"/>
+    <line x1="60" y1="280" x2="680" y2="280" stroke="#cbd5e1" stroke-width="1"/>
+    <line x1="60" y1="20"  x2="680" y2="20"  stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="60" y1="85"  x2="680" y2="85"  stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="60" y1="150" x2="680" y2="150" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="60" y1="215" x2="680" y2="215" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="80"  y="304" font-size="11" fill="#64748b" text-anchor="middle">May 20, 2026</text>
+    <text x="180" y="304" font-size="11" fill="#64748b" text-anchor="middle">Jun 1</text>
+    <text x="290" y="304" font-size="11" fill="#64748b" text-anchor="middle">Jun 14</text>
+    <text x="410" y="304" font-size="11" fill="#64748b" text-anchor="middle">Jun 28</text>
+    <text x="530" y="304" font-size="11" fill="#64748b" text-anchor="middle">Jul 12</text>
+    <text x="640" y="304" font-size="11" fill="#64748b" text-anchor="middle">Jul 19, 2026</text>
+    <polyline
+      points="140,53 175,82 220,88 265,102 320,111 375,113 430,120 480,132 540,168 590,175 640,164"
+      fill="none" stroke="#5eb0e6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="140" cy="53"  r="3" fill="#5eb0e6"/>
+    <circle cx="540" cy="168" r="3.5" fill="#16a34a"/>
+    <text x="150" y="46"  font-size="11" fill="#0f1419" font-weight="600">when I started</text>
+    <text x="545" y="188" font-size="11" fill="#16a34a" font-weight="600">40% lower — Jul 8, 2026</text>
+    <text x="99" y="52" font-size="10" fill="#64748b" text-anchor="middle" font-style="italic">before I started</text>
+    <text x="30" y="150" font-size="11" fill="#0f1419" font-weight="600" transform="rotate(-90 30 150)" text-anchor="middle">Cost per purchase</text>
+  </svg>
+  <figcaption>Cost per purchase, blended across both ad accounts, May 20 – Jul 19, 2026 · y-axis values omitted for public sharing.</figcaption>
+</figure>
+
+<div class="cred-numbers">
+  <div class="cred-stat"><span class="n">$1M</span><span class="l">Monthly spend</span></div>
+  <div class="cred-stat"><span class="n">~40%</span><span class="l">CPA reduction</span></div>
+  <div class="cred-stat"><span class="n">8 weeks</span><span class="l">to floor</span></div>
+</div>
+
+<p>The system did the compounding. I made the strategic calls it fed. The two are inseparable — you can't do this scale of volume by taste alone 🎨, and you can't do it by tools alone ⚙️. You need the operator <em>and</em> the system. 🤝</p>
+
+<h2>Hire me. Fire your junior media buyers. 🔥</h2>
+
+<p>Real talk — junior media buyers are useless to me 🙄, and increasingly they should be useless to you.</p>
+
+<p>Here's the stack that replaces them 👇</p>
+
+<ul class="ai-hype">
+  <li><span class="mark">📋</span> <strong>Spreadsheet-based ad launcher.</strong> Every ad, every naming code, every UTM, every budget — launched exactly as spec'd, the first time, every time. <strong>Zero human-typo mistakes.</strong> 100% perfect execution. ✨</li>
+  <li><span class="mark">🤖</span> <strong>Ad-level optimization app.</strong> Turns individual ads on and off at scale. Watches every 30 minutes. Kills fatigued losers 💀. Refills the testing hopper 🔄. Nobody sitting in Ads Manager 12 hours a day.</li>
+  <li><span class="mark">🔒</span> <strong>Both FB-approved services from real dev teams.</strong> Battle-tested at seven-figure spend. <strong>No gambling with untested software on your ad account.</strong> What I bring is knowing which tools are worth paying for, having access to the ones you can't just sign up for 🎫, and knowing how to configure them for a direct-response account. 🎯</li>
+</ul>
+
+<p>Add those together and there's nothing left for a junior to do that isn't done better, cheaper, and more reliably by the stack. 🤷</p>
+
+<div class="payoff">
+  <p><strong>💡 You don't need three juniors and a media buyer.<br>You need one operator with the right tooling.</strong></p>
+</div>
+
+<h2>💭 Why I'm telling you this.</h2>
+
+<p>Most media buyers I know are still running everything through Ads Manager screenshots and Kitchn exports — paying $500–2,000/month for the privilege 🙄💸. And most Head-of-Growth conversations I have go the same way — the person on the other side either:</p>
+
+<ul class="ai-hype">
+  <li><span class="mark">🤷</span> Doesn't know a system like this is possible, or</li>
+  <li><span class="mark">😰</span> Thinks it requires a data team to build.</li>
+</ul>
+
+<p><strong>It doesn't. 🙌</strong> Here's how the stack actually splits:</p>
+
+<ul class="ai-hype">
+  <li><span class="mark">🧠</span> <strong>Reporting + analysis layer</strong> — I built it myself with Claude Code, the Meta Marketing API, and Airtable. Python. SQLite. Docker. Runs on a $6/mo VPS. Cron regenerates reports while I sleep 😴. <em>Read-only</em> — pulls data, analyzes, publishes reports. Nothing my code writes ever touches your ad account. 🔐</li>
+  <li><span class="mark">⚙️</span> <strong>Launcher + optimization</strong> — paid FB-approved services built by real dev teams. Not something I'd DIY with an AI wrapper and cross my fingers on a seven-figure account. 🚫</li>
+</ul>
+
+<p>My time goes to strategy, creative, and calls 📞 — not to Ads Manager, and not to babysitting some MCP-connected AI hoping it doesn't get my account banned. ✨</p>
+
+<div class="cta-hook">
+  <h4>👀 Are interest campaigns on FB really dead?</h4>
+  <p>Everyone says yes. My data says something more interesting. Message me and I'll tell you what I'm actually seeing at seven-figure spend.</p>
+  <a href="https://www.linkedin.com/in/mgoffredi" target="_blank">Send me a message on LinkedIn →</a>
+</div>
+
+<div class="cta-block">
+  <h3>🚀 Want a version of this system running in your account?</h3>
+  <p>Message me on LinkedIn. I'll send you the exact Claude Code prompt I use to bootstrap the whole reporting stack against your own naming convention. A couple hours of work if you follow it, and you'll have a private version of everything above running against your own data. ⏱️</p>
+  <p>The brand I'm running now is capped by its own back-end economics, not by the media buying. I'm looking for a program where the ceiling is farther up. 📈 If that's your account — talk to me.</p>
+  <a class="cta-btn" href="https://www.linkedin.com/in/mgoffredi" target="_blank">Message me on LinkedIn →</a>
+</div>
+
+<p class="signoff"><strong>— Michael Goffredi 👋</strong></p>
+
+</div>
+
+<footer class="brief-footer">
+  <div class="wrap">
+    Direct-response media buying · seven-figure monthly Meta spend · built with Claude Code
+  </div>
+</footer>
+
+</body>
+</html>
