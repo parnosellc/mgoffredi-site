@@ -1,31 +1,66 @@
 {
-  "period": "Jul 6 \u2013 Jul 12, 2026",
-  "since": "2026-07-06",
-  "until": "2026-07-12",
+  "period": "Jul 13 \u2013 Jul 19, 2026",
+  "since": "2026-07-13",
+  "until": "2026-07-19",
   "seg": {
     "USA": {
       "TK": {
-        "spend": 82096.72,
+        "spend": 94518.3,
+        "fbp": 776
+      },
+      "FCVSL": {
+        "spend": 59222.47,
+        "fbp": 400
+      }
+    },
+    "HI": {
+      "TK": {
+        "spend": 75609.59,
+        "fbp": 690
+      },
+      "FCVSL": {
+        "spend": 38155.1,
+        "fbp": 316
+      }
+    },
+    "ROW": {
+      "TK": {
+        "spend": 3916.33,
+        "fbp": 93
+      },
+      "FCVSL": {
+        "spend": 222.55,
+        "fbp": 2
+      }
+    }
+  },
+  "lastPeriod": "Jul 6 \u2013 Jul 12, 2026",
+  "lastSince": "2026-07-06",
+  "lastUntil": "2026-07-12",
+  "lastSeg": {
+    "USA": {
+      "TK": {
+        "spend": 82097.94,
         "fbp": 768
       },
       "FCVSL": {
-        "spend": 60320.12,
+        "spend": 60321.71,
         "fbp": 444
       }
     },
     "HI": {
       "TK": {
-        "spend": 70655.9,
+        "spend": 70656.74,
         "fbp": 796
       },
       "FCVSL": {
-        "spend": 51670.68,
+        "spend": 51672.83,
         "fbp": 443
       }
     },
     "ROW": {
       "TK": {
-        "spend": 6509.17,
+        "spend": 6509.43,
         "fbp": 140
       },
       "FCVSL": {
@@ -34,40 +69,5 @@
       }
     }
   },
-  "lastPeriod": "Jun 29 \u2013 Jul 5, 2026",
-  "lastSince": "2026-06-29",
-  "lastUntil": "2026-07-05",
-  "lastSeg": {
-    "USA": {
-      "TK": {
-        "spend": 50407.24,
-        "fbp": 439
-      },
-      "FCVSL": {
-        "spend": 62118.42,
-        "fbp": 323
-      }
-    },
-    "HI": {
-      "TK": {
-        "spend": 62218.79,
-        "fbp": 537
-      },
-      "FCVSL": {
-        "spend": 49402.56,
-        "fbp": 355
-      }
-    },
-    "ROW": {
-      "TK": {
-        "spend": 6348.84,
-        "fbp": 155
-      },
-      "FCVSL": {
-        "spend": 5978.42,
-        "fbp": 95
-      }
-    }
-  },
-  "generated_at": "2026-07-13T14:52:18"
+  "generated_at": "2026-07-20T08:02:22"
 }
