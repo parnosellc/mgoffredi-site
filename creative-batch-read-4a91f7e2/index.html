@@ -49,8 +49,10 @@
  .read code{white-space:nowrap}
  .highlight{position:relative;background:linear-gradient(120deg,rgba(245,181,68,.11),rgba(245,181,68,.03));border:1px solid #574122;border-radius:14px;padding:22px 22px 20px;margin:0 0 16px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
  .highlight .badge{position:absolute;top:-11px;left:18px;background:var(--amber);color:#2a1e05;font-size:11px;font-weight:800;letter-spacing:.06em;padding:4px 11px;border-radius:999px}
- .highlight .hthumb{width:108px;flex:0 0 108px;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#0f1318;border:1px solid var(--line)}
- .highlight .hthumb img{width:100%;height:100%;object-fit:cover;display:block}
+ .highlight .hthumb{position:relative;width:108px;flex:0 0 108px;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#0f1318;border:1px solid var(--line)}
+ .highlight .hthumb img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+ .ph{position:absolute;inset:0;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;color:#556170;font-size:26px}
+ .ph span{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:#3f4a57}
  .highlight .htxt{flex:1;min-width:230px}
  .highlight .big{font-size:31px;font-weight:820;color:#ffd98a;letter-spacing:-.01em;margin:0 0 4px;line-height:1.05}
  .highlight .s2{color:#ecdcbe;font-size:14.5px;margin:0 0 10px}
@@ -59,8 +61,9 @@
  .cchip a.dl{background:var(--teal)}
  .cre{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 2px}
  .cchip{display:flex;flex-direction:column;width:132px;background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden}
- .cchip .thumb{aspect-ratio:9/16;background:#0f1318;display:flex;align-items:center;justify-content:center}
- .cchip .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+ .cchip .thumb{position:relative;aspect-ratio:9/16;background:#0f1318;display:flex;align-items:center;justify-content:center}
+ .cchip .thumb img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+ .cchip .thumb .ph{font-size:22px}
  .cchip .meta{padding:9px 10px 11px}
  .cchip .tag{font-size:10.5px;font-weight:750;color:var(--teal);text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px}
  .cchip .nm{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:10.5px;color:#aeb7c2;word-break:break-all;margin-bottom:8px;line-height:1.3}
@@ -147,7 +150,7 @@
 
    <div class="highlight">
      <span class="badge">⭐ HIGHLIGHT</span>
-     <div class="hthumb"><img referrerpolicy="no-referrer" loading="lazy" src="https://drive.google.com/thumbnail?id=1PcaO7kD2Vs9_Bzbazh8U6t-i9cZEWYhu&amp;sz=w320" alt="tk_sha004c1b_SL0178_SM0026"></div>
+     <div class="hthumb"><span class="ph">▶<span>creative</span></span><img referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'" src="https://drive.google.com/thumbnail?id=1PcaO7kD2Vs9_Bzbazh8U6t-i9cZEWYhu&amp;sz=w320" alt="tk_sha004c1b_SL0178_SM0026"></div>
      <div class="htxt">
        <div class="big">$97 CPA for 8 straight days</div>
        <div class="s2">There <b>was</b> a real glimmer: at launch, the lead creative held a <b>$97 CPA from Jul 8&ndash;15</b> across <b>47 sales</b> &mdash; well under the Toolkit average &mdash; before scaling saturated the audience.</div>
@@ -180,15 +183,15 @@
      <p style="margin:14px 0 0;font-size:12.5px;color:var(--dim)">Creatives referenced (click to view in Drive):</p>
      <div class="cre">
        <div class="cchip">
-         <div class="thumb"><img referrerpolicy="no-referrer" loading="lazy" src="https://drive.google.com/thumbnail?id=1PcaO7kD2Vs9_Bzbazh8U6t-i9cZEWYhu&amp;sz=w320" alt="winner"></div>
+         <div class="thumb"><span class="ph">▶</span><img referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'" src="https://drive.google.com/thumbnail?id=1PcaO7kD2Vs9_Bzbazh8U6t-i9cZEWYhu&amp;sz=w320" alt="winner"></div>
          <div class="meta"><div class="tag">Winner · $131</div><div class="nm">c1b_SL0178_SM0026</div><a class="dl" href="https://drive.google.com/file/d/1PcaO7kD2Vs9_Bzbazh8U6t-i9cZEWYhu/view">▶ Drive</a></div>
        </div>
        <div class="cchip">
-         <div class="thumb"><img referrerpolicy="no-referrer" loading="lazy" src="https://drive.google.com/thumbnail?id=10VqbGxu6rUQ5JecMf_XyW5jQ8GWaEgT9&amp;sz=w320" alt="best cpa"></div>
+         <div class="thumb"><span class="ph">▶</span><img referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'" src="https://drive.google.com/thumbnail?id=10VqbGxu6rUQ5JecMf_XyW5jQ8GWaEgT9&amp;sz=w320" alt="best cpa"></div>
          <div class="meta"><div class="tag">Best CPA · $120</div><div class="nm">c1a_SL0177_SM0025</div><a class="dl" href="https://drive.google.com/file/d/10VqbGxu6rUQ5JecMf_XyW5jQ8GWaEgT9/view">▶ Drive</a></div>
        </div>
        <div class="cchip">
-         <div class="thumb"><img referrerpolicy="no-referrer" loading="lazy" src="https://drive.google.com/thumbnail?id=1numPq29yl91UMCne25ls-iQRzkTRDCRY&amp;sz=w320" alt="top hook"></div>
+         <div class="thumb"><span class="ph">▶</span><img referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'" src="https://drive.google.com/thumbnail?id=1numPq29yl91UMCne25ls-iQRzkTRDCRY&amp;sz=w320" alt="top hook"></div>
          <div class="meta"><div class="tag">Top hook · 44%</div><div class="nm">c1e_SL0181_SM0026</div><a class="dl" href="https://drive.google.com/file/d/1numPq29yl91UMCne25ls-iQRzkTRDCRY/view">▶ Drive</a></div>
        </div>
      </div>
