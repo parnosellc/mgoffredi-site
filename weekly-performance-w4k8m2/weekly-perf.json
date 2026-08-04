@@ -1,66 +1,31 @@
 {
-  "period": "Jul 27 \u2013 Aug 2, 2026",
-  "since": "2026-07-27",
-  "until": "2026-08-02",
+  "period": "Jul 20 \u2013 Jul 26, 2026",
+  "since": "2026-07-20",
+  "until": "2026-07-26",
   "seg": {
     "USA": {
       "TK": {
-        "spend": 50937.75,
-        "fbp": 471
-      },
-      "FCVSL": {
-        "spend": 22128.27,
-        "fbp": 214
-      }
-    },
-    "HI": {
-      "TK": {
-        "spend": 68278.43,
-        "fbp": 564
-      },
-      "FCVSL": {
-        "spend": 36404.54,
-        "fbp": 334
-      }
-    },
-    "ROW": {
-      "TK": {
-        "spend": 3997.53,
-        "fbp": 54
-      },
-      "FCVSL": {
-        "spend": 48.16,
-        "fbp": 0
-      }
-    }
-  },
-  "lastPeriod": "Jul 20 \u2013 Jul 26, 2026",
-  "lastSince": "2026-07-20",
-  "lastUntil": "2026-07-26",
-  "lastSeg": {
-    "USA": {
-      "TK": {
-        "spend": 58449.35,
+        "spend": 58448.39,
         "fbp": 478
       },
       "FCVSL": {
-        "spend": 25546.19,
+        "spend": 25542.77,
         "fbp": 220
       }
     },
     "HI": {
       "TK": {
-        "spend": 75961.37,
+        "spend": 75954.54,
         "fbp": 650
       },
       "FCVSL": {
-        "spend": 36932.33,
+        "spend": 36930.16,
         "fbp": 329
       }
     },
     "ROW": {
       "TK": {
-        "spend": 3986.08,
+        "spend": 3985.96,
         "fbp": 78
       },
       "FCVSL": {
@@ -69,5 +34,40 @@
       }
     }
   },
-  "generated_at": "2026-08-03T08:02:33"
+  "lastPeriod": "Jul 13 \u2013 Jul 19, 2026",
+  "lastSince": "2026-07-13",
+  "lastUntil": "2026-07-19",
+  "lastSeg": {
+    "USA": {
+      "TK": {
+        "spend": 94519.35,
+        "fbp": 776
+      },
+      "FCVSL": {
+        "spend": 59224.48,
+        "fbp": 400
+      }
+    },
+    "HI": {
+      "TK": {
+        "spend": 75613.99,
+        "fbp": 690
+      },
+      "FCVSL": {
+        "spend": 38164.0,
+        "fbp": 316
+      }
+    },
+    "ROW": {
+      "TK": {
+        "spend": 3916.5,
+        "fbp": 93
+      },
+      "FCVSL": {
+        "spend": 222.67,
+        "fbp": 2
+      }
+    }
+  },
+  "generated_at": "2026-07-27T08:02:39"
 }
