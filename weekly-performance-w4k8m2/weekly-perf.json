@@ -1,73 +1,73 @@
 {
-  "period": "Jul 20 \u2013 Jul 26, 2026",
-  "since": "2026-07-20",
-  "until": "2026-07-26",
+  "period": "Aug 3 \u2013 Aug 9, 2026",
+  "since": "2026-08-03",
+  "until": "2026-08-09",
   "seg": {
     "USA": {
       "TK": {
-        "spend": 58448.39,
-        "fbp": 478
+        "spend": 47859.75,
+        "fbp": 436
       },
       "FCVSL": {
-        "spend": 25542.77,
-        "fbp": 220
+        "spend": 21286.84,
+        "fbp": 229
       }
     },
     "HI": {
       "TK": {
-        "spend": 75954.54,
-        "fbp": 650
+        "spend": 50912.14,
+        "fbp": 482
       },
       "FCVSL": {
-        "spend": 36930.16,
-        "fbp": 329
+        "spend": 33302.98,
+        "fbp": 396
       }
     },
     "ROW": {
       "TK": {
-        "spend": 3985.96,
-        "fbp": 78
+        "spend": 715.53,
+        "fbp": 11
       },
       "FCVSL": {
-        "spend": 134.26,
-        "fbp": 4
+        "spend": 0.0,
+        "fbp": 0
       }
     }
   },
-  "lastPeriod": "Jul 13 \u2013 Jul 19, 2026",
-  "lastSince": "2026-07-13",
-  "lastUntil": "2026-07-19",
+  "lastPeriod": "Jul 27 \u2013 Aug 2, 2026",
+  "lastSince": "2026-07-27",
+  "lastUntil": "2026-08-02",
   "lastSeg": {
     "USA": {
       "TK": {
-        "spend": 94519.35,
-        "fbp": 776
+        "spend": 50941.24,
+        "fbp": 471
       },
       "FCVSL": {
-        "spend": 59224.48,
-        "fbp": 400
+        "spend": 22130.69,
+        "fbp": 214
       }
     },
     "HI": {
       "TK": {
-        "spend": 75613.99,
-        "fbp": 690
+        "spend": 68282.31,
+        "fbp": 564
       },
       "FCVSL": {
-        "spend": 38164.0,
-        "fbp": 316
+        "spend": 36408.88,
+        "fbp": 334
       }
     },
     "ROW": {
       "TK": {
-        "spend": 3916.5,
-        "fbp": 93
+        "spend": 3997.61,
+        "fbp": 54
       },
       "FCVSL": {
-        "spend": 222.67,
-        "fbp": 2
+        "spend": 48.16,
+        "fbp": 0
       }
     }
   },
-  "generated_at": "2026-07-27T08:02:39"
+  "generated_at": "2026-08-10T08:01:59"
 }
