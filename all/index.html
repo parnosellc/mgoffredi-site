@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mgoffredi.com — site index</title>
+<style>
+  :root {
+    --navy:#0a2540; --teal:#0d9488; --ink:#0f172a; --line:#e2e8f0;
+    --bg:#f8fafc; --muted:#64748b; --card:#ffffff; --hover:#f1f5f9;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.55;
+  }
+  header.hero{
+    background:linear-gradient(135deg,#0a2540 0%,#123456 100%);
+    color:#fff; padding:48px 24px 40px;
+  }
+  .wrap{max-width:820px; margin:0 auto}
+  h1{
+    font-family:ui-serif,"New York",Georgia,serif;
+    margin:0 0 6px; font-size:34px; letter-spacing:-.01em;
+  }
+  .sub{color:#cbd5e1; margin:0; font-size:15px}
+  main{padding:32px 24px 80px}
+  .controls{
+    display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;
+  }
+  .ctrl{
+    background:#fff; color:var(--navy); border:1px solid var(--line);
+    padding:8px 14px; border-radius:6px; cursor:pointer; font:inherit;
+    font-size:13px; font-weight:600;
+  }
+  .ctrl:hover{background:var(--navy); color:#fff; border-color:var(--navy)}
+
+  details.group{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:10px; margin-bottom:10px; overflow:hidden;
+  }
+  details.group[open]{border-color:#cbd5e1}
+  details.group > summary{
+    list-style:none; cursor:pointer; padding:14px 18px;
+    display:flex; align-items:center; gap:10px;
+    font-weight:700; color:var(--navy); user-select:none;
+  }
+  details.group > summary::-webkit-details-marker{display:none}
+  details.group > summary::before{
+    content:"▸"; color:var(--teal); font-size:12px;
+    transition:transform .12s ease; display:inline-block;
+  }
+  details.group[open] > summary::before{transform:rotate(90deg)}
+  summary .count{
+    margin-left:auto; font-weight:500; color:var(--muted);
+    font-size:12px; background:var(--hover); padding:2px 8px; border-radius:10px;
+  }
+  summary .blurb{
+    font-weight:400; color:var(--muted); font-size:13px;
+    margin-left:6px;
+  }
+  ul.pages{
+    list-style:none; margin:0; padding:0 0 8px;
+    border-top:1px solid var(--line);
+  }
+  ul.pages li{
+    padding:0;
+  }
+  ul.pages li a{
+    display:block; padding:10px 18px 10px 40px;
+    color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);
+    transition:background .1s ease;
+  }
+  ul.pages li:last-child a{border-bottom:none}
+  ul.pages li a:hover{background:var(--hover); color:var(--teal)}
+  ul.pages li a .name{font-weight:600; color:var(--navy)}
+  ul.pages li a:hover .name{color:var(--teal)}
+  ul.pages li a .path{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:11.5px; color:var(--muted); display:block; margin-top:2px;
+  }
+  ul.pages li a .desc{
+    font-size:13px; color:var(--muted); display:block; margin-top:2px;
+  }
+
+  /* nested details for sub-groups (e.g. Compliance / Mockup) */
+  ul.pages details.sub{margin:0}
+  ul.pages details.sub summary{
+    padding:10px 18px 10px 40px; cursor:pointer;
+    color:var(--navy); font-weight:600; border-bottom:1px solid var(--line);
+    list-style:none;
+  }
+  ul.pages details.sub summary::-webkit-details-marker{display:none}
+  ul.pages details.sub summary::before{
+    content:"▸"; color:var(--teal); font-size:11px;
+    display:inline-block; margin-right:6px; transition:transform .12s ease;
+  }
+  ul.pages details.sub[open] summary::before{transform:rotate(90deg)}
+  ul.pages details.sub ul{list-style:none; margin:0; padding:0}
+  ul.pages details.sub ul li a{padding-left:66px}
+
+  footer{color:var(--muted); font-size:12px; padding:24px; text-align:center}
+  footer a{color:var(--teal); text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>mgoffredi.com — site index</h1>
+    <p class="sub">Every page, grouped by purpose. Click a section to expand.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="controls">
+    <button class="ctrl" onclick="document.querySelectorAll('details.group,details.sub').forEach(d=>d.open=true)">Expand all</button>
+    <button class="ctrl" onclick="document.querySelectorAll('details.group,details.sub').forEach(d=>d.open=false)">Collapse all</button>
+  </div>
+
+  <details class="group" open>
+    <summary>🏠 Homepage <span class="blurb">— the front door</span><span class="count">1</span></summary>
+    <ul class="pages">
+      <li><a href="/"><span class="name">Homepage</span><span class="path">/</span></a></li>
+    </ul>
+  </details>
+
+  <details class="group" open>
+    <summary>💼 Personal marketing <span class="blurb">— case study, résumés</span><span class="count">4</span></summary>
+    <ul class="pages">
+      <li><a href="/case-study-2026/"><span class="name">Case Study 2026</span><span class="path">/case-study-2026/</span><span class="desc">Meta media buying case study — 40% CPA reduction on $1M/month.</span></a></li>
+      <li><a href="/resume/"><span class="name">Resume</span><span class="path">/resume/</span></a></li>
+      <li><a href="/resume2/"><span class="name">Resume v2</span><span class="path">/resume2/</span></a></li>
+      <li><a href="/hebrew-lessons/"><span class="name">Hebrew Lessons</span><span class="path">/hebrew-lessons/</span></a></li>
+    </ul>
+  </details>
+
+  <details class="group">
+    <summary>📊 MovesMethod — reporting app <span class="blurb">— live dashboards</span><span class="count">9</span></summary>
+    <ul class="pages">
+      <li><a href="/movesmethod-reporting-7k2x/"><span class="name">Reporting hub</span><span class="path">/movesmethod-reporting-7k2x/</span><span class="desc">Front door — links to every report.</span></a></li>
+      <li><a href="/weekly-performance-w4k8m2/"><span class="name">Weekly Performance</span><span class="path">/weekly-performance-w4k8m2/</span><span class="desc">Funnel × geography, week over week.</span></a></li>
+      <li><a href="/series-report-8m4k2p7w/"><span class="name">Series Performance</span><span class="path">/series-report-8m4k2p7w/</span><span class="desc">Creatives rolled into series with trend indicators.</span></a></li>
+      <li><a href="/creative-report-9q7x2k4f/"><span class="name">Creative Report</span><span class="path">/creative-report-9q7x2k4f/</span><span class="desc">Ad-level view for the creative director.</span></a></li>
+      <li><a href="/campaign-memory-r7w2x9/"><span class="name">Campaign Memory</span><span class="path">/campaign-memory-r7w2x9/</span><span class="desc">Change log + account pulse + strategy notes.</span></a></li>
+      <li><a href="/segment-performance-s5v9x2c8/"><span class="name">Segment Performance</span><span class="path">/segment-performance-s5v9x2c8/</span></a></li>
+      <li><a href="/creative-batch-read-4a91f7e2/"><span class="name">Creative Batch Read</span><span class="path">/creative-batch-read-4a91f7e2/</span></a></li>
+      <li><a href="/new-creatives-7g3x9k2p/"><span class="name">New Creatives</span><span class="path">/new-creatives-7g3x9k2p/</span></a></li>
+      <li><a href="/mm-review-0d594c6417/"><span class="name">MM Review</span><span class="path">/mm-review-0d594c6417/</span></a></li>
+    </ul>
+  </details>
+
+  <details class="group">
+    <summary>🎬 MovesMethod — creative &amp; compliance <span class="count">3</span></summary>
+    <ul class="pages">
+      <li><a href="/movesmethod-hooks-8fq3zv/"><span class="name">MovesMethod Hooks</span><span class="path">/movesmethod-hooks-8fq3zv/</span></a></li>
+      <li><a href="/movesmethod-compliance/"><span class="name">Compliance page</span><span class="path">/movesmethod-compliance/</span></a></li>
+      <li>
+        <details class="sub">
+          <summary>Compliance — mockup</summary>
+          <ul>
+            <li><a href="/movesmethod-compliance/mockup/"><span class="name">Compliance mockup</span><span class="path">/movesmethod-compliance/mockup/</span></a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </details>
+
+  <details class="group">
+    <summary>🔍 Funnel audits <span class="blurb">— competitor / client-facing analyses</span><span class="count">10</span></summary>
+    <ul class="pages">
+      <li><a href="/funnel-analysis/"><span class="name">Index</span><span class="path">/funnel-analysis/</span></a></li>
+      <li><a href="/funnel-analysis/bettervits/"><span class="name">BetterVits</span><span class="path">/funnel-analysis/bettervits/</span></a></li>
+      <li><a href="/funnel-analysis/cleannutraceuticals/"><span class="name">Clean Nutraceuticals</span><span class="path">/funnel-analysis/cleannutraceuticals/</span></a></li>
+      <li><a href="/funnel-analysis/clearstem/"><span class="name">Clearstem</span><span class="path">/funnel-analysis/clearstem/</span></a></li>
+      <li><a href="/funnel-analysis/enclavebioactives/"><span class="name">Enclave Bioactives</span><span class="path">/funnel-analysis/enclavebioactives/</span></a></li>
+      <li><a href="/funnel-analysis/movesmethod/"><span class="name">MovesMethod</span><span class="path">/funnel-analysis/movesmethod/</span></a></li>
+      <li><a href="/funnel-analysis/pawfy/"><span class="name">Pawfy</span><span class="path">/funnel-analysis/pawfy/</span></a></li>
+      <li><a href="/funnel-analysis/pawfy-v2/"><span class="name">Pawfy v2</span><span class="path">/funnel-analysis/pawfy-v2/</span></a></li>
+      <li><a href="/funnel-analysis/pawfy-v3-final/"><span class="name">Pawfy v3 final</span><span class="path">/funnel-analysis/pawfy-v3-final/</span></a></li>
+      <li><a href="/funnel-analysis/tryledisa/"><span class="name">TryLedisa</span><span class="path">/funnel-analysis/tryledisa/</span></a></li>
+    </ul>
+  </details>
+
+  <details class="group">
+    <summary>👤 Client projects <span class="blurb">— builds for other operators</span><span class="count">5</span></summary>
+    <ul class="pages">
+      <li><a href="/avia-ai-agent-course/"><span class="name">Aviá — AI Agent Course</span><span class="path">/avia-ai-agent-course/</span></a></li>
+      <li><a href="/openclaw_4_mediabuyers/"><span class="name">OpenClaw for Media Buyers</span><span class="path">/openclaw_4_mediabuyers/</span></a></li>
+      <li><a href="/yendos-google-ads/"><span class="name">Yendo's Google Ads</span><span class="path">/yendos-google-ads/</span></a></li>
+      <li><a href="/troopify_setup/"><span class="name">Troopify Setup</span><span class="path">/troopify_setup/</span></a></li>
+      <li><a href="/million-dollar-ads/"><span class="name">Million Dollar Ads</span><span class="path">/million-dollar-ads/</span></a></li>
+    </ul>
+  </details>
+
+  <details class="group">
+    <summary>🛠️ Tools <span class="blurb">— generators &amp; utilities</span><span class="count">2</span></summary>
+    <ul class="pages">
+      <li><a href="/gorillafy/ad-names/"><span class="name">Ad Name Generator</span><span class="path">/gorillafy/ad-names/</span><span class="desc">Segment-code slug builder for creative ops.</span></a></li>
+      <li><a href="/gorillafy/lander-names/"><span class="name">Lander Name Generator</span><span class="path">/gorillafy/lander-names/</span><span class="desc">Landing-page slug builder.</span></a></li>
+    </ul>
+  </details>
+
+  <details class="group">
+    <summary>📖 Explainers <span class="blurb">— tutorials &amp; onboarding</span><span class="count">2</span></summary>
+    <ul class="pages">
+      <li><a href="/claude-cowork-4-everyone/"><span class="name">Claude Cowork 4 Everyone</span><span class="path">/claude-cowork-4-everyone/</span></a></li>
+      <li><a href="/claude-cowork-4-everyone/es/"><span class="name">Claude Cowork 4 Everyone (Español)</span><span class="path">/claude-cowork-4-everyone/es/</span></a></li>
+    </ul>
+  </details>
+
+</main>
+
+<footer>
+  mgoffredi.com · <a href="/">home</a>
+</footer>
+
+</body>
+</html>
