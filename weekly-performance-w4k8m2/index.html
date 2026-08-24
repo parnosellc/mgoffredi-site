@@ -73,6 +73,18 @@
  .cpaCell{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
  .note{margin-top:14px;font-size:11px;color:var(--faint);font-style:italic}
  footer{padding:24px 44px 40px;margin-top:14px;border-top:6px solid;border-image:linear-gradient(90deg,var(--teal),var(--gold) 33%,var(--slate) 66%,#d64545) 1;font-size:11px;color:var(--faint);letter-spacing:.04em}
+
+ .credrow{margin-top:16px}
+ .credlab{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9ab7d8;font-weight:700;margin-bottom:5px}
+ .credzone{display:flex;align-items:center;gap:14px;background:#0a2540;border:1px dashed #24405f;border-radius:8px;padding:14px 16px;cursor:pointer;transition:.12s}
+ .credzone.drag{border-color:#0d9488;background:#0c2e34}
+ .credzone .cico{font-size:22px}
+ .credzone .ctxt{font-size:13px;color:#9ab7d8} .credzone .ctxt b{color:#cfe0f2}
+ .credthumb{max-height:64px;border-radius:6px;border:1px solid #24405f}
+ .credrm{margin-left:auto;background:transparent;border:1px solid #24405f;color:#9ab7d8;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer}
+ .credrm:hover{border-color:#d64545;color:#ffb4b4}
+ .credsec img{max-width:100%;border-radius:10px;border:1px solid var(--line);box-shadow:0 2px 12px -7px rgba(15,23,42,.45)}
+ .credsec .cap{font-size:11px;color:var(--faint);font-style:italic;margin-top:8px}
 </style></head><body><div class="sheet">
  <div class="controls" id="controls">
    <div class="aud">⚠️ <span>Enter <b>AUD</b> only. Spend is Meta AUD — your Source-of-Truth CPA <b>must also be AUD</b>, not USD.</span></div>
@@ -81,6 +93,16 @@
      <div class="fld"><label>🎯 Target CPA</label><div class="wrap"><span class="cur">$</span><input id="target" type="number" step="0.01" value="96"><span class="aud2">AUD</span></div></div>
      <div class="fld"><label>📊 Source-of-Truth CPA (this week)</label><div class="wrap"><span class="cur">$</span><input id="sot" type="number" step="0.01" placeholder="xxx.xx"><span class="aud2">AUD</span></div><div class="hintl" id="hintSot">Type this week's figure from the BI ↑</div></div>
      <div class="fld"><label>↩︎ Source-of-Truth CPA (last week)</label><div class="wrap"><span class="cur">$</span><input id="sotLast" type="number" step="0.01" placeholder="xxx.xx"><span class="aud2">AUD</span></div><div class="hintl" id="hintLast">&nbsp;</div></div>
+   </div>
+   <div class="credrow">
+     <label class="credlab">🧾 Credit line screenshot (this week)</label>
+     <div class="credzone" id="credZone">
+       <span class="cico">📎</span>
+       <span class="ctxt" id="credTxt"><b>Drag a screenshot here</b> — or click to choose. Shows in the report's Credit line section.</span>
+       <img id="credThumb" class="credthumb" style="display:none" alt="credit preview">
+       <button class="credrm" id="credRm" type="button" style="display:none">✕ Remove</button>
+     </div>
+     <input type="file" id="credFile" accept="image/*" style="display:none">
    </div>
    <div class="period" id="period"></div>
    <div class="genrow"><button class="genbtn" id="genBtn">🔗 Create shareable report</button><span class="genmsg" id="genMsg"></span></div>
@@ -102,6 +124,7 @@
 <script>
 // ---- cached weekly data (SAMPLE — the VPS Monday pull will fill this) ----
 let DATA={"period": "Aug 17 – Aug 23, 2026", "since": "2026-08-17", "until": "2026-08-23", "seg": {"USA": {"TK": {"spend": 22560.95, "fbp": 160}, "FCVSL": {"spend": 6489.07, "fbp": 38}}, "HI": {"TK": {"spend": 21901.67, "fbp": 184}, "FCVSL": {"spend": 11512.45, "fbp": 68}}, "ROW": {"TK": {"spend": 0.0, "fbp": 0}, "FCVSL": {"spend": 6.85, "fbp": 1}}}, "lastPeriod": "Aug 10 – Aug 16, 2026", "lastSince": "2026-08-10", "lastUntil": "2026-08-16", "lastSeg": {"USA": {"TK": {"spend": 44701.53, "fbp": 392}, "FCVSL": {"spend": 34657.63, "fbp": 302}}, "HI": {"TK": {"spend": 51232.91, "fbp": 464}, "FCVSL": {"spend": 49052.66, "fbp": 458}}, "ROW": {"TK": {"spend": 0.01, "fbp": 0}, "FCVSL": {"spend": 48.57, "fbp": 1}}}, "generated_at": "2026-08-24T08:01:29"};
+let CREDIT="";
 const SEGNAME={USA:"United States",HI:"High-income non-US",ROW:"Everything else"};
 const SEGFLAG={USA:"🇺🇸",HI:"🌍",ROW:"🌐"};
 const SEGCLASS={USA:"usa",HI:"hi",ROW:"row"};
@@ -152,6 +175,7 @@ function compute(){
     <div class="mb fun"><p class="l">Spend by Funnel</p><p class="v"><b>${pct(funSpend.TK)}%</b> TK · <b>${pct(funSpend.FCVSL)}%</b> FCVSL</p></div>
    </div>
    <p class="note">*CPA is calculated by ad spend from Meta in Melbourne time zone; sales are from the Hyros unique-sales overlay on FB Ads Manager.</p></section>`;
+ if(CREDIT){h+=`<section class="credsec"><h2><span class="fl">🧾</span>Credit line</h2><img src="${CREDIT}" alt="Credit line screenshot"><p class="cap">Screenshot as provided · AUD.</p></section>`;}
  // segment sections
  for(const g of ["USA","HI","ROW"]){
    const seg=S[g], tkS=salesOf(seg.TK), fS=salesOf(seg.FCVSL), spend=seg.TK.spend+seg.FCVSL.spend, sales=tkS+fS, cpa=sales?spend/sales:null;
@@ -176,7 +200,7 @@ function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decod
 let SNAPSHOT=false;
 (function(){var m=location.hash.match(/r=([^&]+)/);if(m){try{var p=b64d(m[1]);
   DATA.period=p.period;DATA.seg=p.seg;if(p.lastSeg)DATA.lastSeg=p.lastSeg;if(p.lastPeriod)DATA.lastPeriod=p.lastPeriod;
-  document.getElementById("target").value=p.target;document.getElementById("sot").value=p.sot;document.getElementById("sotLast").value=p.sotLast;
+  document.getElementById("target").value=p.target;document.getElementById("sot").value=p.sot;document.getElementById("sotLast").value=p.sotLast;if(p.credit)CREDIT=p.credit;
   SNAPSHOT=true;}catch(e){}}})();
 function saveRecent(u,p,sot,ts){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
   l.unshift({u:u,p:p,sot:sot,ts:ts});localStorage.setItem("mm_weekly",JSON.stringify(l.slice(0,20)));}
@@ -188,7 +212,7 @@ function renderRecent(){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekl
 var lastGen=0;
 function generate(){var now=Date.now();if(now-lastGen<6000)return;lastGen=now;
   var payload={period:DATA.period,seg:DATA.seg,lastSeg:DATA.lastSeg,lastPeriod:DATA.lastPeriod,target:document.getElementById("target").value,
-    sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,ts:new Date().toISOString()};
+    sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,credit:CREDIT,ts:new Date().toISOString()};
   var url=location.origin+location.pathname+"#r="+b64e(payload);
   if(navigator.clipboard)navigator.clipboard.writeText(url).catch(function(){});
   saveRecent(url,payload.period,payload.sot,payload.ts);renderRecent();
@@ -223,5 +247,27 @@ if(SNAPSHOT){
   var sb=document.getElementById("snapb"); sb.style.display="";
   sb.innerHTML="📎 <b>Shared weekly report</b> · "+DATA.period+" · figures frozen at generation. This is a read-only snapshot.";
 }
+(function(){
+ var zone=document.getElementById("credZone"),file=document.getElementById("credFile"),
+     thumb=document.getElementById("credThumb"),txt=document.getElementById("credTxt"),rm=document.getElementById("credRm");
+ if(!zone) return;
+ function refresh(){ if(CREDIT){thumb.src=CREDIT;thumb.style.display="";rm.style.display="";txt.innerHTML="<b>Credit line screenshot loaded</b> — appears in the report below.";}
+   else{thumb.style.display="none";rm.style.display="none";txt.innerHTML="<b>Drag a screenshot here</b> — or click to choose. Shows in the report's Credit line section.";} }
+ function persist(){try{if(CREDIT)localStorage.setItem("mm_credit_img",CREDIT);else localStorage.removeItem("mm_credit_img");}catch(e){}}
+ function loadFile(f){ if(!f||!/^image\//.test(f.type))return; var r=new FileReader();
+   r.onload=function(e){ var img=new Image(); img.onload=function(){
+     var mw=900, sc=Math.min(1,mw/img.width), w=Math.round(img.width*sc), hh=Math.round(img.height*sc);
+     var c=document.createElement("canvas"); c.width=w;c.height=hh; c.getContext("2d").drawImage(img,0,0,w,hh);
+     CREDIT=c.toDataURL("image/jpeg",0.72); persist(); refresh(); compute(); };
+     img.src=e.target.result; }; r.readAsDataURL(f); }
+ if(!SNAPSHOT){ try{CREDIT=localStorage.getItem("mm_credit_img")||CREDIT;}catch(e){} }
+ zone.addEventListener("click",function(){file.click();});
+ file.addEventListener("change",function(){ if(file.files&&file.files[0]) loadFile(file.files[0]); });
+ zone.addEventListener("dragover",function(e){e.preventDefault();zone.classList.add("drag");});
+ zone.addEventListener("dragleave",function(){zone.classList.remove("drag");});
+ zone.addEventListener("drop",function(e){e.preventDefault();zone.classList.remove("drag"); var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0]; loadFile(f); });
+ rm.addEventListener("click",function(e){e.stopPropagation();CREDIT="";persist();refresh();compute();});
+ refresh();
+})();
 compute();
 </script></body></html>
