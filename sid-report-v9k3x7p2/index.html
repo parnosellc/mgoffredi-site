@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sid vs All — MovesMethod</title>
+<style>
+  :root{--bg:#0f1117;--surface:#1a1d27;--border:#2a2e3e;--text:#e8eaf0;--muted:#7a7f96;--accent:#5b6cff;--green:#22c55e;--red:#ef4444;--sid:#a78bfa}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 20px}
+  h1{font-size:22px;font-weight:700;margin-bottom:4px}
+  .meta{font-size:12px;color:var(--muted);margin-bottom:24px}
+  .tabs{display:flex;gap:8px;margin-bottom:28px}
+  .tab{padding:7px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+  .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+  .card{background:var(--surface);border-radius:12px;padding:22px 24px}
+  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
+  .card-title.sid-label{color:var(--sid)}
+  .big-num{font-size:36px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+  .big-num.sid-color{color:var(--sid)}
+  .big-label{font-size:12px;color:var(--muted);margin-top:6px}
+  .split{display:flex;gap:20px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+  .split-item{flex:1}
+  .split-val{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+  .split-label{font-size:11px;color:var(--muted);margin-top:3px}
+  table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden}
+  th{background:#22263a;color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:10px 16px;text-align:right}
+  th:first-child{text-align:left}
+  td{padding:12px 16px;border-top:1px solid var(--border);text-align:right;font-variant-numeric:tabular-nums}
+  td:first-child{text-align:left;font-weight:600}
+  .sid-row td:first-child{color:var(--sid)}
+  .cpa-good{color:var(--green);font-weight:700}
+  .disclaimer{font-size:12px;color:var(--muted);margin-top:20px;opacity:.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sid vs All — Creative Performance</h1>
+  <p class="meta">Updated Aug 31, 2026 16:32 UTC &nbsp;·&nbsp; All figures AUD &nbsp;·&nbsp; Today excluded</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="setWindow(this,'7d')">Past 7 days</button>
+    <button class="tab" onclick="setWindow(this,'14d')">Past 14 days</button>
+    <button class="tab" onclick="setWindow(this,'all')">All time</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-title sid-label">&#9889; Sid&rsquo;s Campaigns</div>
+      <div class="big-num sid-color" id="sid-cpa">—</div>
+      <div class="big-label">CPA (AUD)</div>
+      <div class="split">
+        <div class="split-item"><div class="split-val" id="sid-ads">—</div><div class="split-label">Active ads</div></div>
+        <div class="split-item"><div class="split-val" id="sid-spend">—</div><div class="split-label">Spend (AUD)</div></div>
+        <div class="split-item"><div class="split-val" id="sid-pu">—</div><div class="split-label">Purchases</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">All Other Campaigns</div>
+      <div class="big-num" id="oth-cpa">—</div>
+      <div class="big-label">CPA (AUD)</div>
+      <div class="split">
+        <div class="split-item"><div class="split-val" id="oth-ads">—</div><div class="split-label">Active ads</div></div>
+        <div class="split-item"><div class="split-val" id="oth-spend">—</div><div class="split-label">Spend (AUD)</div></div>
+        <div class="split-item"><div class="split-val" id="oth-pu">—</div><div class="split-label">Purchases</div></div>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Segment</th>
+        <th>Active Ads</th>
+        <th>Spend (AUD)</th>
+        <th>Purchases</th>
+        <th>CPA (AUD)</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <p class="disclaimer">* FB standard purchase event only. Real backend CPA may be ~8% higher.</p>
+</div>
+<script>
+const D = {"7d": {"sid": {"vsl": {"spend": 2041.37, "purchases": 12, "clicks": 826, "active_ads": 24, "cpa": 170.11}, "tk": {"spend": 4058.62, "purchases": 50, "clicks": 950, "active_ads": 44, "cpa": 81.17}, "total": {"spend": 6099.99, "purchases": 62, "active_ads": 68, "cpa": 98.39}}, "others": {"vsl": {"spend": 48068.35, "purchases": 597, "clicks": 31553, "active_ads": 104, "cpa": 80.52}, "tk": {"spend": 29904.05, "purchases": 380, "clicks": 9913, "active_ads": 188, "cpa": 78.69}, "total": {"spend": 77972.4, "purchases": 977, "active_ads": 292, "cpa": 79.81}}}, "14d": {"sid": {"vsl": {"spend": 2569.36, "purchases": 13, "clicks": 996, "active_ads": 25, "cpa": 197.64}, "tk": {"spend": 5150.05, "purchases": 60, "clicks": 1159, "active_ads": 51, "cpa": 85.83}, "total": {"spend": 7719.41, "purchases": 73, "active_ads": 76, "cpa": 105.75}}, "others": {"vsl": {"spend": 64796.14, "purchases": 700, "clicks": 39547, "active_ads": 140, "cpa": 92.57}, "tk": {"spend": 48752.51, "purchases": 530, "clicks": 15284, "active_ads": 303, "cpa": 91.99}, "total": {"spend": 113548.65, "purchases": 1230, "active_ads": 443, "cpa": 92.32}}}, "all": {"sid": {"vsl": {"spend": 2569.36, "purchases": 13, "clicks": 996, "active_ads": 25, "cpa": 197.64}, "tk": {"spend": 5150.05, "purchases": 60, "clicks": 1159, "active_ads": 51, "cpa": 85.83}, "total": {"spend": 7719.41, "purchases": 73, "active_ads": 76, "cpa": 105.75}}, "others": {"vsl": {"spend": 897612.43, "purchases": 7601, "clicks": 453701, "active_ads": 873, "cpa": 118.09}, "tk": {"spend": 427794.05, "purchases": 4560, "clicks": 362701, "active_ads": 585, "cpa": 93.81}, "total": {"spend": 1325406.48, "purchases": 12161, "active_ads": 1458, "cpa": 108.99}}}};
+function fmt(n){ if(n===null||n===undefined) return '—'; return n.toLocaleString('en-AU',{maximumFractionDigits:0}); }
+function fmtCpa(n){ return n ? 'A$'+fmt(n) : '—'; }
+function render(w){
+  const d=D[w], s=d.sid, o=d.others;
+  document.getElementById('sid-cpa').textContent  = fmtCpa(s.total.cpa);
+  document.getElementById('sid-ads').textContent  = fmt(s.total.active_ads);
+  document.getElementById('sid-spend').textContent= 'A$'+fmt(s.total.spend);
+  document.getElementById('sid-pu').textContent   = fmt(s.total.purchases);
+  document.getElementById('oth-cpa').textContent  = fmtCpa(o.total.cpa);
+  document.getElementById('oth-ads').textContent  = fmt(o.total.active_ads);
+  document.getElementById('oth-spend').textContent= 'A$'+fmt(o.total.spend);
+  document.getElementById('oth-pu').textContent   = fmt(o.total.purchases);
+  const rows=[
+    ['sid','&#9889; Sid — VSL',s.vsl, o.vsl.cpa],
+    ['sid','&#9889; Sid — TK', s.tk,  o.tk.cpa],
+    ['oth','All Others — VSL', o.vsl, null],
+    ['oth','All Others — TK',  o.tk,  null],
+  ];
+  document.getElementById('tbody').innerHTML=rows.map(([grp,lbl,m,benchCpa])=>{
+    const sidRow = grp==='sid';
+    const cpaBetter = sidRow && m.cpa && benchCpa && m.cpa <= benchCpa;
+    return `<tr class="${sidRow?'sid-row':''}">
+      <td>${lbl}</td>
+      <td>${fmt(m.active_ads)}</td>
+      <td>A$${fmt(m.spend)}</td>
+      <td>${fmt(m.purchases)}</td>
+      <td class="${cpaBetter?'cpa-good':''}">${fmtCpa(m.cpa)}</td>
+    </tr>`;
+  }).join('');
+}
+function setWindow(btn,w){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  render(w);
+}
+render('7d');
+</script>
+</body>
+</html>
