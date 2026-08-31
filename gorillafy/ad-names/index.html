@@ -256,7 +256,7 @@
     <li><a href="#selling">What are we selling?</a></li>
     <li><a href="#who">Who made the ad?</a></li>
     <li><a href="#not">What's NOT in the ad name</a></li>
-    <li><a href="#cd">Who requested it? (Creative director)</a></li>
+    <li><a href="#cs">Who requested it? (Creative strategist)</a></li>
     <li><a href="#series">Series and version letters</a></li>
     <li><a href="#together">Putting it all together</a></li>
     <li><a href="#generator">Ad name generator</a></li>
@@ -287,7 +287,7 @@
 <h2 id="what">What information is in the ad name?</h2>
 <ul>
   <li>What we're selling</li>
-  <li>Which creative director requested / supervised the ad</li>
+  <li>Which creative strategist requested / supervised the ad</li>
   <li>Who made the final ad</li>
   <li>The pieces (segments) it's built from</li>
 </ul>
@@ -300,13 +300,13 @@
 <h4>Technical</h4>
 <p>Two-letter lowercase product code. Only one in use today: <code>tk</code>. A new code is added only when a genuinely different product appears at checkout.</p>
 
-<h2 id="cd">Who requested it? (Creative director)</h2>
+<h2 id="cs">Who requested it? (Creative strategist)</h2>
 
 <h4>In human terms</h4>
-<p>The creative director who briefed the ad or supervised the edit. Not the person who cut it — that's the editor, next section. Right now there are two: Erick Argueta (<code>eag</code>) and SSR (<code>ssr</code>).</p>
+<p>The creative strategist who briefed the ad or supervised the edit. Not the person who cut it — that's the editor, next section. Right now there are two: Erick Argueta (<code>csea</code>) and Sid Sri (<code>csss</code>).</p>
 
 <h4>Technical</h4>
-<p>3-letter lowercase code, preceded by the fixed prefix <code>cd</code>. So Erick becomes <code>cdeag</code>, SSR becomes <code>cdssr</code>. Sits right after the product code, before the editor block.</p>
+<p>Lowercase code starting with the fixed prefix <code>cs</code> (creative strategist) followed by the strategist's 2-letter initials. So Erick becomes <code>csea</code>, Sid becomes <code>csss</code>. Sits right after the product code, before the editor block.</p>
 
 <h2 id="who">Who made the ad?</h2>
 
@@ -336,11 +336,11 @@
 <h2 id="together">Putting it all together</h2>
 
 <h4>Simple ad</h4>
-<pre><code>tk_cdeag_MGO174g_SL2743_SM2067_SC1542_XA1180_9x16</code></pre>
+<pre><code>tk_csea_MGO174g_SL2743_SM2067_SC1542_XA1180_9x16</code></pre>
 <p>Decoded:</p>
 <ul>
   <li><code>tk</code> — Toolkit</li>
-  <li><code>cdeag</code> — Erick Argueta requested/supervised (creative director)</li>
+  <li><code>csea</code> — Erick Argueta requested/supervised (creative strategist)</li>
   <li><code>MGO174g</code> — Michael, series 174, ad version g</li>
   <li><code>SL2743</code> — hook segment 2743</li>
   <li><code>SM2067</code> — body segment 2067</li>
@@ -350,7 +350,7 @@
 </ul>
 
 <h4>Multi-segment ad</h4>
-<pre><code>tk_cdeag_MGO174g_SL2743_SL2772_SM2067_SM2057_SM2280_SC1542_XA1178_XA1180_XA1258_9x16</code></pre>
+<pre><code>tk_csea_MGO174g_SL2743_SL2772_SM2067_SM2057_SM2280_SC1542_XA1178_XA1180_XA1258_9x16</code></pre>
 <p>Same logic, more pieces stitched together. Two hooks tested, three main bodies layered, one CTA, three decorations.</p>
 
 <!-- ============ AD NAME GENERATOR (second to last) ============ -->
@@ -370,13 +370,13 @@
     </div>
 
     <div class="field">
-      <label for="ad-cd">Creative director</label>
+      <label for="ad-cd">Creative strategist</label>
       <select id="ad-cd">
-        <option value="eag">eag — Erick Argueta</option>
-        <option value="ssr">ssr — SSR</option>
+        <option value="csea">csea — Erick Argueta</option>
+        <option value="csss">csss — Sid Sri</option>
         <option value="__other__">Other…</option>
       </select>
-      <div class="hint">The CD who requested/supervised the ad. Rendered as <code>cd{initials}</code>.</div>
+      <div class="hint">The strategist who requested/supervised the ad. Rendered as <code>cs{initials}</code> — e.g. <code>csea</code>.</div>
     </div>
 
     <div class="field">
@@ -393,9 +393,9 @@
   </div>
 
   <div class="field" id="ad-cd-custom-wrap" style="display:none;">
-    <label for="ad-cd-custom">Custom CD code</label>
-    <input type="text" id="ad-cd-custom" maxlength="3" placeholder="e.g. xyz">
-    <div class="hint">3 lowercase letters. Required if "Other…" is selected.</div>
+    <label for="ad-cd-custom">Custom strategist code</label>
+    <input type="text" id="ad-cd-custom" maxlength="4" placeholder="e.g. csxy">
+    <div class="hint">Lowercase, must start with <code>cs</code> (e.g. <code>csxy</code>). Required if "Other…" is selected.</div>
   </div>
 
   <div class="field" id="ad-editor-custom-wrap" style="display:none;">
@@ -549,7 +549,7 @@
     updateAdName();
   });
   cdCustom.addEventListener('input', (e) => {
-    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 3);
+    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 4);
     updateAdName();
   });
 
@@ -625,7 +625,7 @@
     const out = document.getElementById('ad-output');
     const btn = document.getElementById('ad-copy-btn');
 
-    if (!product || !cd || cd.length !== 3 ||
+    if (!product || !cd || cd.length < 3 || cd.slice(0,2) !== 'cs' ||
         !editor || editor.length !== 3 || !series || series.length < 1 ||
         !letter || segments.length === 0 || !format) {
       out.textContent = 'fill in the fields above';
@@ -635,9 +635,9 @@
     }
 
     const seriesPadded = series.padStart(3, '0');
-    const cdBlock = `cd${cd}`;
+    const csBlock = cd; // code already contains the cs prefix (csea, csss, or custom cs__)
     const editorBlock = `${editor}${seriesPadded}${letter}`;
-    const name = `${product}_${cdBlock}_${editorBlock}_${segments.join('_')}_${format}`;
+    const name = `${product}_${csBlock}_${editorBlock}_${segments.join('_')}_${format}`;
     out.textContent = name;
     out.classList.remove('empty');
     btn.disabled = false;
