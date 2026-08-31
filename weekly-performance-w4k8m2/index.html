@@ -1,0 +1,273 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>MovesMethod · Weekly Performance</title>
+<style>
+ :root{--ink:#0f1419;--mut:#495057;--faint:#868e96;--line:#e9ecef;--lineS:#ced4da;
+  --navy:#0a2540;--navyT:#f3f6fa;--teal:#0d9488;--tealT:#e9f5f3;--gold:#d4a72c;--goldT:#faf4dd;
+  --slate:#64748b;--slateT:#f1f5f9;--coralT:#fdecec;--emerald:#16a34a;--emeraldT:#ecfdf3;--amber:#b45309}
+ .genrow{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+ .genbtn{background:linear-gradient(135deg,#0d9488,#0a2540);color:#fff;border:1px solid #1f6f66;border-radius:9px;padding:11px 18px;font-size:14px;font-weight:700;cursor:pointer}
+ .genbtn:disabled{opacity:.5;cursor:default} .genmsg{font-size:12.5px;color:#8fe3d6}
+ .recent{margin-top:18px} .recent .h{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7f97b8;font-weight:700;margin-bottom:6px}
+ .recent a{color:#5eead4;text-decoration:none;font-size:13px} .recent .r{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #1c2a3d}
+ .recent .d{color:#5f7186;font-size:11px;white-space:nowrap}
+ .snapb{background:#0d1a2b;color:#cfe0f2;padding:14px 24px;font-size:13px;border-bottom:1px solid #1c2a3d}
+ .snapb b{color:#fff} details#prev>summary{cursor:pointer;list-style:none;color:#9ab7d8;font-size:12px;padding:12px 24px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;background:#0d1a2b}
+ details#prev>summary::-webkit-details-marker{display:none}
+ *{box-sizing:border-box} body{margin:0;background:#eef1f5;color:var(--ink);
+  font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55}
+ .sheet{max-width:840px;margin:26px auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 40px -18px rgba(15,23,42,.35)}
+ /* controls */
+ .controls{background:#0d1a2b;color:#fff;padding:18px 24px}
+ .aud{display:flex;align-items:center;gap:10px;background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.5);
+  color:#ffd38a;border-radius:9px;padding:9px 13px;font-size:13px;font-weight:600;margin-bottom:14px}
+ .aud b{color:#ffe4b3}
+ .inrow{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+ .fld{flex:1;min-width:190px} .fld label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9ab7d8;font-weight:700;margin-bottom:5px}
+ .fld .wrap{display:flex;align-items:center;background:#0a2540;border:1px solid #24405f;border-radius:8px;padding:0 12px}
+ .fld .cur{color:#7f9cc0;font-size:13px;font-weight:700;margin-right:6px} .fld .aud2{color:#ffd38a;font-size:11px;font-weight:700;margin-left:6px}
+ .fld input{flex:1;background:transparent;border:0;color:#fff;font-size:20px;font-family:ui-serif,Georgia,serif;padding:11px 0;outline:none;width:100%}
+ .period{margin-top:12px;font-size:12px;color:#9ab7d8}
+ /* hero */
+ header.cover{background:linear-gradient(135deg,#0a2540,#173d6a);color:#fff;padding:40px 44px 34px;position:relative}
+ header.cover::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--teal),var(--gold) 33%,var(--slate) 66%,#d64545)}
+ .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9ab7d8;font-weight:700;margin:0 0 12px}
+ h1{font-family:ui-serif,"New York",Georgia,serif;font-size:36px;line-height:1.05;margin:0 0 8px;font-weight:500;letter-spacing:-.02em}
+ .lede{font-size:14px;color:#b7cce5;margin:0;font-family:ui-serif,Georgia,serif;font-style:italic}
+ .flags{margin-top:12px;font-size:22px;letter-spacing:2px}
+ .tbadge{margin-top:18px;display:inline-flex;gap:9px;align-items:center;padding:7px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:5px}
+ .tbadge .l{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9ab7d8;font-weight:700}
+ .tbadge .v{font-family:ui-serif,Georgia,serif;font-size:17px}
+ section{padding:34px 44px 6px} section+section{border-top:1px solid var(--line)}
+ h2{font-family:ui-serif,"New York",Georgia,serif;font-size:23px;margin:0 0 20px;font-weight:500;display:flex;align-items:center;gap:12px}
+ h2 .fl{font-size:26px}
+ .smeta{font-size:12px;color:var(--faint);font-style:italic;margin:-10px 0 16px}
+ .stats{display:flex;gap:13px;margin:10px 0 20px;flex-wrap:wrap}
+ .stat{flex:1;min-width:150px;padding:20px;border-radius:8px;background:var(--navyT);border-left:4px solid var(--navy)}
+ .stat.s2{background:var(--tealT);border-left-color:var(--teal)} .stat.s3{background:var(--goldT);border-left-color:var(--gold)}
+ .stat .l{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:0 0 3px}
+ .stat .n{font-family:ui-serif,"New York",Georgia,serif;font-size:28px;font-weight:500;margin:0;letter-spacing:-.015em;font-variant-numeric:tabular-nums}
+ .delta{display:inline-block;font-size:11px;font-weight:700;margin-top:6px;padding:2px 8px;border-radius:3px}
+ .delta.over{color:var(--mut);background:#eef0f2} .delta.under{color:var(--emerald);background:var(--emeraldT)}
+ .lastw{display:block;margin-top:7px;font-size:10.5px;color:var(--faint);font-style:italic}
+ .mix{display:flex;gap:13px;margin:18px 0 4px;flex-wrap:wrap}
+ .mb{flex:1;min-width:220px;padding:16px 20px;border-radius:8px;background:#fafbfd;border:1px solid var(--line)}
+ .mb.geo{border-left:4px solid var(--navy)} .mb.fun{border-left:4px solid var(--teal)}
+ .mb .l{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:0 0 8px}
+ .mb .v{font-family:ui-serif,Georgia,serif;font-size:16px;margin:0;font-variant-numeric:tabular-nums}
+ .mb.geo .v b{color:var(--navy)} .mb.fun .v b{color:var(--teal)}
+ table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:14px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+ thead{background:#f8f9fb} th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line)}
+ th{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);font-weight:700}
+ td.num{text-align:right;font-family:ui-monospace,"SF Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums}
+ tr.total td{border-top:2px solid var(--lineS);border-bottom:none;font-weight:600;padding-top:16px;padding-bottom:16px}
+ section.usa tr.total td{background:var(--tealT)} section.hi tr.total td{background:var(--goldT)} section.row tr.total td{background:var(--slateT)}
+ .tkc{display:block;margin-top:4px;font-size:10px;font-weight:600;color:var(--mut);font-style:italic}
+ .tkc.better{color:var(--emerald)}
+ .fld input::placeholder{color:#4a5c72;font-weight:400}
+ .fld.need .wrap{border-color:rgba(212,167,44,.55)}
+ .hintl{font-size:10.5px;color:#7f97b8;margin-top:5px;letter-spacing:.02em}
+ .bilink{display:flex;align-items:center;gap:8px;margin:0 0 14px;padding:11px 14px;border-radius:9px;background:rgba(13,148,136,.08);border:1px solid rgba(13,148,136,.35);color:#0f766e;text-decoration:none;font-size:13px;transition:.12s}
+ .bilink:hover{background:rgba(13,148,136,.15);border-color:#0d9488}
+ .bilink .arr{margin-left:auto;opacity:.7}
+ .cpaCell{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+ .note{margin-top:14px;font-size:11px;color:var(--faint);font-style:italic}
+ footer{padding:24px 44px 40px;margin-top:14px;border-top:6px solid;border-image:linear-gradient(90deg,var(--teal),var(--gold) 33%,var(--slate) 66%,#d64545) 1;font-size:11px;color:var(--faint);letter-spacing:.04em}
+
+ .credrow{margin-top:16px}
+ .credlab{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9ab7d8;font-weight:700;margin-bottom:5px}
+ .credzone{display:flex;align-items:center;gap:14px;background:#0a2540;border:1px dashed #24405f;border-radius:8px;padding:14px 16px;cursor:pointer;transition:.12s}
+ .credzone.drag{border-color:#0d9488;background:#0c2e34}
+ .credzone .cico{font-size:22px}
+ .credzone .ctxt{font-size:13px;color:#9ab7d8} .credzone .ctxt b{color:#cfe0f2}
+ .credthumb{max-height:64px;border-radius:6px;border:1px solid #24405f}
+ .credrm{margin-left:auto;background:transparent;border:1px solid #24405f;color:#9ab7d8;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer}
+ .credrm:hover{border-color:#d64545;color:#ffb4b4}
+ .credsec img{max-width:100%;border-radius:10px;border:1px solid var(--line);box-shadow:0 2px 12px -7px rgba(15,23,42,.45)}
+ .credsec .cap{font-size:11px;color:var(--faint);font-style:italic;margin-top:8px}
+</style></head><body><div class="sheet">
+ <div class="controls" id="controls">
+   <div class="aud">⚠️ <span>Enter <b>AUD</b> only. Spend is Meta AUD — your Source-of-Truth CPA <b>must also be AUD</b>, not USD.</span></div>
+   <a class="bilink" href="https://movesmethod-bi-itqhavrt4q-uc.a.run.app/" target="_blank" rel="noopener">📈 <b>MovesMethod BI</b> — source-of-truth CPA lives here <span class="arr">↗</span></a>
+   <div class="inrow">
+     <div class="fld"><label>🎯 Target CPA</label><div class="wrap"><span class="cur">$</span><input id="target" type="number" step="0.01" value="96"><span class="aud2">AUD</span></div></div>
+     <div class="fld"><label>📊 Source-of-Truth CPA (this week)</label><div class="wrap"><span class="cur">$</span><input id="sot" type="number" step="0.01" placeholder="xxx.xx"><span class="aud2">AUD</span></div><div class="hintl" id="hintSot">Type this week's figure from the BI ↑</div></div>
+     <div class="fld"><label>↩︎ Source-of-Truth CPA (last week)</label><div class="wrap"><span class="cur">$</span><input id="sotLast" type="number" step="0.01" placeholder="xxx.xx"><span class="aud2">AUD</span></div><div class="hintl" id="hintLast">&nbsp;</div></div>
+   </div>
+   <div class="credrow">
+     <label class="credlab">🧾 Credit line screenshot (this week)</label>
+     <div class="credzone" id="credZone">
+       <span class="cico">📎</span>
+       <span class="ctxt" id="credTxt"><b>Drag a screenshot here</b> — or click to choose. Shows in the report's Credit line section.</span>
+       <img id="credThumb" class="credthumb" style="display:none" alt="credit preview">
+       <button class="credrm" id="credRm" type="button" style="display:none">✕ Remove</button>
+     </div>
+     <input type="file" id="credFile" accept="image/*" style="display:none">
+   </div>
+   <div class="period" id="period"></div>
+   <div class="genrow"><button class="genbtn" id="genBtn">🔗 Create shareable report</button><span class="genmsg" id="genMsg"></span></div>
+   <div class="recent" id="recent"></div>
+ </div>
+ <div class="snapb" id="snapb" style="display:none"></div>
+ <details id="prev"><summary>▸ Preview report</summary>
+ <header class="cover">
+   <p class="eyebrow">MovesMethod · Meta Ads · Weekly Performance</p>
+   <h1 id="range">—</h1>
+   <p class="lede">7-day performance, both ad accounts combined, with geo &amp; funnel split.</p>
+   <div class="flags">🇺🇸 🇬🇧 🇨🇦 🇦🇺 🇳🇿 🇮🇪 🇩🇪 🇫🇷 🇯🇵 🇮🇱 🌍</div>
+   <div class="tbadge"><span class="l">Target CPA</span><span class="v" id="tb">$95.00</span></div>
+ </header>
+ <div id="body"></div>
+ <footer id="foot">MovesMethod · Internal · Prepared by Michael Goffredi</footer>
+ </details>
+</div>
+<script>
+// ---- cached weekly data (SAMPLE — the VPS Monday pull will fill this) ----
+let DATA={"period": "Aug 24 – Aug 30, 2026", "since": "2026-08-24", "until": "2026-08-30", "seg": {"USA": {"TK": {"spend": 25298.88, "fbp": 248}, "FCVSL": {"spend": 28135.23, "fbp": 330}}, "HI": {"TK": {"spend": 25740.28, "fbp": 295}, "FCVSL": {"spend": 21974.49, "fbp": 279}}, "ROW": {"TK": {"spend": 0.0, "fbp": 0}, "FCVSL": {"spend": 0.0, "fbp": 0}}}, "lastPeriod": "Aug 17 – Aug 23, 2026", "lastSince": "2026-08-17", "lastUntil": "2026-08-23", "lastSeg": {"USA": {"TK": {"spend": 22561.12, "fbp": 160}, "FCVSL": {"spend": 6493.85, "fbp": 38}}, "HI": {"TK": {"spend": 21905.48, "fbp": 184}, "FCVSL": {"spend": 11513.78, "fbp": 68}}, "ROW": {"TK": {"spend": 0.0, "fbp": 0}, "FCVSL": {"spend": 6.85, "fbp": 1}}}, "generated_at": "2026-08-31T08:02:44"};
+let CREDIT="";
+const SEGNAME={USA:"United States",HI:"High-income non-US",ROW:"Everything else"};
+const SEGFLAG={USA:"🇺🇸",HI:"🌍",ROW:"🌐"};
+const SEGCLASS={USA:"usa",HI:"hi",ROW:"row"};
+const SEGMETA={HI:"🇬🇧 🇨🇦 🇦🇺 🇳🇿 🇮🇪 · 🇩🇪 🇫🇷 🇳🇱 Western &amp; Northern Europe · 🇮🇱 Israel · 🇯🇵 🇰🇷 🇸🇬 developed Asia",
+   ROW:"South Africa, Latin America, Southeast Asia, Africa, Eastern Europe & other emerging markets."};
+const money=v=>"$"+Math.round(v).toLocaleString();
+const money2=v=>"$"+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+function compute(){
+ if(!DATA.seg){return;}
+ const target=parseFloat(document.getElementById("target").value)||0;
+ const sot=parseFloat(document.getElementById("sot").value)||0;
+ const sotLast=parseFloat(document.getElementById("sotLast").value)||0;
+ let totSpend=0,totFbp=0; const S=DATA.seg;
+ for(const g in S)for(const f in S[g]){totSpend+=S[g][f].spend;totFbp+=S[g][f].fbp;}
+ const totSales= sot? totSpend/sot : 0;               // real sales from SoT CPA
+ const k= totFbp? totSales/totFbp : 0;                 // sales per FB purchase
+ const salesOf=x=>x.fbp*k, cpaOf=x=>{const s=salesOf(x);return s? x.spend/s:null;};
+ let lastTotSpend=0; if(DATA.lastSeg){for(const g in DATA.lastSeg)for(const ff in DATA.lastSeg[g])lastTotSpend+=DATA.lastSeg[g][ff].spend;}
+ const spendWow = lastTotSpend ? `<span class="lastw">${totSpend>=lastTotSpend?'▲':'▼'} ${Math.abs((totSpend/lastTotSpend-1)*100).toFixed(0)}% vs last week</span>` : '';
+ function segWow(g,cpaThis){ const L=DATA.lastSeg; if(!L||!sotLast||cpaThis==null) return "";
+   let lts=0,ltf=0; for(const gg in L)for(const ff in L[gg]){lts+=L[gg][ff].spend;ltf+=L[gg][ff].fbp;}
+   const lsales= sotLast? lts/sotLast:0, lk= ltf? lsales/ltf:0;
+   const lsp=L[g].TK.spend+L[g].FCVSL.spend, lsl=(L[g].TK.fbp+L[g].FCVSL.fbp)*lk, lcpa= lsl? lsp/lsl:null;
+   if(lcpa==null) return "";
+   const d=(cpaThis/lcpa-1)*100, better=d<0;
+   return `<span class="lastw">${better?'<span style="color:var(--emerald);font-weight:700">▼':'<span style="color:var(--faint);font-weight:700">▲'} ${Math.abs(d).toFixed(0)}%</span> vs last week</span>`; }
+ // section 1 mixes
+ const geoSpend={}, funSpend={TK:0,FCVSL:0};
+ for(const g in S){geoSpend[g]=S[g].TK.spend+S[g].FCVSL.spend; funSpend.TK+=S[g].TK.spend; funSpend.FCVSL+=S[g].FCVSL.spend;}
+ const pct=v=>Math.round(v/totSpend*100);
+ const deltaBadge=(cpa)=>{ if(!target||cpa==null)return""; const d=(cpa/target-1)*100;
+   const over=d>0; return `<span class="delta ${over?'over':'under'}">${over?'▲':'▼'} ${Math.abs(d).toFixed(1)}% ${over?'over':'under'} target</span>`; };
+ const tkCompare=(g)=>{ const t=cpaOf(S[g].TK), f=cpaOf(S[g].FCVSL); if(t==null||f==null)return"";
+   const d=(f/t-1)*100; if(Math.abs(d)<2.5)return""; return `<span class="tkc ${d<0?'better':''}">${d>0?'+':'−'}${Math.abs(d).toFixed(0)}% ${d>0?'higher':'lower'} CPA than TK</span>`; };
+ document.getElementById("tb").textContent=money2(target);
+ document.getElementById("range").textContent=DATA.period;
+ document.getElementById("period").innerHTML="Reporting period (auto): <b style='color:#fff'>"+DATA.period+"</b> · Melbourne time · vs <b style='color:#fff'>"+(DATA.lastPeriod||"the week before")+"</b>"+(DATA.generated_at?" <span style='color:#5f7186'>· data pulled "+new Date(DATA.generated_at).toLocaleString()+"</span>":"");
+ // section 1
+ let h=`<section><h2><span class="fl">📊</span>This week at a glance</h2>
+   <div class="stats">
+    <div class="stat"><p class="l">Total Spend</p><p class="n">${money(totSpend)}</p>${spendWow}</div>
+    <div class="stat s2"><p class="l">Unique sales / day (est.)</p><p class="n">${Math.round(totSales/7).toLocaleString()}</p></div>
+    <div class="stat s3"><p class="l">CPA (source of truth)</p><p class="n">${money2(sot)}</p>${deltaBadge(sot)}
+      ${sotLast?`<span class="lastw">Last week: ${money2(sotLast)}${(sot&&sotLast)?` · <span style="font-style:normal;font-weight:700;color:${sot<sotLast?'var(--emerald)':'var(--faint)'}">${sot<sotLast?'▼':'▲'} ${Math.abs((sot/sotLast-1)*100).toFixed(0)}% WoW</span>`:''}</span>`:''}</p></div>
+   </div>
+   <div class="mix">
+    <div class="mb geo"><p class="l">Spend by Geography</p><p class="v"><b>${pct(geoSpend.USA)}%</b> USA · <b>${pct(geoSpend.HI)}%</b> high-income non-US · <b>${pct(geoSpend.ROW)}%</b> everything else</p></div>
+    <div class="mb fun"><p class="l">Spend by Funnel</p><p class="v"><b>${pct(funSpend.TK)}%</b> TK · <b>${pct(funSpend.FCVSL)}%</b> FCVSL</p></div>
+   </div>
+   <p class="note">*CPA is calculated by ad spend from Meta in Melbourne time zone; sales are from the Hyros unique-sales overlay on FB Ads Manager.</p></section>`;
+ if(CREDIT){h+=`<section class="credsec"><h2><span class="fl">🧾</span>Credit line</h2><img src="${CREDIT}" alt="Credit line screenshot"><p class="cap">Screenshot as provided · AUD.</p></section>`;}
+ // segment sections
+ for(const g of ["USA","HI","ROW"]){
+   const seg=S[g], tkS=salesOf(seg.TK), fS=salesOf(seg.FCVSL), spend=seg.TK.spend+seg.FCVSL.spend, sales=tkS+fS, cpa=sales?spend/sales:null;
+   const showDelta = (g==="USA"||g==="HI");
+   h+=`<section class="${SEGCLASS[g]}"><h2><span class="fl">${SEGFLAG[g]}</span>${SEGNAME[g]}</h2>
+     ${SEGMETA[g]?`<p class="smeta">${SEGMETA[g]}</p>`:''}
+     <table><thead><tr><th>Funnel</th><th class="num">Spend</th><th class="num">Unique Sales</th><th class="num">CPA</th></tr></thead><tbody>
+      <tr><td>TK</td><td class="num">${money(seg.TK.spend)}</td><td class="num">${Math.round(tkS).toLocaleString()}</td><td class="num">${cpaOf(seg.TK)==null?'—':money2(cpaOf(seg.TK))}</td></tr>
+      <tr><td>FCVSL</td><td class="num">${money(seg.FCVSL.spend)}</td><td class="num">${Math.round(fS).toLocaleString()}</td><td class="num">${cpaOf(seg.FCVSL)==null?'—':money2(cpaOf(seg.FCVSL))}${tkCompare(g)}</td></tr>
+      <tr class="total"><td><strong>${SEGNAME[g]} Total</strong></td><td class="num">${money(spend)}</td><td class="num">${Math.round(sales).toLocaleString()}</td>
+        <td class="num"><div class="cpaCell"><span><strong>${cpa==null?'—':money2(cpa)}</strong></span>${showDelta?deltaBadge(cpa):''}${segWow(g,cpa)}</div></td></tr>
+     </tbody></table>
+     <p class="note">*${g==="USA"?'USA':g==="HI"?'High-income':'Everything-else'} breakdown estimated from regional reporting and calibrated against this week's account totals.</p></section>`;
+ }
+ document.getElementById("body").innerHTML=h;
+ document.getElementById("foot").textContent="MovesMethod · Internal · Prepared by Michael Goffredi · Period "+DATA.period;
+}
+
+// ---- shareable snapshot (data encoded in the URL — frozen, no server) ----
+function b64e(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decodeURIComponent(escape(atob(s))));}
+let SNAPSHOT=false;
+(function(){var m=location.hash.match(/r=([^&]+)/);if(m){try{var p=b64d(m[1]);
+  DATA.period=p.period;DATA.seg=p.seg;if(p.lastSeg)DATA.lastSeg=p.lastSeg;if(p.lastPeriod)DATA.lastPeriod=p.lastPeriod;
+  document.getElementById("target").value=p.target;document.getElementById("sot").value=p.sot;document.getElementById("sotLast").value=p.sotLast;if(p.credit)CREDIT=p.credit;
+  SNAPSHOT=true;}catch(e){}}})();
+function saveRecent(u,p,sot,ts){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
+  l.unshift({u:u,p:p,sot:sot,ts:ts});localStorage.setItem("mm_weekly",JSON.stringify(l.slice(0,20)));}
+function renderRecent(){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
+  var el=document.getElementById("recent");if(!el)return;
+  if(!l.length){el.innerHTML="";return;}
+  el.innerHTML='<div class="h">Your shared reports</div>'+l.map(function(r){
+    return '<div class="r"><a href="'+r.u+'" target="_blank">'+r.p+' · SoT $'+r.sot+'</a><span class="d">'+new Date(r.ts).toLocaleDateString()+'</span></div>';}).join("");}
+var lastGen=0;
+function generate(){var now=Date.now();if(now-lastGen<6000)return;lastGen=now;
+  var payload={period:DATA.period,seg:DATA.seg,lastSeg:DATA.lastSeg,lastPeriod:DATA.lastPeriod,target:document.getElementById("target").value,
+    sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,credit:CREDIT,ts:new Date().toISOString()};
+  var url=location.origin+location.pathname+"#r="+b64e(payload);
+  if(navigator.clipboard)navigator.clipboard.writeText(url).catch(function(){});
+  saveRecent(url,payload.period,payload.sot,payload.ts);renderRecent();
+  var b=document.getElementById("genBtn");b.disabled=true;setTimeout(function(){b.disabled=false;},6000);
+  document.getElementById("genMsg").innerHTML='✓ Link copied — frozen snapshot. <a href="'+url+'" target="_blank" style="color:#5eead4">Open ▸</a>';}
+document.getElementById("target").addEventListener("input",compute);
+
+// Prefill helper: the CPA fields start blank every week (no stale numbers). The
+// last-week box gets its placeholder from the most recent shared report whose
+// period differs from the current one — you still have to type it in.
+function seedPlaceholders(){
+  if(SNAPSHOT) return;
+  var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekly")||"[]")}catch(e){}
+  var prev=l.find(function(r){return r.p && r.p!==DATA.period && r.sot;});
+  var li=document.getElementById("sotLast"), hl=document.getElementById("hintLast");
+  if(prev){ li.placeholder=String(prev.sot); if(hl) hl.innerHTML="Last shared: <b>$"+prev.sot+"</b> ("+prev.p+") — retype to confirm"; }
+  else if(hl){ hl.innerHTML="Type last week's figure from the BI ↑"; }
+  ["sot","sotLast"].forEach(function(id){
+    var el=document.getElementById(id); if(!el) return;
+    var mark=function(){ el.closest(".fld").classList.toggle("need", !el.value); };
+    mark(); el.addEventListener("input", mark);
+  });
+}
+seedPlaceholders();
+document.getElementById("sot").addEventListener("input",compute);
+document.getElementById("sotLast").addEventListener("input",compute);
+var _gb=document.getElementById("genBtn"); if(_gb)_gb.addEventListener("click",generate);
+renderRecent();
+if(SNAPSHOT){
+  document.getElementById("controls").style.display="none";
+  var pr=document.getElementById("prev"); pr.open=true; pr.querySelector("summary").style.display="none";
+  var sb=document.getElementById("snapb"); sb.style.display="";
+  sb.innerHTML="📎 <b>Shared weekly report</b> · "+DATA.period+" · figures frozen at generation. This is a read-only snapshot.";
+}
+(function(){
+ var zone=document.getElementById("credZone"),file=document.getElementById("credFile"),
+     thumb=document.getElementById("credThumb"),txt=document.getElementById("credTxt"),rm=document.getElementById("credRm");
+ if(!zone) return;
+ function refresh(){ if(CREDIT){thumb.src=CREDIT;thumb.style.display="";rm.style.display="";txt.innerHTML="<b>Credit line screenshot loaded</b> — appears in the report below.";}
+   else{thumb.style.display="none";rm.style.display="none";txt.innerHTML="<b>Drag a screenshot here</b> — or click to choose. Shows in the report's Credit line section.";} }
+ function persist(){try{if(CREDIT)localStorage.setItem("mm_credit_img",CREDIT);else localStorage.removeItem("mm_credit_img");}catch(e){}}
+ function loadFile(f){ if(!f||!/^image\//.test(f.type))return; var r=new FileReader();
+   r.onload=function(e){ var img=new Image(); img.onload=function(){
+     var mw=900, sc=Math.min(1,mw/img.width), w=Math.round(img.width*sc), hh=Math.round(img.height*sc);
+     var c=document.createElement("canvas"); c.width=w;c.height=hh; c.getContext("2d").drawImage(img,0,0,w,hh);
+     CREDIT=c.toDataURL("image/jpeg",0.72); persist(); refresh(); compute(); };
+     img.src=e.target.result; }; r.readAsDataURL(f); }
+ if(!SNAPSHOT){ try{CREDIT=localStorage.getItem("mm_credit_img")||CREDIT;}catch(e){} }
+ zone.addEventListener("click",function(){file.click();});
+ file.addEventListener("change",function(){ if(file.files&&file.files[0]) loadFile(file.files[0]); });
+ zone.addEventListener("dragover",function(e){e.preventDefault();zone.classList.add("drag");});
+ zone.addEventListener("dragleave",function(){zone.classList.remove("drag");});
+ zone.addEventListener("drop",function(e){e.preventDefault();zone.classList.remove("drag"); var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0]; loadFile(f); });
+ rm.addEventListener("click",function(e){e.stopPropagation();CREDIT="";persist();refresh();compute();});
+ refresh();
+})();
+compute();
+</script></body></html>
