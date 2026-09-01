@@ -212,7 +212,7 @@ function renderRecent(){var l=[];try{l=JSON.parse(localStorage.getItem("mm_weekl
 var lastGen=0;
 function generate(){var now=Date.now();if(now-lastGen<6000)return;lastGen=now;
   var payload={period:DATA.period,seg:DATA.seg,lastSeg:DATA.lastSeg,lastPeriod:DATA.lastPeriod,target:document.getElementById("target").value,
-    sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,ts:new Date().toISOString()};
+    sot:document.getElementById("sot").value,sotLast:document.getElementById("sotLast").value,credit:CREDIT,ts:new Date().toISOString()};
   var url=location.origin+location.pathname+"#r="+b64e(payload);
   if(navigator.clipboard)navigator.clipboard.writeText(url).catch(function(){});
   saveRecent(url,payload.period,payload.sot,payload.ts);renderRecent();
