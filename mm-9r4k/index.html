@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MovesMethod — Weekly Report</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --orange: #D97757;
+  --orangeD: #B85C3C;
+  --orangeT: #F8ECE4;
+  --cream: #F5F0E8;
+  --bg: #e7e0d4;
+  --text: #2C2416;
+  --muted: #7A6A55;
+  --border: #D4C9B8;
+  --green: #3A7D44;
+  --red: #C0392B;
+  --card-bg: #FAF7F2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; }
+.week-block { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+.week-header { border-left: 5px solid var(--orange); padding: 16px 20px; margin-bottom: 36px; background: var(--card-bg); border-radius: 0 8px 8px 0; }
+.week-header .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.week-header h1 { font-size: 26px; font-weight: 700; color: var(--text); }
+.week-header .theme { margin-top: 6px; color: var(--muted); font-size: 14px; }
+
+/* Section headers */
+.section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin: 40px 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+
+/* Lander table */
+.lander-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); margin-bottom: 16px; }
+.lander-table th { background: var(--orangeT); color: var(--orangeD); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+.lander-table td { padding: 11px 14px; border-top: 1px solid var(--border); font-size: 14px; }
+.lander-table tr.total-row td { font-weight: 700; background: #f0ebe2; border-top: 2px solid var(--border); }
+.lander-table tr:hover td { background: #f5f0e8; }
+.delta-pos { color: var(--green); font-size: 12px; }
+.delta-neg { color: var(--red); font-size: 12px; }
+.delta-warn { color: var(--orange); font-size: 12px; }
+
+/* Initiative cards */
+.init-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+@media (max-width: 600px) { .init-grid { grid-template-columns: 1fr; } }
+.init-card { background: var(--card-bg); border-radius: 8px; padding: 20px; border-top: 3px solid var(--orange); box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.init-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.init-card .big-stat { font-size: 28px; font-weight: 800; color: var(--orange); }
+.init-card .sub-stat { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.init-card p { font-size: 13px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+
+/* Hook / SL cards */
+.sl-group { margin-bottom: 28px; }
+.sl-group-title { font-size: 12px; font-weight: 700; color: var(--orangeD); margin-bottom: 10px; letter-spacing: 0.04em; }
+.sl-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 640px) { .sl-cards { grid-template-columns: 1fr; } }
+.sl-card { background: var(--card-bg); border-radius: 8px; padding: 14px; border: 1px solid var(--border); }
+.sl-card .sl-id { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.sl-card .sl-cpa { font-size: 22px; font-weight: 800; color: var(--text); }
+.sl-card .sl-meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.sl-card .sl-link { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 600; color: var(--orange); text-decoration: none; border: 1px solid var(--orange); border-radius: 4px; padding: 3px 8px; }
+.sl-card .sl-link:hover { background: var(--orangeT); }
+.sl-early { font-size: 10px; color: var(--muted); font-style: italic; margin-top: 4px; }
+
+/* SM cards */
+.sm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 600px) { .sm-grid { grid-template-columns: 1fr; } }
+.sm-card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
+.sm-card-video { position: relative; width: 100%; background: #111; }
+.sm-card-video iframe { display: block; width: 100%; height: 300px; border: none; }
+.sm-card-video .video-label { position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.05em; }
+.sm-card-body { padding: 16px; flex: 1; }
+.sm-card .sm-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; }
+.sm-card .sm-badge.top { background: var(--orangeT); color: var(--orangeD); }
+.sm-card .sm-badge.upn { background: #e8f5e9; color: var(--green); }
+.sm-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.sm-card .sm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 10px 0 14px; background: var(--bg); border-radius: 8px; padding: 10px; }
+.sm-card .sm-stat { font-size: 11px; color: var(--muted); text-align: center; }
+.sm-card .sm-stat strong { display: block; font-size: 14px; color: var(--text); font-weight: 700; }
+.sm-card .sm-link { display: inline-block; margin-top: 0; font-size: 11px; font-weight: 600; color: var(--orange); text-decoration: none; border: 1px solid var(--orange); border-radius: 4px; padding: 3px 8px; }
+.sm-breakdown { list-style: none; padding: 0; margin: 12px 0 0; font-size: 12.5px; }
+.sm-breakdown li { padding: 7px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.sm-breakdown li:last-child { border-bottom: none; }
+.sm-breakdown li .bd-label { font-weight: 700; color: var(--orangeD); margin-right: 4px; }
+.sm-insight { margin-top: 10px; padding: 8px 10px; background: var(--orangeT); border-left: 3px solid var(--orange); border-radius: 0 6px 6px 0; font-size: 12px; color: var(--orangeD); font-style: italic; }
+/* SL thumbnails */
+.sl-thumb-wrap { width: 100%; aspect-ratio: 9/16; max-height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 8px; background: #111; }
+.sl-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sl-thumb-wrap .sl-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 28px; background: linear-gradient(135deg, #2a2a2a, #444); }
+
+/* Fatigue table */
+.fatigue-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.fatigue-table th { background: #fdecea; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+.fatigue-table td { padding: 10px 14px; border-top: 1px solid var(--border); font-size: 13px; }
+.fatigue-table .ad-name { font-family: monospace; font-size: 11px; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.badge-fatigue { background: #fdecea; color: var(--red); font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 10px; }
+.badge-killed { background: #f3e5f5; color: #7B1FA2; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 10px; }
+
+/* Performance placeholder */
+.perf-placeholder { background: var(--card-bg); border-radius: 8px; padding: 30px; text-align: center; border: 2px dashed var(--border); color: var(--muted); }
+.perf-placeholder .icon { font-size: 32px; margin-bottom: 10px; }
+.perf-placeholder p { font-size: 14px; }
+
+/* Chart container */
+.chart-wrap { background: var(--card-bg); border-radius: 8px; padding: 20px; margin-bottom: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.chart-wrap canvas { max-height: 220px; }
+
+/* Narrative */
+.narrative { font-size: 13px; color: var(--muted); margin: 10px 0 0; line-height: 1.6; }
+
+/* Divider */
+.week-divider { border: none; border-top: 3px solid var(--border); margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ WEEK: AUG 31 – SEP 5 -->
+<div class="week-block">
+
+  <div class="week-header">
+    <div class="label">Week of</div>
+    <h1>Aug 31 – Sep 5, 2026</h1>
+    <div class="theme">FCVSL scaling hard — $134K combined at $91 AUD CPA, up +179% WoW. TK/Dysfunction and TK/SID tracked as separate landers. Growi and Sid's ads both live.</div>
+  </div>
+
+  <!-- ── PERFORMANCE ───────────────────────────────────────── -->
+  <div style="background:#1a2b3c;border-radius:12px;padding:24px 28px;margin-bottom:24px;color:#fff;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#8fa8c0;margin-bottom:4px;">MOVESMETHOD · META ADS · WEEKLY PERFORMANCE</div>
+    <div style="font-size:26px;font-weight:700;margin-bottom:4px;">Aug 31 – Sep 6, 2026</div>
+    <div style="font-size:13px;color:#8fa8c0;margin-bottom:16px;">Source of truth: backend CPA · <a href="https://www.mgoffredi.com/weekly-performance-w4k8m2/" target="_blank" style="color:#6db3f2;text-decoration:none;">↗ Full Josh report</a></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#8fa8c0;margin-bottom:6px;">TOTAL SPEND</div>
+        <div style="font-size:26px;font-weight:700;">$212,925</div>
+        <div style="font-size:12px;color:#6adc8a;margin-top:4px;">▲ +110% vs last week</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#8fa8c0;margin-bottom:6px;">UNIQUE SALES / DAY (EST.)</div>
+        <div style="font-size:26px;font-weight:700;">289</div>
+        <div style="font-size:12px;color:#8fa8c0;margin-top:4px;">backend attributed</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:14px 16px;border:1px solid #c4922a;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#d4a843;margin-bottom:6px;">CPA (SOURCE OF TRUTH)</div>
+        <div style="font-size:26px;font-weight:700;">$105.37</div>
+        <div style="font-size:12px;color:#e8b84b;margin-top:4px;">▲ 9.8% over $96 target</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:12px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#8fa8c0;margin-bottom:6px;">SPEND BY GEOGRAPHY</div>
+        <div style="font-size:14px;font-weight:600;"><strong>64%</strong> USA · <strong>36%</strong> non-US</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:12px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#8fa8c0;margin-bottom:6px;">SPEND BY FUNNEL</div>
+        <div style="font-size:14px;font-weight:600;"><span style="color:#6adc8a">24%</span> TK · <span style="color:#6db3f2">76%</span> FCVSL</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:12px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#8fa8c0;margin-bottom:6px;">AOV <span style="font-weight:400;font-size:9px;">(LT revenue ÷ purchases)</span></div>
+        <div style="font-size:22px;font-weight:700;">~$72 AUD</div>
+        <div style="font-size:11px;color:#8fa8c0;margin-top:4px;">$87,699 LT rev ÷ ~1,216 purch</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px;padding:10px 14px;background:#fffbea;border-left:3px solid #f0c040;border-radius:0 6px 6px 0;font-size:12px;color:#7a6400;">
+    <strong>* Tracking note — Cortana switch this week.</strong> We migrated to Cortana as our tracking solution this week. FB is reporting an <em>improvement</em> in CPA while the backend is showing it <em>got worse</em>. This discrepancy is expected during a tracking transition and is <strong>not a red flag</strong>, but CPA trends should be monitored closely over the next 1–2 weeks until attribution stabilises.
+  </div>
+
+  <!-- ── INITIATIVES ───────────────────────────────────────── -->
+  <div class="section-title">Initiatives This Week</div>
+  <div class="init-grid">
+
+    <div class="init-card">
+      <h3>🌱 Growi Test</h3>
+      <div class="big-stat">$227 AUD</div>
+      <div class="sub-stat">CPA · $3,636 AUD spend · 16 purchases</div>
+      <p>Four Growi-launched Toolkit campaigns ran this week across three audience variants (Stephane Brazeau, Yaja Nowakowski, "everyone") and one partnership campaign. CPA is significantly above Toolkit average — still early data. No strong signal yet.</p>
+    </div>
+
+    <div class="init-card">
+      <h3>🎨 Sid's Ads</h3>
+      <div class="big-stat">$111 AUD</div>
+      <div class="sub-stat">CPA · $7,690 AUD spend · 69 purchases</div>
+      <p>Sid's creative is running in both funnels: <strong>TK/SID $6,335 AUD at $107 CPA</strong> (+56% spend WoW, CPA rising +32%) and <strong>FCVSL/SID $1,355 AUD at $135 CPA</strong> (spend -34% WoW). TK/SID has volume but CPA is trending up — will need to watch creative fatigue. FCVSL/SID is quiet this week.</p>
+    </div>
+
+    <div class="init-card">
+      <h3>📊 Ads Tested Per Day</h3>
+      <div class="big-stat">32.8</div>
+      <div class="sub-stat">ads/day avg · 197 total this week</div>
+      <p>Up from 24.7/day last week (173 total) — a <strong>+33% jump</strong>. Monday opened at 53 ads before the system settled into 21–43/day for the rest of the week. Strong testing volume.</p>
+    </div>
+
+  </div>
+
+  <!-- ── PER-LANDER PERFORMANCE ────────────────────────────── -->
+  <div class="section-title">Per-Lander Performance — Aug 31–Sep 5 (AUD)</div>
+
+  <table class="lander-table">
+    <thead>
+      <tr>
+        <th>Lander</th>
+        <th>Spend</th>
+        <th>Purchases</th>
+        <th>CPA</th>
+        <th>WoW Spend</th>
+        <th>WoW CPA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>FCVSL</strong></td>
+        <td>$134,381</td>
+        <td>1,485</td>
+        <td>$91</td>
+        <td><span class="delta-pos">+179%</span></td>
+        <td><span class="delta-neg">+13%</span></td>
+      </tr>
+      <tr>
+        <td><strong>FCVSL / SID</strong> <span style="font-size:11px;color:var(--muted)">(Sid's creative)</span></td>
+        <td>$1,355</td>
+        <td>10</td>
+        <td>$135</td>
+        <td><span class="delta-neg">-34%</span></td>
+        <td><span class="delta-pos">-21%</span></td>
+      </tr>
+      <tr>
+        <td><strong>TK / 7479</strong></td>
+        <td>$23,846</td>
+        <td>310</td>
+        <td>$77</td>
+        <td><span class="delta-neg">-2%</span></td>
+        <td><span class="delta-neg">+3%</span></td>
+      </tr>
+      <tr>
+        <td><strong>TK / SID</strong> <span style="font-size:11px;color:var(--muted)">(Sid's creative)</span></td>
+        <td>$6,335</td>
+        <td>59</td>
+        <td>$107</td>
+        <td><span class="delta-pos">+56%</span></td>
+        <td><span class="delta-neg">+32%</span></td>
+      </tr>
+      <tr>
+        <td><strong>TK / Dysfunction</strong></td>
+        <td>$2,431</td>
+        <td>24</td>
+        <td>$101</td>
+        <td><span class="delta-neg">-13%</span></td>
+        <td><span class="delta-neg">+19%</span></td>
+      </tr>
+      <tr>
+        <td><strong>TK / Growi</strong> <span style="font-size:11px;color:var(--muted)">(see initiative card)</span></td>
+        <td>$3,636</td>
+        <td>16</td>
+        <td>$227</td>
+        <td><span class="delta-pos">+83%</span></td>
+        <td><span class="delta-neg">+25%</span></td>
+      </tr>
+      <tr class="total-row">
+        <td>TOTAL</td>
+        <td>$171,984</td>
+        <td>1,904</td>
+        <td>$90</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="narrative"><strong>FCVSL</strong> is the week's standout — $134K at $91 AUD CPA, up +179% WoW with CPA only +13%. <strong>TK/7479</strong> held flat at $24K/-2% and $77 CPA — healthy. <strong>TK/SID</strong> grew +56% spend but CPA jumped +32% to $107; Sid's creative needs rotation. <strong>TK/Dysfunction</strong> declining (-13% spend) with CPA rising — watch for fatigue.</p>
+
+  <!-- ── HOOK ANALYSIS (SLs) ───────────────────────────────── -->
+  <div class="section-title">Hook Analysis — Top Segment Leads (14-day, $50+ AUD spend)</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">56 SLs had $50+ spend in the window. Three ranked lists below.</p>
+
+  <div class="sl-group">
+    <div class="sl-group-title">🏆 Best CPA — Lowest cost per purchase</div>
+    <div class="sl-cards">
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1GxzSWFkxDonzmh_AHsZRplrftmFlVraw&sz=w200" alt="SL0548" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0548</div>
+        <div class="sl-cpa">$34 AUD</div>
+        <div class="sl-meta">$67 spend · 2 purch<br>🎣 57.8% hook · 🔗 8.67% CTR</div>
+        <div class="sl-early">⚠️ Early — 2 purchases</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/1GxzSWFkxDonzmh_AHsZRplrftmFlVraw/view?usp=drive_link" target="_blank">▶ Watch</a>
+      </div>
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1Nxvn1IxKyVL-jy2tlb4Wbi5wf_OwMasx&sz=w200" alt="SL0557" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0557</div>
+        <div class="sl-cpa">$45 AUD</div>
+        <div class="sl-meta">$135 spend · 3 purch<br>🎣 54.6% hook · 🔗 6.93% CTR</div>
+        <div class="sl-early">⚠️ Early — 3 purchases</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/1Nxvn1IxKyVL-jy2tlb4Wbi5wf_OwMasx/view?usp=drive_link" target="_blank">▶ Watch</a>
+      </div>
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1koG0P4sBaH4q_ArF4-4TqJ-tb5FESNed&sz=w200" alt="SL0658" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0658</div>
+        <div class="sl-cpa">$54 AUD</div>
+        <div class="sl-meta">$54 spend · 1 purch<br>🎣 58.0% hook · 🔗 4.95% CTR</div>
+        <div class="sl-early">⚠️ Too early — 1 purchase</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/1koG0P4sBaH4q_ArF4-4TqJ-tb5FESNed/view?usp=drive_link" target="_blank">▶ Watch</a>
+      </div>
+
+    </div>
+    <p class="narrative" style="margin-top:10px;">All three best-CPA hooks are very low spend — treat these as promising signals to put budget behind, not proven performers yet. They share a solid hook rate (55–58%) and strong LCTR.</p>
+  </div>
+
+  <div class="sl-group">
+    <div class="sl-group-title">💰 Best Scale — Highest 14-day spend</div>
+    <div class="sl-cards">
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=10ly2mlnpv9y6G_P1zGz6iUDfqDKwd5wO&sz=w200" alt="SL0448" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0448</div>
+        <div class="sl-cpa">$110 AUD</div>
+        <div class="sl-meta">$41,352 spend · 377 purch<br>🎣 64.9% hook · 🔗 8.10% CTR</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/10ly2mlnpv9y6G_P1zGz6iUDfqDKwd5wO/view?usp=sharing" target="_blank">▶ Watch</a>
+      </div>
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1q7DvSv3P5Mte9hYX1PFrPtutkMZjZXm8&sz=w200" alt="SL0443" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0443</div>
+        <div class="sl-cpa">$84 AUD</div>
+        <div class="sl-meta">$25,809 spend · 306 purch<br>🎣 56.7% hook · 🔗 5.98% CTR</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/1q7DvSv3P5Mte9hYX1PFrPtutkMZjZXm8/view?usp=sharing" target="_blank">▶ Watch</a>
+      </div>
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1oA7NEsLZx0gEg1JnMYGNQzeOGwAuOYi7&sz=w200" alt="SL0433" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0433</div>
+        <div class="sl-cpa">$94 AUD</div>
+        <div class="sl-meta">$20,316 spend · 217 purch<br>🎣 58.7% hook · 🔗 9.00% CTR</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/1oA7NEsLZx0gEg1JnMYGNQzeOGwAuOYi7/view?usp=sharing" target="_blank">▶ Watch</a>
+      </div>
+
+    </div>
+    <p class="narrative" style="margin-top:10px;">SL0448 is doing the heavy lifting — $41K in 14 days at $110 CPA. SL0443 is the most efficient scaler at $84 CPA. SL0433 has the best LCTR of the group at 9.00%. All three are proven at scale.</p>
+  </div>
+
+  <div class="sl-group">
+    <div class="sl-group-title">🎣 Best Secondary Metrics — Hook rate leaders</div>
+    <div class="sl-cards">
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1a9uZ8ddbl9bZyMDrzHtTCbZuxI9oVNY7&sz=w200" alt="SL0654" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0654</div>
+        <div class="sl-cpa">$63 AUD</div>
+        <div class="sl-meta">$317 spend · 5 purch<br>🎣 <strong>70.7%</strong> hook · 🔗 8.30% CTR</div>
+        <a class="sl-link" href="https://drive.google.com/open?id=1a9uZ8ddbl9bZyMDrzHtTCbZuxI9oVNY7&usp=drive_copy" target="_blank">▶ Watch</a>
+      </div>
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=10PFEllB-_BSjShIh6N_JthmaMas7eyDQ&sz=w200" alt="SL0445" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0445</div>
+        <div class="sl-cpa">$92 AUD</div>
+        <div class="sl-meta">$1,937 spend · 21 purch<br>🎣 <strong>69.1%</strong> hook · 🔗 5.43% CTR</div>
+        <a class="sl-link" href="https://drive.google.com/file/d/10PFEllB-_BSjShIh6N_JthmaMas7eyDQ/view?usp=drive_link" target="_blank">▶ Watch</a>
+      </div>
+
+      <div class="sl-card">
+        <div class="sl-thumb-wrap"><img src="https://drive.google.com/thumbnail?id=1hrEkvH_Nqacm-rur7FoVwI4ZdesOEEto&sz=w200" alt="SL0298" onerror="this.parentNode.innerHTML='<div class=\'sl-thumb-fallback\'>🎬</div>'"></div>
+        <div class="sl-id">SL0298</div>
+        <div class="sl-cpa">$168 AUD</div>
+        <div class="sl-meta">$1,174 spend · 7 purch<br>🎣 <strong>65.6%</strong> hook · 🔗 7.94% CTR</div>
+        <a class="sl-link" href="https://drive.google.com/open?id=1hrEkvH_Nqacm-rur7FoVwI4ZdesOEEto&usp=drive_copy" target="_blank">▶ Watch</a>
+      </div>
+
+    </div>
+    <p class="narrative" style="margin-top:10px;">SL0654 has the highest hook rate in the entire pool (70.7%) with a promising $63 CPA — but only 5 purchases. SL0445 is the most well-rounded: top-tier hook AND decent CPA at $92. SL0298 hooks well but CPA is high — the funnel drop-off may be the issue, not the hook itself.</p>
+  </div>
+
+  <!-- ── SM ANALYSIS ───────────────────────────────────────── -->
+  <div class="section-title">Segment Mains — Top Performers (14-day)</div>
+
+  <div class="sm-grid">
+
+    <!-- SM0050 -->
+    <div class="sm-card">
+      <div class="sm-card-video">
+        <iframe src="https://drive.google.com/file/d/1qep89JX9CH_9K-iGOtF00jlU5m-siKx3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <div class="video-label">🎬 SM0050 · FCVSL</div>
+      </div>
+      <div class="sm-card-body">
+        <span class="sm-badge top">🥇 Top Spender #1</span>
+        <h3>SM0050 <span style="font-size:11px;color:var(--muted);font-weight:400">· SL0432 hook · 1:00</span></h3>
+        <div class="sm-stats">
+          <div class="sm-stat"><strong>$53,802 AUD</strong>14d spend</div>
+          <div class="sm-stat"><strong>$102 AUD</strong>CPA</div>
+          <div class="sm-stat"><strong>529</strong>purchases</div>
+          <div class="sm-stat"><strong>62.8%</strong>🎣 hook rate</div>
+          <div class="sm-stat"><strong>8.86%</strong>🔗 link CTR</div>
+          <div class="sm-stat"><strong>Aug 27</strong>first seen</div>
+        </div>
+        <ul class="sm-breakdown">
+          <li><span class="bd-label">🎣 Hook (0:00–0:07)</span>"Serums, oils, botox, or squats. Which keeps you looking younger?" — contrast list that hijacks the anti-aging conversation, pivots hard to squats.</li>
+          <li><span class="bd-label">⚙️ Mechanism</span>New study: 10 squats every 45 min beats a full 30-min walk. But the real twist — most people over 45 do squats <em>wrong</em>, which is exactly why knees and hips ache. Done right, they open the hips and strengthen the knees.</li>
+          <li><span class="bd-label">✅ Proof</span>107,000 students — majority women 45–63. Social proof tied directly to the avatar.</li>
+          <li><span class="bd-label">📣 CTA</span>Free training, no email required. Friction removal stated <strong>twice</strong> at the end.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SM0049 -->
+    <div class="sm-card">
+      <div class="sm-card-video">
+        <iframe src="https://drive.google.com/file/d/1B6KLG_xUarT4LhTGI-dvJmCt4jhZJxzn/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <div class="video-label">🎬 SM0049 · FCVSL</div>
+      </div>
+      <div class="sm-card-body">
+        <span class="sm-badge top">🥈 Top Spender #2</span>
+        <h3>SM0049 <span style="font-size:11px;color:var(--muted);font-weight:400">· SL0432 hook · 0:54</span></h3>
+        <div class="sm-stats">
+          <div class="sm-stat"><strong>$28,771 AUD</strong>14d spend</div>
+          <div class="sm-stat"><strong>$82 AUD</strong>CPA</div>
+          <div class="sm-stat"><strong>349</strong>purchases</div>
+          <div class="sm-stat"><strong>56.7%</strong>🎣 hook rate</div>
+          <div class="sm-stat"><strong>6.05%</strong>🔗 link CTR</div>
+          <div class="sm-stat"><strong>Aug 28</strong>first seen</div>
+        </div>
+        <ul class="sm-breakdown">
+          <li><span class="bd-label">🎣 Hook (0:00–0:07)</span>Same SL0432 — "Serums, oils, botox, or squats." Identical open to SM0050, entirely different body.</li>
+          <li><span class="bd-label">⚙️ Mechanism</span>After 50, bodies lose strength and balance unless <em>actively demanded</em>. Steps, yoga, foam rolling are all good — but none demand the floor-level movement that keeps you hiking, chasing grandkids, staying independent.</li>
+          <li><span class="bd-label">✅ Proof</span>107,000 people, mostly women 45–63, "finally dealing with their joint stiffness." Outcome-specific.</li>
+          <li><span class="bd-label">📣 CTA</span>"I don't need anything from you" — unusually disarming trust signal. No email, just click.</li>
+        </ul>
+        <div class="sm-insight">💡 SM0049 at <strong>$82 CPA</strong> beats SM0050 at $102 despite identical hook — independence/floor-transfer body converts better than the squat-study body.</div>
+      </div>
+    </div>
+
+    <!-- SM0096 -->
+    <div class="sm-card">
+      <div class="sm-card-video">
+        <iframe src="https://drive.google.com/file/d/1a9uZ8ddbl9bZyMDrzHtTCbZuxI9oVNY7/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <div class="video-label">🎬 SM0096 · FCVSL</div>
+      </div>
+      <div class="sm-card-body">
+        <span class="sm-badge upn">⚡ Up-n-Comer #1</span>
+        <h3>SM0096 <span style="font-size:11px;color:var(--muted);font-weight:400">· SL0654 hook · 0:49</span></h3>
+        <div class="sm-stats">
+          <div class="sm-stat"><strong>$317 AUD</strong>14d spend</div>
+          <div class="sm-stat"><strong>$63 AUD</strong>CPA</div>
+          <div class="sm-stat"><strong>5</strong>purchases</div>
+          <div class="sm-stat"><strong style="color:var(--green)">70.7%</strong>🎣 hook rate</div>
+          <div class="sm-stat"><strong>8.30%</strong>🔗 link CTR</div>
+          <div class="sm-stat"><strong>Sep 5</strong>first seen</div>
+        </div>
+        <ul class="sm-breakdown">
+          <li><span class="bd-label">🎣 Hook (0:00–0:12)</span><strong>Visual contrast</strong> — muscle scan of a 30yo who trains vs doesn't, then repeats at 70. Zero words needed; the image does the entire job. Highest hook rate in this batch at 70.7%.</li>
+          <li><span class="bd-label">⚙️ Mechanism</span>Strength training = <strong>independence</strong>, not aesthetics. Gym is intimidating; long routines are a waste. Moves Method: 10–15 min/day, built for women 40–70.</li>
+          <li><span class="bd-label">✅ Proof</span>Founder Vanya created the process — credibility through the face, not just a number.</li>
+          <li><span class="bd-label">📣 CTA</span>Free training, no email. "Just click and watch it now."</li>
+        </ul>
+        <div class="sm-insight">🔥 Day-1 winner — 70.7% hook + $63 AUD CPA. Visual contrast mechanism is new territory for FCVSL creative. Scale this.</div>
+      </div>
+    </div>
+
+    <!-- SM0043 -->
+    <div class="sm-card">
+      <div class="sm-card-video">
+        <iframe src="https://drive.google.com/file/d/1-2i2G7mH5ov0zfbCkUJLO5YzTKYH67WA/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <div class="video-label">🎬 SM0043 · Toolkit</div>
+      </div>
+      <div class="sm-card-body">
+        <span class="sm-badge upn">⚡ Up-n-Comer #2</span>
+        <h3>SM0043 <span style="font-size:11px;color:var(--muted);font-weight:400">· SL0346 hook · 2:42</span></h3>
+        <div class="sm-stats">
+          <div class="sm-stat"><strong>$140 AUD</strong>14d spend</div>
+          <div class="sm-stat"><strong>$70 AUD</strong>CPA</div>
+          <div class="sm-stat"><strong>2</strong>purchases</div>
+          <div class="sm-stat"><strong>40.9%</strong>🎣 hook rate</div>
+          <div class="sm-stat"><strong>2.39%</strong>🔗 link CTR</div>
+          <div class="sm-stat"><strong>Sep 6</strong>first seen</div>
+        </div>
+        <ul class="sm-breakdown">
+          <li><span class="bd-label">🎣 Hook (0:00–0:06)</span>"I'm 47 and I just threw out my foam roller. The most flexible people on earth are over 80 and never owned one." Pure pattern interrupt — disrupts foam roller identity.</li>
+          <li><span class="bd-label">⚙️ Mechanism</span><strong>"Your body keeps what you use and takes back what you don't."</strong> Okinawan elders squat to cook/eat/rest — not as exercise, just life. Modern chairs erased those patterns. Stretching = temporary; restoring the pattern = lasting. Interactive challenge: lower to the floor without support. Can you?</li>
+          <li><span class="bd-label">✅ Proof</span>125,000 people in 50+ countries. 89% off + 30-day guarantee.</li>
+          <li><span class="bd-label">📣 CTA</span>Paid offer — Mobility Toolkit at 89% off. Risk-reversal close.</li>
+        </ul>
+        <div class="sm-insight">🧪 Only 2 purchases — way too early. But the <strong>Blue Zones / Okinawa mechanism</strong> is one of the strongest conceptual angles in Toolkit. Give it more budget before judging.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="narrative" style="margin-top:12px;">SM0050 and SM0049 are the backbone of this week's FCVSL performance — together they account for $82K of the $135K FCVSL total. Both launched in the last 10 days and are already at significant scale. The up-n-comers (SM0096, SM0043) are brand new with 2–5 purchases each — watch but don't conclude yet. SM0096 stands out for its 70.7% hook rate on day 1.</p>
+
+  <!-- ── FATIGUE ─────────────────────────────────────────────── -->
+  <div class="section-title">Fatigue Watchlist — 7d CPA vs Lifetime</div>
+
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
+    <button onclick="
+      const ids = [
+        '120249590219670162','120249639981770162','120249640345220162','120249640276620162',
+        '120249639981830162','120248686618710162','120248769812700162','120249305086680162','120249337144330162','120249419979120162',
+        '120249640276630162','120249640345200162','120249318312970162',
+        '120247464331300162','120247464785440162','120247759588900162','120248270705740162','120248270705820162','120248432893390162','120248556397910162','120248556397930162','120249305086640162','120249346530170162',
+        '120245918341100162','120246498233070162'
+      ];
+      navigator.clipboard.writeText(ids.join('\n')).then(()=>{this.textContent='✓ Copied!';setTimeout(()=>{this.textContent='📋 Copy all ad IDs (25)'},1500)});
+    " style="background:var(--orange);color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;">📋 Copy all ad IDs (25)</button>
+    <button onclick="
+      const ids = [
+        '120249590219670162','120249639981770162','120249640345220162','120249640276620162',
+        '120249639981830162','120248686618710162','120248769812700162','120249305086680162','120249337144330162','120249419979120162',
+        '120249640276630162','120249640345200162','120249318312970162'
+      ];
+      navigator.clipboard.writeText(ids.join('\n')).then(()=>{this.textContent='✓ Copied!';setTimeout(()=>{this.textContent='🔴 Copy fatiguing only (13)'},1500)});
+    " style="background:#fdecea;color:var(--red);border:1px solid var(--red);border-radius:6px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;">🔴 Copy fatiguing only (13)</button>
+    <span style="font-size:11px;color:var(--muted)">IDs are newline-separated for Meta bulk edit</span>
+  </div>
+
+  <table class="fatigue-table">
+    <thead>
+      <tr>
+        <th>Ad</th>
+        <th>Status</th>
+        <th>7d CPA</th>
+        <th>Lifetime CPA</th>
+        <th>Drift</th>
+        <th>7d Spend</th>
+        <th>Lifetime Spend</th>
+        <th>Watch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="ad-name">SL0435_SM0050_SC0055</td>
+        <td><span class="badge-fatigue">Fatiguing</span></td>
+        <td>$387</td>
+        <td>$100</td>
+        <td style="color:var(--red);font-weight:700">+286%</td>
+        <td>$775</td>
+        <td>$3,718</td>
+        <td><a href="https://drive.google.com/file/d/1KF7XK7VD9MIststSofIibwNjjhJE8rKO/view?usp=sharing" target="_blank" style="font-size:11px;color:var(--orange)">▶ SL0435</a> <button onclick="navigator.clipboard.writeText(['120249590219670162','120249639981770162','120249640345220162','120249640276620162'].join('\n')).then(()=>{this.textContent='✓';setTimeout(()=>{this.textContent='⧉ 4 IDs'},1200)})" style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;color:var(--muted)">⧉ 4 IDs</button></td>
+      </tr>
+      <tr>
+        <td class="ad-name">VSL_JOR006h_SL0298_SM0038</td>
+        <td><span class="badge-fatigue">Fatiguing</span></td>
+        <td>$368</td>
+        <td>$168</td>
+        <td style="color:var(--red);font-weight:700">+120%</td>
+        <td>$368</td>
+        <td>$1,174</td>
+        <td><a href="https://drive.google.com/open?id=1hrEkvH_Nqacm-rur7FoVwI4ZdesOEEto&usp=drive_copy" target="_blank" style="font-size:11px;color:var(--orange)">▶ SL0298</a> <a href="https://drive.google.com/open?id=1YloJ4bPcXGNzrB78468j5F0sir352mv7&usp=drive_copy" target="_blank" style="font-size:11px;color:var(--orange)">▶ SM0038</a> <button onclick="navigator.clipboard.writeText('120249639981830162\n120248686618710162\n120248769812700162\n120249305086680162\n120249337144330162\n120249419979120162').then(()=>{this.textContent='✓';setTimeout(()=>{this.textContent='⧉ 6 IDs'},1200)})" style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;color:var(--muted)">⧉ 6 IDs</button></td>
+      </tr>
+      <tr>
+        <td class="ad-name">SL0448_SM0050_SC0055</td>
+        <td><span class="badge-fatigue">Fatiguing</span></td>
+        <td>$140</td>
+        <td>$112</td>
+        <td style="color:var(--orange)">+25%</td>
+        <td>$1,259</td>
+        <td>$2,234</td>
+        <td><a href="https://drive.google.com/file/d/10ly2mlnpv9y6G_P1zGz6iUDfqDKwd5wO/view?usp=sharing" target="_blank" style="font-size:11px;color:var(--orange)">▶ SL0448</a> <button onclick="navigator.clipboard.writeText('120249640276630162\n120249640345200162\n120249318312970162').then(()=>{this.textContent='✓';setTimeout(()=>{this.textContent='⧉ 3 IDs'},1200)})" style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;color:var(--muted)">⧉ 3 IDs</button></td>
+      </tr>
+      <tr style="background:#faf5ff">
+        <td class="ad-name">WD_H4B3CTA1_052026_9X16</td>
+        <td><span class="badge-killed">Killed</span></td>
+        <td>—</td>
+        <td>$104</td>
+        <td>—</td>
+        <td>$0</td>
+        <td>$82,033</td>
+        <td><button onclick="navigator.clipboard.writeText('120247464331300162\n120247464785440162\n120247759588900162\n120248270705740162\n120248270705820162\n120248432893390162\n120248556397910162\n120248556397930162\n120249305086640162\n120249346530170162').then(()=>{this.textContent='✓';setTimeout(()=>{this.textContent='⧉ 10 IDs'},1200)})" style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;color:var(--muted)">⧉ 10 IDs</button></td>
+      </tr>
+      <tr style="background:#faf5ff">
+        <td class="ad-name">vanjamov-052826 WD_H4B3C</td>
+        <td><span class="badge-killed">Killed</span></td>
+        <td>—</td>
+        <td>$114</td>
+        <td>—</td>
+        <td>$0</td>
+        <td>$71,628</td>
+        <td><button onclick="navigator.clipboard.writeText('120245918341100162\n120246498233070162').then(()=>{this.textContent='✓';setTimeout(()=>{this.textContent='⧉ 2 IDs'},1200)})" style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;color:var(--muted)">⧉ 2 IDs</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="narrative" style="margin-top:10px;"><strong>SL0435_SM0050</strong> has completely broken down (+286% CPA drift, $387 vs $100 lifetime). <strong>JOR006h (SL0298_SM0038)</strong> is +120% — past useful life. <strong>SL0448_SM0050</strong> is early-stage fatigue at +25% — watch this week. The two WD_H4B3CTA1 kills ($82K and $71K lifetime) are intentional retirements from a prior high-spend era.</p>
+
+  <!-- ── RECOMMENDATIONS ──────────────────────────────────────── -->
+  <div class="section-title">Recommendations</div>
+  <div style="background:var(--card-bg);border-radius:12px;border:1px solid var(--border);padding:18px 20px;margin-bottom:24px;">
+    <ul style="margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;">
+      <li><strong>Kill SL0435_SM0050 and JOR006h (SL0298_SM0038).</strong> Both are past useful life — CPA drift +286% and +120% respectively. Ad IDs are in the fatigue table above.</li>
+      <li><strong>Watch SL0448_SM0050 closely.</strong> Early-stage fatigue at +25% CPA drift. If it doesn't recover this week, kill it.</li>
+      <li><strong>Continue scaling FCVSL.</strong> Tripled spend with CPA holding — the lander is absorbing budget. Push further.</li>
+      <li><strong>Rotate Sid's TK creative.</strong> TK/SID CPA jumped +32% WoW to $107. Sid needs new hooks before spend increases further.</li>
+      <li><strong>Monitor Cortana attribution for 1–2 more weeks</strong> before drawing conclusions on CPA trend direction.</li>
+    </ul>
+  </div>
+
+  <!-- ── SCALING + CREATIVE PRODUCTION PLAN ───────────────────── -->
+  <div class="section-title">Scaling &amp; Creative Production Plan</div>
+
+  <!-- Scaling method callout -->
+  <div style="background:#1a2b3c;border-radius:12px;padding:20px 24px;margin-bottom:16px;color:#fff;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#8fa8c0;margin-bottom:8px;">📈 SCALING METHOD — WHAT'S WORKING</div>
+    <p style="margin:0 0 12px;font-size:13.5px;line-height:1.7;">The most efficient scaling this week came from <strong>raising the budget on the creative testing campaign</strong> using Meta's budget scheduling feature — not from a dedicated winners ad set.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+      <div style="background:rgba(100,200,120,0.12);border:1px solid rgba(100,200,120,0.3);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#7ecf94;margin-bottom:4px;">✅ CREATIVE TESTING + BUDGET SCHEDULE</div>
+        <div style="font-size:22px;font-weight:700;">$63.87 CPA</div>
+        <div style="font-size:12px;color:#8fa8c0;margin-top:2px;">$46,233 spend · 741 purchases this week</div>
+        <div style="font-size:11px;color:#8fa8c0;margin-top:6px;font-style:italic;">CBO · broad · creative rotation intact</div>
+      </div>
+      <div style="background:rgba(220,80,80,0.10);border:1px solid rgba(220,80,80,0.25);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#e07070;margin-bottom:4px;">❌ WINNERS AD SET (ABO / COSTCAP)</div>
+        <div style="font-size:22px;font-weight:700;">$111.48 CPA</div>
+        <div style="font-size:12px;color:#8fa8c0;margin-top:2px;">$65,219 spend · 571 purchases this week</div>
+        <div style="font-size:11px;color:#8fa8c0;margin-top:6px;font-style:italic;">41% more spend · 23% fewer purchases</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:#8fa8c0;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);">Going forward: scale by lifting the budget ceiling on the testing campaign via budget scheduling. Resist the urge to pull winners into a separate scaling campaign.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+    <div style="background:var(--card-bg);border-radius:12px;border:1px solid var(--border);padding:18px 20px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--muted);margin-bottom:10px;">📈 BUDGET PRIORITIES</div>
+      <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.9;color:var(--text);">
+        <li>FCVSL testing campaign — raise budget via scheduling</li>
+        <li>TK/7479 — hold current spend, CPA improving</li>
+        <li>Hold TK/SID until creative is rotated</li>
+      </ul>
+    </div>
+    <div style="background:var(--card-bg);border-radius:12px;border:1px solid var(--border);padding:18px 20px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--muted);margin-bottom:10px;">🎬 CREATIVE PRODUCTION</div>
+      <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.9;color:var(--text);">
+        <li>New hooks to replace SL0435 + SL0298 (both dead)</li>
+        <li>New SM for Sid's TK rotation</li>
+        <li>Test SL0448 replacement before it fully fatigues</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- performance section moved to top — see below week-header -->
+
+  <!-- ── MICHAEL'S NOTES ──────────────────────────────────────── -->
+  <div class="section-title">Michael's Notes</div>
+  <div style="background:var(--card-bg);border-radius:12px;border:1px solid var(--border);padding:20px 24px;margin-bottom:24px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px;">CREATIVE SUGGESTIONS BY MICHAEL (NOT AI)</div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;font-size:13.5px;line-height:1.7;color:var(--text);">
+
+      <div style="padding-bottom:14px;border-bottom:1px solid var(--border);">
+        <strong>This or This</strong><br>
+        <span style="color:var(--muted);font-size:12.5px;">Hook / angle concept</span>
+      </div>
+
+      <div style="padding-bottom:14px;border-bottom:1px solid var(--border);">
+        <strong>Movement amnesia</strong> — mix with the Dysfunction concept and get the Dysfunction page going.
+      </div>
+
+      <div style="padding-bottom:14px;border-bottom:1px solid var(--border);">
+        <strong>Getting older</strong><br>
+        <span style="color:var(--muted);font-size:12.5px;">Hook / angle concept</span>
+      </div>
+
+      <div>
+        <strong>Bali-specific creatives</strong> — both VSL and TK. The current Bali TK page has the video on it, so both creative types can run there.<br>
+        <div style="margin-top:8px;padding:8px 12px;background:var(--orangeT);border-left:3px solid var(--orange);border-radius:0 6px 6px 0;font-size:12.5px;color:var(--orangeD);">
+          <strong>Volume requirement:</strong> needs a big batch — enough to test at $1,000/day. Not 5–10 ads.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end week-block -->
+
+<hr class="week-divider">
+
+
+</body>
+</html>
