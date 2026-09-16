@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Ad Naming for Creative — MovesMethod</title>
+<title>Ad Naming for Creative</title>
 <style>
   :root {
     --bg: #fbfaf7;
@@ -238,9 +238,9 @@
 <div class="wrap">
 
 <header class="page">
-  <p class="eyebrow">MovesMethod · For Creative Team</p>
+  <p class="eyebrow">For Creative Team</p>
   <h1>Ad Naming for Creative</h1>
-  <p class="lede">This is the naming system we're moving toward for ad creative. Nothing is using it yet — we're documenting it now so we can roll it out cleanly. Every part of the name tells you something: what product it sells, who built it, what's inside it, what size it is.</p>
+  <p class="lede">A naming system for ad creative. Every part of the name tells you something: what product it sells, who requested it, who built it, what's inside it, what size it is. Nothing precious — just enough structure to keep hundreds of files findable.</p>
 </header>
 
 <div class="crosslink">
@@ -295,18 +295,18 @@
 <h2 id="selling">What are we selling?</h2>
 
 <h4>In human terms</h4>
-<p>Every ad sells a product. The product is whatever the buyer pays for at checkout — not the funnel, not the ad copy, not the lander. We sell one product right now: the Toolkit. So every ad name starts with <code>tk</code>.</p>
+<p>Every ad sells a product. The product is whatever the buyer pays for at checkout — not the funnel, not the ad copy, not the lander. A new code gets added only when a genuinely different product appears at checkout.</p>
 
 <h4>Technical</h4>
-<p>Two-letter lowercase product code. Only one in use today: <code>tk</code>. A new code is added only when a genuinely different product appears at checkout.</p>
+<p>Two-letter lowercase product code. Example: <code>tk</code>.</p>
 
 <h2 id="cs">Who requested it? (Creative strategist)</h2>
 
 <h4>In human terms</h4>
-<p>The creative strategist who briefed the ad or supervised the edit. Not the person who cut it — that's the editor, next section. Right now there are two: Erick Argueta (<code>csea</code>) and Sid Sri (<code>csss</code>).</p>
+<p>The creative strategist who briefed the ad or supervised the edit. Not the person who cut it — that's the editor, next section.</p>
 
 <h4>Technical</h4>
-<p>Lowercase code starting with the fixed prefix <code>cs</code> (creative strategist) followed by the strategist's 2-letter initials. So Erick becomes <code>csea</code>, Sid becomes <code>csss</code>. Sits right after the product code, before the editor block.</p>
+<p>Lowercase code starting with the fixed prefix <code>cs</code> (creative strategist) followed by the strategist's 2-letter initials (first + last name). Example: initials <code>ea</code> render as <code>csea</code>. Sits right after the product code, before the editor block.</p>
 
 <h2 id="who">Who made the ad?</h2>
 
@@ -314,13 +314,13 @@
 <p>The person who exported the final cut. Not the writer, not the videographer — whoever tied the pieces together.</p>
 
 <h4>Technical</h4>
-<p>3-letter code, uppercase. Each editor picks their own. Example: Michael = <code>MGO</code>.</p>
+<p>3-letter code, uppercase. Each editor picks their own. Example: <code>MGO</code>.</p>
 
 <h2 id="not">What's NOT in the ad name</h2>
 
 <p>The funnel, the landing page, the campaign — none of this goes in the filename. It's tracked separately:</p>
 <ul>
-  <li>In Airtable, on the creative record's "Eligible Landing Pages" field.</li>
+  <li>In your creative-tracking base or spreadsheet, on the creative record's "Eligible Landing Pages" field.</li>
   <li>In Frame.io, on the custom field per asset.</li>
 </ul>
 <p>The reason: the same ad can run to multiple landers. Keeping the lander out of the name means one file, many possible destinations. Putting it in the name would force us to duplicate files every time we wanted to test a new placement.</p>
@@ -339,9 +339,9 @@
 <pre><code>tk_csea_MGO174g_SL2743_SM2067_SC1542_XA1180_9x16</code></pre>
 <p>Decoded:</p>
 <ul>
-  <li><code>tk</code> — Toolkit</li>
-  <li><code>csea</code> — Erick Argueta requested/supervised (creative strategist)</li>
-  <li><code>MGO174g</code> — Michael, series 174, ad version g</li>
+  <li><code>tk</code> — product code</li>
+  <li><code>csea</code> — creative strategist (initials <code>ea</code>)</li>
+  <li><code>MGO174g</code> — editor <code>MGO</code>, series 174, ad version g</li>
   <li><code>SL2743</code> — hook segment 2743</li>
   <li><code>SM2067</code> — body segment 2067</li>
   <li><code>SC1542</code> — CTA segment 1542</li>
@@ -353,7 +353,7 @@
 <pre><code>tk_csea_MGO174g_SL2743_SL2772_SM2067_SM2057_SM2280_SC1542_XA1178_XA1180_XA1258_9x16</code></pre>
 <p>Same logic, more pieces stitched together. Two hooks tested, three main bodies layered, one CTA, three decorations.</p>
 
-<!-- ============ AD NAME GENERATOR (second to last) ============ -->
+<!-- ============ AD NAME GENERATOR ============ -->
 <h2 id="generator">Ad name generator</h2>
 
 <div class="gen-card">
@@ -362,46 +362,22 @@
 
   <div class="field-row">
     <div class="field">
-      <label for="ad-product">Product</label>
-      <select id="ad-product">
-        <option value="tk">tk — Toolkit</option>
-      </select>
-      <div class="hint">The product at checkout. Currently only the Toolkit.</div>
+      <label for="ad-product">Product code</label>
+      <input type="text" id="ad-product" maxlength="2" placeholder="tk">
+      <div class="hint">2 lowercase letters. The product at checkout.</div>
     </div>
 
     <div class="field">
-      <label for="ad-cd">Creative strategist</label>
-      <select id="ad-cd">
-        <option value="csea">csea — Erick Argueta</option>
-        <option value="csss">csss — Sid Sri</option>
-        <option value="__other__">Other…</option>
-      </select>
-      <div class="hint">The strategist who requested/supervised the ad. Rendered as <code>cs{initials}</code> — e.g. <code>csea</code>.</div>
+      <label for="ad-cs">Strategist initials</label>
+      <input type="text" id="ad-cs" maxlength="2" placeholder="ea">
+      <div class="hint">2 lowercase letters — the strategist's first + last name initials. Rendered as <code>cs{initials}</code>.</div>
     </div>
 
     <div class="field">
-      <label for="ad-editor">Editor</label>
-      <select id="ad-editor">
-        <option value="MGO">MGO</option>
-        <option value="JOC">JOC</option>
-        <option value="SHA">SHA</option>
-        <option value="JER">JER</option>
-        <option value="__other__">Other…</option>
-      </select>
-      <div class="hint">The person who exported the final cut.</div>
+      <label for="ad-editor">Editor code</label>
+      <input type="text" id="ad-editor" maxlength="3" placeholder="MGO">
+      <div class="hint">3 uppercase letters — the person who exported the final cut.</div>
     </div>
-  </div>
-
-  <div class="field" id="ad-cd-custom-wrap" style="display:none;">
-    <label for="ad-cd-custom">Custom strategist code</label>
-    <input type="text" id="ad-cd-custom" maxlength="4" placeholder="e.g. csxy">
-    <div class="hint">Lowercase, must start with <code>cs</code> (e.g. <code>csxy</code>). Required if "Other…" is selected.</div>
-  </div>
-
-  <div class="field" id="ad-editor-custom-wrap" style="display:none;">
-    <label for="ad-editor-custom">Custom editor code</label>
-    <input type="text" id="ad-editor-custom" maxlength="3" placeholder="e.g. MJG">
-    <div class="hint">3 uppercase letters. Required if "Other…" is selected.</div>
   </div>
 
   <div class="field-row">
@@ -444,16 +420,15 @@
   </div>
 </div>
 
-<!-- ============ GORILLAFY — LAST SECTION (DR voice) ============ -->
+<!-- ============ GORILLAFY ============ -->
 <h2 id="easy">Wanna make this easy?</h2>
 
 <div class="tool-card">
   <p class="tool-eyebrow">Skip the spec</p>
   <h3>Use Gorillafy and let the tool do the work.</h3>
-  <p>Don't memorize any of the above. Gorillafy manages the segment library, handles the assembly, and outputs files already named in this format. Drag in your hook, body, and CTA — out comes <code>tk_MGO174g_SL2743_SM2067_SC1542_9x16</code>, automatically. No spec, no thinking.</p>
-  <p>Join the MovesMethod organization on Gorillafy to start producing under this account today.</p>
-  <a class="join-btn" href="https://gorillafy.io/join/0f81ebae-e66d-4c82-b2e4-0e150a626a20" target="_blank" rel="noopener">
-    Join MovesMethod on Gorillafy <span class="arrow">→</span>
+  <p>Don't memorize any of the above. Gorillafy manages the segment library, handles the assembly, and outputs files already named in this format. Drag in your hook, body, and CTA — out comes <code>tk_csea_MGO174g_SL2743_SM2067_SC1542_9x16</code>, automatically. No spec, no thinking.</p>
+  <a class="join-btn" href="https://gorillafy.io/" target="_blank" rel="noopener">
+    Visit Gorillafy <span class="arrow">→</span>
   </a>
 </div>
 
@@ -463,7 +438,7 @@
 </div>
 
 <footer class="page">
-  <p>MovesMethod · Ad Naming for Creative · Maintained by Michael Goffredi</p>
+  <p>Ad Naming for Creative</p>
 </footer>
 
 </div>
@@ -540,34 +515,22 @@
     else el.classList.add('invalid');
   }
 
-  const cdSelect = document.getElementById('ad-cd');
-  const cdCustomWrap = document.getElementById('ad-cd-custom-wrap');
-  const cdCustom = document.getElementById('ad-cd-custom');
-  cdSelect.addEventListener('change', () => {
-    if (cdSelect.value === '__other__') { cdCustomWrap.style.display = ''; cdCustom.focus(); }
-    else { cdCustomWrap.style.display = 'none'; }
-    updateAdName();
-  });
-  cdCustom.addEventListener('input', (e) => {
-    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 4);
+  const productInput = document.getElementById('ad-product');
+  productInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 2);
+    validateField(e.target, e.target.value.length === 2);
     updateAdName();
   });
 
-  const editorSelect = document.getElementById('ad-editor');
-  const editorCustomWrap = document.getElementById('ad-editor-custom-wrap');
-  const editorCustom = document.getElementById('ad-editor-custom');
-
-  editorSelect.addEventListener('change', () => {
-    if (editorSelect.value === '__other__') {
-      editorCustomWrap.style.display = '';
-      editorCustom.focus();
-    } else {
-      editorCustomWrap.style.display = 'none';
-    }
+  const csInput = document.getElementById('ad-cs');
+  csInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 2);
+    validateField(e.target, e.target.value.length === 2);
     updateAdName();
   });
 
-  editorCustom.addEventListener('input', (e) => {
+  const editorInput = document.getElementById('ad-editor');
+  editorInput.addEventListener('input', (e) => {
     e.target.value = e.target.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
     validateField(e.target, e.target.value.length === 3);
     updateAdName();
@@ -594,22 +557,11 @@
   });
 
   document.getElementById('ad-format').addEventListener('change', updateAdName);
-  document.getElementById('ad-product').addEventListener('change', updateAdName);
-
-  function getEditorCode() {
-    if (editorSelect.value === '__other__') return editorCustom.value.toUpperCase();
-    return editorSelect.value;
-  }
-
-  function getCdCode() {
-    if (cdSelect.value === '__other__') return cdCustom.value.toLowerCase();
-    return cdSelect.value;
-  }
 
   function updateAdName() {
-    const product = document.getElementById('ad-product').value;
-    const cd = getCdCode();
-    const editor = getEditorCode();
+    const product = productInput.value;
+    const csInitials = csInput.value;
+    const editor = editorInput.value;
     const series = seriesInput.value;
     const letter = letterInput.value;
     const format = document.getElementById('ad-format').value;
@@ -625,8 +577,10 @@
     const out = document.getElementById('ad-output');
     const btn = document.getElementById('ad-copy-btn');
 
-    if (!product || !cd || cd.length < 3 || cd.slice(0,2) !== 'cs' ||
-        !editor || editor.length !== 3 || !series || series.length < 1 ||
+    if (!product || product.length !== 2 ||
+        !csInitials || csInitials.length !== 2 ||
+        !editor || editor.length !== 3 ||
+        !series || series.length < 1 ||
         !letter || segments.length === 0 || !format) {
       out.textContent = 'fill in the fields above';
       out.classList.add('empty');
@@ -635,7 +589,7 @@
     }
 
     const seriesPadded = series.padStart(3, '0');
-    const csBlock = cd; // code already contains the cs prefix (csea, csss, or custom cs__)
+    const csBlock = 'cs' + csInitials;
     const editorBlock = `${editor}${seriesPadded}${letter}`;
     const name = `${product}_${csBlock}_${editorBlock}_${segments.join('_')}_${format}`;
     out.textContent = name;
