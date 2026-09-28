@@ -1,25 +1,60 @@
 {
-  "period": "Sep 14 \u2013 Sep 20, 2026",
-  "since": "2026-09-14",
-  "until": "2026-09-20",
+  "period": "Sep 21 \u2013 Sep 27, 2026",
+  "since": "2026-09-21",
+  "until": "2026-09-27",
   "seg": {
     "USA": {
       "TK": {
-        "spend": 49333.4,
-        "fbp": 594
+        "spend": 38540.49,
+        "fbp": 433
       },
       "FCVSL": {
-        "spend": 86769.89,
-        "fbp": 1050
+        "spend": 60059.32,
+        "fbp": 646
       }
     },
     "HI": {
       "TK": {
-        "spend": 27003.41,
+        "spend": 28298.08,
+        "fbp": 336
+      },
+      "FCVSL": {
+        "spend": 41894.78,
+        "fbp": 478
+      }
+    },
+    "ROW": {
+      "TK": {
+        "spend": 0.0,
+        "fbp": 0
+      },
+      "FCVSL": {
+        "spend": 0.0,
+        "fbp": 0
+      }
+    }
+  },
+  "lastPeriod": "Sep 14 \u2013 Sep 20, 2026",
+  "lastSince": "2026-09-14",
+  "lastUntil": "2026-09-20",
+  "lastSeg": {
+    "USA": {
+      "TK": {
+        "spend": 49334.99,
+        "fbp": 594
+      },
+      "FCVSL": {
+        "spend": 86776.27,
+        "fbp": 1051
+      }
+    },
+    "HI": {
+      "TK": {
+        "spend": 27007.19,
         "fbp": 386
       },
       "FCVSL": {
-        "spend": 68410.66,
+        "spend": 68421.44,
         "fbp": 824
       }
     },
@@ -34,40 +69,5 @@
       }
     }
   },
-  "lastPeriod": "Sep 7 \u2013 Sep 13, 2026",
-  "lastSince": "2026-09-07",
-  "lastUntil": "2026-09-13",
-  "lastSeg": {
-    "USA": {
-      "TK": {
-        "spend": 53142.55,
-        "fbp": 598
-      },
-      "FCVSL": {
-        "spend": 104942.8,
-        "fbp": 1210
-      }
-    },
-    "HI": {
-      "TK": {
-        "spend": 29278.53,
-        "fbp": 359
-      },
-      "FCVSL": {
-        "spend": 73288.28,
-        "fbp": 976
-      }
-    },
-    "ROW": {
-      "TK": {
-        "spend": 0.0,
-        "fbp": 2
-      },
-      "FCVSL": {
-        "spend": 0.0,
-        "fbp": 0
-      }
-    }
-  },
-  "generated_at": "2026-09-21T08:03:29"
+  "generated_at": "2026-09-28T08:03:42"
 }
