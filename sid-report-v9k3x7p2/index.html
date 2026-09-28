@@ -3,133 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sid vs All — MovesMethod</title>
+<title>Creative Attribution — MovesMethod</title>
 <style>
-  :root{--bg:#0f1117;--surface:#1a1d27;--border:#2a2e3e;--text:#e8eaf0;--muted:#7a7f96;--accent:#5b6cff;--green:#22c55e;--red:#ef4444;--sid:#a78bfa}
+  :root{
+    --bg:#0f1117;--surface:#1a1d27;--surface2:#1f2235;--border:#2a2e3e;
+    --text:#e8eaf0;--muted:#7a7f96;--accent:#5b6cff;
+    --green:#22c55e;--red:#ef4444;--or:#f59e0b;
+    --eric:#38bdf8;--sid:#a78bfa;--init:#fb923c;--unattr:#94a3b8;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px}
-  .wrap{max-width:900px;margin:0 auto;padding:36px 20px}
+  .wrap{max-width:960px;margin:0 auto;padding:36px 20px}
   h1{font-size:22px;font-weight:700;margin-bottom:4px}
   .meta{font-size:12px;color:var(--muted);margin-bottom:24px}
   .tabs{display:flex;gap:8px;margin-bottom:28px}
-  .tab{padding:7px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+  .tab{padding:7px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
   .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
   .tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
-  .card{background:var(--surface);border-radius:12px;padding:22px 24px}
-  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
-  .card-title.sid-label{color:var(--sid)}
-  .big-num{font-size:36px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
-  .big-num.sid-color{color:var(--sid)}
-  .big-label{font-size:12px;color:var(--muted);margin-top:6px}
-  .split{display:flex;gap:20px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
-  .split-item{flex:1}
-  .split-val{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
-  .split-label{font-size:11px;color:var(--muted);margin-top:3px}
-  table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden}
-  th{background:#22263a;color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:10px 16px;text-align:right}
+  /* Hero cards */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+  @media(max-width:600px){.hero{grid-template-columns:1fr}}
+  .card{background:var(--surface);border-radius:12px;padding:22px 24px;border:1px solid var(--border)}
+  .card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px}
+  .card-cpa{font-size:40px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .card-sub{font-size:12px;color:var(--muted);margin-top:6px}
+  .card-stats{display:flex;gap:20px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+  .stat-val{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+  .stat-lbl{font-size:11px;color:var(--muted);margin-top:3px}
+  /* Table */
+  .tbl-wrap{background:var(--surface);border-radius:12px;overflow:hidden;margin-bottom:20px}
+  table{width:100%;border-collapse:collapse}
+  th{background:#1e2238;color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:11px 16px;text-align:right}
   th:first-child{text-align:left}
-  td{padding:12px 16px;border-top:1px solid var(--border);text-align:right;font-variant-numeric:tabular-nums}
-  td:first-child{text-align:left;font-weight:600}
-  .sid-row td:first-child{color:var(--sid)}
+  td{padding:11px 16px;border-top:1px solid var(--border);text-align:right;font-variant-numeric:tabular-nums}
+  td:first-child{text-align:left}
+  .row-group td:first-child{font-weight:700}
+  .row-sub td{background:var(--surface2);font-size:13px;color:var(--muted)}
+  .row-sub td:first-child{padding-left:32px;font-weight:400}
+  .row-total td{border-top:2px solid var(--border);font-weight:700;background:#161929}
+  .pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle;text-transform:uppercase;letter-spacing:.04em}
+  .eric-pill{background:#1e3a4a;color:var(--eric)}
+  .sid-pill{background:#2e1e4a;color:var(--sid)}
+  .init-pill{background:#3a2a10;color:var(--init)}
+  .unattr-pill{background:#1e2533;color:var(--unattr)}
   .cpa-good{color:var(--green);font-weight:700}
-  .disclaimer{font-size:12px;color:var(--muted);margin-top:20px;opacity:.7}
+  .cpa-warn{color:var(--or)}
+  .cpa-bad{color:var(--red)}
+  .note{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6;opacity:.8}
+  hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+  .footer{font-size:13px;color:#b0b8cc;line-height:1.8}
+  .footer strong{color:#e8eaf0}
+  .footer a{color:var(--sid);text-decoration:none}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Sid vs All — Creative Performance</h1>
-  <p class="meta">Updated Sep 28, 2026 06:03 UTC &nbsp;·&nbsp; All figures AUD &nbsp;·&nbsp; Today excluded</p>
+  <h1>Creative Attribution — MovesMethod</h1>
+  <p class="meta">Updated Sep 28, 2026 13:58 UTC &nbsp;·&nbsp; All figures AUD &nbsp;·&nbsp; Today excluded &nbsp;·&nbsp; Meta-reported purchases</p>
 
   <div class="tabs">
-    <button class="tab active" onclick="setWindow(this,'7d')">Past 7 days</button>
-    <button class="tab" onclick="setWindow(this,'14d')">Past 14 days</button>
-    <button class="tab" onclick="setWindow(this,'all')">All time</button>
+    <button class="tab active" onclick="setW(this,'7d')">Past 7 days</button>
+    <button class="tab" onclick="setW(this,'14d')">Past 14 days</button>
+    <button class="tab" onclick="setW(this,'all')">All time</button>
   </div>
 
-  <div class="grid">
+  <div class="hero">
     <div class="card">
-      <div class="card-title sid-label">&#9889; Sid&rsquo;s Campaigns</div>
-      <div class="big-num sid-color" id="sid-cpa">—</div>
-      <div class="big-label">CPA (AUD)</div>
-      <div class="split">
-        <div class="split-item"><div class="split-val" id="sid-ads">—</div><div class="split-label">Active ads</div></div>
-        <div class="split-item"><div class="split-val" id="sid-spend">—</div><div class="split-label">Spend (AUD)</div></div>
-        <div class="split-item"><div class="split-val" id="sid-pu">—</div><div class="split-label">Purchases</div></div>
+      <div class="card-label" style="color:var(--eric)">Eric — all creative</div>
+      <div class="card-cpa" style="color:var(--eric)" id="e-cpa">—</div>
+      <div class="card-sub">CPA (AUD)</div>
+      <div class="card-stats">
+        <div><div class="stat-val" id="e-ads">—</div><div class="stat-lbl">Active ads</div></div>
+        <div><div class="stat-val" id="e-sp">—</div><div class="stat-lbl">Spend</div></div>
+        <div><div class="stat-val" id="e-pu">—</div><div class="stat-lbl">Purchases</div></div>
       </div>
     </div>
     <div class="card">
-      <div class="card-title">All Other Campaigns</div>
-      <div class="big-num" id="oth-cpa">—</div>
-      <div class="big-label">CPA (AUD)</div>
-      <div class="split">
-        <div class="split-item"><div class="split-val" id="oth-ads">—</div><div class="split-label">Active ads</div></div>
-        <div class="split-item"><div class="split-val" id="oth-spend">—</div><div class="split-label">Spend (AUD)</div></div>
-        <div class="split-item"><div class="split-val" id="oth-pu">—</div><div class="split-label">Purchases</div></div>
+      <div class="card-label" style="color:var(--sid)">Sid — all creative</div>
+      <div class="card-cpa" style="color:var(--sid)" id="s-cpa">—</div>
+      <div class="card-sub">CPA (AUD)</div>
+      <div class="card-stats">
+        <div><div class="stat-val" id="s-ads">—</div><div class="stat-lbl">Active ads</div></div>
+        <div><div class="stat-val" id="s-sp">—</div><div class="stat-lbl">Spend</div></div>
+        <div><div class="stat-val" id="s-pu">—</div><div class="stat-lbl">Purchases</div></div>
       </div>
     </div>
   </div>
 
+  <div class="tbl-wrap">
   <table>
-    <thead>
-      <tr>
-        <th>Segment</th>
-        <th>Active Ads</th>
-        <th>Spend (AUD)</th>
-        <th>Purchases</th>
-        <th>CPA (AUD)</th>
-      </tr>
-    </thead>
+    <thead><tr>
+      <th>Category</th>
+      <th>Active Ads</th>
+      <th>Spend (AUD)</th>
+      <th>Purchases</th>
+      <th>CPA (AUD)</th>
+    </tr></thead>
     <tbody id="tbody"></tbody>
   </table>
+  </div>
 
-  <p class="disclaimer">* FB standard purchase event only. Real backend CPA may be ~8% higher.</p>
+  <p class="note">
+    ⚠️ Sid's buying-others column includes one retargeting ad (~A$2k spend, A$68 CPA in 7d)
+    which prices cheap for audience reasons, not creative. Both strategists' new creative is
+    expensive — this is test cost in a soft week, not a verdict.<br>
+    Meta over-reports ~18% vs backend CPA. CPA target = A$96. Green ≤ A$96 · Orange A$97–A$130 · Red &gt; A$130.
+  </p>
 
-  <hr style="border:none;border-top:1px solid #2a2e3e;margin:28px 0">
-  <div style="font-size:13px;color:#b0b8cc;line-height:1.8">
-    <p style="font-weight:700;color:#e8eaf0;margin-bottom:10px">Plan moving forward</p>
-    <p>The creative team will start incorporating a 3-letter creative director&rsquo;s initials element into their ads.
-      (<a href="https://www.mgoffredi.com/gorillafy/ad-names/" style="color:#a78bfa;text-decoration:none">See ad naming guide here</a>)
-    </p>
-    <p style="margin-top:10px">The tech team will develop a stable report for this.</p>
-    <p style="margin-top:6px;color:#7a7f96">Step 1: just using FB data similar to this.</p>
-    <p style="color:#7a7f96">Step 2: they can connect ads to real revenue if we decide that is useful.</p>
+  <hr>
+  <div class="footer">
+    <p><strong>Attribution rules (in order of priority)</strong></p>
+    <p>1 · Initiative — <em>growi</em> / <em>trybe</em> / <em>tva</em> in ad name or campaign name</p>
+    <p>2 · Sid — campaign name contains <em>sid</em> → buying others' creative (default) or own <em>csss</em> creative</p>
+    <p>3 · Eric Own — ad name contains <em>csea</em></p>
+    <p>4 · Eric Catalogue — ad name matches <em>_SL####_</em> (back catalogue, pre-tag era)</p>
+    <p>5 · Unattributed — everything else (legacy batch names, UGC, raw post IDs)</p>
+    <br>
+    <p><strong>Plan moving forward</strong></p>
+    <p>Creative team tagging all new ads with 3-letter strategist initials
+      (<a href="https://www.mgoffredi.com/gorillafy/ad-names/">ad naming guide</a>).
+      Tech team building a stable report with Airtable strategist column as step 4 lookup.</p>
   </div>
 </div>
+
 <script>
-const D = {"7d": {"sid": {"vsl": {"spend": 0, "purchases": 0, "clicks": 0, "active_ads": 0, "cpa": null}, "tk": {"spend": 12422.71, "purchases": 148, "clicks": 2662, "active_ads": 38, "cpa": 83.94}, "total": {"spend": 12422.71, "purchases": 148, "active_ads": 38, "cpa": 83.94}}, "others": {"vsl": {"spend": 101954.09, "purchases": 1082, "clicks": 42793, "active_ads": 185, "cpa": 94.23}, "tk": {"spend": 31736.22, "purchases": 395, "clicks": 8300, "active_ads": 180, "cpa": 80.34}, "total": {"spend": 133690.31, "purchases": 1477, "active_ads": 365, "cpa": 90.51}}}, "14d": {"sid": {"vsl": {"spend": 0, "purchases": 0, "clicks": 0, "active_ads": 0, "cpa": null}, "tk": {"spend": 28933.61, "purchases": 332, "clicks": 6567, "active_ads": 66, "cpa": 87.15}, "total": {"spend": 28933.61, "purchases": 332, "active_ads": 66, "cpa": 87.15}}, "others": {"vsl": {"spend": 257151.8, "purchases": 2908, "clicks": 109275, "active_ads": 344, "cpa": 88.43}, "tk": {"spend": 76678.15, "purchases": 964, "clicks": 19826, "active_ads": 354, "cpa": 79.54}, "total": {"spend": 333829.95, "purchases": 3872, "active_ads": 698, "cpa": 86.22}}}, "all": {"sid": {"vsl": {"spend": 6010.77, "purchases": 36, "clicks": 2029, "active_ads": 30, "cpa": 166.97}, "tk": {"spend": 59862.31, "purchases": 614, "clicks": 13518, "active_ads": 154, "cpa": 97.5}, "total": {"spend": 65873.08, "purchases": 650, "active_ads": 184, "cpa": 101.34}}, "others": {"vsl": {"spend": 1491098.98, "purchases": 14491, "clicks": 723123, "active_ads": 1338, "cpa": 102.9}, "tk": {"spend": 596325.89, "purchases": 6585, "clicks": 411499, "active_ads": 995, "cpa": 90.56}, "total": {"spend": 2087424.87, "purchases": 21076, "active_ads": 2333, "cpa": 99.04}}}};
-function fmt(n){ if(n===null||n===undefined) return '—'; return n.toLocaleString('en-AU',{maximumFractionDigits:0}); }
-function fmtCpa(n){ return n ? 'A$'+fmt(n) : '—'; }
+const D = {"7d": {"eric_own": {"by_funnel": {"VSL": {"ads": 20, "spend": 5418.3, "purchases": 47, "cpa": 115.28}, "TK": {"ads": 28, "spend": 4211.96, "purchases": 31, "cpa": 135.87}, "Other": {"ads": 27, "spend": 4960.47, "purchases": 42, "cpa": 118.11}}, "total": {"ads": 75, "spend": 14590.73, "purchases": 120, "cpa": 121.59}}, "eric_cat": {"by_funnel": {"VSL": {"ads": 161, "spend": 95935.49, "purchases": 1030, "cpa": 93.14}, "TK": {"ads": 49, "spend": 3308.69, "purchases": 20, "cpa": 165.43}, "Other": {"ads": 14, "spend": 3477.68, "purchases": 28, "cpa": 124.2}}, "total": {"ads": 224, "spend": 102721.86, "purchases": 1078, "cpa": 95.29}}, "sid_buying": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 36, "spend": 12064.17, "purchases": 145, "cpa": 83.2}, "Other": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}}, "total": {"ads": 36, "spend": 12064.17, "purchases": 145, "cpa": 83.2}}, "sid_own": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 2, "spend": 358.54, "purchases": 3, "cpa": 119.51}, "Other": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}}, "total": {"ads": 2, "spend": 358.54, "purchases": 3, "cpa": 119.51}}, "GROWI": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 4, "spend": 145.13, "purchases": 2, "cpa": 72.56}, "Other": {"ads": 64, "spend": 3123.66, "purchases": 23, "cpa": 135.81}}, "total": {"ads": 68, "spend": 3268.79, "purchases": 25, "cpa": 130.75}}, "TVA": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "Other": {"ads": 40, "spend": 3910.77, "purchases": 14, "cpa": 279.34}}, "total": {"ads": 40, "spend": 3910.77, "purchases": 14, "cpa": 279.34}}, "TRYBE": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "Other": {"ads": 12, "spend": 296.33, "purchases": 2, "cpa": 148.16}}, "total": {"ads": 12, "spend": 296.33, "purchases": 2, "cpa": 148.16}}, "unattributed": {"by_funnel": {"VSL": {"ads": 4, "spend": 600.3, "purchases": 5, "cpa": 120.06}, "TK": {"ads": 99, "spend": 24070.44, "purchases": 342, "cpa": 70.38}, "Other": {"ads": 84, "spend": 6910.72, "purchases": 35, "cpa": 197.45}}, "total": {"ads": 187, "spend": 31581.46, "purchases": 382, "cpa": 82.67}}, "_eric": {"ads": 299, "spend": 117312.59, "purchases": 1198, "cpa": 97.92}, "_sid": {"ads": 38, "spend": 12422.71, "purchases": 148, "cpa": 83.94}, "_total": {"ads": 644, "spend": 168792.65, "purchases": 1769, "cpa": 95.42}}, "14d": {"eric_own": {"by_funnel": {"VSL": {"ads": 35, "spend": 13178.29, "purchases": 129, "cpa": 102.16}, "TK": {"ads": 36, "spend": 6524.45, "purchases": 56, "cpa": 116.51}, "Other": {"ads": 27, "spend": 4960.47, "purchases": 42, "cpa": 118.11}}, "total": {"ads": 98, "spend": 24663.21, "purchases": 227, "cpa": 108.65}}, "eric_cat": {"by_funnel": {"VSL": {"ads": 303, "spend": 243181.63, "purchases": 2773, "cpa": 87.7}, "TK": {"ads": 80, "spend": 8284.59, "purchases": 60, "cpa": 138.08}, "Other": {"ads": 16, "spend": 5693.51, "purchases": 52, "cpa": 109.49}}, "total": {"ads": 399, "spend": 257159.73, "purchases": 2885, "cpa": 89.14}}, "sid_buying": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 64, "spend": 28575.07, "purchases": 329, "cpa": 86.85}, "Other": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}}, "total": {"ads": 64, "spend": 28575.07, "purchases": 329, "cpa": 86.85}}, "sid_own": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 2, "spend": 358.54, "purchases": 3, "cpa": 119.51}, "Other": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}}, "total": {"ads": 2, "spend": 358.54, "purchases": 3, "cpa": 119.51}}, "GROWI": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 57, "spend": 4438.42, "purchases": 42, "cpa": 105.68}, "Other": {"ads": 64, "spend": 3423.38, "purchases": 28, "cpa": 122.26}}, "total": {"ads": 121, "spend": 7861.8, "purchases": 70, "cpa": 112.31}}, "TVA": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "Other": {"ads": 46, "spend": 7176.77, "purchases": 24, "cpa": 299.03}}, "total": {"ads": 46, "spend": 7176.77, "purchases": 24, "cpa": 299.03}}, "TRYBE": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "Other": {"ads": 12, "spend": 296.33, "purchases": 2, "cpa": 148.16}}, "total": {"ads": 12, "spend": 296.33, "purchases": 2, "cpa": 148.16}}, "unattributed": {"by_funnel": {"VSL": {"ads": 6, "spend": 791.88, "purchases": 6, "cpa": 131.98}, "TK": {"ads": 181, "spend": 57430.69, "purchases": 806, "cpa": 71.25}, "Other": {"ads": 88, "spend": 16018.69, "purchases": 99, "cpa": 161.8}}, "total": {"ads": 275, "spend": 74241.26, "purchases": 911, "cpa": 81.49}}, "_eric": {"ads": 497, "spend": 281822.94, "purchases": 3112, "cpa": 90.56}, "_sid": {"ads": 66, "spend": 28933.61, "purchases": 332, "cpa": 87.15}, "_total": {"ads": 1017, "spend": 400332.71, "purchases": 4451, "cpa": 89.94}}, "all": {"eric_own": {"by_funnel": {"VSL": {"ads": 50, "spend": 21456.87, "purchases": 198, "cpa": 108.37}, "TK": {"ads": 37, "spend": 6687.41, "purchases": 56, "cpa": 119.42}, "Other": {"ads": 27, "spend": 4960.47, "purchases": 42, "cpa": 118.11}}, "total": {"ads": 114, "spend": 33104.75, "purchases": 296, "cpa": 111.84}}, "eric_cat": {"by_funnel": {"VSL": {"ads": 796, "spend": 845657.77, "purchases": 9119, "cpa": 92.74}, "TK": {"ads": 234, "spend": 64454.51, "purchases": 511, "cpa": 126.13}, "Other": {"ads": 129, "spend": 77292.12, "purchases": 493, "cpa": 156.78}}, "total": {"ads": 1159, "spend": 987404.4, "purchases": 10123, "cpa": 97.54}}, "sid_buying": {"by_funnel": {"VSL": {"ads": 30, "spend": 6010.77, "purchases": 36, "cpa": 166.97}, "TK": {"ads": 152, "spend": 59503.77, "purchases": 611, "cpa": 97.39}, "Other": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}}, "total": {"ads": 182, "spend": 65514.54, "purchases": 647, "cpa": 101.26}}, "sid_own": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 2, "spend": 358.54, "purchases": 3, "cpa": 119.51}, "Other": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}}, "total": {"ads": 2, "spend": 358.54, "purchases": 3, "cpa": 119.51}}, "GROWI": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 111, "spend": 20374.8, "purchases": 168, "cpa": 121.28}, "Other": {"ads": 74, "spend": 4553.23, "purchases": 37, "cpa": 123.06}}, "total": {"ads": 185, "spend": 24928.03, "purchases": 205, "cpa": 121.6}}, "TVA": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "Other": {"ads": 46, "spend": 8212.89, "purchases": 27, "cpa": 304.18}}, "total": {"ads": 46, "spend": 8212.89, "purchases": 27, "cpa": 304.18}}, "TRYBE": {"by_funnel": {"VSL": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "TK": {"ads": 0, "spend": 0.0, "purchases": 0, "cpa": null}, "Other": {"ads": 12, "spend": 296.33, "purchases": 2, "cpa": 148.16}}, "total": {"ads": 12, "spend": 296.33, "purchases": 2, "cpa": 148.16}}, "unattributed": {"by_funnel": {"VSL": {"ads": 492, "spend": 623984.34, "purchases": 5174, "cpa": 120.6}, "TK": {"ads": 613, "spend": 504809.17, "purchases": 5850, "cpa": 86.29}, "Other": {"ads": 451, "spend": 412682.88, "purchases": 3796, "cpa": 108.72}}, "total": {"ads": 1556, "spend": 1541476.39, "purchases": 14820, "cpa": 104.01}}, "_eric": {"ads": 1273, "spend": 1020509.15, "purchases": 10419, "cpa": 97.95}, "_sid": {"ads": 184, "spend": 65873.08, "purchases": 650, "cpa": 101.34}, "_total": {"ads": 3256, "spend": 2661295.87, "purchases": 26123, "cpa": 101.88}}};
+
+function $$(id){ return document.getElementById(id); }
+function fmt(n){ return n==null ? '—' : n.toLocaleString('en-AU',{maximumFractionDigits:0}); }
+function fmtCpa(n){ return n==null ? '—' : 'A$'+fmt(n); }
+function cpaClass(n){ if(n==null) return ''; if(n<=96) return 'cpa-good'; if(n<=130) return 'cpa-warn'; return 'cpa-bad'; }
+
 function render(w){
-  const d=D[w], s=d.sid, o=d.others;
-  document.getElementById('sid-cpa').textContent  = fmtCpa(s.total.cpa);
-  document.getElementById('sid-ads').textContent  = fmt(s.total.active_ads);
-  document.getElementById('sid-spend').textContent= 'A$'+fmt(s.total.spend);
-  document.getElementById('sid-pu').textContent   = fmt(s.total.purchases);
-  document.getElementById('oth-cpa').textContent  = fmtCpa(o.total.cpa);
-  document.getElementById('oth-ads').textContent  = fmt(o.total.active_ads);
-  document.getElementById('oth-spend').textContent= 'A$'+fmt(o.total.spend);
-  document.getElementById('oth-pu').textContent   = fmt(o.total.purchases);
-  const rows=[
-    ['sid','&#9889; Sid — VSL',s.vsl, o.vsl.cpa],
-    ['sid','&#9889; Sid — TK', s.tk,  o.tk.cpa],
-    ['oth','All Others — VSL', o.vsl, null],
-    ['oth','All Others — TK',  o.tk,  null],
+  const d = D[w];
+  const e = d._eric, s = d._sid, tot = d._total;
+
+  $$('e-cpa').textContent  = fmtCpa(e.cpa);
+  $$('e-ads').textContent  = fmt(e.ads);
+  $$('e-sp').textContent   = 'A$'+fmt(e.spend);
+  $$('e-pu').textContent   = fmt(e.purchases);
+  $$('s-cpa').textContent  = fmtCpa(s.cpa);
+  $$('s-ads').textContent  = fmt(s.ads);
+  $$('s-sp').textContent   = 'A$'+fmt(s.spend);
+  $$('s-pu').textContent   = fmt(s.purchases);
+
+  const eo = d.eric_own.total, ec = d.eric_cat.total;
+  const sb = d.sid_buying.total, so = d.sid_own.total;
+  const gr = d.GROWI.total, tv = d.TVA.total, tr = d.TRYBE.total, un = d.unattributed.total;
+
+  const rows = [
+    // [cssClass, label, pillHtml, data]
+    ['row-group', 'Eric', '<span class="pill eric-pill">csea + catalogue</span>', e],
+    ['row-sub',   '↳ Own creative (csea)', '', eo],
+    ['row-sub',   '↳ Back catalogue (SL-coded)', '', ec],
+    ['row-group', 'Sid', '<span class="pill sid-pill">csss + buying</span>', s],
+    ['row-sub',   '↳ Buying others' creative', '', sb],
+    ['row-sub',   '↳ Own creative (csss)', '', so],
+    ['row-group', 'Growi', '<span class="pill init-pill">initiative</span>', gr],
+    ['row-group', 'TVA', '<span class="pill init-pill">initiative</span>', tv],
+    ['row-group', 'Trybe', '<span class="pill init-pill">initiative</span>', tr],
+    ['row-group', 'Unattributed', '<span class="pill unattr-pill">legacy</span>', un],
+    ['row-total', 'TOTAL', '', tot],
   ];
-  document.getElementById('tbody').innerHTML=rows.map(([grp,lbl,m,benchCpa])=>{
-    const sidRow = grp==='sid';
-    const cpaBetter = sidRow && m.cpa && benchCpa && m.cpa <= benchCpa;
-    return `<tr class="${sidRow?'sid-row':''}">
-      <td>${lbl}</td>
-      <td>${fmt(m.active_ads)}</td>
+
+  $$('tbody').innerHTML = rows.map(([cls, lbl, pill, m]) => `
+    <tr class="${cls}">
+      <td>${lbl}${pill}</td>
+      <td>${fmt(m.ads)}</td>
       <td>A$${fmt(m.spend)}</td>
       <td>${fmt(m.purchases)}</td>
-      <td class="${cpaBetter?'cpa-good':''}">${fmtCpa(m.cpa)}</td>
-    </tr>`;
-  }).join('');
+      <td class="${cpaClass(m.cpa)}">${fmtCpa(m.cpa)}</td>
+    </tr>`).join('');
 }
-function setWindow(btn,w){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+
+function setW(btn, w){
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   render(w);
 }
