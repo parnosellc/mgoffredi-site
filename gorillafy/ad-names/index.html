@@ -298,7 +298,7 @@
 <p>Every ad sells a product. The product is whatever the buyer pays for at checkout — not the funnel, not the ad copy, not the lander. A new code gets added only when a genuinely different product appears at checkout.</p>
 
 <h4>Technical</h4>
-<p>Two-letter lowercase product code. Example: <code>tk</code>.</p>
+<p>Lowercase product code, 2&ndash;10 letters, no numbers. Examples: <code>tk</code>, <code>quiz</code>.</p>
 
 <h2 id="cs">Who requested it? (Creative strategist)</h2>
 
@@ -363,8 +363,8 @@
   <div class="field-row">
     <div class="field">
       <label for="ad-product">Product code</label>
-      <input type="text" id="ad-product" maxlength="2" placeholder="tk">
-      <div class="hint">2 lowercase letters. The product at checkout.</div>
+      <input type="text" id="ad-product" maxlength="10" placeholder="tk">
+      <div class="hint">2&ndash;10 lowercase letters, no numbers. The product at checkout.</div>
     </div>
 
     <div class="field">
@@ -517,8 +517,8 @@
 
   const productInput = document.getElementById('ad-product');
   productInput.addEventListener('input', (e) => {
-    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 2);
-    validateField(e.target, e.target.value.length === 2);
+    e.target.value = e.target.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 10);
+    validateField(e.target, e.target.value.length >= 2);
     updateAdName();
   });
 
