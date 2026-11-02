@@ -1,25 +1,60 @@
 {
-  "period": "Oct 19 \u2013 Oct 25, 2026",
-  "since": "2026-10-19",
-  "until": "2026-10-25",
+  "period": "Oct 26 \u2013 Nov 1, 2026",
+  "since": "2026-10-26",
+  "until": "2026-11-01",
   "seg": {
     "USA": {
       "TK": {
-        "spend": 53515.99,
+        "spend": 39024.92,
+        "fbp": 524
+      },
+      "FCVSL": {
+        "spend": 97468.04,
+        "fbp": 1123
+      }
+    },
+    "HI": {
+      "TK": {
+        "spend": 39293.56,
+        "fbp": 448
+      },
+      "FCVSL": {
+        "spend": 75744.09,
+        "fbp": 733
+      }
+    },
+    "ROW": {
+      "TK": {
+        "spend": 0.02,
+        "fbp": 0
+      },
+      "FCVSL": {
+        "spend": 0.0,
+        "fbp": 0
+      }
+    }
+  },
+  "lastPeriod": "Oct 19 \u2013 Oct 25, 2026",
+  "lastSince": "2026-10-19",
+  "lastUntil": "2026-10-25",
+  "lastSeg": {
+    "USA": {
+      "TK": {
+        "spend": 53517.11,
         "fbp": 588
       },
       "FCVSL": {
-        "spend": 96600.61,
+        "spend": 96603.91,
         "fbp": 1201
       }
     },
     "HI": {
       "TK": {
-        "spend": 54625.6,
+        "spend": 54626.3,
         "fbp": 541
       },
       "FCVSL": {
-        "spend": 88008.92,
+        "spend": 88012.16,
         "fbp": 1040
       }
     },
@@ -34,40 +69,5 @@
       }
     }
   },
-  "lastPeriod": "Oct 12 \u2013 Oct 18, 2026",
-  "lastSince": "2026-10-12",
-  "lastUntil": "2026-10-18",
-  "lastSeg": {
-    "USA": {
-      "TK": {
-        "spend": 39002.95,
-        "fbp": 326
-      },
-      "FCVSL": {
-        "spend": 15656.13,
-        "fbp": 152
-      }
-    },
-    "HI": {
-      "TK": {
-        "spend": 32807.2,
-        "fbp": 314
-      },
-      "FCVSL": {
-        "spend": 24665.61,
-        "fbp": 195
-      }
-    },
-    "ROW": {
-      "TK": {
-        "spend": 0.0,
-        "fbp": 0
-      },
-      "FCVSL": {
-        "spend": 0.0,
-        "fbp": 0
-      }
-    }
-  },
-  "generated_at": "2026-10-26T07:02:22"
+  "generated_at": "2026-11-02T07:02:12"
 }
